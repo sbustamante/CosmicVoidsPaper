@@ -280,32 +280,6 @@ of the two more dominant types of environment (voids and sheets).
 
 
 
-%.........................................................................
-%FIGURE 1: Mean density for each environment
-\begin{flushleft}
-\begin{figure}
-\centering
-
-  \includegraphics[trim = 0mm 0mm 12mm 5mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{./figures/cell_types_density.pdf}
-
-  \captionof{figure}{\small Mean density parameter for each one of the 
-  defined environments according to the chosen $\lambda_{th}$ value and 
-  for both classification schemes. Tweb (green lines) and Vweb (blue 
-  lines). The mean density parameter is calculated by averaging all the 
-  values  of the cells determined as a certain type of environment 
-  according to its eigenvalues. The optimal parameters found are 
-  $\lambda_{opt}^{T}=0.326$ and $\lambda_{opt}^{V}=0.188$.}
-
-  \label{fig:mean_density}
-  \vspace{0.1 cm}
-
-\end{figure}
-\end{flushleft}
-%.........................................................................
-
-
-
 As was previously established by \SRKED{Hoffman et al. (2012)} and as 
 can be seen in Figure \ref{fig:mean_density}, the behaviour of the 
 V-web scheme is significantly more sensible to variations of the 
@@ -340,6 +314,132 @@ expected impression according to the density field.
 
 
 
+Our classification scheme may be thought as a refinement of the recent 
+schemes, where the threshold value is used to taking as a free parameter, 
+based on the classic methods, where the classification is performed 
+based on a cut off of the density field directly \SRKED{[references here]}.
+So we make use of the objectivity achieved by the analysis of the mean 
+density, but keeping all the environmental information provided by the
+tensorial schemes instead of the poor description provided by the density 
+field.
+
+
+
+%*************************************************************************
+\section{Finding bulk voids}
+\label{sec:bulk_voids}
+%*************************************************************************
+
+
+Following the recent growing interest in studying galaxy formation in 
+low-density regions, we use a method based on a FOF-like algorithm to 
+find extended regions of voids. To achieve this, we build the input 
+catalogue for the FOF method with the coordinate of the center of every 
+cell marked as void according to the web classification scheme adopted, 
+furthermore we set an adequate linking length to connect even diagonal 
+neighbour cells.
+
+
+
+Following the work of \SRKED{Forero-Romero et al. 2008}, we also perform a 
+percolation analysis in order to select the best threshold parameter that
+reduces percolation in cells, thereby accounting for physical bulk void 
+regions. In Figure \ref{fig:percolation_analysis} we show the obtained 
+result of our percolation analysis for both web schemes. In both cases, it 
+can be noticed that the volume of the largest void region is minimized and 
+the volume distribution of voids is relatively flat at $\lambda_{th} = 0.0$, 
+what means percolation is completely reduced for this threshold value. So, 
+in spite of the previously established $\lambda_{th}$ optimal values for 
+each scheme, we shall use $\lambda_{th} = 0.0$ just for the detection of 
+bulk void regions. Moreover, due to the domination of the large scale 
+visual impression by voids, it is inevitable the presence of the 
+percolation phenomenon, so the current chosen threshold value for 
+percolation is justified because though voids are necessarily connected 
+among them, we are just interested in detecting bulk regions.
+
+
+
+Next, we shall calculate the reduced inertia tensor of each void region 
+in order to determinate their principal directions of inertia and analyse 
+the size-shape distribution of voids.
+
+
+%.........................................................................
+%Reduced inertia tensor
+\eq{ReducedIntertia}
+{ \tau_{ij} = \sum_l \frac{ x_{l,i}x_{l,j}  }{R_l^2} }
+%.........................................................................
+where $l$ is an index associated to each cell of to the current region, 
+$i$ and $j$ indexes run over each spatial direction and finally 
+$R_l$ is defined as $R_l^2 = x_{l,1}^2 + x_{l,2}^2 + x_{l,3}^2$, all 
+positions are measured from the respective center of mass of the region.
+
+
+
+The eigenvalues of the reduced inertia tensor, i.e. the principal moments
+of inertia, are used to quantify the shape of void regions. They are 
+denoted as $\tau_1$, $\tau_2$ and $\tau_3$ such that $\tau_1 \leq \tau_2
+\leq \tau_3$. In Figure \ref{fig:distro_inertia} we show the computed
+distributions for $\tau_1/\tau_2$ and $\tau_2/\tau_3$, where we rather 
+calculate histograms for these ratio quantities instead of each single 
+value in order to avoid using an arbitrary normalization. For both schemes, 
+it can be noticed that the shape-distribution is completely spread out, 
+thereby indicating a non-preferred geometry of void regions, which is in 
+agreement with the well established highly anisotropy of matter flows
+associated to this type of region \SRKED{[reference here]}. Because of 
+that, we shall look for possible alignments between the plane of rotation 
+of halo pairs and the principal directions of inertia of the nearest void 
+regions.
+
+ 
+%*************************************************************************
+\section{Statistics of voids and influence over dark matter halos}
+\label{sec:statistics}
+%*************************************************************************
+
+
+
+%*************************************************************************
+\section{Conclusions}
+\label{sec:conclusions}
+%*************************************************************************
+
+
+%*************************************************************************
+\section*{Acknowledgments}  
+%*************************************************************************
+
+
+\bibliographystyle{mn2e}
+\bibliography{references} 
+
+
+%.........................................................................
+%FIGURE 1: Mean density for each environment
+\begin{flushleft}
+\begin{figure}
+\centering
+
+  \includegraphics[trim = 0mm 0mm 12mm 5mm, clip, keepaspectratio=true,
+  width=0.35\textheight]{./figures/cell_types_density.pdf}
+
+  \captionof{figure}{\small Mean density parameter for each one of the 
+  defined environments according to the chosen $\lambda_{th}$ value and 
+  for both classification schemes. Tweb (green lines) and Vweb (blue 
+  lines). The mean density parameter is calculated by averaging all the 
+  values  of the cells determined as a certain type of environment 
+  according to its eigenvalues. The optimal parameters found are 
+  $\lambda_{opt}^{T}=0.326$ and $\lambda_{opt}^{V}=0.188$.}
+
+  \label{fig:mean_density}
+  \vspace{0.1 cm}
+
+\end{figure}
+\end{flushleft}
+%.........................................................................
+
+
+
 %.........................................................................
 %FIGURE 2: Visual impresion
 \begin{flushleft}
@@ -368,52 +468,6 @@ expected impression according to the density field.
 \end{figure*}
 \end{flushleft}
 %.........................................................................
-
-
-
-Our classification scheme may be thought as a refinement of the recent 
-schemes, where the threshold value is used to taking as a free parameter, 
-based on the classic methods, where the classification is performed 
-based on a cut off of the density field directly \SRKED{[references here]}.
-So we make use of the objectivity achieved by the analysis of the mean 
-density, but keeping all the environmental information provided by the
-tensorial schemes instead of the poor description provided by the density 
-field.
-
-
-
-%-------------------------------------------------------------------------
-\subsection{Method to find void regions}
-\label{subsec:method_voids}
-%-------------------------------------------------------------------------
-
-
-
-Following the recent growing interest in studying galaxy formation in 
-low-density regions, we use a method based on a FOF-like algorithm to 
-find extended regions of voids. To achieve this, we build the input 
-catalogue for the FOF method with the coordinate of the center of every 
-cell marked as void according to the web classification scheme adopted, 
-furthermore we set an adequate linking length to connect even diagonal 
-neighbour cells.
-
-
-
-Following the work of \SRKED{Forero-Romero et al. 2008}, we also perform a 
-percolation analysis in order to select the best threshold parameter that
-reduces percolation in cells, thereby accounting for physical bulk void 
-regions. In Figure \ref{fig:percolation_analysis} we show the obtained 
-result of our percolation analysis for both web schemes. In both cases, it 
-can be noticed that the volume of the largest void region is minimized and 
-the volume distribution of voids is relatively flat at $\lambda_{th} = 0.0$, 
-what means percolation is completely reduced for this threshold value. So, 
-in spite of the previously established $\lambda_{th}$ optimal values for 
-each scheme, we shall use $\lambda_{th} = 0.0$ just for the detection of 
-bulk void regions. Moreover, due to the domination of the large scale 
-visual impression by voids, it is inevitable the presence of the 
-percolation phenomenon, so the current chosen threshold value for 
-percolation is justified because though voids are necessarily connected 
-among them, we are just interested in detecting bulk regions.
 
 
 
@@ -446,23 +500,6 @@ among them, we are just interested in detecting bulk regions.
 
 
 
-Next, we shall calculate the reduced inertia tensor of each void region 
-in order to determinate their principal directions of inertia and analyse 
-the size-shape distribution of voids.
-
-
-%.........................................................................
-%Reduced inertia tensor
-\eq{ReducedIntertia}
-{ \tau_{ij} = \sum_l \frac{ x_{l,i}x_{l,j}  }{R_l^2} }
-%.........................................................................
-where $l$ is an index associated to each cell of to the current region, 
-$i$ and $j$ indexes run over each spatial direction and finally 
-$R_l$ is defined as $R_l^2 = x_{l,1}^2 + x_{l,2}^2 + x_{l,3}^2$, all 
-positions are measured from the respective center of mass of the region.
-
-
-
 %.........................................................................
 %FIGURE 4: Distribution of eigenvalues of the inertia tensor
 \begin{flushleft}
@@ -491,42 +528,6 @@ positions are measured from the respective center of mass of the region.
 \end{figure}
 \end{flushleft}
 %.........................................................................
-
-
-
-The eigenvalues of the reduced inertia tensor, i.e. the principal moments
-of inertia, are used to quantify the shape of void regions. They are 
-denoted as $\tau_1$, $\tau_2$ and $\tau_3$ such that $\tau_1 \leq \tau_2
-\leq \tau_3$. In Figure \ref{fig:distro_inertia} we show the computed
-distributions for $\tau_1/\tau_2$ and $\tau_2/\tau_3$, where we rather 
-calculate histograms for these ratio quantities instead of each single 
-value in order to avoid using an arbitrary normalization. For both schemes, 
-it can be noticed that the shape-distribution is completely spread out, 
-thereby indicating a non-preferred geometry of void regions, which is in 
-agreement with the well established highly anisotropy of matter flows
-associated to this type of region \SRKED{[reference here]}. Because of 
-that, we shall look for possible alignments between the plane of rotation 
-of halo pairs and the principal directions of inertia of the nearest void 
-regions.
-
- 
-
-
-
-
-%*************************************************************************
-\section{Conclusions}
-\label{sec:conclusions}
-%*************************************************************************
-
-
-%*************************************************************************
-\section*{Acknowledgments}  
-%*************************************************************************
-
-
-\bibliographystyle{mn2e}
-\bibliography{references} 
 
 
 %.........................................................................
