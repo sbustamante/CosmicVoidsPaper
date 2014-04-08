@@ -1,0 +1,17 @@
+#USED AS FIGURE 1
+*******************************************************************************
+FIG NAME:	
+	cell_types_density.pdf
+CAPTION:
+	Mean density parameter for each one of the 
+	defined environments according to the chosen $\lambda_{th}$ value and 
+	for both classification schemes. Tweb (green lines). Vweb (blue lines).
+	The mean density parameter is calculated by averaging all the values 
+	of the cells determined as a certain type of environment according to 
+	its eigenvalues. The optimal parameters found are 
+	$\lambda_{opt}^{T}=0.326$ and $\lambda_{opt}^{V}=0.188$.
+CODE:
+	regions_mean_density.py
+LOG:	28-04-14 (Modification, integrating both figures into a single one)
+*******************************************************************************
+
