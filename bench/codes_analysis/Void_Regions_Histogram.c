@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     FLOAT1 Delta_min, Delta_max;
     int N_thr, Bins;
     int j, k, eig, i_d;
-    long int Ncells[NMAX];
+    long int Ncells[NMAX], NcellsCum;
     
     //Grid variables===============================================================================
     int dumb;
@@ -150,17 +150,19 @@ int main(int argc, char **argv)
 	    // If the cell is a void
 	    if( eigen1[i] <= Lambda && eigen2[i] <= Lambda && eigen3[i] <= Lambda )
 		//HISTOGRAMS
-		for( i_d=0; i_d<Bins-1; i_d++ ){
+		for( i_d=0; i_d<Bins-1; i_d++ )
 		    if( (delta[i] >= Delta_min + (Delta_max - Delta_min)*(i_d)/Bins) && 
-			(delta[i] < Delta_min + (Delta_max - Delta_min)*(i_d+1)/Bins) )
+			(delta[i] < Delta_min + (Delta_max - Delta_min)*(i_d+1)/Bins) ){
 			Ncells[i_d] ++ ;
-		    else
 			break;}}
 	//File Head
-	fprintf( out_hist, "#\\delta\tNumber of cells\n");
+	fprintf( out_hist, "#\\delta\tNumber of cells\tCumulative\n");
 	//Storing histogram for each eigenvalue
-	for( i_d=0; i_d<Bins-1; i_d++ )
-	    fprintf( out_hist, "%1.3f\t%ld\n", Delta_min + (Delta_max - Delta_min)*(i_d)/Bins, Ncells[i_d] );
+	NcellsCum = 0
+	for( i_d=0; i_d<Bins-1; i_d++ ){ 
+	    NcellsCum += Ncells[i_d];
+	    fprintf( out_hist, "%1.5f\t%ld\t%ld\n", 
+		     Delta_min + (Delta_max - Delta_min)*(i_d+1)/Bins, Ncells[i_d], NcellsCum );}
 	fclose( out_hist );
     }
     
