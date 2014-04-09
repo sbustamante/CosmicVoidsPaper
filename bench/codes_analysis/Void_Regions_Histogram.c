@@ -158,7 +158,7 @@ int main(int argc, char **argv)
 	//File Head
 	fprintf( out_hist, "#\\delta\tNumber of cells\tCumulative\n");
 	//Storing histogram for each eigenvalue
-	NcellsCum = 0
+	NcellsCum = 0;
 	for( i_d=0; i_d<Bins-1; i_d++ ){ 
 	    NcellsCum += Ncells[i_d];
 	    fprintf( out_hist, "%1.5f\t%ld\t%ld\n", 
