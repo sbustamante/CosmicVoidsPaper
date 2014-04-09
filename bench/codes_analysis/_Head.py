@@ -195,7 +195,7 @@ def Counts( filename_eig, filename_delta, min_L, max_L, N_L ):
     os.system( "./Density_Regions.out %s %s %f %f %d temp.tmp"%( 
     filename_eig, filename_delta, min_L, max_L, N_L ) )
     datos = np.transpose( np.loadtxt( 'temp.tmp' ) )
-    os.system( "rm temp.tmp" )
+    #os.system( "rm temp.tmp" )
     return datos
     
     

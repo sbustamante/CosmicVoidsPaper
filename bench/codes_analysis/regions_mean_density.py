@@ -60,16 +60,18 @@ for web in webs:
 	
 	#Lambda_th array
 	lambda_th = regs[0]
-	#Vacuums mean density
+	#Voids mean density
 	vacuum_rho = regs[1]/regs[9]
 	      
 	#Plots the results
 	
 	#Voids
-	plt.plot( lambda_th, regs[1]/(1+regs[5]), color = color[i_web], linestyle = '--', linewidth = 2, label = '%s Voids'%(web) )
+	#plt.plot( lambda_th, regs[1]/(1+regs[5]), color = color[i_web], linestyle = '--', linewidth = 2, label = '%s Voids'%(web) )
+	plt.plot( lambda_th, regs[10], color = color[i_web], linestyle = '--', linewidth = 2, label = '%s Voids'%(web) )
 
 	#Sheets
-	plt.plot( lambda_th, regs[2]/(1+regs[6]), color = color[i_web], linestyle = '-', linewidth = 2, label = '%s Sheets'%(web) )
+	#plt.plot( lambda_th, regs[2]/(1+regs[6]), color = color[i_web], linestyle = '-', linewidth = 2, label = '%s Sheets'%(web) )
+	plt.plot( lambda_th, regs[11], color = color[i_web], linestyle = '-', linewidth = 2, label = '%s Sheets'%(web) )
 	
 	i_fold += 1
     i_web += 1
