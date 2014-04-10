@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define FLOAT1 float
 #define FLOAT2 double
-#define NMAX 1000
+#define NMAX 5000
 
 //USAGE  Density_Regions_Histogram.out <EIG_Filename> <DELTA_Filename> <Min_Lambda> <Max_Lambda> <N_Lambda> <Min_Delta> <Max_Delta> <N_Hist> <Folder>
 

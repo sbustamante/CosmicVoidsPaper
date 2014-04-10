@@ -16,7 +16,7 @@ and recent relevants works.
 
 2. The simulation
 -----------------------------------------------------------------------------------------
-A technical details of the used simulation (Bolshoi), with descriptions of halos 
+Technical details of the used simulation (Bolshoi), with descriptions of halos 
 catalogues (BDM and FOF). All halo samples are defined here as well.
 
 
