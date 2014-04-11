@@ -13,11 +13,11 @@ execfile('_Head.py')
 #			PARAMETERS
 #==================================================================================================
 #Simulation
-folds = ["BOLSHOI/"]
+simulation = "BOLSHOI/"
 #Number of sections
-N_sec = [256]
+N_sec = 256
 #Box lenght [Mpc]
-L_box = [250.]
+L_box = 250.
 #Smooth parameter
 smooth = '_s1'
 #Web Scheme
@@ -30,9 +30,6 @@ Nbins = 10
 #==================================================================================================
 #			COMPUTING EIGENVALUES AND BUILDING THE INERTIA TENSOR
 #==================================================================================================
-
-i_fold = 0
-N_sim = len(folds)
 
 #no labels
 nullfmt = NullFormatter()
@@ -58,41 +55,37 @@ axHistx.xaxis.set_major_formatter(nullfmt)
 axHisty.yaxis.set_major_formatter(nullfmt)
 
 
-for fold in folds:
-    print fold
-    
-    
-    eigen = np.transpose(np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/eigen.dat"%\
-    (foldglobal, fold, web, N_sec[i_fold], smooth, Lambda_th )))
-  
-    Hist_lambd  = np.transpose(np.histogram2d( eigen[0]/eigen[1], eigen[1]/eigen[2], 
-    bins = Nbins, normed = False, range = ((0,1),(0,1))  )[0][::,::-1])
-    
-    #2D histogram
-    map2d = axHist2D.imshow( Hist_lambd[::,::], interpolation='nearest', aspect = 'auto',
-    cmap = 'binary', extent = (0,1,0,1) )	
-    #Create the colorbar
-    axc, kw = matplotlib.colorbar.make_axes( axHistx,\
-    orientation = "vertical", shrink=1., pad=.1, aspect=10 )
-    cb = matplotlib.colorbar.Colorbar( axc, map2d,\
-    orientation = "vertical" )
-    #Set the colorbar
-    map2d.colorbar = cb
-   
-    #Countorn
-    axHist2D.contour( Hist_lambd[::-1,::], 7, aspect = 'auto', 
-    extent = (0,1,0,1),linewidth=1.5, interpolation = 'gaussian',\
-    colors="black" )
-    
-    #Histogram X
-    histx = np.histogram( eigen[0]/eigen[1], bins=Nbins, normed=True, range=(0,1) )
-    axHistx.bar( histx[1][:-1], histx[0], width = 1.00/Nbins, linewidth=2.0, color="gray" )
-    #Histogram Y
-    histy = np.histogram( eigen[1]/eigen[2], bins=Nbins, normed=True, range=(0,1) )
-    axHisty.barh( histy[1][:-1], histy[0], height = 1.00/Nbins, linewidth=2.0, color="gray" )
-  
-      
-    i_fold += 1
+print simulation
+
+
+eigen = np.transpose(np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/eigen.dat"%\
+(foldglobal, simulation, web, N_sec, smooth, Lambda_th )))
+
+Hist_lambd  = np.transpose(np.histogram2d( eigen[0]/eigen[1], eigen[1]/eigen[2], 
+bins = Nbins, normed = False, range = ((0,1),(0,1))  )[0][::,::-1])
+
+#2D histogram
+map2d = axHist2D.imshow( Hist_lambd[::,::], interpolation='nearest', aspect = 'auto',
+cmap = 'binary', extent = (0,1,0,1) )	
+#Create the colorbar
+axc, kw = matplotlib.colorbar.make_axes( axHistx,\
+orientation = "vertical", shrink=1., pad=.1, aspect=10 )
+cb = matplotlib.colorbar.Colorbar( axc, map2d,\
+orientation = "vertical" )
+#Set the colorbar
+map2d.colorbar = cb
+
+#Countorn
+axHist2D.contour( Hist_lambd[::-1,::], 7, aspect = 'auto', 
+extent = (0,1,0,1),linewidth=1.5, interpolation = 'gaussian',\
+colors="black" )
+
+#Histogram X
+histx = np.histogram( eigen[0]/eigen[1], bins=Nbins, normed=True, range=(0,1) )
+axHistx.bar( histx[1][:-1], histx[0], width = 1.00/Nbins, linewidth=2.0, color="gray" )
+#Histogram Y
+histy = np.histogram( eigen[1]/eigen[2], bins=Nbins, normed=True, range=(0,1) )
+axHisty.barh( histy[1][:-1], histy[0], height = 1.00/Nbins, linewidth=2.0, color="gray" )
 
 axHistx.set_xlim( axHist2D.get_xlim() )
 axHistx.set_xticks( np.linspace( 0,1,Nbins+1 ) )

@@ -12,9 +12,9 @@ execfile('_Head.py')
 #			PARAMETERS
 #==================================================================================================
 #Simulation
-folds = ["BOLSHOI/"]
+simulation = "BOLSHOI/"
 #Number of sections
-N_sec = [256]
+N_sec = 256
 #Smooth parameter
 smooth = '_s1'
 #Web Scheme
@@ -27,8 +27,6 @@ Lambda_th = 0.0
 #			CONSTRUCTING REGIONS VOLUME
 #==================================================================================================
 
-N_sim = len(folds)
-
 fig = plt.figure( figsize=(6,6) )
 ax1 = fig.add_subplot(111)
 ax2 = ax1.twiny()
@@ -39,15 +37,13 @@ def tick_function(X):
     return ((10**X*(0.9765625)**3)/( 4*np.pi/3. ))**(1/3.)
 
 for web in webs:
-    i_fold = 0
-    for fold in folds:
-	print fold, web
-		
-	void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
-	(foldglobal, fold, web, N_sec[i_fold], smooth, Lambda_th )))
-	    	    	
-	ax1.hist( np.log10(void_regs[1]) , bins=30, linewidth = 3,\
-	label = "%s"%(web), normed = True, histtype = 'step', cumulative = False   )
+    print simulation, web
+	    
+    void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
+    (foldglobal, simulation, web, N_sec, smooth, Lambda_th )))
+		    
+    ax1.hist( np.log10(void_regs[1]) , bins=30, linewidth = 3,\
+    label = "%s"%(web), normed = True, histtype = 'step', cumulative = False   )
     
 
 #Axe 1    

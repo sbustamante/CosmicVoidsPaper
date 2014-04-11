@@ -4,7 +4,8 @@
 #define FLOAT2 double
 #define NMAX 5000
 
-//USAGE  Density_Regions_Histogram.out <EIG_Filename> <DELTA_Filename> <Min_Lambda> <Max_Lambda> <N_Lambda> <Min_Delta> <Max_Delta> <N_Hist> <Folder>
+//USAGE  Void_Regions_Histogram.out <EIG_Filename> <DELTA_Filename> <Min_Lambda> <Max_Lambda> <N_Lambda> 
+//		<Min_Delta> <Max_Delta> <N_Hist> <Folder> <Kind of environment (0-voids, 1-sheets, 2-filaments, 3-knots)>
 
 int main(int argc, char **argv)
 {    
@@ -142,9 +143,18 @@ int main(int argc, char **argv)
 	Lambda = Lambda_min + (Lambda_max - Lambda_min)*j/N_thr;
     
 	//Correlation File
-	sprintf(filename, "%s/delta_voids_hist_%1.2f.dat", argv[9], Lambda);
+	if( atoi(argv[9]) == 0 )
+	    sprintf(filename, "%s/delta_voids_hist_%1.2f.dat", argv[10], Lambda);
+	if( atoi(argv[9]) == 1 )
+	    sprintf(filename, "%s/delta_sheets_hist_%1.2f.dat", argv[10], Lambda);
+	if( atoi(argv[9]) == 2 )
+	    sprintf(filename, "%s/delta_filaments_hist_%1.2f.dat", argv[10], Lambda);
+	if( atoi(argv[9]) == 3 )
+	    sprintf(filename, "%s/delta_knots_hist_%1.2f.dat", argv[10], Lambda);
 	out_hist = fopen(filename, "w");
-	
+
+	//VOIDS
+	if( atoi(argv[9]) == 0 )
 	//Sweeping all the grid
 	for( i=0; i<n_total; i++ ){
 	    // If the cell is a void
@@ -155,6 +165,46 @@ int main(int argc, char **argv)
 			(delta[i] < Delta_min + (Delta_max - Delta_min)*(i_d+1)/Bins) ){
 			Ncells[i_d] ++ ;
 			break;}}
+			
+	//SHEETS
+	if( atoi(argv[9]) == 1 )
+	//Sweeping all the grid
+	for( i=0; i<n_total; i++ ){
+	    // If the cell is a void
+	    if( eigen1[i] > Lambda && eigen2[i] <= Lambda && eigen3[i] <= Lambda )
+		//HISTOGRAMS
+		for( i_d=0; i_d<Bins-1; i_d++ )
+		    if( (delta[i] >= Delta_min + (Delta_max - Delta_min)*(i_d)/Bins) && 
+			(delta[i] < Delta_min + (Delta_max - Delta_min)*(i_d+1)/Bins) ){
+			Ncells[i_d] ++ ;
+			break;}}
+			
+	//FILAMENTS
+	if( atoi(argv[9]) == 2 )
+	//Sweeping all the grid
+	for( i=0; i<n_total; i++ ){
+	    // If the cell is a void
+	    if( eigen1[i] > Lambda && eigen2[i] > Lambda && eigen3[i] <= Lambda )
+		//HISTOGRAMS
+		for( i_d=0; i_d<Bins-1; i_d++ )
+		    if( (delta[i] >= Delta_min + (Delta_max - Delta_min)*(i_d)/Bins) && 
+			(delta[i] < Delta_min + (Delta_max - Delta_min)*(i_d+1)/Bins) ){
+			Ncells[i_d] ++ ;
+			break;}}
+			
+	//KNOTS
+	if( atoi(argv[9]) == 3 )
+	//Sweeping all the grid
+	for( i=0; i<n_total; i++ ){
+	    // If the cell is a void
+	    if( eigen1[i] > Lambda && eigen2[i] > Lambda && eigen3[i] > Lambda )
+		//HISTOGRAMS
+		for( i_d=0; i_d<Bins-1; i_d++ )
+		    if( (delta[i] >= Delta_min + (Delta_max - Delta_min)*(i_d)/Bins) && 
+			(delta[i] < Delta_min + (Delta_max - Delta_min)*(i_d+1)/Bins) ){
+			Ncells[i_d] ++ ;
+			break;}}
+			
 	//File Head
 	fprintf( out_hist, "#\\delta\tNumber of cells\tCumulative\n");
 	//Storing histogram for each eigenvalue
