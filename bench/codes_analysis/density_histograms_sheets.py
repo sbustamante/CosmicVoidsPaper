@@ -30,10 +30,10 @@ L_max = 1
 Lambda = np.linspace(L_min, L_max, N_l+1)
 
 #N delta
-N_d = 2000
+N_d = 4000
 #Delta extremes values
 D_min = -1
-D_max = 1
+D_max = 7
 
 #Uncertain of quartiles
 Delta_Q = 0.005
