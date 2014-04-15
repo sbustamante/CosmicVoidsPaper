@@ -20,7 +20,7 @@ from matplotlib.ticker import NullFormatter
 #			VARIABLES
 #==================================================================================================
 #Global Fold
-foldglobal = '../../../ThesisProyect/data/'
+foldglobal = '../../../CosmicData/'
 #Fold of the Void Finder code
 void_finder_fold = '../../../Void_Finder/'
 #Fold to store data of figures

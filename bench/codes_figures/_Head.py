@@ -20,7 +20,7 @@ from matplotlib.ticker import NullFormatter
 #			VARIABLES
 #==================================================================================================
 #Global Fold
-foldglobal = '../../../ThesisProyect/data/'
+foldglobal = '../../../CosmicData/'
 #Fold of the Void Finder code
 void_finder_fold = '../../../Void_Finder/'
 #Fold to store data of figures
@@ -202,13 +202,13 @@ def Counts( filename_eig, filename_delta, min_L, max_L, N_L ):
     
 
 #..................................................................................................
-#Histograms of mean density of void regions voids regions
+#Histograms of mean density of different kind of cosmological regions
 #..................................................................................................
-def Voids_Histograms( filename_eig, filename_delta, min_L, max_L, N_L, min_D, max_D, N_D, Fold ):
-    os.system( "./Void_Regions_Histogram.out %s %s %f %f %d %f %f %d %s"%( 
-    filename_eig, filename_delta, min_L, max_L, N_L, min_D, max_D, N_D, Fold ) )
+def Regions_Histograms( filename_eig, filename_delta, min_L, max_L, N_L, min_D, max_D, N_D, kind, Fold ):
+    os.system( "./Density_Regions_Histogram.out %s %s %f %f %d %f %f %d %d %s"%( 
+    filename_eig, filename_delta, min_L, max_L, N_L, min_D, max_D, N_D, kind, Fold ) )
     return 0
-    
+        
     
 #..................................................................................................
 #Classification Scheme
