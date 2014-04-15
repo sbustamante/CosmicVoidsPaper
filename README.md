@@ -17,5 +17,5 @@ a detecting scheme based upon a FOF-like algorithm and for two web classificatio
 Results
 -----------------------------------------------------------------------------------------
 All results in this paper can be reproduced with codes and data in the folder bench/codes 
-and with [these](https://goo.gl/AYyDa) data. Furthermore you can use [this](http://nbviewer.ipython.org/github/sbustamante/CosmicVoidsPaper/blob/master/bench/analysis.ipynb?create=1) 
-ipython notebook
+and with [these](http://goo.gl/B9pYxU) data. Furthermore you can use [this](http://nbviewer.ipython.org/urls/raw.githubusercontent.com/sbustamante/CosmicVoidsPaper/master/bench/analysis.ipynb?create=1) 
+ipython notebook in order to reproduce figures.
