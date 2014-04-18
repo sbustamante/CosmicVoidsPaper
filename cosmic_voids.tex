@@ -48,57 +48,7 @@ The spatial distribution of galaxies describes a web-like pattern, the
 so-called cosmic web. Today it is understood that such configuration is 
 driven by gravitational instabilities. ...
 
-
-
-The study of the influence of the cosmic web on galaxy properties start 
-with the seminal work of Dressler \SRKED{[reference here]} and extends to 
-recent works using large observational surveys that look for signatures of 
-the web into the evolution of galaxy populations. With the advention of 
-more detailed observations and sophisticated computational models it is 
-now within our reach to understand what physical processes dominate.
-
-
-
-This makes  that the mass assembly history of a galaxy is deeply connected 
-with its  position in the cosmic web. There is an extensive body of 
-literature on the effects of the web environment on the observable 
-properties of galaxies. 
-
-
-
-This environmental study is also of paramount importance to understand the 
-formation of our Galaxy. In our local neighborhood, the observations of 
-dwarf galaxies around the Milky Way (MW) and the Andromeda galaxy (M31) 
-show filamentary and disk-like patterns that can be linked to a 
-preferential infall direction, very likely connected with the cosmic web 
-where the Local Group (LG) of galaxies is embedded. 
-
-
-
-In this paper we quantify the velocity shear environment of DM halo pairs
-representative of the principal members of the Local Group (LG), the Milky
-Way (MW) and Andromeda galaxy (M31). We perform this study in an 
-unconstrained cosmological simulation from random phases in the initial 
-conditions, and unlike previous works, where were used constrained 
-cosmological simulations which have been setup as to reproduce the large 
-scale structure of the local universe, we use directly observational 
-measurements of the kinematics properties of the local group \SRKED{
-[Reference here]} in order to build faithful samples of LG-like systems.
-
-
-
-We pay special attention to the correlation of the present velocity shear 
-environment with the assembly and the kinematics properties of the pairs. 
-The motivation to have that focus is that it has been previously shown 
-that the LG present in three different realizations of the constrained 
-simulations have assembly histories biased towards early formation times 
-and absence of major mergers (ratio 1:10) in the last $10$ Gyr. In the 
-case of the kinematic properties, recent observational constrains to the 
-galactocentric tangential velocity of M31 has enabled to establish how 
-typical is the LG in a cosmological context \SRKED{[reference to 
-Forero-Romero et.al 2013-1]}, that is why we focus here how a specific kind 
-of host environment biases these kinematics properties.
-
+Relevant information about previous works and current state of the art.
 
 
 %*************************************************************************
@@ -122,41 +72,9 @@ $\sigma_{8}=0.82$ for the matter density, cosmological constant,
 dimensionless Hubble parameter, spectral index of primordial density 
 perturbations and normalization for the power spectrum. The mass of each 
 particle in the simulation is $m_{\rm p}=1.4\times 10^{8}$\hMsun.
-
-
-
-%-------------------------------------------------------------------------
-\subsection{Halos and Merger Trees}
-\label{subsec:halos_merger_trees}
-%-------------------------------------------------------------------------
-
-
-
 We identify halos with two algorithms, the Friends-of-Friends \SRKED{
-[reference here]} algorithm and the Bound Density Maximum algorithm. The 
-constructed catalogues also provide the basis for the mass aggregation 
-history studies. We also include in the catalogues information about the 
-substructure.
+[reference here]} algorithm and the Bound Density Maximum algorithm.
 
-
-
-All the results presented here must be interpreted in term of host halos, 
-without any information of the substructure. In particular the merger of 
-two FOF halos corresponds to the epoch of first overlap, and not to the 
-fusion and/or disruption of an accreted sub-halo with a dominant halo. 
-
-
-
-The linking length is $b=0.17$ times the mean inter-particle separation. 
-All objects with 20 particles or more are considered a bona fide halo and 
-are included in the construction of the merger tree, this corresponds to a 
-minimum halo mass of $M_{\rm min}=2.70\times 10^{9}$\hMsun in the Bolshoi 
-simulation.
-
-
-
-The halo identification for the simulation was done for XX snapshots in 
-the redshift range $0<z<7$ more or less evenly spaced in look-back time.
 
 
 
@@ -261,35 +179,43 @@ features of the cosmic web.
 
 
 Both established schemes to quantify the cosmic web depend on continuous 
-and smooth physical quantities, as the peculiar velocity field and the 
-density field. In order to calculate the necessary tensors, a discretization
-of the simulation volume is performed, so all the properties are reduced 
-to single values associated to discrete cells. According to this, we divide 
-the overall volume into $(256)^3$ cells, so each cell has an associated 
-comoving cubic volume of $0.98 \mbox{ Mpc h}^{-1}$. Finally, in order to 
-reduce possible effects due to the discretization process, a gaussian 
-softening is performed between neighbour cells.
+and smooth physical quantities, i.e the peculiar velocity field and the 
+density field. To calculate these quantities, a discretization over the 
+volume of the simulation is performed, so all the properties are reduced 
+to single values associated to discrete cells. According to this, we 
+divide the overall volume into $(256)^3$ cells, so each cell has an 
+associated comoving cubic volume of $0.98 \mbox{ Mpc h}^{-1}$. Finally, in 
+order to reduce possible effects due to the discretization process, a 
+gaussian softening is performed between neighbour cells.
 
 
 
-Once defined the numerical details about the classification schemes, we 
-shall analyse the dependence on the threshold value $\lambda_{th}$ for each 
-one. In Figure \ref{fig:mean_density} we show the variation of the mean 
-density parameter $\delta$ with the threshold value for cells marked as one 
-of the two more dominant types of environment (voids and sheets).
+Once defined the numerical details about both classification schemes, we
+shall analyse the dependence on the threshold value $\lambda_{th}$ for 
+each one. In Figure \ref{fig:median_density} we calculate the median 
+contrast density for cells catalogued in each one of the types of 
+environment with respect to the threshold value, where filled regions 
+correspond to quartiles $Q_1$ and $Q_3$ of the samples, i.e. half of the 
+cells are mapped within such regions. Moreover, we calculate fraction of
+halos within each one of the defined environments based upon the FOF 
+catalogue of the simulation.
 
 
 
 As was previously established by \SRKED{Hoffman et al. (2012)} and as 
-can be seen in Figure \ref{fig:mean_density}, the behaviour of the 
+can be seen in Figure \ref{fig:median_density}, the behaviour of the 
 V-web scheme is significantly more sensible to variations of the 
-$\lambda_{th}$ value compared with the T-web scheme; nevertheless, the 
-behaviour of the mean density parameter for voids, sheets and filaments, 
-are qualitatively quite similar for the two schemes, increasing with the 
-value of $\lambda_{th}$. Although we shall focus our analysis on voids 
-because they are completely dominant in the visual impression of the 
-cosmic web, an analogous analysis might be performed for other type of 
-environments.
+$\lambda_{th}$ value compared with the T-web scheme. Furthermore, taking
+into account the physical origin of the T-web scheme, based upon the 
+Hessian matrix, environments catalogued through this scheme have a 
+well-differentiate density value for all \lth range, whereas for the V-web 
+case, all regions are overlapped, specially for high \lth values and for 
+high density regions, being more confuse to discern a typical density for 
+each type of environment. This could be explained appealing to the 
+kinematic rather than dynamic origin of the V-web, which is based upon the 
+velocity shear tensor, and implying that the correspondence between 
+density and peculiar velocity is less trivial for high density regions, 
+what it is precisely expected for the non-linear regime.
 
 
 
@@ -415,13 +341,19 @@ regions.
 
 
 %.........................................................................
-%FIGURE 1: Mean density for each environment
+%FIGURE 1: Median density for each environment
 \begin{flushleft}
-\begin{figure}
+\begin{figure*}
 \centering
 
-  \includegraphics[trim = 0mm 0mm 12mm 5mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{./figures/cell_types_density.pdf}
+  \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
+  width=0.25\textheight]{./figures/median_environments_densities_Tweb.pdf}
+  \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
+  width=0.25\textheight]{./figures/median_environments_densities_Vweb.pdf}
+  \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
+  width=0.25\textheight]{./figures/halos_fraction_FOF_Tweb.pdf}
+  \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
+  width=0.25\textheight]{./figures/halos_fraction_FOF_Vweb.pdf}
 
   \captionof{figure}{\small Mean density parameter for each one of the 
   defined environments according to the chosen $\lambda_{th}$ value and 
@@ -431,10 +363,10 @@ regions.
   according to its eigenvalues. The optimal parameters found are 
   $\lambda_{opt}^{T}=0.326$ and $\lambda_{opt}^{V}=0.188$.}
 
-  \label{fig:mean_density}
+  \label{fig:median_density}
   \vspace{0.1 cm}
 
-\end{figure}
+\end{figure*}
 \end{flushleft}
 %.........................................................................
 

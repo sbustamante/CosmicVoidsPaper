@@ -24,7 +24,7 @@ web = sys.argv[1]
 #Lambda_th
 Lambda_th = float(sys.argv[2])
 #Cutt of respect to the number of cells
-N_cut = 8
+N_cut = 0
 
 #==================================================================================================
 #			COMPUTING GEOMETRIC CENTER OF VOIDS

@@ -14,6 +14,7 @@ import scipy.interpolate as interp
 import matplotlib.gridspec as gridspec
 from matplotlib.patches import Ellipse
 from matplotlib.ticker import NullFormatter
+plt.close('all')
 
 
 #==================================================================================================
@@ -25,6 +26,8 @@ foldglobal = '../../../CosmicData/'
 void_finder_fold = '../../../Void_Finder/'
 #Fold to store data of figures
 data_figures_fold = '../data_figures/'
+#Fold to store figures
+figures_fold = '../../figures/'
 
 
 #==================================================================================================
