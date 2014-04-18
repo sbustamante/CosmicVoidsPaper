@@ -1,4 +1,4 @@
-#halos_histogram_region.py
+#halos_fraction_histogram.py
 #
 #This code calculates histograms of number of dark matter halos for each type of region, sweeping
 #several lambda threshols values
