@@ -192,62 +192,51 @@ gaussian softening is performed between neighbour cells.
 
 Once defined the numerical details about both classification schemes, we
 shall analyse the dependence on the threshold value $\lambda_{th}$ for 
-each one. In Figure \ref{fig:median_density} we calculate the median 
-contrast density for cells catalogued in each one of the types of 
-environment with respect to the threshold value, where filled regions 
-correspond to quartiles $Q_1$ and $Q_3$ of the samples, i.e. half of the 
-cells are mapped within such regions. Moreover, we calculate fraction of
-halos within each one of the defined environments based upon the FOF 
-catalogue of the simulation.
+each one. For this, we shall use the distribution of dark matter halos as 
+tracer of the underlying matter field in order to be more consistent with
+available observational data. In Figure \ref{fig:halos_fractions} we 
+calculate fractions of halos within each one of the defined environments 
+based upon the FOF catalogue of the simulation and for an extensive \lth 
+range. Then we look for some key feature that could indicated us a 
+possible optimal value of the \lth value. One first step forward our quest 
+is the behaviour of the V-web scheme compared with the T-web. As was 
+previously established by \SRKED{Hoffman et al. (2012)} and as can be seen 
+in Figure \ref{fig:halos_fractions}, V-web scheme is significantly more 
+sensible to variations of the $\lambda_{th}$ value, since all fractions of
+halos for the V-web change significantly in the range $[0,0.4]$, whereas, 
+for the T-web scheme, fractions change smoothly throughout all \lth range 
+covered. From this, it is then expected that the optimal \lth value for the 
+V-web scheme is less than the T-web value.
 
 
+The more notorious characteristic of Figure \ref{fig:halos_fractions} is
+the behaviour of the fraction of halos within sheet regions for both web 
+schemes, increasing until a local maximum, and then decreasing. The 
+increasing or decreasing rate of the fraction of halos for some region 
+could be interpreted as a measure of the degree of non-linearity of such 
+region for some specific \lth value. For example, filaments and knots, 
+that are the most non-linear regions of the universe, have a negative rate 
+for all covered \lth range. In the case of voids, the situation is 
+completely opposite, where fractions of halos increase in everywhere. If 
+we think in terms of the underlying matter field of the cosmic web, \lth 
+is just a cutting parameter between high non-linear regions (filament and 
+knots) and low non-linear (voids and sheets). Furthermore, if we take into 
+account that dark matter halos are much more likely to form in high 
+non-linear regions, it is expected the obtained behaviour of fractions of 
+halos for voids, filaments and knots as we increase the \lth value. 
+However, the behaviour of the fraction of halos in sheets is less clear,
+increasing for low \lth values (like voids) and decreasing for higher \lth 
+values (like filaments and knots). This indicates us the transitional 
+character of sheet regions in the cosmic web. Our proposal here is to 
+select as optimal \lth the value where the fraction of sheets reaches a
+local maximum, so sheets are completely taken as intermediate transitional 
+and neutral zones regarding the degree of non-linearity. According to this,
+we find for the T-web scheme a optimal value $\lambda_{opt}^T = 0.36$ and
+for the V-web scheme $\lambda_{opt}^V = 0.20$. In figure 
+\ref{fig:visual_impression} we show the visual impression of the cosmic 
+web along with the density field for different \lth values including the 
+optimal values.
 
-As was previously established by \SRKED{Hoffman et al. (2012)} and as 
-can be seen in Figure \ref{fig:median_density}, the behaviour of the 
-V-web scheme is significantly more sensible to variations of the 
-$\lambda_{th}$ value compared with the T-web scheme. Furthermore, taking
-into account the physical origin of the T-web scheme, based upon the 
-Hessian matrix, environments catalogued through this scheme have a 
-well-differentiate density value for all \lth range, whereas for the V-web 
-case, all regions are overlapped, specially for high \lth values and for 
-high density regions, being more confuse to discern a typical density for 
-each type of environment. This could be explained appealing to the 
-kinematic rather than dynamic origin of the V-web, which is based upon the 
-velocity shear tensor, and implying that the correspondence between 
-density and peculiar velocity is less trivial for high density regions, 
-what it is precisely expected for the non-linear regime.
-
-
-
-On cosmic scales, the presence of highly non-linear structures implies the 
-existence of very vast regions with density lower than the mean 
-cosmological value due to the mass conservation. That is why the visual 
-impression of the cosmic web should be necessarily dominated by these 
-under-dense regions. Keeping that in mind, our novel proposal is based upon
-the correct quantification of these regions, so the optimal threshold 
-value must be chosen such that: sheet regions do not invade real void 
-regions (in such case, the mean density parameter of sheet regions would 
-become negative) and void regions do not invade real sheet and filament 
-regions (in such case, the mean density parameter of void regions would 
-increase due to the contribution of over-dense regions). Thus, the optimal 
-value is simply where the mean density parameter of sheet regions is 
-null. According to this, we obtain the next optimal threshold values 
-for the T-web and the V-web respectively, $\lambda_{opt}^T = 0.326$ and 
-$\lambda_{opt}^V = 0.188$. To verify our analysis, we show in Figure 
-\ref{fig:visual_impression} the visual impression for each defined critical 
-value, and as can be seen, the chosen values reproduce properly the 
-expected impression according to the density field. 
-
-
-
-Our classification scheme may be thought as a refinement of the recent 
-schemes, where the threshold value is used to taking as a free parameter, 
-based on the classic methods, where the classification is performed 
-based on a cut off of the density field directly \SRKED{[references here]}.
-So we make use of the objectivity achieved by the analysis of the mean 
-density, but keeping all the environmental information provided by the
-tensorial schemes instead of the poor description provided by the density 
-field.
 
 
 
@@ -341,17 +330,14 @@ regions.
 
 
 %.........................................................................
-%FIGURE 1: Median density for each environment
+%FIGURE 1: Fraction of halos in each environment
 \begin{flushleft}
-\begin{figure*}
+\begin{figure}
 \centering
 
   \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/median_environments_densities_Tweb.pdf}
-  \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/median_environments_densities_Vweb.pdf}
-  \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
   width=0.25\textheight]{./figures/halos_fraction_FOF_Tweb.pdf}
+  
   \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
   width=0.25\textheight]{./figures/halos_fraction_FOF_Vweb.pdf}
 
@@ -363,29 +349,29 @@ regions.
   according to its eigenvalues. The optimal parameters found are 
   $\lambda_{opt}^{T}=0.326$ and $\lambda_{opt}^{V}=0.188$.}
 
-  \label{fig:median_density}
+  \label{fig:halos_fractions}
   \vspace{0.1 cm}
 
-\end{figure*}
+\end{figure}
 \end{flushleft}
 %.........................................................................
 
 
 
 %.........................................................................
-%FIGURE 2: Visual impresion
+%FIGURE 2: Visual impression of the cosmic web
 \begin{flushleft}
 \begin{figure*}
-\begin{center}
+\centering
 
   \includegraphics[trim = 42mm 15mm 37mm 10mm, clip, keepaspectratio=true,
   width=0.75\textheight]{./figures/cosmicweb_visual_Tweb.pdf}
   \includegraphics[trim = 42mm 15mm 37mm 10mm, clip, keepaspectratio=true,
   width=0.75\textheight]{./figures/cosmicweb_visual_Vweb.pdf}
-
+  
   \captionof{figure}{\small Visual impression of the density field (left 
   panels), and of each classification scheme with the $\lambda_{th}$ values 
-  obtained by our criteria (others panels). Our color convention for each 
+  obtained by our criteria (others panels). The color convention for each 
   environment is (white) - void, (light gray) - sheet, (gray) - filament, 
   (black) - knot. For each web scheme, it has been used the previously 
   established optimal threshold as a reference value, so plots are done 
@@ -396,71 +382,9 @@ regions.
   \label{fig:visual_impression}
   \vspace{0.1 cm}
 
-\end{center}
 \end{figure*}
 \end{flushleft}
 %.........................................................................
 
 
-
-%.........................................................................
-%FIGURE 3: Percolation analysis
-\begin{flushleft}
-\begin{figure*}
-\begin{center}
-
-  \includegraphics[trim = 1mm 10mm 8mm 18mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_regions_percolation.pdf}
-  \includegraphics[trim = 0mm 00mm 00mm 00mm, clip, keepaspectratio=true,
-  width=0.36\textheight]{./figures/voids_regions_volume.pdf}
-
-  \captionof{figure}{\small Percolation analysis of void regions for 
-  different $\lambda_{th}$ values and for both defined classification 
-  schemes. T-web (blue lines) and  V-web (green lines). Plot of the largest 
-  volume and the number of voids detected according to the threshold value 
-  $\lambda_{th}$ (left panels). Size distribution histogram of void cells
-  using the threshold value $\lambda_{th} = 0.0$ for both schemes 
-  (right panel).}
-
-  \label{fig:percolation_analysis}
-  \vspace{0.1 cm}
-
-\end{center}
-\end{figure*}
-\end{flushleft}
-%.........................................................................
-
-
-
-%.........................................................................
-%FIGURE 4: Distribution of eigenvalues of the inertia tensor
-\begin{flushleft}
-\begin{figure}
-\begin{center}
-
-  \includegraphics[trim = 7mm 9mm 1mm 0mm, clip, keepaspectratio=true,
-  width=0.36\textheight]{./figures/voids_inertia_tensor_Tweb}
-  \includegraphics[trim = 7mm 9mm 1mm 0mm, clip, keepaspectratio=true,
-  width=0.36\textheight]{./figures/voids_inertia_tensor_Vweb}
-
-  \captionof{figure}{\small Histogram of eigenvalue ratio $\tau_1/\tau_2$
-  vs $\tau_2/\tau_3$ for the inertia tensor of void regions. T-web 
-  (upper panel) and V-web (lower panel). Number of cells per 
-  region in 2D histograms are indicated by the respective colour bar. 
-  Upper ($\tau_1/\tau_2$) and right ($\tau_2/\tau_3$) panels of each 
-  figure shows a normalized histogram of each ratio parameter. The 
-  adopted division for quantify the morphology of void regions is not
-  well justified, it should be understood as a fuzzy and continuous 
-  limit, done just for illustrative purposes.}
-
-  \label{fig:distro_inertia}
-  \vspace{0.1 cm}
-
-\end{center}
-\end{figure}
-\end{flushleft}
-%.........................................................................
-
-
-%.........................................................................
 \end{document}
