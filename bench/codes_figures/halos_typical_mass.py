@@ -29,7 +29,7 @@ labels = [ 'voids', 'sheets', 'filaments', 'knots' ]
 #Typical halo mass for each environment
 #==================================================================================================
 #Colors
-plt.figure( figsize=(5,5) )
+plt.figure( figsize=(5.8,5) )
 
 #Loading files with quartiles
 quartiles = np.loadtxt( '%shalos_masses_%s_%s.dat'%(data_figures_fold,catalogue,web) )

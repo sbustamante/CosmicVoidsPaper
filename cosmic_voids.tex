@@ -209,6 +209,7 @@ covered. From this, it is then expected that the optimal \lth value for the
 V-web scheme is less than the T-web value.
 
 
+
 The more notorious characteristic of Figure \ref{fig:halos_fractions} is
 the behaviour of the fraction of halos within sheet regions for both web 
 schemes, increasing until a local maximum, and then decreasing. The 
@@ -231,12 +232,59 @@ character of sheet regions in the cosmic web. Our proposal here is to
 select as optimal \lth the value where the fraction of sheets reaches a
 local maximum, so sheets are completely taken as intermediate transitional 
 and neutral zones regarding the degree of non-linearity. According to this,
-we find for the T-web scheme a optimal value $\lambda_{opt}^T = 0.36$ and
+we find for the T-web scheme an optimal value $\lambda_{opt}^T = 0.36$ and
 for the V-web scheme $\lambda_{opt}^V = 0.20$. In figure 
 \ref{fig:visual_impression} we show the visual impression of the cosmic 
 web along with the density field for different \lth values including the 
-optimal values.
+optimal values. It can be noticed that the optimal values found reproduce 
+well the visual impression.
 
+
+
+As we have taken halos as tracers of the cosmic web, we analyse 
+distributions of mass and peculiar velocity in order to assign typical 
+values to each type of environment. In figure 
+\ref{fig:typical_mass_velocity} we calculate both distributions for web 
+schemes and using the FOF catalogue of the simulation. Thick lines 
+correspond to the median of the distribution and filled regions limited by
+dashed lines correspond to quartiles $Q_1$ and $Q_3$, it means, $50\%$ of
+all halos are within such regions for every \lth value and for each type of
+environment. We rather use median and quartiles as measure of dispersion 
+because there are some very unusual and extreme values that makes the usual
+analysis based upon means and standard deviations less reliable.
+
+
+
+A first interesting feature of Figure  \ref{fig:typical_mass_velocity} is 
+the median mass for each region. In the case of the T-web, although 
+dispersions of the distribution of mass for each environment are 
+considerably overlapped each other, the median value is very 
+well-differentiated among types of environment, indicating that it is 
+possible to assign typical values of mass to each region, and being 
+consistent with expectations, where low mass halos are typical in voids 
+until high mass halos in knots. For the case of the V-web scheme, all
+medians and dispersions are completely overlapped, specially for values 
+grater than the optimal \lth value, indicating that it is not possible to
+assign typical mass ranges to each environment as quantified by this 
+scheme. For peculiar velocities, this situation is opposite, where V-web
+scheme is much more adequate to assign typical distributions of velocity
+to each environment. Although T-web also makes a differentiation in the 
+distributions of velocity, this is very slight compared with the V-web 
+case. These results can be explained by appealing the physical origin of 
+each web scheme. As T-web is based upon the Hessian matrix of the potential
+field, it is expected all quantities related to the potential, like density
+field and distribution of halos mass, are well-differentiated among each 
+region, while for the V-web scheme, based upon the shear velocity tensor, 
+all dynamical quantities, as the peculiar velocity field and the 
+distribution of halos velocity are alike expected to be 
+well-differentiated among regions as quantified by this scheme.
+
+
+
+Finally, we also calculate typical distributions of the density and 
+peculiar velocity fields in each type of environment, obtaining completely 
+analogous results. Furthermore, we also use a BDM catalogue of the 
+simulation, obtaining very similar conclusions.
 
 
 
@@ -341,13 +389,10 @@ regions.
   \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
   width=0.25\textheight]{./figures/halos_fraction_FOF_Vweb.pdf}
 
-  \captionof{figure}{\small Mean density parameter for each one of the 
-  defined environments according to the chosen $\lambda_{th}$ value and 
-  for both classification schemes. Tweb (green lines) and Vweb (blue 
-  lines). The mean density parameter is calculated by averaging all the 
-  values  of the cells determined as a certain type of environment 
-  according to its eigenvalues. The optimal parameters found are 
-  $\lambda_{opt}^{T}=0.326$ and $\lambda_{opt}^{V}=0.188$.}
+  \captionof{figure}{\small Fractions of halos embedded in each one of 
+  the defined environments according to the \lth value. T-web scheme 
+  (upper panel) and V-web scheme (lower panel). The optimal parameters 
+  found are $\lambda_{opt}^{T}=0.36$ and $\lambda_{opt}^{V}=0.20$.}
 
   \label{fig:halos_fractions}
   \vspace{0.1 cm}
@@ -364,9 +409,9 @@ regions.
 \begin{figure*}
 \centering
 
-  \includegraphics[trim = 42mm 15mm 37mm 10mm, clip, keepaspectratio=true,
+  \includegraphics[trim = 42mm 10mm 37mm 10mm, clip, keepaspectratio=true,
   width=0.75\textheight]{./figures/cosmicweb_visual_Tweb.pdf}
-  \includegraphics[trim = 42mm 15mm 37mm 10mm, clip, keepaspectratio=true,
+  \includegraphics[trim = 42mm 10mm 37mm 10mm, clip, keepaspectratio=true,
   width=0.75\textheight]{./figures/cosmicweb_visual_Vweb.pdf}
   
   \captionof{figure}{\small Visual impression of the density field (left 
@@ -385,6 +430,35 @@ regions.
 \end{figure*}
 \end{flushleft}
 %.........................................................................
+
+
+%.........................................................................
+%FIGURE 3: Typical mass and pecular velocity
+\begin{flushleft}
+\begin{figure*}
+\centering
+
+  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/halos_typical_mass_FOF_Tweb.pdf}
+  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/halos_typical_mass_FOF_Vweb.pdf}  
+  
+  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/halos_typical_velocity_FOF_Tweb.pdf}
+  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/halos_typical_velocity_FOF_Vweb.pdf}  
+  
+  \captionof{figure}{\small Distribution of masses of dark matter halos
+  according the region where they are embedded for both web schemes 
+  (upper panels) and of peculiar velocity (lower| panels).}
+
+  \label{fig:typical_mass_velocity}
+  \vspace{0.1 cm}
+
+\end{figure*}
+\end{flushleft}
+%.........................................................................
+
 
 
 \end{document}

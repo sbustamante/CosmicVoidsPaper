@@ -28,8 +28,7 @@ labels = [ 'voids', 'sheets', 'filaments', 'knots' ]
 #==================================================================================================
 #Typical halo peculiar velocity for each environment
 #==================================================================================================
-#Colors
-plt.figure( figsize=(5,5) )
+plt.figure( figsize=(5.8,5) )
 
 #Loading files with quartiles
 quartiles = np.loadtxt( '%shalos_velocities_%s_%s.dat'%(data_figures_fold,catalogue,web) )
@@ -76,7 +75,7 @@ plt.ylabel( '$|\\vec v_{pec}\ |$ $1\\times10^2$ km s$^{-1}$', fontsize = 12 )
 plt.xlabel( '$\lambda_{th}$', fontsize = 12)
 plt.xlim( (0,1) )
 plt.ylim( (2,12) )
-plt.legend( loc='upper left', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
+plt.legend( loc='upper right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
 plt.title('%s %s'%(web, catalogue), fontweight="bold" )   
 
 if sys.argv[3] == '1':
