@@ -1,4 +1,3 @@
-#USED AS FIGURE 1
 *******************************************************************************
 FIG NAME:	
 	cell_types_density.pdf
@@ -12,6 +11,86 @@ CAPTION:
 	$\lambda_{opt}^{T}=0.326$ and $\lambda_{opt}^{V}=0.188$.
 CODE:
 	regions_mean_density.py
-LOG:	28-04-14 (Modification, integrating both figures into a single one)
+LOG:	28-03-14 (Modification, integrating both figures into a single one)
 *******************************************************************************
 
+
+#USED AS FIGURE 1
+*******************************************************************************
+FIG NAME:	
+	median_environments_densities_Tweb.pdf
+	median_environments_densities_Vweb.pdf
+CAPTION:
+	Mean density parameter for each one of the 
+	defined environments according to the chosen $\lambda_{th}$ value and 
+	for both classification schemes. Tweb (green lines). Vweb (blue lines).
+	The mean density parameter is calculated by averaging all the values 
+	of the cells determined as a certain type of environment according to 
+	its eigenvalues. The optimal parameters found are 
+	$\lambda_{opt}^{T}=0.326$ and $\lambda_{opt}^{V}=0.188$.
+CODE:
+	median_density_histograms.py
+*******************************************************************************
+
+
+
+#USED AS FIGURE 2
+*******************************************************************************
+FIG NAME:	
+	cosmicweb_visual_Tweb.pdf
+	cosmicweb_visual_Vweb.pdf
+CAPTION:
+	Visual impression of the density field (left 
+	panels), and of each classification scheme with the $\lambda_{th}$ values 
+	obtained by our criteria (others panels). Our color convention for each 
+	environment is (white) - void, (light gray) - sheet, (gray) - filament, 
+	(black) - knot. For each web scheme, it has been used the previously 
+	established optimal threshold as a reference value, so plots are done 
+	with the next values $\lambda_{th} = 0.0$, $\lambda_{th} = 
+	\lambda_{opt}/2$, $\lambda_{th} = \lambda_{opt}$ and $\lambda_{th} = 
+	2\lambda_{opt}$.
+CODE:
+	cosmicweb_visual_impresion.py
+*******************************************************************************
+
+
+
+
+
+#USED AS FIGURE 3
+*******************************************************************************
+FIG NAME:	
+	voids_regions_percolation.pdf
+	voids_regions_volume.pdf
+CAPTION:
+	Percolation analysis of void regions for 
+	different $\lambda_{th}$ values and for both defined classification 
+	schemes. T-web (blue lines). V-web (green lines). Plot of the largest 
+	volume and the number of voids detected according to the threshold value 
+	$\lambda_{th}$ (left panels). Size distribution histogram of void cells
+	using the threshold value $\lambda_{th} = 0.0$ for both schemes 
+	(right panel).
+CODE:
+	void_FOF_regions.py
+	void_volume_regions.py
+*******************************************************************************
+
+
+#USED AS FIGURE 4
+*******************************************************************************
+FIG NAME:	
+	voids_inertia_tensor_Tweb.pdf
+	voids_inertia_tensor_Vweb.pdf
+CAPTION:
+	Histogram of eigenvalue ratio $\tau_1/\tau_2$
+	vs $\tau_2/\tau_3$ for the inertia tensor of void regions. T-web 
+	scheme (left panel). V-web scheme (right panel). Number of cells per 
+	region in 2D histograms are indicated by the respective colour bar. 
+	Upper ($\tau_1/\tau_2$) and right ($\tau_2/\tau_3$) panels of each 
+	figure shows a normalized histogram of each ratio parameter. The 
+	adopted division for quantify the morphology of void regions is not
+	a well justified, it must be understood as a fuzzy and continuous 
+	limit, done just for illustrative purposes.
+CODE:
+	void_inertia_distribution.py
+*******************************************************************************
