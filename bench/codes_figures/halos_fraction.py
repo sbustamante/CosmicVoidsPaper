@@ -22,7 +22,7 @@ web = sys.argv[1]
 #Catalogue
 catalogue = sys.argv[2]
 #Colors
-colors = [ 'green', 'blue', 'red', 'gray' ]
+colors = [ 'green', 'blue', 'red', 'black' ]
 
 #==================================================================================================
 #Fraction of halos in each environment
@@ -50,7 +50,7 @@ if web == 'Tweb':
 elif web == 'Vweb':
     lamb_opt = 0.202
 plt.vlines( lamb_opt, 0, 1, linestyle = '--', color = 'blue', linewidth = 2 )
-plt.text( lamb_opt + 0.01, 0.6, '$\lambda_{opt}$', fontsize = 15, color='blue' )
+plt.text( lamb_opt + 0.01, 0.6, '$\lambda_{opt}$=%1.2f'%(lamb_opt), fontsize = 12, color='blue' )
 #Show or save figure
 if sys.argv[3] == '1':
     plt.savefig( '%shalos_fraction_%s_%s.pdf'%(figures_fold, catalogue, web) )

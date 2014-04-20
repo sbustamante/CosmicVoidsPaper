@@ -1,6 +1,6 @@
 #halos_mass_environment.py
 #
-#This code calculates the median density of dark matter halos embedded into each one of the defined
+#This code calculates the median mass of dark matter halos embedded into each one of the defined
 #type of environments and for several lambda_th values
 #Usage: halos_mass_environment.py <Tweb or Vweb> <BDM or FOF>
 #
@@ -30,9 +30,6 @@ L_min = 0
 L_max = 1
 #Lambda array
 Lambda = np.linspace(L_min, L_max, N_l)
-
-#Number of bins of mass
-N_m = 100
 
 #==================================================================================================
 #			CONSTRUCTING HISTOGRAMS

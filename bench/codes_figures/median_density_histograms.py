@@ -1,7 +1,7 @@
 #median_density_histogram.py
 #
 #This code plots histograms of median density for all type regions according to Lambda_thr values
-#Usage: median_density_histogram.py <Vweb or Tweb>
+#Usage: median_density_histogram.py <Vweb or Tweb> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
@@ -19,7 +19,7 @@ smooth = '_s1'
 #Web Scheme
 web = sys.argv[1]
 #Colors and labels
-colors = [ 'green', 'blue', 'red', 'gray' ]
+colors = [ 'green', 'blue', 'red', 'black' ]
 labels = [ 'voids', 'sheets', 'filaments', 'knots' ]
 
 #==================================================================================================
@@ -49,7 +49,21 @@ plt.hlines( 0, 1, 0, linestyle='--', linewidth = 2 )
 plt.grid(1)
 plt.ylabel( '$log(\\bar{\delta}+1)$', fontsize = 12 )
 plt.xlabel( '$\lambda_{th}$', fontsize = 12 )
-plt.xlim( (0,1) )
-plt.legend( loc='lower right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
+plt.legend( loc='upper left', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
 plt.title( web )
-plt.savefig( '%smedian_environments_densities_%s.pdf'%(figures_fold, web) )
+#Lambda_th line
+if web == 'Tweb':
+    lamb_opt = 0.36
+elif web == 'Vweb':
+    lamb_opt = 0.202
+plt.vlines( lamb_opt, -3, 4, linestyle = '--', color = 'blue', linewidth = 2 )
+plt.text( lamb_opt + 0.01, -2.5, '$\lambda_{opt}$=%1.2f'%(lamb_opt), fontsize = 12, color='blue' )
+
+#Lims
+plt.xlim( (0,1) )
+plt.ylim( (-3,4) )
+
+if sys.argv[2] == '1':
+    plt.savefig( '%smedian_environments_densities_%s.pdf'%(figures_fold, web) )
+else:
+    plt.show()
