@@ -33,25 +33,36 @@ Here, it is presented a FOF-like scheme used to find bulk void regions, where ea
 cell catalogued as a void by the web scheme and the optimal threshold parameter is used 
 as an input "particle" in the FOF algorithm. To optimize this scheme, a percolation 
 analysis is also performed in order to reduce this numerical phenomenon, where a null
-threshold parameter is found to be the best way to overcome percolation. 
+threshold parameter is found to be the best way to overcome percolation. Next, it is 
+proposed a new squeme to classify bulk voids that minimizes percolation. This consists in
+taking a seed catalogue of voids (it could be the FOF catalogue of voids for a lambda_th
+null), and then make each void grow up from consecutive layers until all void cells are
+catalogue in a bulk void.
 
 
-5. Statistics of voids and influence over dark matter halos
+5. Properties of voids
 -----------------------------------------------------------------------------------------
 Throghout this section is presented a classification of voids according to their shape, 
 this is reached by using the reduced intertia tensor and the respective eigenvalues. it
-is found, completely anisotropic voids are preferred in the LCDM cosmological model.
-It is also performed an analysis over the influence of voids over the physical properties
-of dark matter halos, as their mass or their spin parameter. It is found dark matter halos
-are preferentially distributed near to large volume voids, while a minor fraction of them 
-are relatively further to smaller bulk voids.
+is found, completely anisotropic voids are preferred in the LCDM cosmological model. 
+Besides we make an extensive analysis of density profiles and density of dark matter halos
+as radial functions (elliptical approximation?).
 
 
-6. Conclusions
+6. Statistics of voids and influence over dark matter halos
+-----------------------------------------------------------------------------------------
+Here, it is performed an analysis over the influence of voids over the physical properties
+of dark matter halos, like their mass or their spin parameter. It is found dark matter 
+halos are preferentially distributed near to large volume voids, while a minor fraction of 
+them are relatively further to smaller bulk voids. It is also included (?) an analysis of 
+other physical properties like MAH history and number of satellite halos.
+
+
+7. Conclusions
 -----------------------------------------------------------------------------------------
 Summarizing main results and conclusions
 
 
-6. Acknowledges
+8. Acknowledges
 -----------------------------------------------------------------------------------------
 bla bla bla
