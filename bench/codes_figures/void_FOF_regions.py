@@ -2,6 +2,7 @@
 #
 #This code calculate the dependece of the volume of the largest region with the threshold value,
 #furthermore, the number of voids.
+#Usage void_FOF_regions.py <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
@@ -17,7 +18,9 @@ N_sec = 256
 #Smooth parameter
 smooth = '_s1'
 #Web Scheme
-webs = ['Vweb', 'Tweb'] 
+webs = ['Tweb', 'Vweb'] 
+#Colors
+colors = ['green', 'blue']
 
 #Lambda values
 Lambda_th = np.arange( 0, 1.0, 0.01 )
@@ -26,7 +29,8 @@ Lambda_th = np.arange( 0, 1.0, 0.01 )
 #			CONSTRUCTING REGIONS VOLUME
 #==================================================================================================
 
-plt.figure( figsize=(5,2*4) )
+plt.figure( figsize=(5,10) )
+i_web = 0
 for web in webs:
     print simulation, web
     
@@ -40,12 +44,29 @@ for web in webs:
 	N_voids.append( void_regs[0,-1] )
 	Vol_1void.append( void_regs[1,0]/np.sum(1.0*void_regs[1]) )
 	
+    #Number of voids
     plt.subplot( 2,1,1 )
-    plt.plot( Lambda_th, N_voids/N_voids[0], '-', linewidth = 2, label="%s"%(web) )
+    plt.plot( Lambda_th, N_voids/N_voids[0], '-', linewidth = 2, label="%s"%(web), color = colors[i_web] )
+    if web == 'Tweb':
+	lamb_opt = 0.36
+    elif web == 'Vweb':
+	lamb_opt = 0.202
+    plt.vlines( lamb_opt, 0, 2.5, linestyle = '--', color = colors[i_web], linewidth = 2 )
+    plt.text( lamb_opt + 0.02, 2.5*.5, '$\lambda_{opt}^{%s}$'%(web[0]), fontsize = 12, color = colors[i_web] )
+    plt.ylim( (0,2.5) )
     
+    #Largest volume
     plt.subplot( 2,1,2 )
-    plt.plot( Lambda_th, Vol_1void , '-', linewidth = 2 )
+    plt.plot( Lambda_th, Vol_1void , '-', linewidth = 2, color = colors[i_web] )
+    if web == 'Tweb':
+	lamb_opt = 0.36
+    elif web == 'Vweb':
+	lamb_opt = 0.202
+    plt.vlines( lamb_opt, 0, 1, linestyle = '--', color = colors[i_web], linewidth = 2 )
+    plt.text( lamb_opt + 0.02, 1*.5, '$\lambda_{opt}^{%s}$'%(web[0]), fontsize = 12, color = colors[i_web] )
+    plt.ylim( (0,1) )
   
+    i_web += 1
     
 plt.subplot( 2,1,1 )
 plt.grid()
@@ -58,4 +79,7 @@ plt.grid()
 plt.ylabel( "Largest void volume  $V/V_{all}$" )
 plt.xlabel( "$\lambda_{th}$" )
 
-plt.show()
+if sys.argv[1] == '1':
+    plt.savefig( '%svoids_regions_percolation_FOF.pdf'%(figures_fold) )
+else:
+    plt.show()
