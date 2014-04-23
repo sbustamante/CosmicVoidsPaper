@@ -24,6 +24,8 @@ plt.close('all')
 foldglobal = '../../../CosmicData/'
 #Fold of the Void Finder code
 void_finder_fold = '../../../Void_Finder/'
+#Fold of the Layered Void Finder code
+layered_void_finder_fold = '../../../Layered_Void_Finder/'
 #Fold to store data of figures
 data_figures_fold = '../data_figures/'
 #Fold to store figures
@@ -462,7 +464,7 @@ def void_matrix_builder( filename_eig, Lambda_th, N, outname ):
 #..................................................................................................
 #Void Finder
 #..................................................................................................
-def void_finder( void_matrix, ordered = True, out_folder='./voids', extra_info = False, remove = True ):
+def void_finder_FOF( void_matrix, ordered = True, out_folder='./voids', extra_info = False, remove = True ):
     order = 0
     if ordered == True:
 	order = 1
@@ -471,6 +473,24 @@ def void_finder( void_matrix, ordered = True, out_folder='./voids', extra_info =
 	extra = 1
     os.system( "%s/Void_Finder.out %s %d %s %d"%( 
     void_finder_fold, void_matrix, order, out_folder, extra ) )
+    datos = np.transpose( np.loadtxt( '%s/void_regions.dat'%(out_folder) ) )
+    if remove:
+	os.system( "rm -r %s"%(out_folder) )
+    return datos
+  
+  
+#..................................................................................................
+#Void Finder
+#..................................................................................................
+def void_finder_LAY( void_matrix, seed_matrix, ordered = True, out_folder='./voids', extra_info = False, remove = True ):
+    order = 0
+    if ordered == True:
+	order = 1
+    extra = 0
+    if extra_info == True:
+	extra = 1
+    os.system( "%s/Void_Finder.out %s %s %d %s %d"%( 
+    layered_void_finder_fold, void_matrix, seed_matrix, order, out_folder, extra ) )
     datos = np.transpose( np.loadtxt( '%s/void_regions.dat'%(out_folder) ) )
     if remove:
 	os.system( "rm -r %s"%(out_folder) )

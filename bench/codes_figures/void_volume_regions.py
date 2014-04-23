@@ -15,10 +15,10 @@ execfile('_Head.py')
 simulation = "BOLSHOI/"
 #Number of sections
 N_sec = 256
-#Smooth parameter
-smooth = '_s1'
 #Web Scheme
 webs = ['Vweb', 'Tweb'] 
+#Void finder scheme (FOF or LAY)
+void_scheme = 'LAY'
 
 #Lambda value
 if sys.argv[1] == '0':
@@ -44,7 +44,7 @@ for web in webs:
     print simulation, web
 	    
     void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
-    (foldglobal, simulation, web, N_sec, smooth, Lambda_th[i_web] )))
+    (foldglobal, simulation, web, N_sec, void_scheme, Lambda_th[i_web] )))
 
     hist1d = np.histogram( np.log10(void_regs[1]) , bins=20, normed=False	 )
     
@@ -54,7 +54,7 @@ for web in webs:
 
 #Axe 1    
 ax1.grid()
-ax1.set_ylabel( "Normed distribution" )
+ax1.set_ylabel( "Number of voids" )
 ax1.set_xlabel( "Comoving volume $\log_{10}[ (0.98$ Mpc $h^{-1} )^{-3} ]$" )
 ax1.legend(fancybox = True, shadow = True)
 ax1.set_ylim( (0,1e4) )
@@ -69,8 +69,8 @@ ax2.set_xlabel( "Equivalent spherical comoving radius Mpc $h^{-1}$" )
 
 if sys.argv[2] == '1':
     if sys.argv[1] == '0':
-	plt.savefig( '%svoids_regions_volume_FOF_null.pdf'%(figures_fold) )
+	plt.savefig( '%svoids_regions_volume_%s_null.pdf'%(figures_fold,void_scheme) )
     else:
-	plt.savefig( '%svoids_regions_volume_FOF_opt.pdf'%(figures_fold) )
+	plt.savefig( '%svoids_regions_volume_%s_opt.pdf'%(figures_fold,void_scheme) )
 else:
     plt.show()

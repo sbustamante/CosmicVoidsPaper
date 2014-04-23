@@ -15,13 +15,12 @@ execfile('_Head.py')
 simulation = "BOLSHOI/"
 #Number of sections
 N_sec = 256
-#Smooth parameter
-smooth = '_s1'
 #Web Scheme
 webs = ['Tweb', 'Vweb'] 
 #Colors
 colors = ['green', 'blue']
-
+#Void finder scheme (FOF or LAY)
+void_scheme = 'FOF'
 #Lambda values
 Lambda_th = np.arange( 0, 1.0, 0.01 )
 
@@ -39,7 +38,7 @@ for web in webs:
     
     for lamb in Lambda_th:
 	void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
-	(foldglobal, simulation, web, N_sec, smooth, lamb )))
+	(foldglobal, simulation, web, N_sec, void_scheme, lamb )))
 	
 	N_voids.append( void_regs[0,-1] )
 	Vol_1void.append( void_regs[1,0]/np.sum(1.0*void_regs[1]) )
@@ -51,9 +50,9 @@ for web in webs:
 	lamb_opt = 0.36
     elif web == 'Vweb':
 	lamb_opt = 0.202
-    plt.vlines( lamb_opt, 0, 2.5, linestyle = '--', color = colors[i_web], linewidth = 2 )
-    plt.text( lamb_opt + 0.02, 2.5*.5, '$\lambda_{opt}^{%s}$'%(web[0]), fontsize = 12, color = colors[i_web] )
-    plt.ylim( (0,2.5) )
+    plt.vlines( lamb_opt, 0, 3.5, linestyle = '--', color = colors[i_web], linewidth = 2 )
+    plt.text( lamb_opt + 0.02, 3.5*.5, '$\lambda_{opt}^{%s}$'%(web[0]), fontsize = 12, color = colors[i_web] )
+    plt.ylim( (0,3.5) )
     
     #Largest volume
     plt.subplot( 2,1,2 )
@@ -80,6 +79,6 @@ plt.ylabel( "Largest void volume  $V/V_{all}$" )
 plt.xlabel( "$\lambda_{th}$" )
 
 if sys.argv[1] == '1':
-    plt.savefig( '%svoids_regions_percolation_FOF.pdf'%(figures_fold) )
+    plt.savefig( '%svoids_regions_percolation_%s.pdf'%(figures_fold,void_scheme) )
 else:
     plt.show()

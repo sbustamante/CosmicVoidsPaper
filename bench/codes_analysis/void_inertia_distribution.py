@@ -18,12 +18,12 @@ simulation = "BOLSHOI/"
 N_sec = 256
 #Box lenght [Mpc]
 L_box = 250.
-#Smooth parameter
-smooth = '_s1'
 #Web Scheme
 web = 'Tweb'
 #Lambda_th
 Lambda_th = 0.0
+#Void finder scheme (FOF or LAY)
+void_scheme = 'FOF'
 #Nbins of each histogram
 Nbins = 10
 
@@ -59,7 +59,7 @@ print simulation
 
 
 eigen = np.transpose(np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/eigen.dat"%\
-(foldglobal, simulation, web, N_sec, smooth, Lambda_th )))
+(foldglobal, simulation, web, N_sec, void_scheme, Lambda_th )))
 
 Hist_lambd  = np.transpose(np.histogram2d( eigen[0]/eigen[1], eigen[1]/eigen[2], 
 bins = Nbins, normed = False, range = ((0,1),(0,1))  )[0][::,::-1])
