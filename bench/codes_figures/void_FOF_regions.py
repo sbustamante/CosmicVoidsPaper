@@ -20,7 +20,7 @@ webs = ['Tweb', 'Vweb']
 #Colors
 colors = ['green', 'blue']
 #Void finder scheme (FOF or LAY)
-void_scheme = 'FOF'
+void_scheme = 'LAY'
 #Lambda values
 Lambda_th = np.arange( 0, 1.0, 0.01 )
 
@@ -45,14 +45,14 @@ for web in webs:
 	
     #Number of voids
     plt.subplot( 2,1,1 )
-    plt.plot( Lambda_th, N_voids/N_voids[0], '-', linewidth = 2, label="%s"%(web), color = colors[i_web] )
+    plt.plot( Lambda_th, np.array(N_voids)/1000., '-', linewidth = 2, label="%s"%(web), color = colors[i_web] )
     if web == 'Tweb':
 	lamb_opt = 0.36
     elif web == 'Vweb':
 	lamb_opt = 0.202
-    plt.vlines( lamb_opt, 0, 3.5, linestyle = '--', color = colors[i_web], linewidth = 2 )
-    plt.text( lamb_opt + 0.02, 3.5*.5, '$\lambda_{opt}^{%s}$'%(web[0]), fontsize = 12, color = colors[i_web] )
-    plt.ylim( (0,3.5) )
+    plt.vlines( lamb_opt, 0, 8.5, linestyle = '--', color = colors[i_web], linewidth = 2 )
+    plt.text( lamb_opt + 0.02, 8.5*.5, '$\lambda_{opt}^{%s}$'%(web[0]), fontsize = 12, color = colors[i_web] )
+    plt.ylim( (0,8.5) )
     
     #Largest volume
     plt.subplot( 2,1,2 )
@@ -69,7 +69,7 @@ for web in webs:
     
 plt.subplot( 2,1,1 )
 plt.grid()
-plt.ylabel( "Number of voids $N/N_0$" )
+plt.ylabel( "Number of voids $1\\times 10^3$" )
 plt.xlabel( "$\lambda_{th}$" )
 plt.legend(fancybox = True, shadow = True)
 
