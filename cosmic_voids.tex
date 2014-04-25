@@ -194,14 +194,14 @@ Once defined the numerical details about both classification schemes, we
 shall analyse the dependence on the threshold value $\lambda_{th}$ for 
 each one. For this, we shall use the distribution of dark matter halos as 
 tracer of the underlying matter field in order to be more consistent with
-available observational data. In Figure \ref{fig:halos_fractions} we 
+available observational data. In the figure \ref{fig:halos_fractions} we 
 calculate fractions of halos within each one of the defined environments 
 based upon the FOF catalogue of the simulation and for an extensive \lth 
 range. Then we look for some key feature that could indicated us a 
 possible optimal value of the \lth value. One first step forward our quest 
 is the behaviour of the V-web scheme compared with the T-web. As was 
 previously established by \SRKED{Hoffman et al. (2012)} and as can be seen 
-in Figure \ref{fig:halos_fractions}, V-web scheme is significantly more 
+in the figure \ref{fig:halos_fractions}, V-web scheme is significantly more
 sensible to variations of the $\lambda_{th}$ value, since all fractions of
 halos for the V-web change significantly in the range $[0,0.4]$, whereas, 
 for the T-web scheme, fractions change smoothly throughout all \lth range 
@@ -210,9 +210,9 @@ the V-web scheme is less than the T-web value.
 
 
 
-The more notorious characteristic of Figure \ref{fig:halos_fractions} is
-the behaviour of the fraction of halos within sheet regions for both web 
-schemes, increasing until a local maximum, and then decreasing. The 
+The more notorious characteristic of the figure \ref{fig:halos_fractions} 
+is the behaviour of the fraction of halos within sheet regions for both 
+web schemes, increasing until a local maximum, and then decreasing. The 
 increasing or decreasing rate of the fraction of halos for some region 
 could be interpreted as a measure of the degree of non-linearity of such 
 region for some specific \lth value. For example, filaments and knots, 
@@ -233,7 +233,7 @@ select as optimal \lth the value where the fraction of sheets reaches a
 local maximum, so sheets are completely taken as intermediate transitional 
 and neutral zones regarding the degree of non-linearity. According to this,
 we find for the T-web scheme an optimal value $\lambda_{opt}^T = 0.36$ and
-for the V-web scheme $\lambda_{opt}^V = 0.20$. In figure 
+for the V-web scheme $\lambda_{opt}^V = 0.20$. In the figure 
 \ref{fig:visual_impression} we show the visual impression of the cosmic 
 web along with the density field for different \lth values including the 
 optimal values. It can be noticed that the optimal values found reproduce 
@@ -243,7 +243,7 @@ well the visual impression.
 
 As we have taken halos as tracers of the cosmic web, we analyse 
 distributions of mass and peculiar velocity in order to assign typical 
-values to each type of environment. In figure 
+values to each type of environment. In the figure 
 \ref{fig:typical_mass_velocity} we calculate both distributions for web 
 schemes and using the FOF catalogue of the simulation. Thick lines 
 correspond to the median of the distribution and filled regions limited by
@@ -256,8 +256,8 @@ reliable.
 
 
 
-A first interesting feature of Figure  \ref{fig:typical_mass_velocity} is 
-the median mass for each region. In the case of the T-web, although 
+A first interesting feature of the figure  \ref{fig:typical_mass_velocity} 
+is the median mass for each region. In the case of the T-web, although 
 dispersions of the distribution of mass for each environment are 
 considerably overlapped each other, the median value is very 
 well-differentiated among types of environment, indicating that it is 
@@ -295,40 +295,130 @@ simulation, obtaining very similar conclusions.
 %*************************************************************************
 
 
-
-%-------------------------------------------------------------------------
-\subsection{FOF void finder}
-\label{subsec:fof_finder}
-%-------------------------------------------------------------------------
-
-
-
 Following the recent growing interest in studying galaxy formation in 
-low-density regions as cosmological tests, we propose an scheme to find 
-bulk voids by using the two defined web schemes. Initially, we explore a 
-first simple method based on a FOF-like algorithm, where we build an input 
-catalogue for the FOF method with the coordinate of the center of every 
-cell marked as void according to the web classification scheme adopted, 
-setting a linking length to connect diagonal neighbour cells.
+low-density regions as cosmological tests, we use a simple method based on 
+a FOF-like algorithm, where we build an input catalogue for the FOF method
+with the coordinate of the center of every cell marked as void according 
+to the web classification scheme adopted, setting a linking length to 
+connect diagonal neighbour cells. Then, following the work of 
+\SRKED{Forero-Romero et al. 2008}, we perform a percolation analysis in 
+order to select the best threshold parameter that reduces percolation in 
+cells. 
 
 
-Following the work of \SRKED{Forero-Romero et al. 2008}, we also perform a
-percolation analysis in order to select the best threshold parameter that
-reduces percolation in cells. In Figure \ref{fig:percolation_analysis_FOF}
-we show the obtained result of our percolation analysis for both web 
-schemes. In both cases, it can be noticed that the volume of the largest 
-void region is minimized at $\lambda_{th} = 0.0$, what means the 
-percolation is completely reduced for this threshold value. However, 
-according to our previous analysis, such value does not reproduce the
-visual appearance of the cosmic web, so it is out of consideration. 
+In figure \ref{fig:percolation_analysis_FOF} we show the result of our 
+percolation analysis for both web schemes. In both cases, it can be 
+noticed that the volume of the largest void region in the lower panel is 
+minimized at $\lambda_{th} = 0$, what means that percolation is completely 
+reduced for this threshold value. Regarding the number of voids, shown in 
+the upper panel, the T-web scheme presents a expected behaviour, where the 
+number of voids decreases with \lth as the largest void absorbs minor 
+voids through percolation. For the V-web scheme, there is an anomaly 
+around the optimal \lth value, where there is a considerable increment of 
+the number of voids. In the figure \ref{fig:volume_distributions}, we 
+calculate a distribution function of the volume of voids. First for 
+$\lambda_{th}=0.0$ in the upper panel, where both schemes present similar 
+distributions, although voids in the V-web scheme are slight biased 
+towards middle volume, with a lower abundance for low volume regions than 
+voids in the T-web scheme. Secondly, in the lower panel of this figure, we 
+compute the same distribution of volumes for the optimal parameter 
+previously established for both schemes. Here, it can be noticed a 
+significant over-abundance of low volume voids for the V-web scheme 
+compared with the T-web. As it was above-mentioned from the figure 
+\ref{fig:typical_mass_velocity}, the \lth value can be associated, at 
+least indirectly, to an increase of the threshold value of the peculiar 
+velocity field, in the case of the V-web, or the density field for the 
+T-web. Therefore, the over-abundance of low volume voids for the V-web 
+implies high fluctuations in the peculiar velocity field, while the 
+density field is more robust. In the same plot, it can be noticed a lack 
+of high volume voids, what is also due to percolation, since high volume 
+voids are absorbed by the largest void.
+
+
+In the light of the previous results, we choose a threshold parameter 
+$\lambda_{th} = 0$ for all subsequent analysis of voids in order to avoid
+percolation and high fluctuations of the V-web scheme. In spite of this 
+value is quite different to the previously established optimal threshold
+for each scheme, bulk voids for $\lambda_{th} = 0$ are expected to be 
+the central cores of bulk voids at higher threshold values, assuming that 
+percolation could be reduced. Therefore, global properties of voids are 
+expected to maintain for $\lambda_{th} = 0$.
 
 
 
- 
 %*************************************************************************
-\section{Statistics of voids and influence over dark matter halos}
-\label{sec:statistics}
+\section{Properties of voids}
+\label{sec:properties}
 %*************************************************************************
+
+
+Once defined the proper scheme to classify bulk voids in the simulation,
+we proceed to analyse their physical properties, like the inertia values,
+the density and peculiar velocities profiles as calculated over the grid 
+and profiles of number of halos.
+
+
+%-------------------------------------------------------------------------
+\subsection{Shape of voids}
+\label{subsec:shape_voids}
+%-------------------------------------------------------------------------
+
+
+Quantifying the shape of voids is gaining importance due to cosmological 
+tests such as the Alcock-Paczynski test \SRKED{Sutter, et.al (2012)}, so 
+we compute here the reduced inertia tensor through the next expression in 
+order to determine shape distributions of bulk voids.
+
+
+%.........................................................................
+%Reduced inertia tensor
+\eq{ReducedIntertia}
+{ \tau_{ij} = \sum_l \frac{ x_{l,i}x_{l,j}  }{R_l^2} }
+%.........................................................................
+where $l$ is an index associated to each cell of the current region, 
+$i$ and $j$ indexes run over each spatial direction and finally 
+$R_l$ is defined as $R_l^2 = x_{l,1}^2 + x_{l,2}^2 + x_{l,3}^2$. All 
+positions are measured from the respective geometric center of each void.
+
+
+The eigenvalues of the reduced inertia tensor, i.e. the principal moments
+of inertia, are used to quantify the shape of each bulk void. They are 
+denoted as $\tau_1$, $\tau_2$ and $\tau_3$ such that $\tau_1 \leq \tau_2
+\leq \tau_3$. In Figure \ref{fig:distro_inertia} we show the computed
+distributions for $\tau_1/\tau_2$ and $\tau_2/\tau_3$ for voids larger 
+than 8 cells in order to avoid statistic fluctuations due to small regions.
+We rather calculate histograms for these ratio quantities instead of each 
+single value in order to avoid using an arbitrary normalization. For both 
+schemes, it can be noticed that the shape distribution is completely 
+spread out, thereby indicating a non-preferred geometry of void regions, 
+which is in agreement with the well established high anisotropy of matter 
+flows associated to this type of region. 
+
+
+For a better quantification, we also perform a classification of the shape 
+of voids by setting a threshold in the analysed ratio quantities. An 
+anisotropic or tri-axial shape correspond to voids where $\tau_1/\tau_2 < 
+0.7$ and $\tau_2/\tau_3 < 0.7$, where there is not any symmetry among the
+principal directions. We find about $57.2\% \sim 61.0\%$ of total voids 
+consistent with this shape, for the T-web and V-web respectively. A 
+pancake or quasi-oblate shape is associated to voids where $\tau_1/\tau_2 
+< 0.7$ and $\tau_2/\tau_3 > 0.7$. We found $13.1\% \sim 17.9\%$ of 
+consistent voids. Filamentary or quasi-prolate voids satisfy $\tau_1/\tau_2 
+> 0.7$ and $\tau_2/\tau_3 < 0.7$, with $25.4\% \sim 18.1\%$ of all voids.
+Finally, isotropic or quasi-spheric voids are found when $\tau_1/\tau_2 
+> 0.7$ and $\tau_2/\tau_3 > 0.7$, with $4.2\% \sim 3.1\%$ of total voids 
+compatible with this shape. The threshold value of $0.7$ adopted here for
+the ratios of the moments of inertia is just for illustrative purposes, 
+where such distinction is rather fuzzy and continuous. However, the 
+previous analysis allows us to conclude that voids are quite asymmetric 
+structures.
+
+
+
+%-------------------------------------------------------------------------
+\subsection{Density profile of voids}
+\label{subsec:density_voids}
+%-------------------------------------------------------------------------
 
 
 
@@ -350,7 +440,7 @@ visual appearance of the cosmic web, so it is out of consideration.
 %.........................................................................
 %FIGURE 1: Fraction of halos in each environment
 \begin{flushleft}
-\begin{figure}
+\begin{figure*}
 \centering
 
   \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
@@ -367,7 +457,7 @@ visual appearance of the cosmic web, so it is out of consideration.
   \label{fig:halos_fractions}
   \vspace{0.1 cm}
 
-\end{figure}
+\end{figure*}
 \end{flushleft}
 %.........................................................................
 
@@ -456,20 +546,20 @@ visual appearance of the cosmic web, so it is out of consideration.
 
 
 %.........................................................................
-%FIGURE 5: Percolation analysis for FOF void finder
+%FIGURE 5: Volume functions of voids for null threshold and optimal threshold
 \begin{flushleft}
 \begin{figure*}
 \centering
 
   \includegraphics[trim = 0mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_regions_volume_FOF_null.pdf}
+  width=0.24\textheight]{./figures/voids_regions_volume_FOF_null.pdf}
   \includegraphics[trim = 0mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_regions_volume_FOF_opt.pdf}
+  width=0.24\textheight]{./figures/voids_regions_volume_FOF_opt.pdf}
 
-  \captionof{figure}{\small Percolation analysis of bulk void found by using
-  FOF void finder algorithm. It is swept an extensive \lth range for both web
-  schemes. T-web (blue lines) and  V-web (green lines). Plot of the largest 
-  volume (lower panel) and the number of bulk voids found (upper panel).}
+  \captionof{figure}{\small Volume functions of voids for both web schemes.
+  In the upper panel is shown the results for the catalogue generated at
+  $\lambda_{th} = 0.0$, while in the lower panel for the catalogue at 
+  $\lambda_{th} = \lambda_{opt}$.}
 
   \label{fig:volume_distributions}
   \vspace{0.1 cm}
@@ -477,5 +567,37 @@ visual appearance of the cosmic web, so it is out of consideration.
 \end{figure*}
 \end{flushleft}
 %.........................................................................
+
+
+
+%.........................................................................
+%FIGURE 6: Distribution of eigenvalues of the inertia tensor
+\begin{flushleft}
+\begin{figure*}
+\begin{center}
+
+  \includegraphics[trim = 7mm 9mm 1mm 0mm, clip, keepaspectratio=true,
+  width=0.36\textheight]{./figures/voids_inertia_tensor_Tweb}
+  \includegraphics[trim = 7mm 9mm 1mm 0mm, clip, keepaspectratio=true,
+  width=0.36\textheight]{./figures/voids_inertia_tensor_Vweb}
+
+  \captionof{figure}{\small Histogram of eigenvalue ratio $\tau_1/\tau_2$
+  vs $\tau_2/\tau_3$ for the inertia tensor of void regions. T-web 
+  (upper panel) and V-web (lower panel). Number of cells per 
+  region in 2D histograms are indicated by the respective colour bar. 
+  Upper ($\tau_1/\tau_2$) and right ($\tau_2/\tau_3$) panels of each 
+  figure shows a normalized histogram of each ratio parameter. The 
+  adopted division for quantify the morphology of void regions is not
+  well justified, it should be understood as a fuzzy and continuous 
+  limit, done just for illustrative purposes.}
+
+  \label{fig:distro_inertia}
+  \vspace{0.1 cm}
+
+\end{center}
+\end{figure*}
+\end{flushleft}
+%.........................................................................
+
 
 \end{document}
