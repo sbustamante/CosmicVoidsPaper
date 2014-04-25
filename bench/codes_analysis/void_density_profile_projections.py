@@ -1,6 +1,6 @@
-#void_geometric_center.py
+#void_density_profile_projections.py
 #
-#This code computes the geometric center and the mass center of each void
+#This code computes cartesian projections of the density profile of voids
 #
 #Usage: run void_geometric_center.py <Vweb or Tweb> <Lambda_th>
 #
@@ -29,7 +29,7 @@ void_scheme = 'FOF'
 N_cut = 2
 
 #==================================================================================================
-#			COMPUTING GEOMETRIC CENTER OF VOIDS
+#			COMPUTING DENSITY PROFILES
 #==================================================================================================
 
 print simulation
@@ -38,16 +38,20 @@ print simulation
 voids = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
 (foldglobal, simulation, web, N_sec, void_scheme, Lambda_th )))
 
-#Calculating geometric center
-R_GCs = []
+#Loading Density filename
+delta_filename = '%s%sTweb/%d/Delta%s'%(foldglobal,simulation,N_sec,smooth)
+
+#Loading centres of each void
+GC = np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/GC.dat"%\
+(foldglobal, simulation, web, N_sec, void_scheme, Lambda_th ))
+
 #Sweeping throughout all regions
 for i_void in voids[0]:
     sys.stdout.write( " In region:\t%d\r" %(int(i_void)) )
     sys.stdout.flush()
-
     #Loading cells of the current region
     region = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_%d.dat"%\
-    (foldglobal, simulation, web, N_sec, void_scheme, Lambda_th, int(i_void) )))
+    (foldglobal, simulation, web, N_sec, void_scheme, Lambda_th, int(i_void) ))).astype(int)
   
     #Cutt off respect to the number of cells
     try:
@@ -56,7 +60,7 @@ for i_void in voids[0]:
       N_data = 1
     if N_data < N_cut:
 	break
-
+    
     #Standardizing periodic boundaries ------------------------------------------------------------
     for axis in range( 3 ):
 	Last = False; First = False
@@ -83,26 +87,20 @@ for i_void in voids[0]:
 		    region[axis,i] -= N_sec
 		elif region[axis,i] <= e_sup and frac_reg>=1:
 		    region[axis,i] += N_sec
-	    
-    #Geometric Center of this region 
-    R_CM = np.zeros( 3 )
-    C_CM = np.zeros( 3 )
-    for i in xrange( N_data ):
-	R_CM[0] += region[0,i]
-	R_CM[1] += region[1,i]
-	R_CM[2] += region[2,i]
-    C_CM = (R_CM/(1.0*N_data)).astype(int)
-    R_CM *= L_box/( 1.0*N_data*N_sec )
-    
-    #Shifting values if they are outside the box volume of the simulation
-    for i in xrange( 3 ):
-	if R_CM[i] < 0:
-	    R_CM[i] += L_box
-	    C_CM[i] += N_sec
-    
-    R_GCs.append( [i_void,R_CM[0],R_CM[1],R_CM[2],C_CM[0],C_CM[1],C_CM[2]] )
-    
-R_GCs = np.array( R_GCs )
 
-np.savetxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/GC.dat"%\
-(foldglobal, simulation, web, N_sec, void_scheme, Lambda_th ),R_GCs, fmt = "%d\t%1.5e\t%1.5e\t%1.5e\t%d\t%d\t%d" )
+
+	    
+    #Sweeping all coordinates
+    coord = [0,1,2,0,1]
+    for axis in range( 3 ):
+	#Current coordinate of geometric centre
+	i_GC = GC[ i_void, axis+4 ].astype(int) - 1
+	#Cutting density field in X direction
+	delta = CutFieldZ( delta_filename, i_GC, 32, Coor = axis+1 )
+
+	region_tm = region[ :, region[axis,:] == i_GC ]
+	
+	dimension = np.max( ( np.max(region_tm[coord[axis+1],:])-np.min(region_tm[coord[axis+1],:]), \
+	np.max(region_tm[coord[axis+2],:])-np.min(region_tm[coord[axis+2],:]))  )
+	
+	print dimension
