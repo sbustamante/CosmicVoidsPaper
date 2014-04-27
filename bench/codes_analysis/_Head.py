@@ -168,19 +168,21 @@ def CutFieldZ( filename, X, res=32, Coor = 3, N=256 ):
     '''
     Coor  1 -- X      2 -- Y      3 -- Z
     '''
+    coord = [3,2,1]
     if res == 'plain':
-	os.system( "./Field_Cut_Plain.out %s %d temp.tmp %d %d"%( filename, X, Coor, N ) )
+	os.system( "./Field_Cut_Plain.out %s %d temp.tmp %d %d"%( filename, X, coord[Coor-1], N ) )
 	datos = np.loadtxt( 'temp.tmp' )
 	N = int(np.sqrt(len( datos )))
 	datos = datos.reshape( (N, N) )
 	os.system( "rm temp.tmp" )
       
     else:	
-	os.system( "./Field_Cut%d.out %s %d temp.tmp %d"%( res, filename, X, Coor ) )
+	os.system( "./Field_Cut%d.out %s %d temp.tmp %d"%( res, filename, X, coord[Coor-1] ) )
 	datos = np.loadtxt( 'temp.tmp' )
 	N = int(np.sqrt(len( datos )))
 	datos = datos.reshape( (N, N) )
 	os.system( "rm temp.tmp" )
+	
     return datos
     
     

@@ -4,6 +4,7 @@
 #region found by the FOF scheme. The eigenvalues were sorted such as Lambda1 < Lambda2 < Lambda3.
 #Here it will be calculated non-integrated and normed distributions of Lambda1/Lambda2 and 
 #Lambda1/Lambda3 in order to determinate the shape of void regions.
+#Usage void_intertia_tensor.py <Tweb or Vweb> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
@@ -19,7 +20,7 @@ N_sec = 256
 #Box lenght [Mpc]
 L_box = 250.
 #Web Scheme
-web = 'Tweb'
+web = sys.argv[1]
 #Lambda_th
 Lambda_th = 0.0
 #Void finder scheme (FOF or LAY)
@@ -87,6 +88,17 @@ axHistx.bar( histx[1][:-1], histx[0], width = 1.00/Nbins, linewidth=2.0, color="
 histy = np.histogram( eigen[1]/eigen[2], bins=Nbins, normed=True, range=(0,1) )
 axHisty.barh( histy[1][:-1], histy[0], height = 1.00/Nbins, linewidth=2.0, color="gray" )
 
+#Number of anisotropic voids
+N_tot = len(eigen[0])*1.0
+t1t2 = eigen[0]/eigen[1]
+t2t3 = eigen[1]/eigen[2]
+#Number of anisotropic voids
+print "Number of voids: ", N_tot
+print "Anisotropic voids: ", np.sum( (t1t2<0.7)*(t2t3<0.7) )/N_tot
+print "Isotropic voids: ", np.sum( (t1t2>=0.7)*(t2t3>=0.7) )/N_tot
+print "Pancake voids: ", np.sum( (t1t2<0.7)*(t2t3>=0.7) )/N_tot
+print "Filament voids: ", np.sum( (t1t2>=0.7)*(t2t3<0.7) )/N_tot
+
 axHistx.set_xlim( axHist2D.get_xlim() )
 axHistx.set_xticks( np.linspace( 0,1,Nbins+1 ) )
 axHistx.grid( color='black', linestyle='--', linewidth=1., alpha=0.3 )
@@ -121,4 +133,7 @@ fontsize=15, horizontalalignment="center" )
 axHist2D.text( 0.01, 0.01, "%s"%(web), fontweight="bold", color="black",\
 fontsize=15 )
 
-plt.show()
+if sys.argv[2] == '1':
+    plt.savefig( '%svoids_inertia_tensor_%s.pdf'%(figures_fold,web) )
+else:
+    plt.show()

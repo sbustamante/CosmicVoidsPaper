@@ -19,7 +19,7 @@ N_sec = 256
 #Smooth parameter
 smooth = '_s1'
 #Void finder scheme (FOF or LAY)
-void_scheme = 'FOF'
+void_scheme = 'LAY'
 #Web Scheme
 web = sys.argv[1]
 
@@ -34,7 +34,7 @@ print simulation
 eigV_filename = '%s%s%s/%d/Eigen%s'%(foldglobal,simulation,web,N_sec,smooth)
 
 lambda_th_opt = np.arange( 0, 1.0, 0.01 )
-lambda_th_opt = [0.20]
+lambda_th_opt = [0.2,]
 
 for lamb in lambda_th_opt:
     #Building the matrix      
@@ -45,11 +45,11 @@ for lamb in lambda_th_opt:
     void_matrix = "./void_matrix_\(%1.2f\).dat"%( lamb )
     if void_scheme == 'FOF':
 	void_regs = void_finder_FOF( void_matrix, ordered = True, out_folder='./voids_%1.2f'%(lamb),\
-	extra_info = True, remove = False )
+	extra_info = False, remove = False )
 
     #Building the index of FOF regions
     if void_scheme == 'LAY':
-	seed_matrix = "%s/%s/%s/%d/voidsFOF/voids_%1.2f/void_index.dat"%(foldglobal, simulation, web, N_sec, Lambda_th )
-	void_regs = void_finder_LAY( void_matrix, seed_matrix, ordered = True, out_folder='./voids_%1.2f'%(lamb),\
+	seed_matrix = "%s/%s/%s/%d/voidsFOF/voids_0.00/void_index.dat"%(foldglobal, simulation, web, N_sec )
+	void_regs = void_finder_LAY( void_matrix, seed_matrix, ordered = False, out_folder='./voids_%1.2f'%(lamb),\
 	extra_info = True, remove = False )
 	
