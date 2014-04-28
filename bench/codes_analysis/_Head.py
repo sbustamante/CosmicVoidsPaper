@@ -462,6 +462,25 @@ def void_matrix_builder( filename_eig, Lambda_th, N, outname ):
     #datos = datos.reshape( (N, N, N) )
     return 0
     
+#..................................................................................................
+#FA anisotropy correlator
+#..................................................................................................
+def FA_lambda1_correlation( filename_eig, lamb_min, lamb_max, N_lam, FA_min, FA_max, N_FA ):
+    os.system( "./FA_L1_Correlation.out %s %f %f %d %f %f %d"%
+    ( filename_eig, lamb_min, lamb_max, N_lam, FA_min, FA_max, N_FA ) )
+    datos = np.loadtxt( "temp.tmp" )
+    os.system( "rm temp.tmp" )
+    return datos
+
+#..................................................................................................
+#Density correlator
+#..................................................................................................
+def density_lambda1_correlation( filename_eig, delta_file, lamb_min, lamb_max, N_lam, lambda_min, lambda_max, N_lambda ):
+    os.system( "./Density_L1_Correlation.out %s %s %f %f %d %f %f %d"%
+    ( filename_eig, delta_file, lamb_min, lamb_max, N_lam, lambda_min, lambda_max, N_lambda ) )
+    datos = np.loadtxt( "temp.tmp" )
+    #os.system( "rm temp.tmp" )
+    return datos
 
 #..................................................................................................
 #Void Finder
