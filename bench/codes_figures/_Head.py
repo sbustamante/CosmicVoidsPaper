@@ -182,6 +182,7 @@ def CutFieldZ( filename, X, res=32, Coor = 3, N=256 ):
 	N = int(np.sqrt(len( datos )))
 	datos = datos.reshape( (N, N) )
 	os.system( "rm temp.tmp" )
+	
     return datos
     
     
