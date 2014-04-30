@@ -26,7 +26,7 @@ if web == 'Tweb':
     Lambda_opt = 0.36
 if web == 'Vweb':
     Lambda_opt = 0.20
-#Lambda_opt = 0
+Lambda_opt = 0
 #Smooth parameter
 smooth = '_s1'
 #Coordinate to cut (1 -- X, 2 -- Y, 3 -- Z)
@@ -72,13 +72,15 @@ plt.imshow( -Scheme( eig1, eig2, eig3, Lambda_opt ), extent = extent, vmin=-3, v
 plt.title( "Vissual impresion for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
+plt.xlabel( "[$h^{-1}$ Mpc]" )
 
 #Vweb Plot with Lambda_th = 0
 plt.subplot( 2, 2, 2 )
-plt.imshow( 10**(Fractional_Anisotropy( eig1, eig2, eig3 )), extent = extent,  cmap = "binary" )
+plt.imshow( Fractional_Anisotropy( eig1, eig2, eig3 ), extent = extent,  cmap = "binary" )
 plt.title( "Fractional\nAnisotropy" )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
+plt.xlabel( "[$h^{-1}$ Mpc]" )
 
 #Vweb Plot with Lambda_th = 0.1
 plt.subplot( 2, 2, 3 )

@@ -21,9 +21,9 @@ web = sys.argv[1]
 #Lambda_min
 Lambda_min = -1
 #Lambda_max
-Lambda_max = 1
+Lambda_max = 2
 #N lambda
-N_lamb = 100
+N_lamb = 200
 #FA_min
 FA_min = 0
 #FA_max
@@ -49,29 +49,30 @@ eigV_filename = '%s%s%s/%d/Eigen%s'%(foldglobal,simulation,web,N_sec,smooth)
 FA_L1 = FA_lambda1_correlation( eigV_filename, Lambda_min, Lambda_max, N_lamb, FA_min, FA_max, N_FA )
 
 #Initializing counters
-Quartiles = np.zeros( (N_lamb,3) )
+Quartiles = np.zeros( (N_lamb,4) )
 for i_l in xrange( N_lamb ):
       FA_L1[i_l,:] = np.cumsum( FA_L1[i_l,:] )
       FA_L1[i_l,:] /= FA_L1[i_l,-1]
       median = True
       Q1 = True
       Q3 = True
+      Quartiles[i_l,0] = Lambda[i_l]
       for i_fa in xrange( N_FA ):
 	  #Finding Median
 	  if FA_L1[i_l,i_fa] > 0.5 and median:
 	      median = False
-	      Quartiles[i_l,1] = FA[i_fa]
+	      Quartiles[i_l,2] = FA[i_fa]
 	  #Finding Q1
 	  if FA_L1[i_l,i_fa] > 0.25 and Q1:
 	      Q1 = False
-	      Quartiles[i_l,0] = FA[i_fa]
+	      Quartiles[i_l,1] = FA[i_fa]
 	  #Finding Q3
 	  if FA_L1[i_l,i_fa] > 0.75 and Q3:
 	      Q3 = False
-	      Quartiles[i_l,2] = FA[i_fa]
+	      Quartiles[i_l,3] = FA[i_fa]
 
 np.savetxt( '%sFA_L1_%s.dat'%(data_figures_fold,web), Quartiles )
 
-plt.fill_between( Lambda, Quartiles[:,0], Quartiles[:,2], alpha = 0.5 )
-plt.plot( Lambda, Quartiles[:,1], "-" )
+plt.fill_between( Lambda, Quartiles[:,1], Quartiles[:,3], alpha = 0.5 )
+plt.plot( Lambda, Quartiles[:,2], "-" )
 plt.show()
