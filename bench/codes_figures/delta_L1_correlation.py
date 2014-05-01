@@ -42,7 +42,7 @@ for web in webs:
 
     plt.grid(1)
     plt.ylabel( '$\\rho$', fontsize = 12 )
-    plt.xlabel( '$\lambda_{3}$', fontsize = 12)
+    plt.xlabel( '$\lambda_{1}$', fontsize = 12)
     plt.xlim( (-0.2,2) )
     plt.ylim( (-1,0.5) )
     plt.legend( loc='lower right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )

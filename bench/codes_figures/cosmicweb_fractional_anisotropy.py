@@ -38,6 +38,13 @@ Cut = 10
 my_cmapC = plt.cm.get_cmap('gray')
 my_cmap4 = plt.cm.get_cmap('gray', 4)
 
+from matplotlib.colors import colorConverter
+cmap2 = mpl.colors.LinearSegmentedColormap.from_list('my_cmap2',["black","white"],2)
+cmap2._init()
+alphas = np.ones( cmap2.N+3)
+alphas[0] = 0
+cmap2._lut[:,-1] = alphas
+
 #==================================================================================================
 #			PLOTING WEB SCHEME AND DENSITY FIELD FOR SIMULATION
 #==================================================================================================
@@ -68,7 +75,8 @@ eig3 = CutFieldZ( eig_filename+"_3", Cut, 16, Coor = axe )
 
 #Vweb Plot with Lambda_th = 0.3
 plt.subplot( 2, 2, 1 )
-plt.imshow( -Scheme( eig1, eig2, eig3, Lambda_opt ), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
+#plt.imshow( -Scheme( eig1, eig2, eig3, Lambda_opt ), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
+plt.imshow( Fractional_Anisotropy( eig1, eig2, eig3 ), extent = extent,  cmap = "binary" )
 plt.title( "Vissual impresion for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
@@ -77,6 +85,7 @@ plt.xlabel( "[$h^{-1}$ Mpc]" )
 #Vweb Plot with Lambda_th = 0
 plt.subplot( 2, 2, 2 )
 plt.imshow( Fractional_Anisotropy( eig1, eig2, eig3 ), extent = extent,  cmap = "binary" )
+plt.imshow( Scheme( eig1, eig2, eig3, 0.0 )[::-1,], extent = extent, vmin=0, vmax=0.5, cmap = cmap2, origin='lower' )
 plt.title( "Fractional\nAnisotropy" )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
