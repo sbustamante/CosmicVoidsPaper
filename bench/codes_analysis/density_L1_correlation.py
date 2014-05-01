@@ -21,7 +21,7 @@ web = sys.argv[1]
 #Lambda_min
 Lambda_min = -1
 #Lambda_max
-Lambda_max = 2
+Lambda_max = 5
 #N lambda
 N_lamb = 200
 #Delta_min
@@ -73,7 +73,7 @@ for i_l in xrange( N_lamb ):
 	      Q3 = False
 	      Quartiles[i_l,3] = delta[i_fa]
 
-np.savetxt( '%sdelta_L1_%s.dat'%(data_figures_fold,web), Quartiles )
+#np.savetxt( '%sdelta_L1_%s.dat'%(data_figures_fold,web), Quartiles )
 
 plt.fill_between( Lambda, Quartiles[:,1], Quartiles[:,3], alpha = 0.5 )
 plt.plot( Lambda, Quartiles[:,2], "-" )
