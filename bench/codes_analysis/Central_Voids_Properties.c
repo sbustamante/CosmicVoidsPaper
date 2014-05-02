@@ -6,7 +6,7 @@
 #define NMAX1 1000
 #define NMAX2 100000
 
-//Usage  Central_Voids_Properties.out <eig_filename> <delta_filename> <output_filename>
+//Usage  Central_Voids_Properties.out <eig_filename> <delta_filename> <output_filename> <Number of neighbour cells>
 
 float FractionalAnisotropy( float eig1, float eig2, float eig3 )
 { 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     int i,j,k,l;
     int ic,jc,kc;
     int it,jt,kt;
-    int b = 1;
+    int b = atoi( argv[4] );
     long long int n, nt;
 
     int isminim;
@@ -141,40 +141,40 @@ int main(int argc, char **argv)
     sprintf( filename, "%s", argv[3] );
     central_voids = fopen(filename, "w");
     //Head
-    fprintf( central_voids, "i\tj\tk\tFA\tDelta" );
+    fprintf( central_voids, "#i\tj\tk\tL1\tFA\tDelta\n" );
     
     for( i=0;i<n_x;i++ )
     for( j=0;j<n_x;j++ )
     for( k=0;k<n_x;k++ ){
 	//Overall index
 	n = k + n_x*(j + n_x*i);
-	//Setting this cell as a possible local minima
-	isminim = 1;
-
 	//Setting the neighborhood
-	for( ic=-b; ic<=b; ic++ )
-	for( jc=-b; jc<=b; jc++ )
-	for( kc=-b; kc<=b; kc++ )
-	if( ic!=0 || jc!=0 || kc!=0 ){    
-	    it = i + ic; jt = j + jc; kt = k + kc;
-	    //Neighbor out of limits (Periodic boundary conditions) (X direction)
-	    if( i+ic>=n_x )		it = 0;
-	    if( i+ic<0 )		it = n_x-1;
-	    //Neighbor out of limits (Periodic boundary conditions) (Y direction)
-	    if( j+jc>=n_x )		jt = 0;
-	    if( j+jc<0 )		jt = n_x-1;
-	    //Neighbor out of limits (Periodic boundary conditions) (Z direction)
-	    if( k+kc>=n_x )		kt = 0;
-	    if( k+kc<0 )		kt = n_x-1;
-	    
-	    //Overall index of the neighbour
-	    nt = kt + n_x*(jt + n_x*it);
-	    
-	    if( FA[n] >= FA[nt] )
-		isminim = 0;}
-	if( isminim == 1 )
-	    fprintf( central_voids, "%d\t%d\t%d\t%1.5e\t%1.5e\n", i,j,k,FA[n],delta[n] );
-	}
+	if( delta[n]<0 ){
+	    //Setting this cell as a possible local minima
+	    isminim = 1;
+	    for( ic=-b; ic<=b; ic++ )
+	    for( jc=-b; jc<=b; jc++ )
+	    for( kc=-b; kc<=b; kc++ )
+	    if( ic!=0 || jc!=0 || kc!=0 ){    
+		it = i + ic; jt = j + jc; kt = k + kc;
+		//Neighbor out of limits (Periodic boundary conditions) (X direction)
+		if( i+ic>=n_x )		it = 0;
+		if( i+ic<0 )		it = n_x-1;
+		//Neighbor out of limits (Periodic boundary conditions) (Y direction)
+		if( j+jc>=n_x )		jt = 0;
+		if( j+jc<0 )		jt = n_x-1;
+		//Neighbor out of limits (Periodic boundary conditions) (Z direction)
+		if( k+kc>=n_x )		kt = 0;
+		if( k+kc<0 )		kt = n_x-1;
+		
+		//Overall index of the neighbour
+		nt = kt + n_x*(jt + n_x*it);
+		
+		if( FA[n] >= FA[nt] )
+		    isminim = 0;}
+	    if( isminim == 1 )
+		fprintf( central_voids, "%d\t%d\t%d\t%1.5e\t%1.5e\t%1.5e\n", i,j,k,eigen1[n],FA[n],delta[n] );
+	    }}
 	
     fclose(central_voids);	
     //=============================================================================================

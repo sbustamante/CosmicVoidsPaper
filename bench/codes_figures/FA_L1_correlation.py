@@ -35,8 +35,8 @@ for web in webs:
 
     #Quartiles regions-------
     plt.fill_between( quartiles[:,0], quartiles[:,1], quartiles[:,3], color = colors[i_web], alpha = 0.2 )
-    plt.plot( quartiles[:,0], quartiles[:,1], color = colors[i_web], linewidth = 1, linestyle = '--' )
-    plt.plot( quartiles[:,0], quartiles[:,3], color = colors[i_web], linewidth = 1, linestyle = '--' )
+    plt.plot( quartiles[:,0], quartiles[:,1], color = colors[i_web], linewidth = 1, linestyle = '-' )
+    plt.plot( quartiles[:,0], quartiles[:,3], color = colors[i_web], linewidth = 1, linestyle = '-' )
 
     #Medians-----------------
     plt.plot( quartiles[:,0], quartiles[:,2], color = colors[i_web], linewidth = 3, label = web )

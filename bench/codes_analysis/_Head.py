@@ -473,7 +473,7 @@ def FA_lambda1_correlation( filename_eig, lamb_min, lamb_max, N_lam, FA_min, FA_
     return datos
 
 #..................................................................................................
-#Density correlator
+#Properties of central voids
 #..................................................................................................
 def density_lambda1_correlation( filename_eig, delta_file, lamb_min, lamb_max, N_lam, lambda_min, lambda_max, N_lambda ):
     os.system( "./Density_L1_Correlation.out %s %s %f %f %d %f %f %d"%

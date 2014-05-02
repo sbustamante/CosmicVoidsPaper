@@ -46,7 +46,7 @@ for web in webs:
     void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
     (foldglobal, simulation, web, N_sec, void_scheme, Lambda_th[i_web] )))
 
-    hist1d = np.histogram( np.log10(void_regs[1]) , bins=20, normed=False	 )
+    hist1d = np.histogram( np.log10(void_regs[1]) , bins=20, normed=False )
     
     ax1.semilogy( hist1d[1][:-1], hist1d[0], linewidth = 3, label = "%s"%(web))
     i_web += 1
