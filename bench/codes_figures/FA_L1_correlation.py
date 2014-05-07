@@ -49,16 +49,19 @@ for web in webs:
     plt.legend( loc='lower right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
     #Lambda_th line
     if web == 'Tweb':
-	lamb_opt = 0.36
+	lamb_opt = 0.265
+	plt.text( lamb_opt + 0.03, 0.6, '$\lambda^%s_{opt}$=%1.3f'%(web[0],lamb_opt), fontsize = 12,\
+	color=colors[i_web], rotation=90 )
     elif web == 'Vweb':
-	lamb_opt = 0.202
+	lamb_opt = 0.175
+	plt.text( lamb_opt - 0.12, 0.6, '$\lambda^%s_{opt}$=%1.3f'%(web[0],lamb_opt), fontsize = 12,\
+	color=colors[i_web], rotation=90 )
     plt.plot( [lamb_opt,lamb_opt], [0,1], linestyle = '-', color = colors[i_web], linewidth = 2 )
-    plt.text( lamb_opt + 0.02, 0.6, '$\lambda^%s_{opt}$=%1.2f'%(web[0],lamb_opt), fontsize = 12,\
-    color=colors[i_web], rotation=90 )
     
     i_web += 1
 
-plt.plot( [-0.3,2], [0.97,0.97], '-', color='black', linewidth=2 )
+plt.plot( [-0.3,2], [0.95,0.95], '-', color='black', linewidth=2 )
+plt.text( -0.3, 0.962, 'FA$_{th}$=0.95', fontsize = 12, color="black" )
 
 if sys.argv[1] == '1':
     plt.savefig( '%sFA_L1.pdf'%(figures_fold) )

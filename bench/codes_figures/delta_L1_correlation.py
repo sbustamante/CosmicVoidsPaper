@@ -46,14 +46,16 @@ for web in webs:
     plt.xlim( (-0.2,2) )
     plt.ylim( (-1,0.5) )
     plt.legend( loc='lower right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
-    #Lambda_th line
+        #Lambda_th line
     if web == 'Tweb':
-	lamb_opt = 0.36
+	lamb_opt = 0.265
+	plt.text( lamb_opt + 0.03, 0.3, '$\lambda^%s_{opt}$=%1.3f'%(web[0],lamb_opt), fontsize = 12,\
+	color=colors[i_web], rotation=90 )
     elif web == 'Vweb':
-	lamb_opt = 0.202
+	lamb_opt = 0.175
+	plt.text( lamb_opt - 0.12, 0.3, '$\lambda^%s_{opt}$=%1.3f'%(web[0],lamb_opt), fontsize = 12,\
+	color=colors[i_web], rotation=90 )
     plt.vlines( lamb_opt, -1, 0.5, linestyle = '-', color = colors[i_web], linewidth = 2 )
-    plt.text( lamb_opt + 0.02, 0.3, '$\lambda^%s_{opt}$=%1.2f'%(web[0],lamb_opt), fontsize = 12,\
-    color=colors[i_web], rotation=90 )
     
     i_web += 1
 
