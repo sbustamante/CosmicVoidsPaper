@@ -63,12 +63,12 @@ plt.plot( quartiles[:,0], quartiles[:,5], color = colors[1], linewidth = 3, labe
 plt.plot( quartiles[:,0], quartiles[:,11], color = colors[3], linewidth = 3, label = "knots" )        
 
 #Lambda_th line
-if web == 'Tweb':
-    lamb_opt = 0.36
-elif web == 'Vweb':
-    lamb_opt = 0.202
-plt.vlines( lamb_opt, 2, 12, linestyle = '--', color = 'blue', linewidth = 2 )
-plt.text( lamb_opt + 0.01, 7.6, '$\lambda_{opt}$=%1.2f'%(lamb_opt), fontsize = 12, color='blue' )
+#if web == 'Tweb':
+    #lamb_opt = 0.36
+#elif web == 'Vweb':
+    #lamb_opt = 0.202
+#plt.vlines( lamb_opt, 2, 12, linestyle = '--', color = 'blue', linewidth = 2 )
+#plt.text( lamb_opt + 0.01, 7.6, '$\lambda_{opt}$=%1.2f'%(lamb_opt), fontsize = 12, color='blue' )
 
 plt.grid(1)
 plt.ylabel( '$|\\vec v_{pec}\ |$ $1\\times10^2$ km s$^{-1}$', fontsize = 12 )

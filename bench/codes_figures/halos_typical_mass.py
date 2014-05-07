@@ -63,13 +63,13 @@ plt.plot( quartiles[:,0], quartiles[:,5], color = colors[1], linewidth = 3, labe
 #Knots
 plt.plot( quartiles[:,0], quartiles[:,11], color = colors[3], linewidth = 3, label = "knots" )        
 
-#Lambda_th line
-if web == 'Tweb':
-    lamb_opt = 0.36
-elif web == 'Vweb':
-    lamb_opt = 0.202
-plt.vlines( lamb_opt, -1, 1, linestyle = '--', color = 'blue', linewidth = 2 )
-plt.text( lamb_opt + 0.01, -0.25, '$\lambda_{opt}$=%1.2f'%(lamb_opt), fontsize = 12, color='blue' )
+##Lambda_th line
+#if web == 'Tweb':
+    #lamb_opt = 0.36
+#elif web == 'Vweb':
+    #lamb_opt = 0.202
+#plt.vlines( lamb_opt, -1, 1, linestyle = '--', color = 'blue', linewidth = 2 )
+#plt.text( lamb_opt + 0.01, -0.25, '$\lambda_{opt}$=%1.2f'%(lamb_opt), fontsize = 12, color='blue' )
 
 plt.grid(1)
 plt.ylabel( '$\log_{10}(1\\times10^{12}M_{\odot})$', fontsize = 12 )
