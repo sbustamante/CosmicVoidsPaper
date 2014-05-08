@@ -172,8 +172,8 @@ features of the cosmic web.
 
 
 %-------------------------------------------------------------------------
-\subsection{The cosmic web in Bolshoi}
-\label{subsec:web_in_simulations}
+\subsection{Dark matter halos as tracers of the cosmic web}
+\label{subsec:halos_cosmicweb}
 %-------------------------------------------------------------------------
 
 
@@ -234,9 +234,10 @@ scheme.
 
 
 Finally, we also calculate typical distributions of the density and 
-peculiar velocity fields in each type of environment, obtaining completely
-analogous results. Furthermore, we also use a BDM catalogue of the 
-simulation, obtaining very similar conclusions.
+peculiar velocity fields in each type of environment by using all cells of
+the simulation grid instead of dark matter halos, obtaining completely
+analogous results. Furthermore, we also use a BDM catalogue for the dark
+matter halos, obtaining very similar results.
 
 
 
@@ -312,7 +313,7 @@ voids, where both of them exhibit low to middle values of the FA,
 indicating a high isotropy regarding the physical properties quantified by 
 each web scheme, i.e. the density field for the T-web and the peculiar 
 velocity for the V-web. For the T-web, the FA field near to knots presents 
-a very narrow distribution around a local minima, whereas for the V-web 
+a very narrow distribution around a local minimum, whereas for the V-web 
 such distribution is more spread out. This can be explained appealing to 
 the low fluctuations of the density field compared with the peculiar 
 velocity in highly non-linear regions like knots. For more linear regions 
@@ -390,9 +391,31 @@ local maxima that allows to identify properly the boundaries of voids.
 
 
 %-------------------------------------------------------------------------
-\subsection{Identifying void regions}
+\subsection{Identifying void regions through web schemes}
 \label{subsec:identification}
 %-------------------------------------------------------------------------
+
+
+Resuming our endeavour at identifying voids in cosmological simulations, 
+previous techniques based on web classification schemes usually perform a 
+FOF-like algorithm over cells previously marked as voids according to some 
+established criteria in order to construct bulk void regions 
+\SRKED{[references]}. Although this method has some success at classifying 
+voids, percolation is completely inevitable, where the only way to reduce 
+it is artificially decreasing the global volume fraction of void regions 
+such that they do not merge significantly each other. 
+
+
+Once has been determined the reliability of the FA index for tracing 
+different properties of voids, our novel proposal here is rather using the 
+FA field for classifying void regions. As was concluded in the previous 
+subsection, the geometry of voids is completely traced by contours of the
+FA field, where central parts of voids and high density knot regions 
+exhibit particularly low values of the FA index. Therefore, through a 
+watershed transform all voids are classified, where each single void 
+region corresponds to the basin of a local minimum of the FA field, where
+those local minimums are restricted to be embedded into a type-void cell
+in order to avoid degeneracy with knots.
 
 
 %*************************************************************************
