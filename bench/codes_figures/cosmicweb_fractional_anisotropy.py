@@ -22,10 +22,10 @@ N_sec = 256
 #Web scheme
 web = sys.argv[1]
 #Values to evaluate lambda_th
-if web == 'Tweb':
-    Lambda_opt = 0.36
-if web == 'Vweb':
-    Lambda_opt = 0.20
+#if web == 'Tweb':
+    #Lambda_opt = 0.36
+#if web == 'Vweb':
+    #Lambda_opt = 0.20
 Lambda_opt = 0
 #Smooth parameter
 smooth = '_s1'
@@ -75,8 +75,8 @@ eig3 = CutFieldZ( eig_filename+"_3", Cut, 16, Coor = axe )
 
 #Vweb Plot with Lambda_th = 0.3
 plt.subplot( 2, 2, 1 )
-#plt.imshow( -Scheme( eig1, eig2, eig3, Lambda_opt ), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
-plt.imshow( Fractional_Anisotropy( eig1, eig2, eig3 ), extent = extent,  cmap = "binary" )
+plt.imshow( -Scheme( eig1, eig2, eig3, Lambda_opt ), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
+
 plt.title( "Vissual impresion for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
@@ -85,7 +85,9 @@ plt.xlabel( "[$h^{-1}$ Mpc]" )
 #Vweb Plot with Lambda_th = 0
 plt.subplot( 2, 2, 2 )
 plt.imshow( Fractional_Anisotropy( eig1, eig2, eig3 ), extent = extent,  cmap = "binary" )
-plt.imshow( Scheme( eig1, eig2, eig3, 0.0 )[::-1,], extent = extent, vmin=0, vmax=0.5, cmap = cmap2, origin='lower' )
+plt.contour( Fractional_Anisotropy( eig1, eig2, eig3 )[::-1,], levels=[0.95], extent = extent, \
+colors="red", alpha=0.5, linewidths=0.5 )
+#plt.imshow( Scheme( eig1, eig2, eig3, 0.0 )[::-1,], extent = extent, vmin=0, vmax=0.5, cmap = cmap2, origin='lower' )
 plt.title( "Fractional\nAnisotropy" )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
@@ -116,6 +118,6 @@ plt.ylim( (0,Box_L) )
 
 #plt.subplots_adjust(  )
 if sys.argv[2] == '1':
-    plt.savefig( '%scosmicweb_FA_%s(%1.2f).pdf'%(figures_fold, web,Lambda_opt ) )
+    plt.savefig( '%scosmicweb_FA_%s.pdf'%(figures_fold, web ) )
 else:
     plt.show()

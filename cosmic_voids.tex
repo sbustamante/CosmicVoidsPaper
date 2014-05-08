@@ -193,63 +193,17 @@ Once defined the numerical details about both classification schemes, we
 shall analyse the dependence on the threshold value $\lambda_{th}$ for 
 each one. For this, we shall use the distribution of dark matter halos as 
 tracer of the underlying matter field in order to be more consistent with
-available observational data. In the figure \ref{fig:halos_fractions} we 
-calculate fractions of halos within each one of the defined environments 
-based upon the FOF catalogue of the simulation and for an extensive \lth 
-range. Then we look for some key feature that could indicated us a 
-possible optimal value of the \lth value. One first step forward our quest 
-is the behaviour of the V-web scheme compared with the T-web. As was 
-previously established by \SRKED{Hoffman et al. (2012)} and as can be seen 
-in the figure \ref{fig:halos_fractions}, V-web scheme is significantly more
-sensible to variations of the $\lambda_{th}$ value, since all fractions of
-halos for the V-web change significantly in the range $[0,0.4]$, whereas, 
-for the T-web scheme, fractions change smoothly throughout all \lth range 
-covered. From this, it is then expected that the optimal \lth value for 
-the V-web scheme is less than the T-web value.
-
-
-
-The more notorious characteristic of the figure \ref{fig:halos_fractions} 
-is the behaviour of the fraction of halos within sheet regions for both 
-web schemes, increasing until a local maximum, and then decreasing. The 
-increasing or decreasing rate of the fraction of halos for some region 
-could be interpreted as a measure of the degree of non-linearity of such 
-region for some specific \lth value. For example, filaments and knots, 
-that are the most non-linear regions of the universe, have a negative rate
-for all covered \lth range. In the case of voids, the situation is 
-completely opposite, where fractions of halos increase in everywhere. If 
-we think in terms of the underlying matter field of the cosmic web, \lth 
-is just a cutting parameter between highly non-linear regions (filament 
-and knots) and low non-linear (voids and sheets). Furthermore, if we take 
-into account that dark matter halos are much more likely to form in highly 
-non-linear regions, it is expected the obtained behaviour of the fractions 
-of halos for voids, filaments and knots as we increase the \lth value. 
-However, the behaviour of the fraction of halos in sheets is less clear,
-increasing for low \lth values (such as voids) and decreasing for higher 
-\lth values (such as filaments and knots). This indicates the transitional 
-character of sheet regions in the cosmic web. Our proposal here is to 
-select as optimal \lth the value where the fraction of sheets reaches a
-local maximum. According to this, we find for the T-web scheme an optimal 
-value $\lambda_{opt}^T = 0.36$ and for the V-web scheme $\lambda_{opt}^V = 
-0.20$. In the figure \ref{fig:visual_impression} we show the visual 
-impression of the cosmic web along with the density field for different 
-\lth values including the optimal values. It can be noticed that the found 
-optimal values reproduce well the visual impression.
-
-
-
-As we have taken halos as tracers of the cosmic web, we analyse 
-distributions of mass and peculiar velocity in order to assign typical 
-values to each type of environment. In the figure 
-\ref{fig:typical_mass_velocity} we calculate both distributions for both 
-web schemes and using the FOF catalogue of the simulation. Thick lines 
-correspond to the median of the distribution and filled regions limited by
-dashed lines correspond to quartiles $Q_1$ and $Q_3$, it means, $50\%$ of
-all halos are within such regions for every \lth value and for each type 
-of environment. We rather use median and quartiles as measure of 
-dispersion because there are some very unusual and extreme values that 
-makes the usual analysis based upon means and standard deviations less 
-reliable.
+available observational data. Therefore, we analyse distributions of mass 
+and peculiar velocity in order to assign typical values to each type of 
+environment. In the figure \ref{fig:typical_mass_velocity} we calculate 
+both distributions for both web schemes and using the FOF catalogue of the 
+simulation. Thick lines correspond to the median of the distribution and 
+filled regions limited by dashed lines correspond to quartiles $Q_1$ and 
+$Q_3$, it means, $50\%$ of all halos are within such regions for every 
+\lth value and for each type of environment. We rather use median and 
+quartiles as measure of dispersion because there are some very unusual 
+and extreme values that makes the usual analysis based upon means and 
+standard deviations less reliable.
 
 
 
@@ -260,22 +214,22 @@ considerably overlapped each other, the median value is very
 well-differentiated among types of environment, indicating that it is 
 possible to assign typical values of mass to each region, and being 
 consistent with expectations, where low mass halos are typical in voids 
-until high mass halos in knots. For the case of the V-web scheme, all
-medians and dispersions are completely overlapped, specially for values 
-grater than the optimal \lth value, indicating that it is not possible to
-assign typical mass ranges to each environment as quantified by this 
-scheme. For peculiar velocities, this situation is opposite, where V-web
-scheme is much more adequate to assign typical distributions of velocity
-to each environment. Although T-web also makes a differentiation in the 
-distributions of velocity, this is very slight compared with the V-web 
-case. These results can be explained by appealing the physical origin of 
-each web scheme. As T-web is based upon the Hessian matrix of the 
-potential field, it is expected all quantities related to the potential, 
-like density field and distribution of halos mass, are well-differentiated 
-among each region, while the V-web scheme, based upon the shear velocity 
-tensor, all dynamical quantities, as the peculiar velocity field and the 
-distribution of the velocity of halos are also expected to be 
-well-differentiated among regions as quantified by this scheme.
+and higher mass halos in knots. For the case of the V-web scheme, all
+medians and dispersions are completely overlapped, indicating that it is 
+not possible to assign typical mass ranges to each environment as 
+quantified by this scheme. For peculiar velocities, this situation is 
+opposite, where V-web scheme is much more adequate to assign typical 
+distributions of velocity to each environment. Although T-web also makes 
+a differentiation in the distributions of velocity, this is very slight 
+compared with the V-web case. These results can be explained by appealing 
+the physical origin of each web scheme. As T-web is based upon the Hessian 
+matrix of the potential field, it is expected all quantities related to 
+the potential, like density field and distribution of halos mass, are 
+well-differentiated among each region, while the V-web scheme, based upon 
+the shear velocity tensor, all dynamical quantities, as the peculiar 
+velocity field and the distribution of the velocity of halos are also 
+expected to be well-differentiated among regions as quantified by this 
+scheme.
 
 
 
@@ -293,8 +247,8 @@ simulation, obtaining very similar conclusions.
 
 
 %-------------------------------------------------------------------------
-\subsection{Fractional anisotropy as tracer of the cosmic web}
-\label{subsec:FA_web}
+\subsection{Fractional anisotropy as tracer of voids}
+\label{subsec:FA_voids}
 %-------------------------------------------------------------------------
 
 
@@ -310,8 +264,8 @@ transform, a hierarchy of void regions are found \SRKED{[references,
 ZOBOV algorithm]}.
 
 
-As has been established \SRKED{[references]}, both schemes presented in
-the previous section (V-web and T-web) for classifying the cosmic web 
+As has been established \SRKED{[references]}, both web schemes presented 
+in the previous section (V-web and T-web) for classifying the cosmic web 
 present many advantages compared with classification schemes based
 completely upon the density field, e.g. a more robust description of the
 dynamic a kinematic of the cosmic web, a more reliable quantification of 
@@ -326,9 +280,11 @@ however, with the introduction of a threshold parameter \SRKED{[reference,
 Forero-Romero]}, this scheme, and even the V-web \SRKED{[reference, 
 Hoffman]}, improved enormously. As this free parameter controls the visual 
 impression provided by each scheme, phenomenons like percolation depends 
-on it as well. Percolation is one of the key features of the structure of 
-void regions, indicating how voids are merged among them, and how they 
-permeate all the cosmic web.
+on it as well. Although percolation is one of the key features of the 
+structure of void regions, indicating how voids are merged among them, and 
+how they permeate all the cosmic web, our primal interest here is studying 
+properties of single voids. Nevertheless, in the next section we shall 
+analyse briefly the percolation phenomenon for both web schemes.
 
 
 In order to deal with percolation of voids in our classification scheme,
@@ -355,14 +311,14 @@ figure is the degeneration presented for knots and central regions of
 voids, where both of them exhibit low to middle values of the FA, 
 indicating a high isotropy regarding the physical properties quantified by 
 each web scheme, i.e. the density field for the T-web and the peculiar 
-velocity for the V-web. For the T-web, the FA field around knots presents 
-a very narrow distribution, whereas for the V-web the same distribution is
-more spread. This can be explained appealing to the low dispersion of the 
-density field compared with the peculiar velocity in highly non-linear 
-regions like knots. For more linear regions like voids, the behaviour of 
-the FA field is quite similar between both schemes, what is consistent 
-with the equivalence of the T-web and the V-web in the linear regime 
-\SRKED{[reference, Hoffman]}.
+velocity for the V-web. For the T-web, the FA field near to knots presents 
+a very narrow distribution around a local minima, whereas for the V-web 
+such distribution is more spread out. This can be explained appealing to 
+the low fluctuations of the density field compared with the peculiar 
+velocity in highly non-linear regions like knots. For more linear regions 
+like voids, the behaviour of the FA field is quite similar between both 
+schemes, what is consistent with the equivalence of the T-web and the 
+V-web in the linear regime \SRKED{[reference, Hoffman]}.
 
 
 According to the classification scheme adopted for the cosmological 
@@ -379,7 +335,7 @@ scheme. In the figure \ref{fig:L1_correlations} we calculate the
 distributions of the fractional anisotropy index and the density field 
 regarding the $\lambda_1$ eigenvalue for both web schemes over all the 
 cells of the simulation. Thick lines correspond to the median of the 
-distributions, whereas coloured regions correspond to the $50\%$ of the
+distributions, whereas coloured regions correspond to $50\%$ of the
 sample, delimited by quartiles $Q_1$ and $Q_3$. 
 
 
@@ -391,27 +347,32 @@ one-dimensional tomography of void regions, where low $\lambda_1$ values
 are associated to the central regions of voids and they are the more 
 isotropic structures found, with FA values close to 0. As we increase the 
 $\lambda_1$ value, corresponding to progressively outer layers of void 
-regions, the FA index increases as well, maintaining a perfect correlation 
-approximately until the optimal threshold value for each scheme. Because 
-of the definition of the fractional anisotropy index, it presents the 
-highest values for filaments and very flat sheets, i.e. $FA\lesssim 1$. 
+regions or less isotropic voids, the FA index increases as well, 
+maintaining a very reliable correlation approximately until $FA=0.95$. 
+This limit value of the FA can be traduced in terms of an optimal \lth, 
+where we obtain $\lambda_{opt}^V = 0.175$ for the V-web scheme and 
+$\lambda_{opt}^T = 0.265$ for the T-web scheme, both values consistent 
+with optimal thresholds normally taken in previous works \SRKED{[references]}. 
+Due to the definition of the fractional anisotropy index, it presents the 
+highest values for filaments and very flat sheets, i.e. $FA\lesssim 1$.
 Therefore, if we extend the $\lambda_{th}$ value beyond the optimal 
-threshold, such that the outer regions of voids becomes highly anisotropic, 
-it would imply that voids are invading filaments and sheets, so the optimal
-threshold is a limit value up to which we can have void regions. For other
-type of environment such as sheets, filaments and knots, the $\lambda_1$
-eigenvalue does not control their spatial boundaries, so the correlation
-with the FA index is no longer valid. The larger dispersion in the 
-distribution indicates that contours of the FA field are no longer 
-corresponding to contours of the $\lambda_1$ field. Nevertheless, for high
-$\lambda_1$ values, i.e. $\lambda_1>1.0$, the median value of the FA index
-decreases to lower values, indicating the presence of isotropic knots. All
-of this allows us to conclude that the distribution of the FA with respect
-to the $\lambda_1$ eigenvalue is not only an one-dimensional tomography of 
-voids, but also a sort of one-dimensional projection of the global 
-structure of the cosmic web, starting in highly isotropic central voids, 
-passing through very anisotropic sheets and filaments, until isotropic 
-knot regions.
+FA limit, such that the outer regions of voids becomes highly anisotropic, 
+it would imply that voids are invading filaments and sheets, so the 
+optimal \lth value is a limit value up to which we can have void regions. 
+For other type of environment such as sheets, filaments and knots, the 
+$\lambda_1$ eigenvalue does not control their spatial boundaries, so the 
+correlation with the FA index is no longer valid beyond the threshold 
+values, furthermore the larger dispersion of the FA distribution also 
+indicates that contours of the FA field are no longer corresponding to 
+contours of the $\lambda_1$ field. Nevertheless, for high $\lambda_1$ 
+values, i.e. $\lambda_1>1.0$, the median value of the FA index decreases 
+to lower values, indicating the presence of isotropic knots. All of this 
+allows us to conclude that the distribution of the FA with respect to the 
+$\lambda_1$ eigenvalue is not only an one-dimensional tomography of voids, 
+but also a sort of one-dimensional projection of the global structure of 
+the cosmic web, starting in highly isotropic central voids, passing 
+through very anisotropic sheets and filaments, until isotropic knot 
+regions.
 
 
 For the distribution of the density with respect to the $\lambda_1$ 
@@ -422,11 +383,16 @@ until sheets and filaments are reached. However, the dispersion in the
 distributions indicates that the geometry of voids as quantified by both 
 web schemes is not compatible with the density field, i.e. contours of the
 $\lambda_1$ eigenvalue do not coincide with contours of the density field. 
-Then, the density is not a reliable quantity to be used as tracer of voids. 
-Furthermore, another advantage of using the FA index instead of the 
+Then, the density is not a reliable quantity to be used as tracer of our 
+voids. Furthermore, another advantage of using the FA index instead of the
 density is the non-monotonous behaviour of the FA median value, with a 
-local maximum that allows to identify the boundaries of void regions.
+local maxima that allows to identify properly the boundaries of voids.
 
+
+%-------------------------------------------------------------------------
+\subsection{Identifying void regions}
+\label{subsec:identification}
+%-------------------------------------------------------------------------
 
 
 %*************************************************************************
@@ -553,62 +519,8 @@ to fit the numerical density profiles of our voids.
 \bibliographystyle{mn2e}
 \bibliography{references} 
 
-
 %.........................................................................
-%FIGURE 1: Fraction of halos in each environment
-\begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/halos_fraction_FOF_Tweb.pdf}  
-  \includegraphics[trim = 0mm 0mm 5mm 5mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/halos_fraction_FOF_Vweb.pdf}
-
-  \captionof{figure}{\small Fractions of halos embedded in each one of 
-  the defined environments according to the \lth value. T-web scheme 
-  (left panel) and V-web scheme (right panel). The optimal parameters 
-  found are $\lambda_{opt}^{T}=0.36$ and $\lambda_{opt}^{V}=0.20$.}
-
-  \label{fig:halos_fractions}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
-
-
-%.........................................................................
-%FIGURE 2: Visual impression of the cosmic web
-\begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 42mm 10mm 37mm 10mm, clip, keepaspectratio=true,
-  width=0.75\textheight]{./figures/cosmicweb_visual_Tweb.pdf}
-  \includegraphics[trim = 42mm 10mm 37mm 10mm, clip, keepaspectratio=true,
-  width=0.75\textheight]{./figures/cosmicweb_visual_Vweb.pdf}
-  
-  \captionof{figure}{\small Visual impression of the density field (left 
-  panels), and of each classification scheme with the $\lambda_{th}$ values 
-  obtained by our criteria (others panels). The color convention for each 
-  environment is (white) - void, (light gray) - sheet, (gray) - filament, 
-  (black) - knot. For each web scheme, it has been used the previously 
-  established optimal threshold as a reference value, so plots are done 
-  with the next values $\lambda_{th} = 0.0$, $\lambda_{th} = 
-  \lambda_{opt}/2$, $\lambda_{th} = \lambda_{opt}$ and $\lambda_{th} = 
-  2\lambda_{opt}$.}
-
-  \label{fig:visual_impression}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
-
-
-%.........................................................................
-%FIGURE 3: Typical mass and pecular velocity
+%FIGURE 1: Typical mass and pecular velocity
 \begin{flushleft}
 \begin{figure*}
 \centering
@@ -640,16 +552,16 @@ to fit the numerical density profiles of our voids.
 
 
 %.........................................................................
-%FIGURE 4: FA and vissual impression
+%FIGURE 2: FA and vissual impression
 \begin{flushleft}
 \begin{figure*}
 \centering
 
   \includegraphics[trim = 25mm 200mm 18mm 15mm, clip, keepaspectratio=true,
-  width=0.5\textheight]{./figures/cosmicweb_FA_Tweb(null).pdf}
+  width=0.5\textheight]{./figures/cosmicweb_FA_Tweb.pdf}
   
   \includegraphics[trim = 25mm 200mm 18mm 15mm, clip, keepaspectratio=true,
-  width=0.5\textheight]{./figures/cosmicweb_FA_Vweb(null).pdf}  
+  width=0.5\textheight]{./figures/cosmicweb_FA_Vweb.pdf}  
   
   \captionof{figure}{\small In left panels is shown the visual impression 
   of the cosmic web for each web scheme (T-web, upper panels. V-web, lower 
@@ -661,7 +573,9 @@ to fit the numerical density profiles of our voids.
   correspond to FA$=1$ and white regions to FA$=0$. It can be noticed the 
   degeneration of low values of FA for knots and central regions of voids, 
   while high values of FA (FA $\lesssim 1$) are consistent with filaments 
-  and highly planar sheets.}
+  and highly planar sheets. Thin dark red curves correspond to contours of
+  $FA=0.95$, which is approximately the transitional FA between voids and
+  other cosmological regions.}
 
   \label{fig:FA_field}
   \vspace{0.1 cm}
@@ -672,7 +586,7 @@ to fit the numerical density profiles of our voids.
 
 
 %.........................................................................
-%FIGURE 5: Distributions of FA and density regarding the Lambda_1 eigenvalue
+%FIGURE 3: Distributions of FA and density regarding the Lambda_1 eigenvalue
 \begin{flushleft}
 \begin{figure*}
 \centering
@@ -697,30 +611,6 @@ to fit the numerical density profiles of our voids.
 \end{flushleft}
 %.........................................................................
 
-
-%.........................................................................
-%FIGURE 6: Distributions of local mimima
-\begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 0mm 2mm 0mm 2mm, clip, keepaspectratio=true,
-  width=0.7\textheight]{./figures/central_voids.pdf}
-  
-  \captionof{figure}{\small In this figure is shown the distribution of the
-  fractional anisotropy (left panel) and density field (right panel) with 
-  respect to the eigenvalue $\lambda_1$ for each web scheme (T-web, red 
-  lines. V-web, blue lines) as calculated over all the cells of the grid.
-  Thick central lines correspond to the median of the distribution and 
-  coloured regions to the $50\%$ of the cells, delimited by quartiles 
-  $Q_1$ and $Q_3$.}
-
-  \label{fig:L1_correlations}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
 
 
 \end{document}
