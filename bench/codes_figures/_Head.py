@@ -39,7 +39,8 @@ figures_fold = '../../figures/'
 #..................................................................................................
 #Cutting Halos in X axe
 #..................................................................................................
-def CutHaloX( X, thick, datos, plot=True, color='black' ):
+def CutHaloX( X, thick, catalogue, plot=True, color='black' ):
+    datos = np.transpose( catalogue )
     #Initial data
     ncol = len(datos)		#Number of columns
     nrow = len(datos[0])	#Number of rows
@@ -81,7 +82,8 @@ def CutHaloX( X, thick, datos, plot=True, color='black' ):
 #..................................................................................................
 #Cutting Halos in Y axe 
 #..................................................................................................
-def CutHaloY( Y, thick, datos, plot=True, color='black' ):
+def CutHaloY( Y, thick, catalogue, plot=True, color='black' ):
+    datos = np.transpose( catalogue )
     #Initial data
     ncol = len(datos)		#Number of columns
     nrow = len(datos[0])	#Number of rows
@@ -122,7 +124,8 @@ def CutHaloY( Y, thick, datos, plot=True, color='black' ):
 #..................................................................................................
 #Cutting Halos in Z axe
 #..................................................................................................
-def CutHaloZ( Z, thick, datos, plot=True, color='black' ):
+def CutHaloZ( Z, thick, catalogue, plot=True, color='black' ):
+    datos = np.transpose( catalogue )
     #Initial data
     ncol = len(datos)		#Number of columns
     nrow = len(datos[0])	#Number of rows
@@ -473,7 +476,7 @@ def FA_lambda1_correlation( filename_eig, lamb_min, lamb_max, N_lam, FA_min, FA_
     return datos
 
 #..................................................................................................
-#Density correlator
+#Properties of central voids
 #..................................................................................................
 def density_lambda1_correlation( filename_eig, delta_file, lamb_min, lamb_max, N_lam, lambda_min, lambda_max, N_lambda ):
     os.system( "./Density_L1_Correlation.out %s %s %f %f %d %f %f %d"%
