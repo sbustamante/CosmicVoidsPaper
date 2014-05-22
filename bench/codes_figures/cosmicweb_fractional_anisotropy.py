@@ -2,7 +2,7 @@
 #
 #This code perform a graphic scheme of the visual impresion for a defined cutting off of Bolshoi
 #simulation, using the density field and FA is shown how is the behaviour of voids
-#Usage cosmicweb_fractional_anisotropy.py <Vweb or Tweb> <show(0) or save(1)>
+#Usage cosmicweb_fractional_anisotropy.py <Vweb or Tweb> <catalogue, BDM or FOF> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
@@ -19,20 +19,31 @@ labels = "BOLSHOI"
 Box_L = 250
 #Number of sections
 N_sec = 256
+
 #Web scheme
 web = sys.argv[1]
+
+#Halo Scheme
+catalog = sys.argv[2]
+
+#Void catalogue
+void_scheme = "FAG"
+#Void lambda_th
+lambda_void = 0.0
+
 #Values to evaluate lambda_th
-#if web == 'Tweb':
-    #Lambda_opt = 0.36
-#if web == 'Vweb':
-    #Lambda_opt = 0.20
-Lambda_opt = 0
+if web == 'Tweb':
+    Lambda_opt = 0.265
+if web == 'Vweb':
+    Lambda_opt = 0.175
 #Smooth parameter
 smooth = '_s1'
 #Coordinate to cut (1 -- X, 2 -- Y, 3 -- Z)
 axe = 1
 #Cut
-Cut = 10
+Cut = 100
+#Halos slice cut [Mpc]
+dx = 5
 
 #Colors
 my_cmapC = plt.cm.get_cmap('gray')
@@ -54,7 +65,7 @@ FIGURE SCHEME
 |  1  |  2  |  3  |
 -------------------
 '''
-plt.figure( figsize=(16,16) )
+plt.figure( figsize=(8,8) )
 plt.subplots_adjust( top=0.93, bottom = 0.07, right = .98, left = 0.04, hspace = 0.14, wspace=0.0 )
 #Extent
 extent = [0, Box_L, 0, Box_L]
@@ -63,6 +74,11 @@ extent = [0, Box_L, 0, Box_L]
 delta_filename = '%s%sTweb/%d/Delta%s'%(foldglobal,simulation,N_sec,smooth)
 #Loading Vweb filename
 eig_filename = '%s%s%s/%d/Eigen%s'%(foldglobal,simulation,web,N_sec,smooth)
+#Loading general catalog of halos
+GH = np.loadtxt('%s%sC_GH_%s.dat'%(foldglobal,simulation,catalog))
+#Catalogueof voids
+voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_index.dat"%\
+(foldglobal, simulation, web, N_sec, void_scheme, lambda_void ), Cut, 'plain', Coor = axe )
 
 #Current label simulation
 label = labels
@@ -73,19 +89,20 @@ eig1 = CutFieldZ( eig_filename+"_1", Cut, 16, Coor = axe )
 eig2 = CutFieldZ( eig_filename+"_2", Cut, 16, Coor = axe )
 eig3 = CutFieldZ( eig_filename+"_3", Cut, 16, Coor = axe )
 
-#Vweb Plot with Lambda_th = 0.3
-plt.subplot( 2, 2, 1 )
-plt.imshow( -Scheme( eig1, eig2, eig3, Lambda_opt ), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
-
+#Visual impression
+plt.subplot( 1, 4, 1 )
+Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
+plt.plot( Coor[0], Coor[1], 'o', color = 'blue', markersize = 2 )
+plt.imshow( -np.transpose(Scheme( eig1, eig2, eig3, Lambda_opt )[::,::-1]), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
 plt.title( "Vissual impresion for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
 plt.xlabel( "[$h^{-1}$ Mpc]" )
 
-#Vweb Plot with Lambda_th = 0
-plt.subplot( 2, 2, 2 )
-plt.imshow( Fractional_Anisotropy( eig1, eig2, eig3 ), extent = extent,  cmap = "binary" )
-plt.contour( Fractional_Anisotropy( eig1, eig2, eig3 )[::-1,], levels=[0.95], extent = extent, \
+#FA field
+plt.subplot( 1, 4, 2 )
+plt.imshow( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )[::,::-1]), extent = extent,  cmap = "binary" )
+plt.contour( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )), levels=[0.95], extent = extent, \
 colors="red", alpha=0.5, linewidths=0.5 )
 #plt.imshow( Scheme( eig1, eig2, eig3, 0.0 )[::-1,], extent = extent, vmin=0, vmax=0.5, cmap = cmap2, origin='lower' )
 plt.title( "Fractional\nAnisotropy" )
@@ -93,31 +110,44 @@ plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
 plt.xlabel( "[$h^{-1}$ Mpc]" )
 
-#Vweb Plot with Lambda_th = 0.1
-plt.subplot( 2, 2, 3 )
-plt.contour( Fractional_Anisotropy( eig1, eig2, eig3 )[::-1,], 10, extent = extent )
-plt.imshow( -Scheme( eig1, eig2, eig3, Lambda_opt ), extent = extent, vmin=-1, vmax=0, cmap = my_cmap4 )
-plt.title( "FA for Voids at $\lambda_{th} = %1.3f$"%(Lambda_opt) )
+
+#Void Regions
+plt.subplot( 1, 4, 3 )
+Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
+plt.plot( Coor[0], Coor[1], 'o', color = 'white', markersize = 2 )
+#Voids basins
+num_voids = np.max( voids )
+lista = np.array([0] + list(np.random.permutation( range(1,num_voids.astype(int)+1) )))
+#voids
+voids = lista[ voids.astype(int) ]
+plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', interpolation='none', extent = extent,
+vmin = 0, vmax = num_voids+1)
+plt.title( "Distribution of halos" )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
 plt.xlabel( "[$h^{-1}$ Mpc]" )
 
-#Density Plot
-plt.subplot( 2, 2, 4 )
-#plt.imshow( np.log10(1+delta), extent = extent, cmap = "binary" )
-plt.contour( np.log(1+delta)[::-1,], np.linspace(np.min(np.log(1+delta)), 0,6), extent = extent )
-plt.imshow( -Scheme( eig1, eig2, eig3, Lambda_opt ), extent = extent, vmin=-1, vmax=0, cmap = my_cmap4 )
-plt.title( "Density for Voids at $\lambda_{th} = %1.3f$"%(Lambda_opt) )
-plt.yticks( (0,Box_L) )
+plt.xlim( (0,Box_L) )
+plt.ylim( (0,Box_L) )
+
+
+#Void Regions
+plt.subplot( 1, 4, 4 )
+#Distribution of halos
+Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
+plt.plot( Coor[0], Coor[1], 'o', color = 'black', markersize = 2 )
+plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', interpolation='none', extent = extent,
+vmin = 0, vmax = num_voids+1, alpha=0.0)
+plt.title( "Distribution of halos" )
+plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
 plt.xlabel( "[$h^{-1}$ Mpc]" )
-
 
 plt.xlim( (0,Box_L) )
 plt.ylim( (0,Box_L) )
 
 #plt.subplots_adjust(  )
-if sys.argv[2] == '1':
+if sys.argv[3] == '1':
     plt.savefig( '%scosmicweb_FA_%s.pdf'%(figures_fold, web ) )
 else:
     plt.show()

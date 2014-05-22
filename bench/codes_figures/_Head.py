@@ -7,6 +7,7 @@ import numpy as np
 import sys
 import matplotlib
 import os
+import random
 import matplotlib.pyplot as plt
 from pylab import *
 import scipy.integrate as integ

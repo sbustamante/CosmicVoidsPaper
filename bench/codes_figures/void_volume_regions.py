@@ -18,7 +18,7 @@ N_sec = 256
 #Web Scheme
 webs = ['Vweb', 'Tweb'] 
 #Void finder scheme (FOF or LAY)
-void_scheme = 'LAY'
+void_scheme = 'FAG'
 
 #Lambda value
 if sys.argv[1] == '0':
@@ -56,7 +56,7 @@ for web in webs:
 ax1.grid()
 ax1.set_ylabel( "Number of voids" )
 ax1.set_xlabel( "Comoving volume $\log_{10}[ (0.98$ Mpc $h^{-1} )^{-3} ]$" )
-ax1.legend(fancybox = True, shadow = True)
+ax1.legend(fancybox = True, shadow = True, loc = 'lower left')
 ax1.set_ylim( (0,1e4) )
 
 #Axe 2
@@ -65,7 +65,7 @@ tick_label = []
 for tick in tick_locations:
     tick_label.append( "%1.2f"%tick_function(tick) )
 ax2.set_xticklabels( tick_label )
-ax2.set_xlabel( "Equivalent spherical comoving radius Mpc $h^{-1}$" )
+ax2.set_xlabel( "Effective comoving radius Mpc $h^{-1}$" )
 
 if sys.argv[2] == '1':
     if sys.argv[1] == '0':
