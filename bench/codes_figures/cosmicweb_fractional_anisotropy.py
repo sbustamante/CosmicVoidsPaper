@@ -41,9 +41,9 @@ smooth = '_s1'
 #Coordinate to cut (1 -- X, 2 -- Y, 3 -- Z)
 axe = 1
 #Cut
-Cut = 100
+Cut = 200
 #Halos slice cut [Mpc]
-dx = 5
+dx = 2
 
 #Colors
 my_cmapC = plt.cm.get_cmap('gray')
@@ -65,8 +65,8 @@ FIGURE SCHEME
 |  1  |  2  |  3  |
 -------------------
 '''
-plt.figure( figsize=(8,8) )
-plt.subplots_adjust( top=0.93, bottom = 0.07, right = .98, left = 0.04, hspace = 0.14, wspace=0.0 )
+plt.figure( figsize=(18,7) )
+plt.subplots_adjust( top=0.93, bottom = 0.07, right = .98, left = 0.04, hspace = 0.14, wspace=0.08 )
 #Extent
 extent = [0, Box_L, 0, Box_L]
 
@@ -90,9 +90,9 @@ eig2 = CutFieldZ( eig_filename+"_2", Cut, 16, Coor = axe )
 eig3 = CutFieldZ( eig_filename+"_3", Cut, 16, Coor = axe )
 
 #Visual impression
-plt.subplot( 1, 4, 1 )
+plt.subplot( 1, 3, 1 )
 Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
-plt.plot( Coor[0], Coor[1], 'o', color = 'blue', markersize = 2 )
+plt.plot( Coor[0], Coor[1], '.', color = 'blue', markersize = 2 )
 plt.imshow( -np.transpose(Scheme( eig1, eig2, eig3, Lambda_opt )[::,::-1]), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
 plt.title( "Vissual impresion for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
 plt.yticks( (),() )
@@ -100,10 +100,10 @@ plt.xticks( (0,Box_L) )
 plt.xlabel( "[$h^{-1}$ Mpc]" )
 
 #FA field
-plt.subplot( 1, 4, 2 )
-plt.imshow( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )[::,::-1]), extent = extent,  cmap = "binary" )
+plt.subplot( 1, 3, 2 )
+plt.imshow( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )[::,::-1]), extent = extent, cmap = "binary" )
 plt.contour( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )), levels=[0.95], extent = extent, \
-colors="red", alpha=0.5, linewidths=0.5 )
+colors="red", alpha=0.5, linewidths=0.6 )
 #plt.imshow( Scheme( eig1, eig2, eig3, 0.0 )[::-1,], extent = extent, vmin=0, vmax=0.5, cmap = cmap2, origin='lower' )
 plt.title( "Fractional\nAnisotropy" )
 plt.yticks( (),() )
@@ -112,17 +112,17 @@ plt.xlabel( "[$h^{-1}$ Mpc]" )
 
 
 #Void Regions
-plt.subplot( 1, 4, 3 )
-Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
-plt.plot( Coor[0], Coor[1], 'o', color = 'white', markersize = 2 )
+plt.subplot( 1, 3, 3 )
+#Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
+#plt.plot( Coor[0], Coor[1], 'o', color = 'white', markersize = 4 )
 #Voids basins
 num_voids = np.max( voids )
-lista = np.array([0] + list(np.random.permutation( range(1,num_voids.astype(int)+1) )))
+lista = np.array([-1000] + list(np.random.permutation( range(1,num_voids.astype(int)+1) )))
 #voids
 voids = lista[ voids.astype(int) ]
-plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', interpolation='none', extent = extent,
-vmin = 0, vmax = num_voids+1)
-plt.title( "Distribution of halos" )
+plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', extent = extent, vmin = -1000, vmax = num_voids+1)
+#interpolation='linear')
+plt.title( "Distribution of voids" )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
 plt.xlabel( "[$h^{-1}$ Mpc]" )
@@ -131,20 +131,20 @@ plt.xlim( (0,Box_L) )
 plt.ylim( (0,Box_L) )
 
 
-#Void Regions
-plt.subplot( 1, 4, 4 )
-#Distribution of halos
-Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
-plt.plot( Coor[0], Coor[1], 'o', color = 'black', markersize = 2 )
-plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', interpolation='none', extent = extent,
-vmin = 0, vmax = num_voids+1, alpha=0.0)
-plt.title( "Distribution of halos" )
-plt.yticks( (),() )
-plt.xticks( (0,Box_L) )
-plt.xlabel( "[$h^{-1}$ Mpc]" )
+##Void Regions
+#plt.subplot( 1, 4, 4 )
+##Distribution of halos
+#Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
+#plt.plot( Coor[0], Coor[1], 'o', color = 'black', markersize = 2 )
+#plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', interpolation='none', extent = extent,
+#vmin = 0, vmax = num_voids+1, alpha=0.0)
+#plt.title( "Distribution of halos" )
+#plt.yticks( (),() )
+#plt.xticks( (0,Box_L) )
+#plt.xlabel( "[$h^{-1}$ Mpc]" )
 
-plt.xlim( (0,Box_L) )
-plt.ylim( (0,Box_L) )
+#plt.xlim( (0,Box_L) )
+#plt.ylim( (0,Box_L) )
 
 #plt.subplots_adjust(  )
 if sys.argv[3] == '1':
