@@ -171,75 +171,6 @@ features of the cosmic web.
 
 
 
-%-------------------------------------------------------------------------
-\subsection{Dark matter halos as tracers of the cosmic web}
-\label{subsec:halos_cosmicweb}
-%-------------------------------------------------------------------------
-
-
-Both established schemes to quantify the cosmic web depend on continuous 
-and smooth physical quantities, i.e the peculiar velocity field and the 
-density field. To calculate these quantities, a discretization over the 
-volume of the simulation is performed, so all the properties are reduced 
-to single values associated to discrete cells. According to this, we 
-divide the overall volume into $(256)^3$ cells, so each cell has an 
-associated comoving cubic volume of $0.98 \mbox{ Mpc h}^{-1}$. Finally, in 
-order to reduce possible effects due to the discretization process, a 
-gaussian softening is performed between neighbour cells.
-
-
-
-Once defined the numerical details about both classification schemes, we
-shall analyse the dependence on the threshold value $\lambda_{th}$ for 
-each one. For this, we shall use the distribution of dark matter halos as 
-tracer of the underlying matter field in order to be more consistent with
-available observational data. Therefore, we analyse distributions of mass 
-and peculiar velocity in order to assign typical values to each type of 
-environment. In the figure \ref{fig:typical_mass_velocity} we calculate 
-both distributions for both web schemes and using the FOF catalogue of the 
-simulation. Thick lines correspond to the median of the distribution and 
-filled regions limited by dashed lines correspond to quartiles $Q_1$ and 
-$Q_3$, it means, $50\%$ of all halos are within such regions for every 
-\lth value and for each type of environment. We rather use median and 
-quartiles as measure of dispersion because there are some very unusual 
-and extreme values that makes the usual analysis based upon means and 
-standard deviations less reliable.
-
-
-
-A first interesting feature of the figure  \ref{fig:typical_mass_velocity} 
-is the median mass for each region. In the case of the T-web, although 
-dispersions of the distribution of mass for each environment are 
-considerably overlapped each other, the median value is very 
-well-differentiated among types of environment, indicating that it is 
-possible to assign typical values of mass to each region, and being 
-consistent with expectations, where low mass halos are typical in voids 
-and higher mass halos in knots. For the case of the V-web scheme, all
-medians and dispersions are completely overlapped, indicating that it is 
-not possible to assign typical mass ranges to each environment as 
-quantified by this scheme. For peculiar velocities, this situation is 
-opposite, where V-web scheme is much more adequate to assign typical 
-distributions of velocity to each environment. Although T-web also makes 
-a differentiation in the distributions of velocity, this is very slight 
-compared with the V-web case. These results can be explained by appealing 
-the physical origin of each web scheme. As T-web is based upon the Hessian 
-matrix of the potential field, it is expected all quantities related to 
-the potential, like density field and distribution of halos mass, are 
-well-differentiated among each region, while the V-web scheme, based upon 
-the shear velocity tensor, all dynamical quantities, as the peculiar 
-velocity field and the distribution of the velocity of halos are also 
-expected to be well-differentiated among regions as quantified by this 
-scheme.
-
-
-
-Finally, we also calculate typical distributions of the density and 
-peculiar velocity fields in each type of environment by using all cells of
-the simulation grid instead of dark matter halos, obtaining completely
-analogous results. Furthermore, we also use a BDM catalogue for the dark
-matter halos, obtaining very similar results.
-
-
 
 %*************************************************************************
 \section{Finding bulk voids}
@@ -328,7 +259,7 @@ $\lambda_3\leq\lambda_2\leq\lambda_1\leq\lambda_{th}$. This implies that
 the boundaries of void regions are controlled completely by the $\lambda_1$
 eigenvalue of the web scheme and the threshold value. Therefore, as we 
 increase the threshold value $\lambda_{th}$, all voids grow up 
-progressively through contours of the $\lambda_3$ field until certain 
+progressively through contours of the $\lambda_1$ field until certain 
 critical value where they are so large that the visual impression is no 
 longer reproduced. Our objective here is to find a reliable quantity that 
 allows to trace the geometry of void regions as classified by each web 
@@ -407,8 +338,8 @@ such that they do not merge significantly each other.
 
 
 Once has been determined the reliability of the FA index for tracing 
-different properties of voids, our novel proposal here is rather using the 
-FA field for classifying void regions. As was concluded in the previous 
+the geometry of voids, our novel proposal here is rather using the FA 
+field for classifying void regions. As was concluded in the previous 
 subsection, the geometry of voids is completely traced by contours of the
 FA field, where central parts of voids and high density knot regions 
 exhibit particularly low values of the FA index. Therefore, through a 
@@ -416,6 +347,8 @@ watershed transform all voids are classified, where each single void
 region corresponds to the basin of a local minimum of the FA field, where
 those local minimums are restricted to be embedded into a type-void cell
 in order to avoid degeneracy with knots.
+
+
 
 
 %*************************************************************************
@@ -563,39 +496,7 @@ to fit the numerical density profiles of our voids.
 \bibliography{references} 
 
 %.........................................................................
-%FIGURE 1: Typical mass and pecular velocity
-\begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/halos_typical_mass_FOF_Tweb.pdf}
-  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/halos_typical_mass_FOF_Vweb.pdf}  
-  
-  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/halos_typical_velocity_FOF_Tweb.pdf}
-  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/halos_typical_velocity_FOF_Vweb.pdf}  
-  
-  \captionof{figure}{\small Distribution of masses of dark matter halos
-  according the region where they are embedded for both web schemes 
-  (upper panels) and of peculiar velocity (lower panels). It can be 
-  noticed that the T-web scheme selects different mass ranges according
-  to the environment, while the V-web scheme is better selecting ranges
-  of peculiar velocity of the dark matter halos. This can be understood
-  taking into account the physical origin of each web scheme.}
-
-  \label{fig:typical_mass_velocity}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
-
-
-%.........................................................................
-%FIGURE 2: FA and vissual impression
+%FIGURE 1: FA and vissual impression
 \begin{flushleft}
 \begin{figure*}
 \centering
@@ -629,7 +530,7 @@ to fit the numerical density profiles of our voids.
 
 
 %.........................................................................
-%FIGURE 3: Distributions of FA and density regarding the Lambda_1 eigenvalue
+%FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
 \begin{flushleft}
 \begin{figure*}
 \centering
