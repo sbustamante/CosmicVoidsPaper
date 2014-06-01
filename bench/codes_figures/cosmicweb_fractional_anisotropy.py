@@ -1,7 +1,7 @@
 #cosmicweb_fractional_anisotropy.py
 #
 #This code perform a graphic scheme of the visual impresion for a defined cutting off of Bolshoi
-#simulation, using the density field and FA is shown how is the behaviour of voids
+#simulation, using the FA, it is shown how is the behaviour of voids found through web schemes.
 #Usage cosmicweb_fractional_anisotropy.py <Vweb or Tweb> <catalogue, BDM or FOF> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
@@ -13,8 +13,6 @@ execfile('_Head.py')
 #==================================================================================================
 #Simulation
 simulation = "BOLSHOI/"
-#Labels of graphs
-labels = "BOLSHOI"
 #Box lenght
 Box_L = 250
 #Number of sections
@@ -78,34 +76,32 @@ eig_filename = '%s%s%s/%d/Eigen%s'%(foldglobal,simulation,web,N_sec,smooth)
 GH = np.loadtxt('%s%sC_GH_%s.dat'%(foldglobal,simulation,catalog))
 #Catalogueof voids
 voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_index.dat"%\
-(foldglobal, simulation, web, N_sec, void_scheme, lambda_void ), Cut, 'plain', Coor = axe )
-
-#Current label simulation
-label = labels
-    
+(foldglobal, simulation, web, N_sec, void_scheme, lambda_void ), Cut, 'plain', Coor = axe )    
 #Loading Fields
 delta = CutFieldZ( delta_filename, Cut, 32, Coor = axe )
 eig1 = CutFieldZ( eig_filename+"_1", Cut, 16, Coor = axe )
 eig2 = CutFieldZ( eig_filename+"_2", Cut, 16, Coor = axe )
 eig3 = CutFieldZ( eig_filename+"_3", Cut, 16, Coor = axe )
 
-#Visual impression
-plt.subplot( 1, 3, 1 )
-Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
-plt.plot( Coor[0], Coor[1], '.', color = 'blue', markersize = 2 )
-plt.imshow( -np.transpose(Scheme( eig1, eig2, eig3, Lambda_opt )[::,::-1]), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
-plt.title( "Vissual impresion for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
-plt.yticks( (),() )
-plt.xticks( (0,Box_L) )
-plt.xlabel( "[$h^{-1}$ Mpc]" )
 
 #FA field
-plt.subplot( 1, 3, 2 )
+plt.subplot( 1, 3, 1 )
 plt.imshow( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )[::,::-1]), extent = extent, cmap = "binary" )
 plt.contour( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )), levels=[0.95], extent = extent, \
 colors="red", alpha=0.5, linewidths=0.6 )
 #plt.imshow( Scheme( eig1, eig2, eig3, 0.0 )[::-1,], extent = extent, vmin=0, vmax=0.5, cmap = cmap2, origin='lower' )
-plt.title( "Fractional\nAnisotropy" )
+plt.title( "Fractional Anisotropy (%s)"%web )
+plt.yticks( (),() )
+plt.xticks( (0,Box_L) )
+plt.xlabel( "[$h^{-1}$ Mpc]" )
+
+
+#Visual impression
+plt.subplot( 1, 3, 2 )
+Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
+plt.plot( Coor[0], Coor[1], '.', color = 'blue', markersize = 2 )
+plt.imshow( -np.transpose(Scheme( eig1, eig2, eig3, Lambda_opt )[::,::-1]), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
+plt.title( "Vissual impresion for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
 plt.xlabel( "[$h^{-1}$ Mpc]" )
