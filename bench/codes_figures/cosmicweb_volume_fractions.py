@@ -1,8 +1,7 @@
 #cosmicweb_volume_fraction.py
 #
-#This code perform a graphic scheme of the visual impresion for a defined cutting off of Bolshoi
-#simulation, using the FA, it is shown how is the behaviour of voids found through web schemes.
-#Usage cosmicweb_fractional_anisotropy.py <Vweb or Tweb> <catalogue, BDM or FOF> <show(0) or save(1)>
+#This code computes the volume fraction for both web schemes for some L_th values
+#Usage cosmicweb_volume_fraction.py <Vweb or Tweb> <catalogue, BDM or FOF> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
