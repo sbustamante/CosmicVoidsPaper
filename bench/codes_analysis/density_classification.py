@@ -18,7 +18,7 @@ N_sec = 256
 #Smooth parameter
 smooth = '_s1'
 #N delta
-N_delta = 300
+N_delta = 100000
 
 #==================================================================================================
 #			CONSTRUCTING MEDIANS OF DENSITY REGARDING LAMBDA_1
@@ -32,6 +32,11 @@ delta_filename = '%s%sTweb/%d/Delta%s'%(foldglobal,simulation,N_sec,smooth)
 os.system( "./Density_Classification.out %s %d"%( delta_filename, N_delta ) )
 datos = np.loadtxt( "temp.tmp" )
 
-plt.loglog( datos[:,0]+1, datos[:,1]/(N_sec**3), "-" )
+plt.semilogx( datos[:,0]+1, np.cumsum(datos[:,1])/(N_sec**3), "-" )
+
+plt.hlines( 0.5097, 1e-3, 1e3 ) #Voids
+plt.hlines( 0.8735, 1e-3, 1e3 ) #Sheets
+plt.hlines( 0.9902, 1e-3, 1e3 ) #Filaments
+
 plt.grid()
 plt.show()
