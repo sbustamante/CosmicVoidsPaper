@@ -28,6 +28,8 @@ compile:
 		@echo -e
 		$(COMPILER) Central_Voids_Properties.c -lm -o Central_Voids_Properties.out
 		@echo -e
+		$(COMPILER) Density_Classification.c -lm -o Density_Classification.out
+		@echo -e
 
 clean:
 		rm -f *.out

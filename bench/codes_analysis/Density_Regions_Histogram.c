@@ -4,7 +4,7 @@
 #define FLOAT2 double
 #define NMAX 5000
 
-//USAGE  Void_Regions_Histogram.out <EIG_Filename> <DELTA_Filename> <Min_Lambda> <Max_Lambda> <N_Lambda> 
+//USAGE  Density_Regions_Histogram.out <EIG_Filename> <DELTA_Filename> <Min_Lambda> <Max_Lambda> <N_Lambda> 
 //		<Min_Delta> <Max_Delta> <N_Hist> <Folder> <Kind of environment (0-voids, 1-sheets, 2-filaments, 3-knots)>
 
 int main(int argc, char **argv)
