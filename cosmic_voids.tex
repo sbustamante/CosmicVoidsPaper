@@ -496,40 +496,33 @@ to fit the numerical density profiles of our voids.
 \bibliography{references} 
 
 %.........................................................................
-%FIGURE 1: FA and vissual impression
+%Table of sizes of each sample defined in Bolshoi
+\begin{table}[h]
 \begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 16mm 10mm 5mm 8mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_FA_Tweb.pdf}
-  \includegraphics[trim = 16mm 10mm 5mm 8mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_FA_Vweb.pdf}  
+\begin{center}
+  \begin{tabular}{l  r  r  r r} \hline\hline
+	\textbf{Volume}					&				&\textbf{Scheme}& \\
+	\textbf{Fraction}				&\textbf{T-web}	&\textbf{V-web}	&	\textbf{Density}  &  $\bf{\rho_{th}}$  \\ \hline
+	Voids							&	$54.88\%$	&	$47.06\%$	&	$50.97\%$	&	$ -0.57$			\\ 
+	Sheets							&	$33.21\%$	&	$39.54\%$	&	$36.38\%$ 	&	$0.60$				\\
+	Filaments						&	$11.16\%$	&	$12.18\%$	&	$11.67\%$ 	&	$8.82$				\\
+	Knots							&	$0.75\%$	&	$1.22\%$	&	$0.98\%$  	&	--		\\ \hline\hline
+  \end{tabular}  
+  \captionof{table}{\small Size of each sample defined in the Bolshoi 
+  simulation and for each of the two schemes used to detect halos (FOF 
+  and BDM).}
   
-  \captionof{figure}{\small In left panels is shown the visual impression 
-  of the cosmic web for each web scheme (T-web, upper panels. V-web, lower 
-  panels) obtained for $\lambda_{th}=0.0$. It can be seen each one of the 
-  defined types of environment, where voids corresponds to white zones, 
-  sheets to gray, filaments to dark gray and finally knots to black regions. 
-  In the right panels is shown the fractional anisotropy field for the same 
-  slide of the simulation and for each web schemes, where black regions 
-  correspond to FA$=1$ and white regions to FA$=0$. It can be noticed the 
-  degeneration of low values of FA for knots and central regions of voids, 
-  while high values of FA (FA $\lesssim 1$) are consistent with filaments 
-  and highly planar sheets. Thin dark red curves correspond to contours of
-  $FA=0.95$, which is approximately the transitional FA between voids and
-  other cosmological regions.}
-
-  \label{fig:FA_field}
-  \vspace{0.1 cm}
-
-\end{figure*}
+  \label{tab:Samples_Size}
+  
+\end{center}
 \end{flushleft}
+\end{table}
 %.........................................................................
 
 
+
 %.........................................................................
-%FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
+%FIGURE 1: Distributions of FA and density regarding the Lambda_1 eigenvalue
 \begin{flushleft}
 \begin{figure*}
 \centering
@@ -554,6 +547,68 @@ to fit the numerical density profiles of our voids.
 \end{flushleft}
 %.........................................................................
 
+
+
+%.........................................................................
+%FIGURE 1: Distributions of FA and density regarding the Lambda_1 eigenvalue
+\begin{flushleft}
+\begin{figure*}
+\centering
+
+  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/cosmicweb_volume_Tweb.pdf}
+  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/cosmicweb_volume_Vweb.pdf}  
+  
+  \captionof{figure}{\small In this figure is shown the distribution of the
+  fractional anisotropy (left panel) and density field (right panel) with 
+  respect to the eigenvalue $\lambda_1$ for each web scheme (T-web, red 
+  lines. V-web, blue lines) as calculated over all the cells of the grid.
+  Thick central lines correspond to the median of the distribution and 
+  coloured regions to the $50\%$ of the cells, delimited by quartiles 
+  $Q_1$ and $Q_3$.}
+
+  \label{fig:L1_correlations}
+  \vspace{0.1 cm}
+
+\end{figure*}
+\end{flushleft}
+%.........................................................................
+
+
+%.........................................................................
+%FIGURE 3: FA and vissual impression
+\begin{flushleft}
+\begin{figure*}
+\centering
+
+  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
+  width=0.73\textheight]{./figures/cosmicweb_FA_Tweb.pdf}
+  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
+  width=0.73\textheight]{./figures/cosmicweb_FA_Vweb.pdf}
+  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
+  width=0.73\textheight]{./figures/cosmicweb_density.pdf}
+  
+  \captionof{figure}{\small In left panels is shown the visual impression 
+  of the cosmic web for each web scheme (T-web, upper panels. V-web, lower 
+  panels) obtained for $\lambda_{th}=0.0$. It can be seen each one of the 
+  defined types of environment, where voids corresponds to white zones, 
+  sheets to gray, filaments to dark gray and finally knots to black regions. 
+  In the right panels is shown the fractional anisotropy field for the same 
+  slide of the simulation and for each web schemes, where black regions 
+  correspond to FA$=1$ and white regions to FA$=0$. It can be noticed the 
+  degeneration of low values of FA for knots and central regions of voids, 
+  while high values of FA (FA $\lesssim 1$) are consistent with filaments 
+  and highly planar sheets. Thin dark red curves correspond to contours of
+  $FA=0.95$, which is approximately the transitional FA between voids and
+  other cosmological regions.}
+
+  \label{fig:FA_field}
+  \vspace{0.1 cm}
+
+\end{figure*}
+\end{flushleft}
+%.........................................................................
 
 
 \end{document}
