@@ -27,7 +27,7 @@ catalog = sys.argv[2]
 
 #Void catalogue
 void_scheme = "FAG"
-#Void lambda_th
+#Void parameter (For FAG scheme, it corresponds to the number of iterations for the median filtering)
 lambda_void = 0.0
 
 #Values to evaluate lambda_th
