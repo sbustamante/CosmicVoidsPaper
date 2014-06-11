@@ -75,7 +75,7 @@ delta_filename = '%s%sTweb/%d/Delta%s'%(foldglobal,simulation,N_sec,smooth)
 eig_filename = '%s%s%s/%d/Eigen%s'%(foldglobal,simulation,web,N_sec,smooth)
 #Loading general catalog of halos
 GH = np.loadtxt('%s%sC_GH_%s.dat'%(foldglobal,simulation,catalog))
-#Catalogueof voids
+#Catalogue of voids
 voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_index.dat"%\
 (foldglobal, simulation, web, N_sec, void_scheme, lambda_void ), Cut, 'plain', Coor = axe )    
 #Loading Fields

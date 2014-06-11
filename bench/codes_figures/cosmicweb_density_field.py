@@ -23,8 +23,8 @@ N_sec = 256
 catalog = sys.argv[1]
 
 #Void catalogue
-void_scheme = "FAG"
-#Void lambda_th
+void_scheme = "DLG"
+#Void parameter (For FAG and DLG schemes, it is the number of iterations for the median filtering)
 lambda_void = 0.0
 #Smooth parameter
 smooth = '_s1'
@@ -64,7 +64,7 @@ extent = [0, Box_L, 0, Box_L]
 delta_filename = '%s%sTweb/%d/Delta%s'%(foldglobal,simulation,N_sec,smooth)
 #Loading general catalog of halos
 GH = np.loadtxt('%s%sC_GH_%s.dat'%(foldglobal,simulation,catalog))
-#Catalogueof voids
+#Catalogue of voids
 voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_index.dat"%\
 (foldglobal, simulation, "Tweb", N_sec, void_scheme, lambda_void ), Cut, 'plain', Coor = axe )
 #Loading Fields
