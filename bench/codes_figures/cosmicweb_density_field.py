@@ -25,7 +25,7 @@ catalog = sys.argv[1]
 #Void catalogue
 void_scheme = "DLG"
 #Void parameter (For FAG and DLG schemes, it is the number of iterations for the median filtering)
-lambda_void = 0.0
+lambda_void = 1.0
 #Smooth parameter
 smooth = '_s1'
 #Coordinate to cut (1 -- X, 2 -- Y, 3 -- Z)

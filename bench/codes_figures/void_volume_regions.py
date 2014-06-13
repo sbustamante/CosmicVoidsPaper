@@ -2,7 +2,7 @@
 #
 #This code calculate an histogram of volumes for every found void region for the some numbers of 
 #iteration for median filtering proccess
-#Usage void_volume_regions.py <show(0) or save(1)>
+#Usage void_volume_regions.py <normal(0) or cumulative(1)> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
@@ -16,16 +16,16 @@ simulation = "BOLSHOI/"
 #Number of sections
 N_sec = 256
 #Web Scheme
-webs = ['Tweb', 'Vweb'] 
-#Void finder scheme (FAG or DNG)
+webs = ['Tweb', 'Vweb', 'DLG'] 
+#Void finder scheme (FAG or FOF)
 void_scheme = 'FAG'
 #Number of iterations for each web
-iterations = [ [0,1,3], [0,1,3] ]
+iterations = [ [0,1,2], [0,1,2], [0,1,2] ]
 
 #Linestyles
 linestyles = ["-","--","-."]
 #Colors
-colors = ["blue", "red"]
+colors = ["blue", "red", "black"]
 
 #==================================================================================================
 #			CONSTRUCTING REGIONS VOLUME
@@ -46,12 +46,26 @@ for web in webs:
     
     i_iter = 0
     for iter in iterations[i_web]:
-	void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
-	(foldglobal, simulation, web, N_sec, void_scheme, iter )))
+	#DENSITY WATERSHED TRANSFORM
+	if web == 'DLG':
+	    void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
+	    (foldglobal, simulation, "Tweb", N_sec, web, iter )))
+	#FA WATERSHED TRANSFORM    
+	else:
+	    void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
+	    (foldglobal, simulation, web, N_sec, void_scheme, iter )))
 
 	hist1d = np.histogram( np.log10(void_regs[1]) , bins=20, normed=False )
 	
-	ax1.semilogy( hist1d[1][:-1], np.cumsum(hist1d[0][::-1])[::-1], linewidth = 1.5, linestyle = linestyles[i_iter],\
+	#Normal distribution
+	if sys.argv[1] == '0':
+	    distro = hist1d[0]
+	#Cumulative distribution
+	else:
+	    distro = np.cumsum(hist1d[0][::-1])[::-1]
+	    
+	#Plot
+	ax1.semilogy( hist1d[1][:-1], distro, linewidth = 1.5, linestyle = linestyles[i_iter],\
 	color = colors[i_web], label = "%s (%d)"%(web, iter))
       
 	i_iter += 1
@@ -63,7 +77,7 @@ for web in webs:
 ax1.grid()
 ax1.set_ylabel( "Number of voids" )
 ax1.set_xlabel( "Comoving volume $\log_{10}[ (0.98$ Mpc $h^{-1} )^{-3} ]$" )
-ax1.legend( fancybox = True, shadow = True, loc = 'lower left', ncol = 2, fontsize = 10 )
+ax1.legend( fancybox = True, shadow = True, loc = 'lower left', ncol = 3, fontsize = 9 )
 #ax1.set_ylim( (0,1e4) )
 
 #Axe 2
@@ -74,7 +88,7 @@ for tick in tick_locations:
 ax2.set_xticklabels( tick_label )
 ax2.set_xlabel( "Effective comoving radius Mpc $h^{-1}$" )
 
-if sys.argv[1] == '1':
+if sys.argv[2] == '1':
     plt.savefig( '%svoids_regions_volume.pdf'%(figures_fold) )
 else:
     plt.show()
