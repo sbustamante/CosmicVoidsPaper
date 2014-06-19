@@ -41,7 +41,7 @@ for web in webs:
     plt.plot( quartiles[:,0], quartiles[:,2], color = colors[i_web], linewidth = 3, label = web )
 
     plt.grid(1)
-    plt.ylabel( '$\\rho$', fontsize = 12 )
+    plt.ylabel( '$\delta$', fontsize = 12 )
     plt.xlabel( '$\lambda_{1}$', fontsize = 12)
     plt.xlim( (-0.2,2) )
     plt.ylim( (-1,0.5) )
