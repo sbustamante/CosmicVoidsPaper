@@ -17,10 +17,11 @@ simulation = "BOLSHOI/"
 N_sec = 256
 #Web Scheme
 webs = ['Tweb', 'Vweb', 'DLG'] 
+webs = ['Tweb', 'Vweb'] 
 #Void finder scheme (FAG or FOF)
 void_scheme = 'FAG'
-#Number of iterations for each web
-iterations = [ [0,1,2], [0,1,2], [0,1,2] ]
+#Schemes used for each web
+schemes = [ ["01","11","21"], ["01","11","21"], ["00","10","20"] ]
 
 #Linestyles
 linestyles = ["-","--","-."]
@@ -45,14 +46,14 @@ for web in webs:
     print simulation, web
     
     i_iter = 0
-    for iter in iterations[i_web]:
+    for iter in schemes[i_web]:
 	#DENSITY WATERSHED TRANSFORM
 	if web == 'DLG':
-	    void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
+	    void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%\
 	    (foldglobal, simulation, "Tweb", N_sec, web, iter )))
 	#FA WATERSHED TRANSFORM    
 	else:
-	    void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
+	    void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%\
 	    (foldglobal, simulation, web, N_sec, void_scheme, iter )))
 
 	hist1d = np.histogram( np.log10(void_regs[1]) , bins=20, normed=False )
@@ -66,7 +67,7 @@ for web in webs:
 	    
 	#Plot
 	ax1.semilogy( hist1d[1][:-1], distro, linewidth = 1.5, linestyle = linestyles[i_iter],\
-	color = colors[i_web], label = "%s (%d)"%(web, iter))
+	color = colors[i_web], label = "%s (%s)"%(web, iter))
       
 	i_iter += 1
 	
@@ -77,7 +78,7 @@ for web in webs:
 ax1.grid()
 ax1.set_ylabel( "Number of voids" )
 ax1.set_xlabel( "Comoving volume $\log_{10}[ (0.98$ Mpc $h^{-1} )^{-3} ]$" )
-ax1.legend( fancybox = True, shadow = True, loc = 'lower left', ncol = 3, fontsize = 9 )
+ax1.legend( fancybox = True, shadow = True, loc = 'lower left', ncol = len(webs), fontsize = 9 )
 #ax1.set_ylim( (0,1e4) )
 
 #Axe 2

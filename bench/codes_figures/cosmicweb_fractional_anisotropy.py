@@ -4,6 +4,7 @@
 #This code perform a graphic scheme of the visual impresion for a defined cutting off of Bolshoi
 #simulation, using the FA, it is shown how is the behaviour of voids found through web schemes.
 #Usage cosmicweb_fractional_anisotropy.py <Vweb or Tweb> <catalogue, BDM or FOF> <show(0) or save(1)>
+#					  <format (png, pdf)>
 #
 #by: Sebastian Bustamante
 
@@ -27,8 +28,8 @@ catalog = sys.argv[2]
 
 #Void catalogue
 void_scheme = "FAG"
-#Void parameter (For FAG scheme, it corresponds to the number of iterations for the median filtering)
-lambda_void = 0.0
+#Void parameters ( Nth-order median filtering,  Boolean for boundary removals )
+config = "21"
 
 #Values to evaluate lambda_th
 if web == 'Tweb':
@@ -76,8 +77,8 @@ eig_filename = '%s%s%s/%d/Eigen%s'%(foldglobal,simulation,web,N_sec,smooth)
 #Loading general catalog of halos
 GH = np.loadtxt('%s%sC_GH_%s.dat'%(foldglobal,simulation,catalog))
 #Catalogue of voids
-voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_index.dat"%\
-(foldglobal, simulation, web, N_sec, void_scheme, lambda_void ), Cut, 'plain', Coor = axe )    
+voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%s/void_index.dat"%\
+(foldglobal, simulation, web, N_sec, void_scheme, config ), Cut, 'plain', Coor = axe )    
 #Loading Fields
 delta = CutFieldZ( delta_filename, Cut, 32, Coor = axe )
 eig1 = CutFieldZ( eig_filename+"_1", Cut, 16, Coor = axe )
@@ -117,7 +118,7 @@ num_voids = np.max( voids )
 lista = np.array([-1000] + list(np.random.permutation( range(1,num_voids.astype(int)+1) )))
 #voids
 voids = lista[ voids.astype(int) ]
-plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', extent = extent, vmin = -1000, vmax = num_voids+1)
+plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', extent = extent, vmin = -(num_voids)/20., vmax = num_voids+1)
 #interpolation='linear')
 plt.title( "Distribution of voids" )
 plt.yticks( (),() )
@@ -145,6 +146,9 @@ plt.ylim( (0,Box_L) )
 
 #plt.subplots_adjust(  )
 if sys.argv[3] == '1':
-    plt.savefig( '%scosmicweb_FA_%s.pdf'%(figures_fold, web ) )
+    if sys.argv[4] == 'png':
+	plt.savefig( '%scosmicweb_FA_%s.png'%(figures_fold, web ) )
+    else:
+	plt.savefig( '%scosmicweb_FA_%s.pdf'%(figures_fold, web ) )
 else:
     plt.show()
