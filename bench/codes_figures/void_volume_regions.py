@@ -32,12 +32,12 @@ colors = ["gray", "black"]
 #			CONSTRUCTING REGIONS VOLUME
 #==================================================================================================
 
-fig = plt.figure( figsize=(5*len(webs),5) )
-fig.subplots_adjust( top = 0.9, right = 0.98, left = 0.05, wspace = 0.11 )
+fig = plt.figure( figsize=(4.5*len(webs),4.5) )
+fig.subplots_adjust( top = 0.9, right = 0.98, left = 0.05, wspace = 0.05, bottom = 0.1 )
 ax1 = [fig.add_subplot(1,len(webs),i+1) for i in xrange(len(webs))]
 ax2 = [ax1[i].twiny() for i in xrange(len(webs))]
 
-tick_locations = np.array( [0,1,2,3,4,5,6] )
+tick_locations = np.linspace(0,4,5)
 #Function to build the second axe
 def tick_function(X):
     return ((10**X*(0.9765625)**3)/( 4*np.pi/3. ))**(1/3.)
@@ -67,8 +67,8 @@ for web in webs:
 	    distro = np.cumsum(hist1d[0][::-1])[::-1]
 	    
 	#Plot
-	ax1[i_web].semilogy( hist1d[1][:-1], distro, linewidth = 1.5, linestyle = linestyles[i_iter],\
-	color = colors[i_iter%2], label = "%s (%s)"%(web, iter))
+	ax1[i_web].semilogy( hist1d[1][:-1], distro, linewidth = 2.0, linestyle = linestyles[i_iter],\
+	color = colors[i_iter%2], label = "%s (%s)"%(web, iter) )
       
 	i_iter += 1
 	
@@ -79,7 +79,9 @@ for i in range(len(webs)):
     #Axe 1
     ax1[i].grid()
     ax1[i].text( 0.1, 10**3.8, labels[i], fontsize = 12, fontweight = "bold" )
+    ax1[i].set_xticks( np.linspace(0,5,6) )
     ax1[i].set_xlim( (0,4.5) )
+    
     if i == 0:
 	ax1[i].set_ylabel( "Number of voids" )
     else:
@@ -90,10 +92,11 @@ for i in range(len(webs)):
 	#ax1[i].legend( fancybox = True, shadow = True, loc = 'lower left', ncol = len(webs), fontsize = 9 )
 
     #Axe 2
+    ax2[i].set_xlim( (0,4.5) )
     ax2[i].set_xticks( tick_locations )
     tick_label = []
     for tick in tick_locations:
-	tick_label.append( "%1.0f"%np.ceil(tick_function(tick)) )
+	tick_label.append( "%1.1f"%tick_function(tick) )
     ax2[i].set_xticklabels( tick_label )
     if i == 1:
 	ax2[i].set_xlabel( "Effective comoving radius Mpc $h^{-1}$" )
