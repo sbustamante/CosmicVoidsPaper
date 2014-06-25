@@ -18,9 +18,9 @@ neighbours.
 
 The three schemes are:
 
--	density: void finder through a watershed transform of the density field
--	FA-Tweb: void finder based on the watershed transform of the FA field as calculated from Tweb eigenvalues
--	FA-Vweb: void finder based on the watershed transform of the FA field as calculated from Vweb eigenvalues
+-	**density:** void finder through a watershed transform of the density field
+-	**FA-Tweb:** void finder based on the watershed transform of the FA field as calculated from Tweb eigenvalues
+-	**FA-Vweb:** void finder based on the watershed transform of the FA field as calculated from Vweb eigenvalues
 
 Furthermore, for each scheme it is performed a median filtering in order to
 reduce short noise. The first number refers to the order or the median filtering
