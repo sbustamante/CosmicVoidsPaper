@@ -29,7 +29,7 @@ catalog = sys.argv[2]
 #Void catalogue
 void_scheme = "FAG"
 #Void parameters ( Nth-order median filtering,  Boolean for boundary removals )
-config = "21"
+config = "141"
 
 #Values to evaluate lambda_th
 if web == 'Tweb':

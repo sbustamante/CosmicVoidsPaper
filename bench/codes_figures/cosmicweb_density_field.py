@@ -25,7 +25,7 @@ catalog = sys.argv[1]
 #Void catalogue
 void_scheme = "DLG"
 #Void parameters ( Nth-order median filtering,  Boolean for boundary removals )
-config = "21"
+config = "51"
 #Smooth parameter
 smooth = '_s1'
 #Coordinate to cut (1 -- X, 2 -- Y, 3 -- Z)
@@ -104,7 +104,7 @@ num_voids = np.max( voids )
 lista = np.array([-1000] + list(np.random.permutation( range(1,num_voids.astype(int)+1) )))
 #voids
 voids = lista[ voids.astype(int) ]
-plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', extent = extent, vmin = -1000, vmax = num_voids+1)
+plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', extent = extent, vmin = -num_voids/20., vmax = num_voids+1)
 #interpolation='linear')
 plt.title( "Distribution of voids" )
 plt.yticks( (),() )

@@ -1,8 +1,8 @@
-#void_volume_regions.py
+#void_percolation_analysis.py
 #
-#This code calculate an histogram of volumes for every found void region for the some numbers of 
-#iteration for median filtering proccess
-#Usage void_volume_regions.py <normal(0) or cumulative(1)> <show(0) or save(1)>
+#This code calculate an percolation analysis of the three void finder schemes with respecto to the
+#nth-order median filtering
+#Usage void_percolation_analysis.py <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
