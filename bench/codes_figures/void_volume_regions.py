@@ -21,7 +21,8 @@ labels = ['FA-Tweb', 'FA-Vweb', 'Density']
 #Void finder scheme (FAG or FOF)
 void_scheme = 'FAG'
 #Schemes used for each web
-schemes = [ ["00","01","10","11","21","150"], ["00","01","10","11","21","101"], ["00","01","10","11","21","51",] ]
+schemes = [ ["00","01","10","11","20","21"], ["00","01","10","11","40","41"], ["00","01","10","11","50","51",] ]
+
 
 #Linestyles
 linestyles = [":",":","--","--","-","-"]
