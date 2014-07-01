@@ -25,7 +25,7 @@ catalog = sys.argv[1]
 #Void catalogue
 void_scheme = "DLG"
 #Void parameters ( Nth-order median filtering,  Boolean for boundary removals )
-config = "151"
+config = "51"
 #Smooth parameter
 smooth = '_s1'
 #Coordinate to cut (1 -- X, 2 -- Y, 3 -- Z)

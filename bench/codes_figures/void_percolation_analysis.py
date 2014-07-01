@@ -16,14 +16,14 @@ simulation = "BOLSHOI/"
 #Number of sections
 N_sec = 256
 #Web Scheme
-webs = ['Vweb', 'Tweb', 'Tweb'] 
-labels = ['FA-Vweb', 'FA-Tweb', 'Density']
+webs = ['Tweb', 'Vweb', 'Tweb'] 
+labels = ['FA-Tweb', 'FA-Vweb', 'Density']
 #Void finder schemes
 void_schemes = ['FAG','FAG','DLG']
 #Order of median filtering
 Nfilter = 15
 #Minim volum to consider a void
-VOL = 20
+VOL = 0
 
 #Colors
 colors = ["green", "blue", "red"]
@@ -69,8 +69,8 @@ for web in webs:
     VoidsMedian1 = np.array( VoidsMedian1 )
 	
     plt.subplot(121)
-    plt.semilogy( VoidsNumber0, color = colors[i_web], linestyle = "--", linewidth = 2 )
-    plt.semilogy( VoidsNumber1, color = colors[i_web], linestyle = "-", linewidth = 2 )
+    plt.plot( VoidsNumber0/10000., color = colors[i_web], linestyle = "--", linewidth = 2 )
+    plt.plot( VoidsNumber1/10000., color = colors[i_web], linestyle = "-", linewidth = 2 )
     
     plt.subplot(122)
     plt.plot( VoidsVolume0/10000., color = colors[i_web], linestyle = "--", linewidth = 2 )
@@ -92,6 +92,6 @@ plt.grid()
 
 
 if sys.argv[1] == '1':
-    plt.savefig( '%svoids_regions_volume.pdf'%(figures_fold) )
+    plt.savefig( '%svoids_percolation_analysis.pdf'%(figures_fold) )
 else:
     plt.show()
