@@ -85,7 +85,7 @@ for i in range(1):
     for tick in tick_locations:
 	tick_label.append( "%1.1f"%tick_function(tick) )
     ax2[i].set_xticklabels( tick_label )
-    ax2[i].set_xlabel( "Effective radius Mpc $h^{-1}$" )
+    ax2[i].set_xlabel( "Effective radius [Mpc $h^{-1}$]" )
 
 if sys.argv[2] == '1':
     plt.savefig( '%svoids_regions_volume_all.pdf'%(figures_fold) )

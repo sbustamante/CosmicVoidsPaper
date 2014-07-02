@@ -32,6 +32,12 @@ colors = ["green", "blue", "red"]
 #			CONSTRUCTING FIGURE
 #==================================================================================================
 
+plt.figure( figsize = (10,5) )
+plt.subplots_adjust( left = 0.06, right = 0.98, top = 0.94, bottom = 0.1 )
+#Function to build equivalent radius
+def tick_function(X):
+    return ((10**X*(0.9765625)**3)/( 4*np.pi/3. ))**(1/3.)
+
 i_web = 0
 for web in webs:
     print simulation, web
@@ -73,8 +79,8 @@ for web in webs:
     plt.plot( VoidsNumber1/10000., color = colors[i_web], linestyle = "-", linewidth = 2 )
     
     plt.subplot(122)
-    plt.plot( VoidsVolume0/10000., color = colors[i_web], linestyle = "--", linewidth = 2 )
-    plt.plot( VoidsVolume1/10000., color = colors[i_web], linestyle = "-", linewidth = 2, label = labels[i_web] )
+    plt.plot( VoidsVolume0, color = colors[i_web], linestyle = "--", linewidth = 2 )
+    plt.plot( VoidsVolume1, color = colors[i_web], linestyle = "-", linewidth = 2, label = labels[i_web] )
     
     #plt.plot( VoidsMedian0/10000., color = colors[i_web], linestyle = "--", linewidth = 2 )
     #plt.plot( VoidsMedian1/10000., color = colors[i_web], linestyle = "-", linewidth = 2, label = labels[i_web] )
@@ -85,11 +91,17 @@ for web in webs:
 #Formating figures
 plt.subplot(121)
 plt.grid()
+plt.xlabel( "Order of Median Filtering ($n\ th$-MF)" )
+plt.ylabel( "Number of voids $[\\times 10^4]$" )
+plt.title( "Number of voids" )
 
 plt.subplot(122)
 plt.legend( loc='upper left', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
 plt.grid()
-
+plt.xlabel( "Order of Median Filtering ($n\ th$-MF)" )
+plt.ylabel( "Effective radius [Mpc $h^{-1}$]" )
+plt.yticks( arange(0,160000,20000), ["%1.0f"%(tick_function(np.log10(v))) for v in arange(0,160000,20000) ] )
+plt.title( "Volume of the biggest void" )
 
 if sys.argv[1] == '1':
     plt.savefig( '%svoids_percolation_analysis.pdf'%(figures_fold) )
