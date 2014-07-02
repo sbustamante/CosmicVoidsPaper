@@ -29,7 +29,7 @@ catalog = sys.argv[2]
 #Void catalogue
 void_scheme = "FAG"
 #Void parameters ( Nth-order median filtering,  Boolean for boundary removals )
-config = "21"
+config = "31"
 
 #Values to evaluate lambda_th
 if web == 'Tweb':
@@ -89,8 +89,8 @@ eig3 = CutFieldZ( eig_filename+"_3", Cut, 16, Coor = axe )
 #FA field
 plt.subplot( 1, 3, 1 )
 plt.imshow( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )[::,::-1]), extent = extent, cmap = "binary" )
-plt.contour( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )), levels=[0.95], extent = extent, \
-colors="red", alpha=0.5, linewidths=0.6 )
+#plt.contour( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )), levels=[0.95], extent = extent, \
+#colors="red", alpha=0.5, linewidths=0.6 )
 #plt.imshow( Scheme( eig1, eig2, eig3, 0.0 )[::-1,], extent = extent, vmin=0, vmax=0.5, cmap = cmap2, origin='lower' )
 plt.title( "Fractional Anisotropy (%s)"%web )
 plt.yticks( (),() )
