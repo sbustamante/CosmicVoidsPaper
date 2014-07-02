@@ -90,7 +90,7 @@ for i in xrange(N_sec):
 
 #FA field
 plt.subplot( 1, 3, 1 )
-plt.imshow( np.transpose(np.log( delta + 1 )[::,::-1]), extent = extent, cmap = "binary" )
+plt.imshow( np.transpose(np.log( delta + 1 )[::,::-1]), extent = extent, cmap = "hot" )
 #plt.contour( np.transpose(delta), levels=[-0.57], extent = extent, linestyles="-",\
 #colors=[(0.8,0.0,0.0)], alpha=1.0, linewidths=0.6 )
 plt.title( "Density Field" )

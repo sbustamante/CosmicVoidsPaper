@@ -104,7 +104,7 @@ for i in xrange(N_sec):
 
 #FA field
 plt.subplot( 1, 3, 1 )
-plt.imshow( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )[::,::-1]), extent = extent, cmap = "binary" )
+plt.imshow( -np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )[::,::-1]), extent = extent, cmap = "hot" )
 #plt.contour( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )), levels=[0.95], extent = extent, \
 #colors="red", alpha=0.5, linewidths=0.6 )
 #plt.imshow( Scheme( eig1, eig2, eig3, 0.0 )[::-1,], extent = extent, vmin=0, vmax=0.5, cmap = cmap2, origin='lower' )
