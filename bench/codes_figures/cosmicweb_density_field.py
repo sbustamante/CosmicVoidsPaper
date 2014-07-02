@@ -3,7 +3,8 @@
 #This code perform a graphic scheme of the visual impresion for a defined cutting off of Bolshoi
 #simulation, using the density field it is performed a classification scheme of voids based upon
 #cuts of the density.
-#Usage cosmicweb_density_field.py <catalogue, BDM or FOF> <show(0) or save(1)> <format (png, pdf)>
+#Usage cosmicweb_density_field.py <catalogue, BDM or FOF> <order MF and BR> <show(0) or save(1)> 
+#				  <format (png, pdf)>
 #
 #by: Sebastian Bustamante
 
@@ -25,7 +26,7 @@ catalog = sys.argv[1]
 #Void catalogue
 void_scheme = "DLG"
 #Void parameters ( Nth-order median filtering,  Boolean for boundary removals )
-config = "51"
+config = sys.argv[2]
 #Smooth parameter
 smooth = '_s1'
 #Coordinate to cut (1 -- X, 2 -- Y, 3 -- Z)
@@ -40,7 +41,7 @@ my_cmapC = plt.cm.get_cmap('gray')
 my_cmap4 = plt.cm.get_cmap('gray', 4)
 
 from matplotlib.colors import colorConverter
-cmap2 = mpl.colors.LinearSegmentedColormap.from_list('my_cmap2',["black","white"],2)
+cmap2 = mpl.colors.LinearSegmentedColormap.from_list('my_cmap2',["white","black"],2)
 cmap2._init()
 alphas = np.ones( cmap2.N+3)
 alphas[0] = 0
@@ -69,7 +70,23 @@ voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%s/void_index.dat"%\
 (foldglobal, simulation, "Tweb", N_sec, void_scheme, config ), Cut, 'plain', Coor = axe )
 #Loading Fields
 delta = CutFieldZ( delta_filename, Cut, 32, Coor = axe )
-
+#Calculating contour of voids
+contours = np.zeros( (N_sec,N_sec) )
+#Sweeping matrix
+for i in xrange(N_sec):
+    for j in xrange(N_sec):
+	for ic in arange(-1,2):
+	    for jc in arange(-1,2):
+		#Indexes of neighbours
+		it = i + ic
+		jt = j + jc
+		if i + ic >= N_sec: it = 0
+		if i + ic < 0: it = N_sec-1
+		if j + jc >= N_sec: jt = 0
+		if j + jc < 0: jt = N_sec-1
+		#Marking contours
+		if( voids[i,j] != voids[it,jt] ):
+		    contours[i,j] = 1
 
 #FA field
 plt.subplot( 1, 3, 1 )
@@ -101,11 +118,13 @@ plt.xlabel( "[$h^{-1}$ Mpc]" )
 plt.subplot( 1, 3, 3 )
 #Voids basins
 num_voids = np.max( voids )
-lista = np.array([-1000] + list(np.random.permutation( range(1,num_voids.astype(int)+1) )))
+lista = np.array([nan] + list(np.random.permutation( range(1,num_voids.astype(int)+1) )))
 #voids
 voids = lista[ voids.astype(int) ]
-plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', extent = extent, vmin = -num_voids/20., vmax = num_voids+1)
-#interpolation='linear')
+plt.imshow( np.transpose(voids[::,::-1]), cmap = 'spectral', extent = extent, vmin = -num_voids/20., vmax = num_voids,\
+interpolation = 'none' )
+plt.imshow( np.transpose(contours[::,::-1]), cmap = cmap2, extent = extent, vmin = 0, vmax = 1 )
+
 plt.title( "Distribution of voids" )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
@@ -116,8 +135,8 @@ plt.ylim( (0,Box_L) )
 
 
 
-if sys.argv[2] == '1':
-    if sys.argv[3] == 'png':
+if sys.argv[3] == '1':
+    if sys.argv[4] == 'png':
 	plt.savefig( '%scosmicweb_density.png'%(figures_fold) )
     else:
 	plt.savefig( '%scosmicweb_density.pdf'%(figures_fold) )
