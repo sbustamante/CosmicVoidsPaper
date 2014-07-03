@@ -1,10 +1,10 @@
-#void_intertia_tensor.py
+#void_intertia_tensor.p
 #
 #This code computes distributions of the eigenvalues of the reduced intertia tensor of each void 
-#region found by the FOF scheme. The eigenvalues were sorted such as Lambda1 < Lambda2 < Lambda3.
+#region found by each void scheme. The eigenvalues were sorted such as Lambda1 < Lambda2 < Lambda3.
 #Here it will be calculated non-integrated and normed distributions of Lambda1/Lambda2 and 
 #Lambda1/Lambda3 in order to determinate the shape of void regions.
-#Usage void_intertia_tensor.py <Tweb or Vweb> <show(0) or save(1)>
+#Usage void_intertia_tensor.py <Vweb or Tweb> <FAG or DLG> <order MF and BR> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
@@ -21,10 +21,12 @@ N_sec = 256
 L_box = 250.
 #Web Scheme
 web = sys.argv[1]
-#Lambda_th
-Lambda_th = 0.0
-#Void finder scheme (FOF or LAY)
-void_scheme = 'FOF'
+#Void parameters ( Nth-order median filtering,  Boolean for boundary removals )
+config = sys.argv[3]
+#Void finder scheme
+void_scheme = sys.argv[2]
+#Cutt of respect to the number of cells
+N_cut = 8
 #Nbins of each histogram
 Nbins = 10
 
@@ -59,8 +61,8 @@ axHisty.yaxis.set_major_formatter(nullfmt)
 print simulation
 
 
-eigen = np.transpose(np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/eigen.dat"%\
-(foldglobal, simulation, web, N_sec, void_scheme, Lambda_th )))
+eigen = np.transpose(np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/eigen.dat"%\
+(foldglobal, simulation, web, N_sec, void_scheme, config )))
 
 Hist_lambd  = np.transpose(np.histogram2d( eigen[0]/eigen[1], eigen[1]/eigen[2], 
 bins = Nbins, normed = False, range = ((0,1),(0,1))  )[0][::,::-1])
@@ -133,7 +135,7 @@ fontsize=15, horizontalalignment="center" )
 axHist2D.text( 0.01, 0.01, "%s"%(web), fontweight="bold", color="black",\
 fontsize=15 )
 
-if sys.argv[2] == '1':
+if sys.argv[4] == '1':
     plt.savefig( '%svoids_inertia_tensor_%s.pdf'%(figures_fold,web) )
 else:
     plt.show()

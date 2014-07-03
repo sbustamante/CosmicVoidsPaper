@@ -1,8 +1,9 @@
 #void_intertia_tensor.py
 #
-#This code computes the reduced intertia tensor of each void region found by the FOF scheme. For 
+#This code computes the reduced intertia tensor of each void region found by each scheme. For 
 #each region is also computed the associated eigenvalues and the principal directions of inertia 
 #in order to quantify the shape of those regions.
+#Usage void_intertia_tensor.py <Vweb or Tweb> <FAG or DLG> <order MF and BR>
 #
 #by: Sebastian Bustamante
 
@@ -17,16 +18,14 @@ simulation = "BOLSHOI/"
 N_sec = 256
 #Box lenght [Mpc]
 L_box = 250.
-#Catalog Scheme
-catalog = 'FOF'
 #Web Scheme
-web = 'Vweb'
-#Lambda_th
-Lambda_th = 0.0
-#Void finder scheme (FOF or LAY)
-void_scheme = 'FOF'
+web = sys.argv[1]
+#Void parameters ( Nth-order median filtering,  Boolean for boundary removals )
+config = sys.argv[3]
+#Void finder scheme
+void_scheme = sys.argv[2]
 #Cutt of respect to the number of cells
-N_cut = 8
+N_cut = 10
 
 #==================================================================================================
 #			COMPUTING EIGENVALUES AND BUILDING THE INERTIA TENSOR
@@ -35,8 +34,8 @@ N_cut = 8
 print simulation
 
 #Loading the file with all the information about each region
-voids = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
-(foldglobal, simulation, web, N_sec, void_scheme, Lambda_th )))
+voids = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%\
+(foldglobal, simulation, web, N_sec, void_scheme, config )))
 
 #Calculating eigenvalues and principal directions of inertia
 Eigenvalues = []
@@ -47,8 +46,8 @@ for i_void in voids[0]:
     sys.stdout.flush()
 
     #Loading cells of the current region
-    region = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_%d.dat"%\
-    (foldglobal, simulation, web, N_sec, void_scheme, Lambda_th, int(i_void) )))
+    region = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/void_%d.dat"%\
+    (foldglobal, simulation, web, N_sec, void_scheme, config, int(i_void) )))
   
     #Cutt off respect to the number of cells
     N_data = len( region[0] )
@@ -110,7 +109,7 @@ for i_void in voids[0]:
 Eigenvalues = np.array( Eigenvalues )
 Eigenvector = np.array( Eigenvector )
 
-np.savetxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/eigen.dat"%\
-(foldglobal, simulation, web, N_sec, void_scheme, Lambda_th ),\
+np.savetxt( "%s/%s/%s/%d/voids%s/voids_%s/eigen.dat"%\
+(foldglobal, simulation, web, N_sec, void_scheme, config ),\
 np.transpose(np.concatenate( (Eigenvalues.T, Eigenvector.T) )),\
 fmt = "%1.5e\t%1.5e\t%1.5e\t%1.5e\t%1.5e\t%1.5e\t%1.5e\t%1.5e\t%1.5e\t%1.5e\t%1.5e\t%1.5e" )
