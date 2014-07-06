@@ -28,6 +28,8 @@ void_scheme = sys.argv[2]
 #Nbins of each histogram
 Nbins = 20
 Nbins2D = 10
+#Minim radius for a void
+rmin = 0
 
 prop1_hist = 5
 prop2_hist = 5
@@ -81,8 +83,9 @@ bins = Nbins2D, normed = False, range = ((0,1),(0,1))  )[0][::,::-1])
 #map2d = axHist2D.imshow( Hist_lambd[::,::], interpolation='nearest', aspect = 'auto',
 #cmap = 'binary', extent = (0,1,0,1) )	
 #Scatter
-scatter = axHist2D.scatter( eigen[0]/eigen[1], eigen[1]/eigen[2], 
-c = np.log10(r_eff(np.log10(catalog[1]))), s=50, marker='.',linewidth=0.01, cmap='jet' )
+reff = r_eff(np.log10(catalog[1]))
+scatter = axHist2D.scatter( eigen[0,reff>rmin]/eigen[1,reff>rmin], eigen[1,reff>rmin]/eigen[2,reff>rmin], 
+c = np.log10(reff[reff>rmin]), s=50, marker='.',linewidth=0.01, cmap='jet', vmin = 0.1, vmax = 1.2 )
 
 #Create the colorbar
 axc, kw = matplotlib.colorbar.make_axes( axHistx, orientation = "vertical", shrink=1., pad=.1, aspect=10 )

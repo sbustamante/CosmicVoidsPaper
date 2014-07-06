@@ -30,11 +30,11 @@ colors = ["green", "blue", "red"]
 #==================================================================================================
 
 fig = plt.figure( figsize=(5,5) )
-fig.subplots_adjust( top = 0.9, right = 0.98, left = 0.12, wspace = 0.05, bottom = 0.1 )
+fig.subplots_adjust( top = 0.9, right = 0.96, left = 0.12, wspace = 0.05, bottom = 0.1 )
 ax1 = [fig.add_subplot(1,1,i+1) for i in xrange(1)]
 ax2 = [ax1[i].twiny() for i in xrange(1)]
 
-tick_locations = np.linspace(0,4,5)
+tick_locations = np.linspace(0,20,6)
 #Function to build the second axe
 def tick_function(X):
     return ((10**X*(0.9765625)**3)/( 4*np.pi/3. ))**(1/3.)
@@ -52,7 +52,7 @@ for web in webs:
 	void_regs = np.transpose(np.loadtxt("%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%\
 	(foldglobal, simulation, web, N_sec, void_scheme, schemes[i_web] )))
 
-    hist1d = np.histogram( np.log10(void_regs[1]) , bins=20, normed=False )
+    hist1d = np.histogram( tick_function(np.log10(void_regs[1])) , bins=15, normed=False )
     
     #Normal distribution
     if sys.argv[1] == '0':
@@ -71,11 +71,11 @@ for web in webs:
 for i in range(1):
     #Axe 1
     ax1[i].grid()
-    ax1[i].set_xticks( np.linspace(0,5,6) )
-    ax1[i].set_xlim( (0,4.5) )
+    ax1[i].set_xticks( np.linspace(0,20,6) )
+    ax1[i].set_xlim( (0,20) )
     
     ax1[i].set_ylabel( "Number of voids" )
-    ax1[i].set_xlabel( "Comoving volume $\log_{10}[ (0.98$ Mpc $h^{-1} )^{-3} ]$" )
+    ax1[i].set_xlabel( "Effective radius [Mpc $h^{-1}$]" )
     ax1[i].legend( loc='upper right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
 
     #Axe 2
@@ -83,9 +83,9 @@ for i in range(1):
     ax2[i].set_xticks( tick_locations )
     tick_label = []
     for tick in tick_locations:
-	tick_label.append( "%1.1f"%tick_function(tick) )
+	tick_label.append( "%1.1f"%(0 if tick==0 else np.log10(4*np.pi/3.*(tick)**3)) )
     ax2[i].set_xticklabels( tick_label )
-    ax2[i].set_xlabel( "Effective radius [Mpc $h^{-1}$]" )
+    ax2[i].set_xlabel( "Comoving volume [$\log_{10}($ Mpc $h^{-1} )^{-3}$]" )
 
 if sys.argv[2] == '1':
     plt.savefig( '%svoids_regions_volume_all.pdf'%(figures_fold) )
