@@ -2,7 +2,7 @@
 #
 #This code computes the geometric center and the mass center of each void
 #
-#Usage: run void_geometric_center.py <Vweb or Tweb> <Lambda_th>
+#Usage: run void_geometric_center.py <Vweb or Tweb> <FAG or DLT> <Nth MF and BR>
 #
 #by: Sebastian Bustamante
 
@@ -21,10 +21,10 @@ L_box = 250.
 smooth = '_s1'
 #Web Scheme
 web = sys.argv[1]
-#Lambda_th
-Lambda_th = float(sys.argv[2])
+#Config
+config = sys.argv[3]
 #Void finder scheme (FOF or LAY)
-void_scheme = 'LAY'
+void_scheme = sys.argv[2]
 #Cutt of respect to the number of cells
 N_cut = 2
 
@@ -35,8 +35,8 @@ N_cut = 2
 print simulation
 
 #Loading the file with all the information about each region
-voids = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_regions.dat"%\
-(foldglobal, simulation, web, N_sec, void_scheme, Lambda_th )))
+voids = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%\
+(foldglobal, simulation, web, N_sec, void_scheme, config )))
 
 #Calculating geometric center
 R_GCs = []
@@ -46,8 +46,8 @@ for i_void in voids[0]:
     sys.stdout.flush()
 
     #Loading cells of the current region
-    region = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/void_%d.dat"%\
-    (foldglobal, simulation, web, N_sec, void_scheme, Lambda_th, int(i_void) )))
+    region = np.transpose( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/void_%d.dat"%\
+    (foldglobal, simulation, web, N_sec, void_scheme, config, int(i_void) )))
   
     #Cutt off respect to the number of cells
     try:
@@ -103,5 +103,5 @@ for i_void in voids[0]:
 
 R_GCs = np.array( R_GCs )
 
-np.savetxt( "%s/%s/%s/%d/voids%s/voids_%1.2f/GC.dat"%\
-(foldglobal, simulation, web, N_sec, void_scheme, Lambda_th ),R_GCs, fmt = "%d\t%1.5e\t%1.5e\t%1.5e\t%d\t%d\t%d" )
+np.savetxt( "%s/%s/%s/%d/voids%s/voids_%s/GC.dat"%\
+(foldglobal, simulation, web, N_sec, void_scheme, config ),R_GCs, fmt = "%d\t%1.5e\t%1.5e\t%1.5e\t%d\t%d\t%d" )
