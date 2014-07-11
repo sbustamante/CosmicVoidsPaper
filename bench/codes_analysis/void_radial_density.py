@@ -52,7 +52,7 @@ GC = np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/GC.dat"%\
 (foldglobal, simulation, web, N_sec, void_scheme, config ))
 
 #Sweeping throughout all regions
-for i_void in xrange(100,110+1):#voids[0]:
+for i_void in voids[0]:
     sys.stdout.write( " In region:\t%d\r" %(int(i_void)) )
     sys.stdout.flush()
 
@@ -98,12 +98,5 @@ for i_void in xrange(100,110+1):#voids[0]:
     hist = hist[ ncell!=0 ]
     ncell = ncell[ ncell!=0 ]
     
-    plt.plot( rbins/reff, hist/ncell, 'o-' )
-plt.show()
-	    
-	
-
-
-    #np.savetxt( '%svoids_density_%s/%s/void_%d_DR.dat'%\
-    #(data_figures_fold,void_scheme,web,i_void), density.flatten(), fmt = "%1.3e" )
-    
+    np.savetxt( '%svoids_density_%s/%s/void_%d_DR.dat'%\
+    (data_figures_fold,void_scheme,web,i_void), np.transpose([rbins, hist/ncell]), fmt = "%1.5e" )

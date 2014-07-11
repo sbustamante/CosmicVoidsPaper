@@ -33,11 +33,14 @@ for web in webs:
     quartiles = np.loadtxt( '%sdelta_L1_%s.dat'%(data_figures_fold,web) )
     
     #Quartiles regions-------
+    quartiles[quartiles[:,1]==0,1] = -0.94
+    quartiles[quartiles[:,3]==0,3] = -0.94
     plt.fill_between( quartiles[:,0], quartiles[:,1], quartiles[:,3], color = colors[i_web], alpha = 0.2 )
     plt.plot( quartiles[:,0], quartiles[:,1], color = colors[i_web], linewidth = 1, linestyle = '-' )
     plt.plot( quartiles[:,0], quartiles[:,3], color = colors[i_web], linewidth = 1, linestyle = '-' )
 
     #Medians-----------------
+    quartiles[quartiles[:,2]==0,2] = -0.94
     plt.plot( quartiles[:,0], quartiles[:,2], color = colors[i_web], linewidth = 3, label = web )
 
     plt.grid(1)
