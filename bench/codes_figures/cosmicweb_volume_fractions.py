@@ -1,7 +1,7 @@
 #cosmicweb_volume_fraction.py
 #
 #This code computes the volume fraction for both web schemes for some L_th values
-#Usage cosmicweb_volume_fraction.py <Vweb or Tweb> <catalogue, BDM or FOF> <show(0) or save(1)>
+#Usage cosmicweb_volume_fraction.py <Vweb or Tweb> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
@@ -65,6 +65,7 @@ plt.plot( regs[0], regs[0]*0.0, color = 'gray', label = "knots", linewidth=2.0 )
 
 plt.xlim( L_min, 1.0 )
 plt.legend( loc='lower right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
+plt.title( "%s"%(web) )
 plt.xlabel( "$\lambda_{th}$" )
 plt.ylabel( "Volume fraction" )
 #Lambda_th line

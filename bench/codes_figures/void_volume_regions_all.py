@@ -21,6 +21,7 @@ labels = ['FA-Tweb', 'FA-Vweb', 'Density']
 void_scheme = 'FAG'
 #Schemes used for each web
 schemes = [ "21","31","51" ]
+schemes = [ "01","01","01" ]
 
 #Colors
 colors = ["green", "blue", "red"]
@@ -34,7 +35,7 @@ fig.subplots_adjust( top = 0.9, right = 0.96, left = 0.12, wspace = 0.05, bottom
 ax1 = [fig.add_subplot(1,1,i+1) for i in xrange(1)]
 ax2 = [ax1[i].twiny() for i in xrange(1)]
 
-tick_locations = np.linspace(0,20,6)
+tick_locations = np.linspace(0,16,6)
 #Function to build the second axe
 def tick_function(X):
     return ((10**X*(0.9765625)**3)/( 4*np.pi/3. ))**(1/3.)
@@ -63,7 +64,8 @@ for web in webs:
 	
     #Plot
     ax1[0].semilogy( hist1d[1][:-1], distro, linewidth = 2.0, linestyle = "-",\
-    color = colors[i_web], label = "%s (%s-order MF)"%(labels[i_web], schemes[i_web][0]) )
+    #color = colors[i_web], label = "%s (%s-order MF)"%(labels[i_web], schemes[i_web][0]) )
+    color = colors[i_web], label = "%s"%(labels[i_web]) )
       
     i_web += 1
     
@@ -71,15 +73,15 @@ for web in webs:
 for i in range(1):
     #Axe 1
     ax1[i].grid()
-    ax1[i].set_xticks( np.linspace(0,20,6) )
-    ax1[i].set_xlim( (0,20) )
+    ax1[i].set_xticks( np.linspace(0,16,6) )
+    ax1[i].set_xlim( (0,16) )
     
     ax1[i].set_ylabel( "Number of voids" )
     ax1[i].set_xlabel( "Effective radius [Mpc $h^{-1}$]" )
     ax1[i].legend( loc='upper right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
 
     #Axe 2
-    ax2[i].set_xlim( (0,4.5) )
+    ax2[i].set_xlim( (0,4.2) )
     ax2[i].set_xticks( tick_locations )
     tick_label = []
     for tick in tick_locations:
