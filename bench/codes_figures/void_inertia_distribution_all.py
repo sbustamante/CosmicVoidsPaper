@@ -27,14 +27,16 @@ config = ["21", "31", "51"]
 void_scheme = ["FAG", "FAG", "DLG"]
 #Labels
 labels = ["Tweb FA-WT", "Vweb FA-WT", "Density-WT"]
+linestyles = ["-", "--", ":"]
 #Nbins of each histogram
-Nbins = 20
-Nbins2D = 10
+Nbins = 10
 #Minim radius for a void
 rmins = [0,1.7,0]
 
-prop1_hist = 5
-prop2_hist = 5
+#Bins radials
+rbins = [ 1.0, 3.0, 8.0, 20.0 ]
+rbins = [ 1.0, 4.0, 20.0 ]
+colors = [ "blue", "green", "red" ]
 
 #==================================================================================================
 #			COMPUTING EIGENVALUES AND BUILDING THE INERTIA TENSOR
@@ -44,10 +46,10 @@ prop2_hist = 5
 def r_eff(X):
     return ((10**X*(0.9765625)**3)/( 4*np.pi/3. ))**(1/3.)
 
-fig, axes = plt.subplots(1,3, figsize=(16,5), sharex=True, sharey=True)
+plt.figure( figsize=(16,5) )
 
 i = 0
-for ax in axes.flat:
+for i in xrange(3):
 
     print simulation
 
@@ -58,23 +60,21 @@ for ax in axes.flat:
     catalog = np.transpose(np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%\
     (foldglobal, simulation, web[i], N_sec, void_scheme[i], config[i] )))
     catalog = catalog[:,catalog[1]>=catalog[1,len(eigen[0])-1]]
-    #Histogram of voids
-    Hist_lambd  = np.transpose(np.histogram2d( eigen[0]/eigen[1], eigen[1]/eigen[2], 
-    bins = Nbins2D, normed = False, range = ((0,1),(0,1))  )[0][::,::-1])
 
-    #2D histogram
-    #map2d = plt.imshow( Hist_lambd[::,::], interpolation='nearest', aspect = 'auto',
-    #cmap = 'binary', extent = (0,1,0,1) )	
-    #Scatter
     reff = r_eff(np.log10(catalog[1]))
     rmin = rmins[i]
-    scatter = ax.scatter( eigen[0,reff>rmin]/eigen[1,reff>rmin], eigen[1,reff>rmin]/eigen[2,reff>rmin], 
-    c = np.log10(reff[reff>rmin]), s=50, marker='.',linewidth=0.01, cmap='jet', vmin = 0.1, vmax = 1.2, alpha=0.6 )
+    
+    for i_r in xrange(len(rbins)-1):
+	plt.subplot(1,2,1)
+	hist, t01 = np.histogram( eigen[0,(reff>=rbins[i_r])*(reff<rbins[i_r+1])]/eigen[1,(reff>=rbins[i_r])*(reff<rbins[i_r+1])],
+	bins = Nbins, normed = True )
+	plt.plot( t01[:-1], hist, color=colors[i_r], linewidth = 2, linestyle = linestyles[i] )
+	
+	plt.subplot(1,2,2)
+	hist, t12 = np.histogram( eigen[1,(reff>=rbins[i_r])*(reff<rbins[i_r+1])]/eigen[2,(reff>=rbins[i_r])*(reff<rbins[i_r+1])],
+	bins = Nbins, normed = True )
+	plt.plot( t12[:-1], hist, color=colors[i_r], linewidth = 2, linestyle = linestyles[i] )
 
-    #Countorn
-    CS = ax.contour( Hist_lambd[::-1,::], 7, aspect = 'auto', zorder=2,
-    extent = (0,1,0,1),linewidths=1, interpolation = 'gaussian', colors="black" )
-    ax.clabel(CS, inline=1, fontsize=10, fmt = "%d" )
 
     #Number of anisotropic voids
     N_tot = len(eigen[0])*1.0
@@ -87,46 +87,7 @@ for ax in axes.flat:
     print "Pancake voids: ", np.sum( (t1t2<0.7)*(t2t3>=0.7) )/N_tot
     print "Filament voids: ", np.sum( (t1t2>=0.7)*(t2t3<0.7) )/N_tot
 	
-    ax.set_ylim( (0,1) )
-    ax.set_xlim( (0,1) )
-
-    ax.grid( color='black', linestyle='--', linewidth=1., alpha=0.3 )
-    ax.set_xticks( np.linspace( 0,1,Nbins/2.+1 ) )
-    ax.set_yticks( np.linspace( 0,1,Nbins/2.+1 ) )
-    ax.set_xlabel( "$\\tau_1/\\tau_2$", fontsize=15 )
-    if i == 0:
-	ax.set_ylabel( "$\\tau_2/\\tau_3$", fontsize=15 )
-
-    ax.hlines( 0.7, 0.0, 0.7, linestyle="--", color="black", linewidth=2.5 )
-    ax.text( 0.35, 0.81, "Pancake\nvoids", fontweight="bold", color="black",\
-    fontsize=12, horizontalalignment="center" )
-
-    ax.vlines( 0.7, 0.0, 0.7, linestyle="--", color="black", linewidth=2.5 )
-    ax.text( 0.85, 0.3, "Filamentary\nvoids", fontweight="bold", color="black",\
-    fontsize=12, horizontalalignment="center" )
-
-    ax.hlines( 0.7, 0.7, 1.0, linestyle="--", color="black", linewidth=2.5 )
-    ax.vlines( 0.7, 0.7, 1.0, linestyle="--", color="black", linewidth=2.5 )
-    ax.text( 0.85, 0.81, "Isotropic\nvoids", fontweight="bold", color="black",\
-    fontsize=12, horizontalalignment="center" )
-    ax.text( 0.35, 0.3, "Anisotropic\nvoids", fontweight="bold", color="black",\
-    fontsize=12, horizontalalignment="center" )
-
-    ax.text( 0.01, 0.01, labels[i], fontweight="bold", color="black", fontsize=12 )
-    i+=1
-
-#Colorbar
-fig.subplots_adjust( right = 0.92, top = 0.95, left = 0.05, wspace=0.08 )
-cbar_ax = fig.add_axes([0.92, 0.15, 0.05, 0.7], aspect=20)
-cb = fig.colorbar( scatter, orientation = "vertical", cax=cbar_ax )
-cb.set_label( "$r_{eff}$ [$h^{-1}$ Mpc]", labelpad=1, fontsize=12 )
-#Ticks
-ticks = np.linspace( 0.1,1.2,10 )
-cb.set_ticks( ticks )
-cb.set_ticklabels( ['{0:3.1f}'.format(10**t) for t in ticks] )
-#Set the colorbar
-scatter.colorbar = cb
-
+plt.subplots_adjust( right = 0.98, top = 0.95, left = 0.05, wspace=0.08 )
 
 if sys.argv[1] == '1':
     plt.savefig( '%svoids_inertia_tensor.pdf'%(figures_fold) )

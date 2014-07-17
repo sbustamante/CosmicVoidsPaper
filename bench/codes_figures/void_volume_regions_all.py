@@ -75,6 +75,7 @@ for i in range(1):
     ax1[i].grid()
     ax1[i].set_xticks( np.linspace(0,16,6) )
     ax1[i].set_xlim( (0,16) )
+    ax1[i].set_ylim( (0,10**4.1) )
     
     ax1[i].set_ylabel( "Number of voids" )
     ax1[i].set_xlabel( "Effective radius [Mpc $h^{-1}$]" )
