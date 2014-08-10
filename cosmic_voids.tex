@@ -11,7 +11,7 @@
 \title{Fractional anisotropy as an optimal tracer of cosmic voids}
 \author[S. Bustamante and J.E. Forero-Romero]{
 \parbox[t]{\textwidth}{\raggedright 
-  Sebastian Bustamante \thanks{sbustamante@udea.edu.co}$^{1}$,
+  Sebastian Bustamante \thanks{sebastian.bustamante@udea.edu.co}$^{1}$,
   Jaime E. Forero-Romero$^{2}$ 
 }
 \vspace*{6pt}\\
@@ -28,9 +28,10 @@ In the last decades voids have been identified as one of the most
 important features of the Megaparsec Universe, therefore a full 
 understanding of their properties is required in order to a proper 
 description of the large-scale structure of the Cosmic Web. Identifying
-voids in cosmological observations and N-body simulations is hence an 
-important enterprise that must be carried out and accordingly, a plethora 
-of different void finding techniques can be found in the literature. 
+voids in cosmological observations (e.g. redshift galaxy surveys) and 
+N-body simulations is hence an important enterprise that must be carried 
+out and accordingly, a plethora of different void finding techniques can 
+be found in the literature. 
 
 We present here a novel approximation for finding voids in cosmological 
 simulations based upon two different schemes commonly used for quantifying
@@ -44,14 +45,14 @@ Watershed Transform-based schemes, ours retains the same advantages, i.e.,
 it is relatively free-parameter and makes no significant assumptions on 
 the shape and structure of voids.
 
-We test our method on the Bolshoi simulation and compare it with a
-density-based scheme. We find our method gives a better resemblance to the
-visual impression of the Cosmic Web in addition to a more robust 
-description of voids as it allows to identify, in a very clear manner, 
-their spatial limits as regions where the FA is maximized, normally 
-corresponding to walls and filaments. This is mainly because of the 
-non-monotonic behaviour of the FA, what allows to use it as a sort of 
-one-dimensional tomography of the Cosmic Web.
+We test our method on the Bolshoi simulation and compare with a
+density-based scheme. We find our method gives a better resemblance of 
+the visual impression of the distribution of voids within the Cosmic Web, 
+in addition to a more robust description of voids as it allows to identify,
+in a very clear manner, their outlines as regions where the FA is 
+maximized, normally corresponding to walls and filaments. This is mainly 
+because of the non-monotonic behaviour of the FA, what allows to use it 
+as a sort of one-dimensional tomography of the Cosmic Web.
 
 \end{abstract}
 
@@ -79,10 +80,10 @@ striking features of the Megaparsec Universe \citep{Bond96}. Nevertheless,
 due to the large volume extension of void regions ($\sim 5-10\ \mbox{Mpc} 
 h^{-1}$), statistically significant catalogues of voids \citep{Pan10, 
 Sutter12b, Nadathur14} only have become available after modern large 
-galaxy surveys like the two-degree field Galaxy Survey \citep{Colless01,
-Colless03} and the Sloan Digital Sky Survey \citep{York00,Abazajian03}, 
-thereby triggering a plethora of more refined observational and 
-statistical studies of voids throughout the last decade \citep{Hoyle04,
+galaxy surveys like the two-degree field Galaxy Redshift Survey \citep{
+Colless01, Colless03} and the Sloan Digital Sky Survey \citep{York00,
+Abazajian03}, thereby triggering a plethora of more refined observational 
+and statistical studies of voids throughout the last decade \citep{Hoyle04,
 Croton04, Rojas05, Ceccarelli06, Patiri06a, Tikhonov06, Patiri06b, 
 Tikhonov07, BendaBeckmann08, Foster09, Ceccarelli13, Sutter14a}
 
@@ -92,7 +93,7 @@ On the theoretical side, early descriptions of the evolution of the
 large-scale Universe, based on gravitational instabilities in primordial 
 stages and leaded by the seminal work of \citet{Zeldovich70}, are highly 
 consistent with the Cosmic Web picture, where planar pancake-like regions 
-of matter enclose enormous sub-dense voids and are bordered, in turn, by 
+of matter enclose enormous underdense voids and are bordered, in turn, by 
 thin filaments and high-density clumpy knots \citep{Bond96}. First 
 theoretical models for describing formation, dynamics and properties of 
 voids \citep{Hoffman82, Icke84, Bertschinger85, Blumenthal92} were 
@@ -108,7 +109,7 @@ numerical works, see \citet{Colberg08}).
 At present, studying voids may be considered as a threefold enterprise
 \citep{Platen07}: first, they are a key ingredient of the Cosmic Web as 
 they dominate almost the entire volume distribution at large-scales and 
-additionally, they compensate over-dense structures in the total budget of 
+additionally, they compensate overdense structures in the total budget of 
 matter. This implies that a full understanding of their evolution and 
 properties is essential for fathoming the high complexity of the Cosmic 
 Web. Second, they provide a valuable resource for inferring and probing 
@@ -127,14 +128,73 @@ voids and therefore, there can be found many different void finding
 techniques throughout the literature (for a detailed comparison of 
 different schemes, see the Void Finder Comparison Project 
 \citet{Colberg08}). In spite of the diversity of existing schemes, they 
-can be roughly classified into two main types: first, schemes based on 
-spatial or redshift distribution of galaxies in surveys or catalogues of 
-dark matter halos in simulations \citep{Kauffmann91, Muller00, Gottlober03,
-Hoyle04, Brunino07, Foster09, Micheletti14, Sutter14}, and second, schemes 
-based on the smooth and continuous matter density field either from 
-simulations or reconstruction procedures on surveys \citep{Plionis02, 
-Colberg05, Shandarin06, Platen07, Neyrinck08, Neyrinck13, Ricciardelli2013}
+can be roughly classified into two main types: first, geometric schemes 
+based on point spatial or redshift distribution of galaxies in surveys or 
+catalogues of dark matter halos in simulations \citep{Kauffmann91, 
+Muller00, Gottlober03, Hoyle04, Brunino07, Foster09, Micheletti14, 
+Sutter14}, and second, schemes based on the smooth and continuous matter 
+density field either from simulations or from reconstruction procedures 
+on surveys \citep{Plionis02, Colberg05, Shandarin06, Platen07, Neyrinck08,
+Neyrinck13, Ricciardelli2013}.
 
+
+Here we introduce a new tracer of the structure of cosmic voids built from 
+two tensorial web schemes, i.e. the T-web, based on the Hessian of the 
+gravitational potential or tidal tensor \citep{Hahn07, Forero09}, and the 
+V-web, based on the velocity shear tensor \citep{Hoffman12}. These web 
+schemes classify the Cosmic Web into four different types of environment
+depending on the counting of the number of eigenvalues below an 
+user-defined threshold ($\lambda_{th}$), namely voids (3 eigenvalues below
+$\lambda_{th}$), sheets (2), filaments (1) and knots or clusters (0).
+The tidal and the shear tensors have proven to be more fundamental than 
+the density field as they also trace the collapsing or expanding nature of 
+the matter field, which ultimately is what defines the underlying dynamics 
+of the Cosmic Web. Furthermore, the density field is degenerated regarding 
+the defined types of environment \citep{Hahn07}, which implies that is not 
+possible to assign a priori a range of density values to each of them. 
+This yields that the usually adopted definition of voids as underdense 
+regions in the large-scale matter distribution, is not precise enough as 
+it excludes a proper description of the internal structure of voids.
+
+
+Following the recent trend of using digital image-processing techniques 
+developed in other disciplines (e.g. medical sciences and computer imaging) 
+for analysing the structure of the Cosmic Web, we propose here, much in 
+the same way as \citet{Libeskind13}, the fractional anisotropy (FA) as a 
+tracer of the internal structure and the outline of cosmic voids. The FA 
+was initially introduced by \citet{Basser95} for quantifying the 
+anisotropy degree of the diffusivity of water molecules through cerebral
+tissue in nuclear magnetic resonance imaging. In this context we use the 
+same quantity for determining the anisotropy degree of the local 
+environment from either the orbital dynamics as set by the eigenvalues of
+the tidal tensor (T-web), or the dynamics of the velocity field as set by 
+the eigenvalues of the shear tensor (V-web). In both cases, the FA is not
+determined directly from the density field, hence it is suitable for 
+describing the structure of high non-linear regions (e.g. filaments, 
+knots and very dense walls) as well as for revealing the fainter 
+substructure exhibited by quasi-linear regions like voids.
+
+
+Once established the FA as the tracer field of cosmic voids, we proceed to
+identify individual voids as basins of local minima. For this purpose we
+implement a technique defined by \citet{Beucher79} and \citet{Beucher93} 
+and widely used in the field of image analysis and mathematical morphology, 
+i.e. the \textit{watershed transform algorithm}. This technique has been 
+already implemented on void finding schemes by \citet{Platen07} and 
+\citet{Neyrinck08} with very interesting results, where individual voids 
+are identified as catching basins of local minima of the density field. 
+The attractiveness of this algorithm lies in it is parameter-free and does 
+not require to make any assumption on the shape and morphology of voids. 
+Although we just use a \textit{cloud-in-cell} (\texttt{CIC}) algorithm on 
+a Cartesian mesh for estimating the density and tensor fields, instead of 
+the more sophisticated \textit{Delaunay tessellation for field estimator} 
+(\texttt{DTFE}) technique \citep{Schaap00}, our implementation of the 
+watershed transform should not be significantly affected as we are 
+interested in quasi-linear regions where the \texttt{CIC} gives similar 
+estimations.
+
+
+This paper is organized as follows. 
 
 
 %*************************************************************************
@@ -392,7 +452,7 @@ regions.
 
 For the distribution of the density with respect to the $\lambda_1$ 
 eigenvalue, it can be appreciated an analogous behaviour, where central 
-regions of voids present the most under-dense values of the overall cosmic 
+regions of voids present the most underdense values of the overall cosmic 
 web. For outer layers of voids, the density field grows progressively 
 until sheets and filaments are reached. However, the dispersion in the 
 distributions indicates that the geometry of voids as quantified by both 
