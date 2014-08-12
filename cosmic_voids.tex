@@ -215,21 +215,37 @@ in section 6 we analyse and evaluate our findings.
 %*************************************************************************
 
 
-We use here an unconstrained cosmological simulation, the Bolshoi 
-simulation, to identify the possible large scale environment and 
-cosmological voids.
+We use here an unconstrained cosmological simulation (the Bolshoi 
+simulation) to identify the possible large scale environment and the 
+distribution of cosmic voids at $z=0$. The Bolshoi simulation follows the 
+non-linear evolution of a dark matter density field on a cubic volume of 
+size $250$\hMpc sampled with $2048^3$ particles. The cosmological 
+parameters in the simulation are $\Omega_{\rm m}=0.27$, $\Omega_{\Lambda}
+=0.73$, $h=0.70$, $n=0.95$ and $\sigma_{8}=0.82$ for the matter density, 
+cosmological constant, dimensionless Hubble parameter, spectral index of 
+primordial density perturbations and normalization for the power spectrum
+respectively, consistent with the seventh year of data of the Wilkinson 
+Microwave Anisotropy Probe (WMAP) \citep{Jarosik11}. For more detailed 
+technical information about the simulation, see \citet{Klypin11}.
 
 
-The Bolshoi simulation follows the non-linear evolution of a dark matter 
-density field on a cubic volume of size $250$\hMpc sampled with $2048^3$ 
-particles. The cosmological parameters in the simulation are 
-$\Omega_{\rm m}=0.27$, $\Omega_{\Lambda}=0.73$, $h=0.70$, $n=0.95$ and 
-$\sigma_{8}=0.82$ for the matter density, cosmological constant, 
-dimensionless Hubble parameter, spectral index of primordial density 
-perturbations and normalization for the power spectrum. The mass of each 
-particle in the simulation is $m_{\rm p}=1.4\times 10^{8}$\hMsun.
-We identify catalogues of halos through the Bound Density Maximum 
-algorithm.
+With the above parameters the mass of each particle in the simulation is 
+$m_{\rm p}=1.4\times 10^{8}$\hMsun. Throughout this paper we shall use a
+catalogue of halos identified through the Bound Density Maximum algorithm
+\citep{Klypin99}. These halos have been selected to have an overdensity of
+200 times the critical density in addition to be mutually excluded of the
+virial radius of other halos. Mass, comoving position and peculiar 
+velocity of each halo at $z=0$ were obtained through the public available 
+Multidark database \footnote{\url{http://www.multidark.org/MultiDark/}} 
+\citep{Riebe11}. For estimating the density and velocity fields we use a 
+\textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
+cells, corresponding to a resolution of $0.98$\hMpc per cell side. Then, 
+through a finite-difference scheme, the tidal and shear tensors are 
+computed. Finally the eigenvalues and eigenvectors of each tensor are 
+obtained for each cell of the grid. Neglecting substructures presented 
+below Megaparsec scales and taking into account our focus in voids, which 
+are a prominent characteristic of the Megaparsec Universe, we apply a 
+Gaussian softening of one cell to all our fields.
 
 
 
