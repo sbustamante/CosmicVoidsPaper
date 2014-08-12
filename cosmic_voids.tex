@@ -152,9 +152,10 @@ the matter field, which ultimately is what defines the underlying dynamics
 of the Cosmic Web. Furthermore, the density field is degenerated regarding 
 the defined types of environment \citep{Hahn07}, which implies that is not 
 possible to assign a priori a range of density values to each of them. 
-This yields that the usually adopted definition of voids as underdense 
-regions in the large-scale matter distribution, is not precise enough as 
-it excludes a proper description of the internal structure of voids.
+This yields that the usually adopted definition of voids as simply 
+underdense regions in the large-scale matter distribution, is not precise 
+enough as it excludes a proper description of the internal structure of 
+voids.
 
 
 Following the recent trend of using digital image-processing techniques 
@@ -170,7 +171,7 @@ environment from either the orbital dynamics as set by the eigenvalues of
 the tidal tensor (T-web), or the dynamics of the velocity field as set by 
 the eigenvalues of the shear tensor (V-web). In both cases, the FA is not
 determined directly from the density field, hence it is suitable for 
-describing the structure of high non-linear regions (e.g. filaments, 
+describing both, the structure of high non-linear regions (e.g. filaments,
 knots and very dense walls) as well as for revealing the fainter 
 substructure exhibited by quasi-linear regions like voids.
 
@@ -183,10 +184,10 @@ i.e. the \textit{watershed transform algorithm}. This technique has been
 already implemented on void finding schemes by \citet{Platen07} and 
 \citet{Neyrinck08} with very interesting results, where individual voids 
 are identified as catching basins of local minima of the density field. 
-The attractiveness of this algorithm lies in it is parameter-free and does 
-not require to make any assumption on the shape and morphology of voids. 
-Although we just use a \textit{cloud-in-cell} (\texttt{CIC}) algorithm on 
-a Cartesian mesh for estimating the density and tensor fields, instead of 
+The appeal of this algorithm lies in that is parameter-free and does not 
+require to make any assumption on the shape and morphology of voids. 
+Although we use a \textit{cloud-in-cell} (\texttt{CIC}) algorithm on a 
+Cartesian mesh for estimating the density and tensor fields, instead of 
 the more sophisticated \textit{Delaunay tessellation for field estimator} 
 (\texttt{DTFE}) technique \citep{Schaap00}, our implementation of the 
 watershed transform should not be significantly affected as we are 
@@ -194,7 +195,18 @@ interested in quasi-linear regions where the \texttt{CIC} gives similar
 estimations.
 
 
-This paper is organized as follows. 
+This paper is organized as follows. In section 2 we describe the used
+simulation for testing our void finding algorithm, i.e. the Bolshoi
+simulation. Alternatively to the web schemes T-web and V-web, we propose 
+a very basic web classifier based on three threshold values defined on the
+density field, this is used in our comparisons as a representative of all 
+density-based schemes. A detailed description of these schemes is 
+presented in section 3. In section 4 we describe how the FA can be used 
+for tracing the structure of voids. Once obtained meaningful catalogues of 
+voids for each scheme, we proceed to compare some typical and general 
+interest properties of voids such as volume functions, distributions of 
+size and density and velocity profiles. This is done in section 5. Finally
+in section 6 we analyse and evaluate our findings.
 
 
 %*************************************************************************
