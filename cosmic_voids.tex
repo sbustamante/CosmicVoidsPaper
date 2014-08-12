@@ -239,18 +239,18 @@ velocity of each halo at $z=0$ were obtained through the public available
 Multidark database \footnote{\url{http://www.multidark.org/MultiDark/}} 
 \citep{Riebe11}. For estimating the density and velocity fields we use a 
 \textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
-cells, corresponding to a resolution of $0.98$\hMpc per cell side. Then, 
-through a finite-difference scheme, the tidal and shear tensors are 
-computed. Finally the eigenvalues and eigenvectors of each tensor are 
+cells, corresponding to a resolution of $0.98$\hMpc per cell side. Then 
+through finite-differences and FFT methods the tidal and shear tensors 
+are computed. Finally the eigenvalues and eigenvectors of each tensor are
 obtained for each cell of the grid. Neglecting substructures presented 
 below Megaparsec scales and taking into account our focus in voids, which 
 are a prominent characteristic of the Megaparsec Universe, we apply a 
-Gaussian softening of one cell to all our fields.
+Gaussian softening of one cell to all fields.
 
 
 
 %*************************************************************************
-\section{Algorithms to quantify the cosmic web}
+\section{Algorithms to quantify the Cosmic Web}
 \label{sec:algorithms_cosmic_web}
 %*************************************************************************
 
@@ -262,10 +262,14 @@ Gaussian softening of one cell to all our fields.
 %-------------------------------------------------------------------------
 
 
-
-The first algorithm  we use to identify the cosmic web is based upon the
-diagonalization of the tidal tensor, defined as the Hessian of a 
-normalized gravitational potential  
+This scheme was initially proposed by \citet{Hahn07} as a novel 
+alternative for classifying the Cosmic Web based upon the tidal tensor, 
+that is somehow more fundamental than the density field as it also allows 
+to quantify the orbital dynamics of the matter field. This approach is 
+reached by a second-order expansion of the equations of motion around 
+local minima of the gravitational potential and then extended to any 
+position. The second-order term corresponds to the tidal tensor, which is 
+defined as the Hessian of the normalized gravitational potential
 
 
 %.........................................................................
@@ -278,17 +282,30 @@ where the physical gravitational potential has been rescaled by a factor
 $4\pi G\bar{\rho}$ in such a way that $\phi$ satisfies the following 
 equation
 
-
-
 %.........................................................................
 %Poisson
 \begin{equation}
 \nabla^2\phi = \delta,
 \end{equation}
 %.........................................................................
-where $\bar{\rho}$ is the average density in the Universe, $G$ is the 
-gravitational constant and $\delta$ is the dimensionless matter 
-overdensity.
+with $\bar{\rho}$ the average density in the Universe, $G$ the 
+gravitational constant and $\delta$ the dimensionless matter overdensity.
+
+
+Since the tidal tensor can be represented in any cell by a real and 
+symmetric $3\times 3$ matrix, it is ensured the possibility to diagonalize 
+it and obtain three real eigenvalues $\lambda_{1} > \lambda_{2}>\lambda_3$.
+This set of eigenvalues can be used as indicators of the local orbital 
+stability in each proper direction, which in turn can be translated into 
+a classification scheme of the Cosmic Web. A counting of the number of 
+positive (stable) or negative (unstable) eigenvalues allows to catalogue
+a single cell into one of the next four types of environment: voids (3 
+negatives eigenvalues), sheets (2), filaments (1) and knots (0). A 
+significant improvement to this scheme was introduced by \citet{Forero09}
+by means of a relaxation of the stability criterion. The relative strength 
+of each eigenvalue is no longer defined by the sign, but instead by a
+threshold value $\lambda_{th}$ which can be tuned in such a way that the
+visual impression of the web-like matter distribution is reproduced.
 
 
 
