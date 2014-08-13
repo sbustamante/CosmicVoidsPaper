@@ -24,7 +24,7 @@ smooth = '_s1'
 web = sys.argv[1]
 #Config
 config = sys.argv[3]
-#Void finder scheme (FOF or LAY)
+#Void finder scheme (FAG or DLG)
 void_scheme = sys.argv[2]
 #Cutt of respect to the number of cells
 N_cut = 2
@@ -55,24 +55,20 @@ GC = np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/GC.dat"%\
 for i_void in voids[0]:
     sys.stdout.write( " In region:\t%d\r" %(int(i_void)) )
     sys.stdout.flush()
-
-    #Loading cells of the current void
-    cells =  np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/void_%d.dat"%\
-    (foldglobal, simulation, web, N_sec, void_scheme, config, int(i_void) ))
-    #Ignoring small voids
-    try: N_data = len( cells )
-    except: N_data = 1
-    if N_data < N_cut: break
-  
-    #Loading densities of the current void
-    rhos = np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/void_%d_rho.dat"%\
-    (foldglobal, simulation, web, N_sec, void_scheme, config, int(i_void) ))
     
+    #Number of cells
+    N_data = int(voids[1, i_void -1 ])
     #Effective radius
     reff = Reff( np.log10(N_data) )
     #Geometric center
     cgc = GC[ i_void-1, 4: ]
     dist = [0,0,0]
+
+    #Loading cells of the current void
+    cells, rhos = Void_Density( "%s/%s/%s/%d/Delta%s"%\
+    (foldglobal, simulation, web, N_sec, smooth), cgc[0], cgc[1], cgc[2], int(Nreff*reff) )
+    cells = np.transpose(cells)
+          
     #Subdensitycenter
     csd = cells[np.argsort(rhos)[0]]
     cgc = csd
@@ -82,7 +78,7 @@ for i_void in voids[0]:
     ncell = np.zeros( bins+1 )
     rbins = 10**np.linspace( np.log10(0.1), np.log10(Nreff*reff), bins+1 )
 
-    print i_void, reff
+    #print i_void, reff
     for i_cell in xrange(len(cells)):
 	for i_coor in xrange(3):
 	    dist[i_coor] = abs(cells[i_cell,i_coor] - cgc[i_coor])
@@ -99,4 +95,4 @@ for i_void in voids[0]:
     ncell = ncell[ ncell!=0 ]
     
     np.savetxt( '%svoids_density_%s/%s/void_%d_DR.dat'%\
-    (data_figures_fold,void_scheme,web,i_void), np.transpose([rbins, hist/ncell]), fmt = "%1.5e" )
+    (data_figures_fold,void_scheme,web,i_void-1), np.transpose([rbins, hist/ncell]), fmt = "%1.5e" )

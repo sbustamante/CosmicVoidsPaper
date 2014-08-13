@@ -23,7 +23,7 @@ smooth = '_s1'
 web = sys.argv[1]
 #Config
 config = sys.argv[3]
-#Void finder scheme (FOF or LAY)
+#Void finder scheme (FAG or DLG)
 void_scheme = sys.argv[2]
 #Cutt of respect to the number of cells
 N_cut = 2

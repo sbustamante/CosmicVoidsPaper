@@ -25,7 +25,7 @@ config = sys.argv[3]
 #Void finder scheme
 void_scheme = sys.argv[2]
 #Cutt of respect to the number of cells
-N_cut = 10
+N_cut = 22
 
 #==================================================================================================
 #			COMPUTING EIGENVALUES AND BUILDING THE INERTIA TENSOR

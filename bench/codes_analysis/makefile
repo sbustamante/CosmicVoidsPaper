@@ -30,6 +30,8 @@ compile:
 		@echo -e
 		$(COMPILER) Density_Classification.c -lm -o Density_Classification.out
 		@echo -e
+		$(COMPILER) Void_Density.c -lm -o Void_Density.out
+		@echo -e
 
 clean:
 		rm -f *.out

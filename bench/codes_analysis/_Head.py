@@ -25,8 +25,6 @@ plt.close('all')
 foldglobal = '../../../CosmicData/'
 #Fold of the Void Finder code
 void_finder_fold = '../../../Void_Finder/'
-#Fold of the Layered Void Finder code
-layered_void_finder_fold = '../../../Layered_Void_Finder/'
 #Fold to store data of figures
 data_figures_fold = '../data_figures/'
 #Fold to store figures
@@ -208,7 +206,7 @@ def Counts( filename_eig, filename_delta, min_L, max_L, N_L ):
     os.system( "./Density_Regions.out %s %s %f %f %d temp.tmp"%( 
     filename_eig, filename_delta, min_L, max_L, N_L ) )
     datos = np.transpose( np.loadtxt( 'temp.tmp' ) )
-    #os.system( "rm temp.tmp" )
+    os.system( "rm temp.tmp" )
     return datos
     
 
@@ -219,8 +217,19 @@ def Regions_Histograms( filename_eig, filename_delta, min_L, max_L, N_L, min_D, 
     os.system( "./Density_Regions_Histogram.out %s %s %f %f %d %f %f %d %d %s"%( 
     filename_eig, filename_delta, min_L, max_L, N_L, min_D, max_D, N_D, kind, Fold ) )
     return 0
-        
-    
+
+
+#..................................................................................................
+#Density profile of a void in a box
+#..................................................................................................
+def Void_Density( filename_delta, X, Y, Z, R ):
+    os.system( "./Void_Density.out %s temp.tmp %d %d %d %d"%( 
+    filename_delta, X, Y, Z, R ) )
+    datos = np.transpose( np.loadtxt( "temp.tmp" ) )
+    os.system( "rm temp.tmp" )
+    return np.array([datos[0],datos[1],datos[2]]), datos[3]
+
+
 #..................................................................................................
 #Classification Scheme
 #..................................................................................................
