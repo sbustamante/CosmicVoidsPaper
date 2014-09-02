@@ -61,11 +61,18 @@ for web in webs:
     #Cumulative distribution
     else:
 	distro = np.cumsum(hist1d[0][::-1])[::-1]
+	distro = distro/(1.0*distro[0])
 	
-    #Plot
-    ax1[0].semilogy( hist1d[1][:-1], distro, linewidth = 2.0, linestyle = "-",\
-    #color = colors[i_web], label = "%s (%s-order MF)"%(labels[i_web], schemes[i_web][0]) )
-    color = colors[i_web], label = "%s"%(labels[i_web]) )
+    #Normal Plot
+    if sys.argv[1] == '0':
+	ax1[0].semilogy( hist1d[1][:-1], distro, linewidth = 2.0, linestyle = "-",\
+	#color = colors[i_web], label = "%s (%s-order MF)"%(labels[i_web], schemes[i_web][0]) )
+	color = colors[i_web], label = "%s"%(labels[i_web]) )
+    #Cumulative Plot
+    else:
+	ax1[0].plot( hist1d[1][:-1], distro, linewidth = 2.0, linestyle = "-",\
+	#color = colors[i_web], label = "%s (%s-order MF)"%(labels[i_web], schemes[i_web][0]) )
+	color = colors[i_web], label = "%s"%(labels[i_web]) )
       
     i_web += 1
     
@@ -73,9 +80,14 @@ for web in webs:
 for i in range(1):
     #Axe 1
     ax1[i].grid()
-    ax1[i].set_xticks( np.linspace(0,16,6) )
+    ax1[i].set_xticks( np.linspace(0,16,32) )
     ax1[i].set_xlim( (0,16) )
     ax1[i].set_ylim( (0,10**4.1) )
+    #Cumulative distribution
+    if sys.argv[1] == '1':
+	ax1[i].set_ylim( (0,1) )
+	for hcut in np.linspace(0,1,4+1):
+	    ax1[i].hlines( hcut, 0, 16, linestyle="--", color = "black", linewidth=1.0 )
     
     ax1[i].set_ylabel( "Number of voids" )
     ax1[i].set_xlabel( "Effective radius [Mpc $h^{-1}$]" )
