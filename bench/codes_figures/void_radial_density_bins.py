@@ -3,7 +3,7 @@
 #This code computes radial histograms of the density profile of voids as computed by the three 
 #defined schemes
 #
-#Usage: run void_radial_density_bins.py <Vweb or Tweb> <FAG or DLT>
+#Usage: run void_radial_density_bins.py <Vweb or Tweb> <FAG or DLT> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 
@@ -44,6 +44,7 @@ def r_eff(X):
 #==================================================================================================
 #			COMPUTING RADIAL PROFILES OF DENSITY FOR EVERY RADIAL BIN
 #==================================================================================================
+plt.figure( figsize=(5.5,5) )
 for ri in xrange( len(RadBins)-1 ):
     reff_range = [ RadBins[ri],RadBins[ri+1] ]
     #Loading index of voids
@@ -74,8 +75,8 @@ for ri in xrange( len(RadBins)-1 ):
         values = np.sort(values)
         try:
             median[i_r] = values[ int(len(values)*0.5) ]
-            Q1[i_r] = values[ int(len(values)*0.25) ]
-            Q2[i_r] = values[ int(len(values)*0.75) ]
+            #Q1[i_r] = values[ int(len(values)*0.25) ]
+            #Q2[i_r] = values[ int(len(values)*0.75) ]
         except:
             pass
         i_r += 1
@@ -85,7 +86,16 @@ for ri in xrange( len(RadBins)-1 ):
     plt.fill_between( Rnorm, Q1, Q2, alpha = 0.3, color = color[ri] )
     plt.plot( Rnorm, median, color = color[ri], linewidth = 2, 
     label = "%1.2f$\leq$r$_{eff}$<%1.2f"%(reff_range[0],reff_range[1]) )
+    
+plt.ylabel( "Density contrast $\delta$" )
+plt.xlabel( "Normalized radius $r/r_{eff}$" )
+plt.ylim( (-1,0.0) )
 plt.grid(1)
 plt.title( "%s %s"%(web, void_scheme) )
 plt.legend( loc="lower right", fancybox=True, shadow=True, fontsize=9 )
-plt.show()
+plt.subplots_adjust( right = 0.95, left = 0.15, top = 0.95 )
+if sys.argv[3] == '1':
+    plt.savefig( '%svoids_density_%s%s.pdf'%(figures_fold,web,void_scheme) )
+else:
+    plt.show()
+    
