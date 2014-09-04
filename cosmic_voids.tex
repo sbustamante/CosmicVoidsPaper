@@ -8,7 +8,7 @@
 %=========================================================================
 %		FRONT MATTER
 %=========================================================================
-\title{Fractional anisotropy as an optimal tracer of cosmic voids}
+\title{Fractional anisotropy as a tracer of cosmic voids}
 \author[S. Bustamante and J.E. Forero-Romero]{
 \parbox[t]{\textwidth}{\raggedright 
   Sebastian Bustamante \thanks{sebastian.bustamante@udea.edu.co}$^{1}$,
@@ -80,7 +80,7 @@ Kirshner87}, they have been identified, along with the filamentary and
 hierarchically clustered nature of the Cosmic Web, as one of the most 
 striking features of the Megaparsec Universe \citep{Bond96}. Nevertheless,
 due to the large volume extension of void regions ($\sim 5-10\ \mbox{Mpc} 
-h^{-1}$), statistically significant catalogues of voids \citep{Pan10, 
+h^{-1}$), statistically meaningful catalogues of voids \citep{Pan10, 
 Sutter12b, Nadathur14} only have become available after modern large 
 galaxy surveys like the two-degree field Galaxy Redshift Survey \citep{
 Colless01, Colless03} and the Sloan Digital Sky Survey \citep{York00,
@@ -92,7 +92,7 @@ Tikhonov07, BendaBeckmann08, Foster09, Ceccarelli13, Sutter14a}
 
 On the theoretical side, early descriptions of the evolution of the 
 large-scale Universe, based on gravitational instabilities in primordial 
-stages and leaded by the seminal work of \citet{Zeldovich70}, are highly 
+stages and leaded by the seminal work of \citet{Zeldovich70}, are 
 consistent with the Cosmic Web picture, where planar pancake-like regions 
 of matter enclose enormous underdense voids and are bordered, in turn, by 
 thin filaments and high-density clumpy knots \citep{Bond96}. First 
@@ -116,27 +116,25 @@ properties is essential for fathoming the high complexity of the Cosmic
 Web. Second, they provide a valuable resource for inferring and probing 
 cosmological parameters as their structure and dynamics are highly 
 determined by these values. Third, they constitute and unique and still 
-largely pristine environment in which can be tested and probed theories 
-of galaxy formation and evolution.
+largely pristine environment in which can be tested galaxy evolution.
 
 
-Although a visual recognition of voids on galaxy surveys and simulations
-is possible in most cases, a formal systematic identification of them 
-is necessary for statistically meaningful studies. However, a basic yet 
-essential issue remains regarding the definition itself of what a void is. 
-There is not a general consensus about an unambiguous definition of cosmic 
-voids and therefore, there can be found many different void finding 
-techniques throughout the literature (for a detailed comparison of 
-different schemes, see the Void Finder Comparison Project 
-\citet{Colberg08}). In spite of the diversity of existing schemes, they 
-can be roughly classified into two main types: first, geometric schemes 
-based on point spatial or redshift distribution of galaxies in surveys or 
-catalogues of dark matter halos in simulations \citep{Kauffmann91, 
-Muller00, Gottlober03, Hoyle04, Brunino07, Foster09, Micheletti14, 
-Sutter14}, and second, schemes based on the smooth and continuous matter 
-density field either from simulations or from reconstruction procedures 
-on surveys \citep{Plionis02, Colberg05, Shandarin06, Platen07, Neyrinck08,
-Neyrinck13, Ricciardelli2013}.
+Although a visual recognition of voids in galaxy surveys and simulations
+is possible in most cases, a formal systematic identification is necessary 
+for statistically meaningful studies. However, a basic yet essential issue 
+remains regarding the definition itself of what a void is. There is not a 
+general consensus about an unambiguous definition of cosmic voids and 
+therefore, there can be found many different void finding techniques 
+throughout the literature (for a detailed comparison of different schemes, 
+see the Void Finder Comparison Project \citet{Colberg08}). In spite of the 
+diversity of existing schemes, they can be roughly classified into two 
+main types: first, geometric schemes based on point spatial or redshift 
+distribution of galaxies in surveys or catalogues of dark matter halos in 
+simulations \citep{Kauffmann91, Muller00, Gottlober03, Hoyle04, Brunino07, 
+Foster09, Micheletti14, Sutter14}, and second, schemes based on the smooth 
+and continuous matter density field either from simulations or from 
+reconstruction procedures on surveys \citep{Plionis02, Colberg05, 
+Shandarin06, Platen07, Neyrinck08, Neyrinck13, Ricciardelli2013}.
 
 
 Here we introduce a new tracer of the structure of cosmic voids built from 
@@ -241,7 +239,7 @@ velocity of each halo at $z=0$ were obtained through the public available
 Multidark database \footnote{\url{http://www.multidark.org/MultiDark/}} 
 \citep{Riebe11}. For estimating the density and velocity fields we use a 
 \textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
-cells, corresponding to a resolution of $0.98$\hMpc per cell side. Then 
+cells, corresponding to a resolution of $0.98$\hMpc per cell side. Then, 
 through finite-differences and FFT methods the tidal and shear tensors 
 are computed. Finally the eigenvalues and eigenvectors of each tensor are
 obtained for each cell of the grid. Neglecting substructures presented 
@@ -411,9 +409,9 @@ fractional anisotropy field occurring in filaments and very dense walls.
 Although the density field is a key quantity for understanding the 
 large-scale Universe, the filamentary structure of the Cosmic Web is 
 poorly traced by it (see e.g. figure \ref{fig:FA_field}). In order to 
-compare our new proposal about the the fractional anisotropy as a tracer 
-field of voids, we define a very basic approach for environmental finding 
-based on three thresholds of the density field. 
+compare our new proposal based on the the fractional anisotropy as a 
+tracer field of voids, we define a very basic approach for environmental 
+finding based on three thresholds of the density field. 
 
 
 %.........................................................................
@@ -817,7 +815,7 @@ to fit the numerical density profiles of our voids.
 \bibliography{references}
 
 %.........................................................................
-%FIGURE 3: volume functions
+%FIGURE 4: volume functions
 \begin{flushleft}
 \begin{figure*}
 \centering
@@ -835,6 +833,29 @@ to fit the numerical density profiles of our voids.
   and continuous lines to a 2nd-order median filtering.}
 
   \label{fig:volume_function}
+  \vspace{0.1 cm}
+
+\end{figure*}
+\end{flushleft}
+%.........................................................................
+
+
+%.........................................................................
+%FIGURE 5: Density profile of voids for each defined scheme
+\begin{flushleft}
+\begin{figure*}
+\centering
+  \includegraphics[trim = 3mm 2mm 4mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_density_TwebFAG.pdf}
+  \includegraphics[trim = 3mm 2mm 4mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_density_VwebFAG.pdf}
+  \includegraphics[trim = 3mm 2mm 4mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_density_TwebDLG.pdf}
+  
+  \captionof{figure}{\small Density profiles of voids for each finding 
+  scheme.}
+
+  \label{fig:VFF}
   \vspace{0.1 cm}
 
 \end{figure*}
