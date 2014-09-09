@@ -24,38 +24,21 @@ No. 18A-10, Edificio Ip, Bogot\'a, Colombia
 \maketitle
 
 \begin{abstract}
-In the last decades voids have been identified as one of the most 
-important features of the Megaparsec Universe, therefore a full 
-understanding of their properties is required in order to a proper 
-description of the large-scale structure of the Cosmic Web. Identifying
-voids in cosmological observations (e.g. redshift galaxy surveys) and 
-N-body simulations is hence an important enterprise that must be carried 
-out and accordingly, a plethora of different void finding techniques can 
-be found in the literature. 
-
-
-We present here a novel approximation for finding voids in cosmological 
-simulations based upon two different schemes commonly used for quantifying
-the Cosmic Web, i.e. the T-web and the V-web (the so-called web schemes), 
-which have proven to be very adequate for that purpose. Unlike previously 
-defined void finding techniques based on the density field, we use here 
-the fractional anisotropy (FA) computed from the eigenvalues of each web 
-scheme and then, through a Watershed Transform, we identify individual 
-voids as the catching basins of local minima of the FA field. Like other 
-Watershed Transform-based schemes, ours retains the same advantages, i.e., 
-it is relatively free-parameter and makes no significant assumptions on 
-the shape and structure of voids.
-
-
-We test our method on the Bolshoi simulation and compare with a
-density-based scheme. We find our method gives a better resemblance of 
-the visual impression of the distribution of voids within the Cosmic Web, 
-in addition to a more robust description of voids as it allows to identify,
-in a very clear manner, their outlines as regions where the FA is 
-maximized, normally corresponding to walls and filaments. This is mainly 
-because of the non-monotonic behaviour of the FA, what allows to use it 
-as a sort of one-dimensional tomography of the Cosmic Web.
-
+Finding and characterizing voids in the large scale structure of the
+universe is an important task in cosmological studies. 
+In this paper we present a novel approach to find voids in
+cosmological simulations.  
+It is based on algorithms that use the tidal and the
+velocity shear tensors to define the cosmic web.
+Voids are identified using the fractional anisotropy (FA) computed
+from the eigenvalues of each web scheme. We define the void boundaries
+using a watershed transform based on the local minima of the FA; the
+boundaries are regions where the FA is maximized, corresponding to
+walls and filaments.  This void definition does not have any free
+parameter and does not make any assumption on the shape or structure
+of the voids.  We test the method on the Bolshoi simulation and report
+on the density and velocity profiles for the voids found using this
+new scheme.
 \end{abstract}
 
 \begin{keywords}
