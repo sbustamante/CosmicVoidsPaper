@@ -31,9 +31,8 @@ pdflatex:	$(FILE_TEX).tex
 		bibtex ${FILE_TEX}
 		$(LATEX) $(FILE_TEX).tex 
 		$(LATEX) $(FILE_TEX).tex 
-		#Backup of pdf file (one per day)
-		mkdir -p time-machine/${DATESTAMP}
-		cp ${FILE_TEX}.pdf time-machine/${DATESTAMP}/${FILE_TEX}.pdf
+
+
 
 clean:
 		rm -f $(FILE_TEX).aux
