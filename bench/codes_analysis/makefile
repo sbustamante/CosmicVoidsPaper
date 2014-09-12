@@ -32,6 +32,8 @@ compile:
 		@echo -e
 		$(COMPILER) Void_Density.c -lm -o Void_Density.out
 		@echo -e
+		$(COMPILER) Void_Velocity.c -lm -o Void_Velocity.out
+		@echo -e
 
 clean:
 		rm -f *.out

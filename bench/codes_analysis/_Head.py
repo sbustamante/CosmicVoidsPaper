@@ -231,6 +231,17 @@ def Void_Density( filename_delta, X, Y, Z, R ):
 
 
 #..................................................................................................
+#Radial projected velocity profile of a void in a box
+#..................................................................................................
+def Void_Velocity( filename_delta, filename_momentum, X, Y, Z, R ):
+    os.system( "./Void_Velocity.out %s %s temp.tmp %d %d %d %d"%( 
+    filename_delta, filename_momentum, X, Y, Z, R ) )
+    datos = np.transpose( np.loadtxt( "temp.tmp" ) )
+    os.system( "rm temp.tmp" )
+    return np.array([datos[0],datos[1],datos[2]]), datos[3]
+
+
+#..................................................................................................
 #Classification Scheme
 #..................................................................................................
 def Scheme( eig1, eig2, eig3, Lamb ):
