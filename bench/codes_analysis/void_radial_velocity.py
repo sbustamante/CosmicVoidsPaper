@@ -1,9 +1,9 @@
-#void_radial_density.py
+#void_radial_velocity.py
 #
-#This code computes radial histograms of the density profile of voids as computed by the three 
+#This code computes radial histograms of the velocity profile of voids as computed by the three 
 #defined schemes
 #
-#Usage: run void_radial_density.py <Vweb or Tweb> <FAG or DLT> <Nth MF and BR>
+#Usage: run void_radial_velocity.py <Vweb or Tweb> <FAG or DLT> <Nth MF and BR>
 #
 #by: Sebastian Bustamante
 
@@ -65,12 +65,13 @@ for i_void in voids[0]:
     dist = [0,0,0]
 
     #Loading cells of the current void
-    cells, rhos = Void_Density( "%s/%s/%s/%d/Delta%s"%\
-    (foldglobal, simulation, web, N_sec, smooth), cgc[0], cgc[1], cgc[2], int(Nreff*reff) )
+    cells, rvel = Void_Velocity( "%s/%s/%s/%d/Delta%s"%\
+    (foldglobal, simulation, web, N_sec, smooth), "%s/%s/%s/%d/P"%\
+    (foldglobal, simulation, web, N_sec), cgc[0], cgc[1], cgc[2], int(Nreff*reff) )
     cells = np.transpose(cells)
           
     #Subdensitycenter
-    csd = cells[np.argsort(rhos)[0]]
+    csd = cells[np.argsort(rvel)[0]]
     cgc = csd
     
     #Radial Histogram
@@ -87,12 +88,12 @@ for i_void in voids[0]:
 	rbin = int( (np.log10(rdist)- np.log10(0.1))*bins/(np.log10(Nreff*reff) - np.log10(0.1)) )
 	if rbin <= bins:
 	    ncell[rbin] += 1
-	    hist[rbin] += rhos[ i_cell ]
+	    hist[rbin] += rvel[ i_cell ]
 
     #Deleting empty regions
     rbins = rbins[ ncell!=0 ]
     hist = hist[ ncell!=0 ]
     ncell = ncell[ ncell!=0 ]
     
-    np.savetxt( '%svoids_density_%s/%s/void_%d_DR.dat'%\
+    np.savetxt( '%svoids_density_%s/%s/void_%d_VR.dat'%\
     (data_figures_fold,void_scheme,web,i_void-1), np.transpose([rbins, hist/ncell]), fmt = "%1.5e" )
