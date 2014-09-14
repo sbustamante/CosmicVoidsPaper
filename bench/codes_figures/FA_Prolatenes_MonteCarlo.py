@@ -12,7 +12,7 @@ execfile('_Head.py')
 #			PARAMETERS
 #==================================================================================================
 #Number of points
-N = 30000
+N = 50000
 #Normalization condition
 Rmax = 3.0
 Rmin = -1.0
@@ -20,9 +20,9 @@ Rmin = -1.0
 Nscale = 1.0
 #Number of intervals
 n_fa = int(10/Nscale)+1
-n_p = int(12/Nscale)
+n_p = int(10/Nscale)
 #Tiny value of the FA and the prolatenes (<0.5)
-frac = 0.45
+frac = 0.47
 
 #==================================================================================================
 #			FUNCTIONS
@@ -115,19 +115,21 @@ if sys.argv[1] == "1":
 	    
 
     #Creating final plot---------------------------------------------------------------------------
-    fig = plt.figure( figsize=(10,10) )
-    plt.xlim( -1.2, 1.2 )
-    plt.ylim( 0, 1 )
-    plt.subplots_adjust( top = 0.99, right = 0.99, bottom = 0.06, left = 0.06 )
-    plt.xlabel( "Prolatenes" )
-    plt.ylabel( "Fractional Anisotropy" )
+    fig = plt.figure( figsize=(7,7) )
+    ax = fig.add_subplot(111)
 
     for fai in xrange(n_fa-1):
 	for pi in xrange(n_p-1):
 	    im = Image.open("./tmp_%d%d.png"%(fai,pi) )
 	    height = im.size[1]
-	    fig.figimage(im, 65+30*Nscale+Nscale*60*pi, 40+60*Nscale*fai, zorder = 2)
+	    fig.figimage(im, 75+30*Nscale+Nscale*60*pi, 55+60*Nscale*fai, zorder = 2)
 	    
-    plt.savefig( '%sFA_Prolatenes.pdf'%(figures_fold) )
+	    ax.set_xlim( -1.2, 1.2 )
+	    ax.set_ylim( 0, 1 )
+	    fig.subplots_adjust( top = 0.96, right = 0.99, bottom = 0.06, left = 0.08 )
+	    ax.set_xlabel( "Prolatenes" )
+	    ax.set_ylabel( "Fractional Anisotropy" )
+	    
+    fig.savefig( '%sFA_Prolatenes.png'%(figures_fold) )
     
     os.system( "rm *.png" )
