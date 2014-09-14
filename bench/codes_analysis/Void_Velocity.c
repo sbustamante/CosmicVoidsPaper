@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define FLOAT1 float
+#define FLOAT1 double
 #define FLOAT2 double
 #define NMAX1 1000
 
@@ -11,7 +11,7 @@
 //Function to compute radial velocity of cell belonging to the current void
 FLOAT2 radial_velocity( int XC, int YC, int ZC, 
 			int X, int Y, int Z, 
-			FLOAT2 Vx, FLOAT2 Vy, FLOAT2 Vz )
+			FLOAT1 Vx, FLOAT1 Vy, FLOAT1 Vz )
 {
     FLOAT2 RC_mag, Vel_proj;
     
@@ -29,8 +29,8 @@ int main(int argc, char **argv)
 {   
     FILE *in, *out;
     FLOAT2 *delta;
-    FLOAT2 *p1, *p2, *p3;
-    FLOAT2 vn1, vn2, vn3, v_rad;
+    FLOAT1 *p1, *p2, *p3;
+    FLOAT1 vn1, vn2, vn3, v_rad;
     char filename[NMAX1];
     int eig;
     
@@ -113,36 +113,37 @@ int main(int argc, char **argv)
 	
 	//Loading each component of the momentum field
 	if( pcomp==0 ){
-	    if(!(p1=malloc(n_nodes * sizeof(FLOAT2)))){
+	    if(!(p1=malloc(n_nodes * sizeof(FLOAT1)))){
 		fprintf(stderr, "problem with array allocation\n");
 		exit(1);}
 	    fread(&dumb,sizeof(int),1,in);
-	    fread(&(p1[0]),sizeof(FLOAT2), n_total, in);
+	    fread(&(p1[0]),sizeof(FLOAT1), n_total, in);
 	    fread(&dumb,sizeof(int),1,in);}
 	if( pcomp==1 ){
-	    if(!(p2=malloc(n_nodes * sizeof(FLOAT2)))){
+	    if(!(p2=malloc(n_nodes * sizeof(FLOAT1)))){
 		fprintf(stderr, "problem with array allocation\n");
 		exit(1);}
 	    fread(&dumb,sizeof(int),1,in);
-	    fread(&(p2[0]),sizeof(FLOAT2), n_total, in);
+	    fread(&(p2[0]),sizeof(FLOAT1), n_total, in);
 	    fread(&dumb,sizeof(int),1,in);}
 	if( pcomp==2 ){
-	    if(!(p3=malloc(n_nodes * sizeof(FLOAT2)))){
+	    if(!(p3=malloc(n_nodes * sizeof(FLOAT1)))){
 		fprintf(stderr, "problem with array allocation\n");
 		exit(1);}
 	    fread(&dumb,sizeof(int),1,in);
-	    fread(&(p3[0]),sizeof(FLOAT2), n_total, in);
+	    fread(&(p3[0]),sizeof(FLOAT1), n_total, in);
 	    fread(&dumb,sizeof(int),1,in);}}
     //=============================================================================================
     
     
     //Creating file to store density
-    out=fopen(argv[2], "w");
+    out=fopen(argv[3], "w");
     
     //Saving density field inside effecive radius of void
     for( i=X-R;i<X+R+1;i++ )
     for( j=Y-R;j<Y+R+1;j++ )
-    for( k=Z-R;k<Z+R+1;k++ ){
+    for( k=Z-R;k<Z+R+1;k++ )
+	if( i!=X || j!=Y || k!=Z ){
 	it = i; jt = j; kt = k;
 	//Neighbor out of limits (Periodic boundary conditions) (X direction)
 	if( i>=n_x )		it -= n_x;
@@ -162,6 +163,7 @@ int main(int argc, char **argv)
 	vn3 = p3[n]/delta[n];
 	//Radial projection
 	v_rad = radial_velocity( X, Y, Z, i, j, k, vn1, vn2, vn3 );
+// 	printf( "%f  %f  %f	%f\n", vn1, vn2, vn3, v_rad );
 	
 	fprintf( out, "%d\t%d\t%d\t%1.5e\n", i,j,k,v_rad );
     }

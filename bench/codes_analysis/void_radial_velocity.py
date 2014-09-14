@@ -65,9 +65,9 @@ for i_void in voids[0]:
     dist = [0,0,0]
 
     #Loading cells of the current void
-    cells, rvel = Void_Velocity( "%s/%s/%s/%d/Delta%s"%\
-    (foldglobal, simulation, web, N_sec, smooth), "%s/%s/%s/%d/P"%\
-    (foldglobal, simulation, web, N_sec), cgc[0], cgc[1], cgc[2], int(Nreff*reff) )
+    cells, rvel = Void_Velocity( "%s/%s/%s/%d/M"%\
+    (foldglobal, simulation, "Vweb", N_sec), "%s/%s/%s/%d/P"%\
+    (foldglobal, simulation, "Vweb", N_sec), cgc[0], cgc[1], cgc[2], int(Nreff*reff) )
     cells = np.transpose(cells)
           
     #Subdensitycenter
