@@ -333,56 +333,6 @@ approach for the threshold choosing based on the maximization of the
 fractional anisotropy field occurring in filaments and very dense walls.
 
 
-%.........................................................................
-%FIGURE 1: Distributions of FA and density regarding the Lambda_1 eigenvalue
-\begin{flushleft}
-\begin{figure*}
-\centering
-  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/cosmicweb_volume_Tweb.pdf}
-  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/cosmicweb_volume_Vweb.pdf}  
-  
-  \captionof{figure}{\small Volume Filling Fraction for each type of 
-  environment with respect to the chosen threshold $\lambda_{th}$ for both
-  web schemes (T-web, left panel. V-web, right panel). For each case, the 
-  threshold value is chosen such that the fractional anisotropy along the 
-  void-sheet boundaries has a value of $FA=0.95$.}
-
-  \label{fig:VFF}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
-
-
-%.........................................................................
-%FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
-\begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/FA_L1.pdf}
-  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/delta_L1.pdf}  
-  
-  \captionof{figure}{\small Distributions of fractional anisotropy 
-  (left panel) and density field (right panel) with respect to the 
-  eigenvalue $\lambda_1$ for each web scheme (T-web, red lines. V-web, 
-  blue lines) as calculated over all cells of the grid. Thick central 
-  lines correspond to the median and filled regions to the $50\%$ of 
-  the distribution.}
-
-  \label{fig:L1_correlations}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
-
-
 %-------------------------------------------------------------------------
 \subsection{The density-based web finder}
 \label{subsec:Vweb}
@@ -422,40 +372,6 @@ finding based on three thresholds of the density field.
 \end{center}
 \end{flushleft}
 \end{table}
-%.........................................................................
-
-
-%.........................................................................
-%FIGURE 4: FA and vissual impression
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_FA_Tweb.pdf}
-  \vspace{0.1 cm}
-  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_FA_Vweb.pdf}
-  \vspace{0.1 cm}  
-  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_density.pdf}
-  
-  \captionof{figure}{\small Left panels show the visual impression of the 
-  Cosmic Web for each web scheme (T-web, upper panels. V-web, middle 
-  panels. Density, lower panels). It can be noticed each environment 
-  sketched such that voids corresponds to white, sheets to gray, filaments 
-  to dark gray and knots to black regions. Right panels show the fractional 
-  anisotropy field for the same slide of the simulation and for each web 
-  scheme. Black regions correspond to the maxim value, i.e. FA$=1$, while 
-  white and light yellow regions to FA$=0$. It is worth noting the 
-  degeneration of low values of FA for knots and central regions of voids, 
-  thus indicating a high isotropy for both processes. In the same way, high 
-  values of FA (FA $\lesssim 1$) are consistent the anisotropic geometry 
-  exhibited by filaments and very flat sheets.}
-
-  \label{fig:FA_field}
-
-  
-\end{figure*}
 %.........................................................................
 
 
@@ -795,8 +711,119 @@ to fit the numerical density profiles of our voids.
 \bibliographystyle{latex/mn2e}
 \bibliography{references}
 
+
 %.........................................................................
-%FIGURE 4: volume functions
+%FIGURE 1: Distributions of FA and density regarding the Lambda_1 eigenvalue
+\begin{flushleft}
+\begin{figure*}
+\centering
+  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/cosmicweb_volume_Tweb.pdf}
+  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/cosmicweb_volume_Vweb.pdf}  
+  
+  \captionof{figure}{\small Volume Filling Fraction for each type of 
+  environment with respect to the chosen threshold $\lambda_{th}$ for both
+  web schemes (T-web, left panel. V-web, right panel). For each case, the 
+  threshold value is chosen such that the fractional anisotropy along the 
+  void-sheet boundaries has a value of $FA=0.95$.}
+
+  \label{fig:VFF}
+  \vspace{0.1 cm}
+
+\end{figure*}
+\end{flushleft}
+%.........................................................................
+
+
+%.........................................................................
+%FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
+\begin{flushleft}
+\begin{figure*}
+\centering
+
+  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/FA_L1.pdf}
+  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/delta_L1.pdf}  
+  
+  \captionof{figure}{\small Distributions of fractional anisotropy 
+  (left panel) and density field (right panel) with respect to the 
+  eigenvalue $\lambda_1$ for each web scheme (T-web, red lines. V-web, 
+  blue lines) as calculated over all cells of the grid. Thick central 
+  lines correspond to the median and filled regions to the $50\%$ of 
+  the distribution.}
+
+  \label{fig:L1_correlations}
+  \vspace{0.1 cm}
+
+\end{figure*}
+\end{flushleft}
+%.........................................................................
+
+
+%.........................................................................
+%FIGURE 3: FA of some regions and shape illustration
+\begin{flushleft}
+\begin{figure*}
+\centering
+
+  \includegraphics[trim = 0mm 1mm 0mm 1mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/FA_Prolatenes_Vweb.pdf}
+  \includegraphics[trim = 0mm 1mm 0mm 1mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/FA_Prolatenes.png}  
+  
+  \captionof{figure}{\small Distributions of fractional anisotropy 
+  (left panel) and density field (right panel) with respect to the 
+  eigenvalue $\lambda_1$ for each web scheme (T-web, red lines. V-web, 
+  blue lines) as calculated over all cells of the grid. Thick central 
+  lines correspond to the median and filled regions to the $50\%$ of 
+  the distribution.}
+
+  \label{fig:L1_correlations}
+  \vspace{0.1 cm}
+
+\end{figure*}
+\end{flushleft}
+%.........................................................................
+
+
+%.........................................................................
+%FIGURE 4: FA and vissual impression
+\begin{figure*}
+\centering
+
+  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
+  width=0.73\textheight]{./figures/cosmicweb_FA_Tweb.pdf}
+  \vspace{0.1 cm}
+  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
+  width=0.73\textheight]{./figures/cosmicweb_FA_Vweb.pdf}
+  \vspace{0.1 cm}  
+  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
+  width=0.73\textheight]{./figures/cosmicweb_density.pdf}
+  
+  \captionof{figure}{\small Left panels show the visual impression of the 
+  Cosmic Web for each web scheme (T-web, upper panels. V-web, middle 
+  panels. Density, lower panels). It can be noticed each environment 
+  sketched such that voids corresponds to white, sheets to gray, filaments 
+  to dark gray and knots to black regions. Right panels show the fractional 
+  anisotropy field for the same slide of the simulation and for each web 
+  scheme. Black regions correspond to the maxim value, i.e. FA$=1$, while 
+  white and light yellow regions to FA$=0$. It is worth noting the 
+  degeneration of low values of FA for knots and central regions of voids, 
+  thus indicating a high isotropy for both processes. In the same way, high 
+  values of FA (FA $\lesssim 1$) are consistent the anisotropic geometry 
+  exhibited by filaments and very flat sheets.}
+
+  \label{fig:FA_field}
+
+  
+\end{figure*}
+%.........................................................................
+
+
+%.........................................................................
+%FIGURE 5: volume functions
 \begin{flushleft}
 \begin{figure*}
 \centering
@@ -822,7 +849,7 @@ to fit the numerical density profiles of our voids.
 
 
 %.........................................................................
-%FIGURE 5: Density profile of voids for each defined scheme
+%FIGURE 6: Density profile of voids for each defined scheme
 \begin{flushleft}
 \begin{figure*}
 \centering
@@ -845,7 +872,7 @@ to fit the numerical density profiles of our voids.
 
 
 %.........................................................................
-%FIGURE 5: shape-distributions
+%FIGURE 7: shape-distributions
 \begin{flushleft}
 \begin{figure*}
 \centering

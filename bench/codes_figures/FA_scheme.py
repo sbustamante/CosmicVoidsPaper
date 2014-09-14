@@ -1,8 +1,8 @@
-#cosmicweb_fractional_anisotropy.py
+#FA_scheme.py
 #
-#This code perform a graphic scheme of the visual impresion for a defined cutting off of Bolshoi
+#This code perform a contour plot of the visual impresion for a defined cutting off of Bolshoi
 #simulation, using the density field and FA is shown how is the behaviour of voids
-#Usage cosmicweb_fractional_anisotropy.py <Vweb or Tweb> <show(0) or save(1)>
+#Usage FA_scheme.py <Vweb or Tweb> <show(0) or save(1)>
 #
 #by: Sebastian Bustamante
 

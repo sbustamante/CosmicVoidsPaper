@@ -376,6 +376,15 @@ def Fractional_Anisotropy( eig1, eig2, eig3 ):
     (eig1**2 + eig2**2 + eig3**2))
 
     return FA
+
+
+#..................................................................................................  
+#Prolatenes
+#..................................................................................................
+def Prolatenes( eig1, eig2, eig3):
+    #return ( eig3+eig1-2*eig2 )/( eig3-eig1 )   		#Non normalized
+    #return ( eig3+eig1-2*eig2 )/abs( 2*(eig1+eig2+eig3) )	#Classical normalization
+    return -( eig3+eig1-2*eig2 )/(eig1**2+eig2**2+eig3**2)	#My normalization
     
     
 #..................................................................................................
