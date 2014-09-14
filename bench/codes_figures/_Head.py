@@ -15,6 +15,8 @@ import scipy.interpolate as interp
 import matplotlib.gridspec as gridspec
 from matplotlib.patches import Ellipse
 from matplotlib.ticker import NullFormatter
+from mpl_toolkits.mplot3d import Axes3D
+import Image
 plt.close('all')
 
 

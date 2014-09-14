@@ -36,6 +36,9 @@ Rreff = 2.0
 RadBins = [ 1, 2.6, 4.2, 6.0, 20 ]
 #Colors 
 color = ["green", "blue", "red", "black", "cyan"]
+#Labels 
+labels = { "FAG":"FA-WT", "DLG":"Density-WT" }
+
 
 #Effective radius function
 def r_eff(X):
@@ -63,14 +66,17 @@ for ri in xrange( len(RadBins)-1 ):
 	    try:
 		rprofile = np.loadtxt('%svoids_density_%s/%s/void_%d_DR.dat'%
 		(data_figures_fold,void_scheme,web,i))
-		#interpolating
-		ur = rprofile[:,0]/r_eff(voids[i-1,1])
-		rho = rprofile[:,1]
-		rho[np.abs(rho)==0.00] = np.min(rho)
-                rho_interp = interp1d( ur/ur[-1]*Rreff, rho )
+	    except:
+                pass
+	    #interpolating
+	    ur = rprofile[:,0]/r_eff(voids[i-1,1])
+	    rho = rprofile[:,1]
+	    rho[np.abs(rho)==0.00] = np.min(rho)
+	    try:
+		rho_interp = interp.interp1d( ur/ur[-1]*Rreff, rho )
 		#Finding median and quartiles
-                values.append( rho_interp(r) )
-            except: 
+		values.append( rho_interp(r) )
+            except:
                 pass
         values = np.sort(values)
         try:
@@ -91,7 +97,7 @@ plt.ylabel( "Density contrast $\delta$" )
 plt.xlabel( "Normalized radius $r/r_{eff}$" )
 plt.ylim( (-1,0.0) )
 plt.grid(1)
-plt.title( "%s %s"%(web, void_scheme) )
+plt.title( "%s %s"%(web, labels[void_scheme]) )
 plt.legend( loc="lower right", fancybox=True, shadow=True, fontsize=9 )
 plt.subplots_adjust( right = 0.95, left = 0.15, top = 0.95 )
 if sys.argv[3] == '1':
