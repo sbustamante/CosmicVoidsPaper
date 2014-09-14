@@ -36,6 +36,8 @@ N_l = 100
 L_min = -0.3
 L_max = 1
 L_max += (L_max-L_min)/(1.0*N_l+1)
+#Colors
+colors = ["navy", "yellowgreen", "orangered", "c"]
 
 #==================================================================================================
 #			PLOTING VOLUME FRACTION OF EACH REGION
@@ -51,17 +53,17 @@ eig_filename = '%s%s%s/%d/Eigen%s'%(foldglobal,simulation,web,N_sec,smooth)
 regs = Counts( eig_filename, delta_filename, L_min, L_max, N_l )
 
 #Fraction of Voids
-plt.fill_between( regs[0], regs[5]/regs[9], color = 'red' )
-plt.plot( regs[0], regs[5]/regs[9], color = 'red', label = "voids", linewidth=2.0 )
+plt.fill_between( regs[0], regs[5]/regs[9], color = colors[0] )
+plt.plot( regs[0], regs[5]/regs[9], color = colors[0], label = "voids", linewidth=2.0 )
 #Fraction of Sheets
-plt.fill_between( regs[0], (regs[5]+regs[6])/regs[9], regs[5]/regs[9], color = 'blue' )
-plt.plot( regs[0], (regs[5]+regs[6])/regs[9], color = 'blue', label = "sheets", linewidth=2.0 )
+plt.fill_between( regs[0], (regs[5]+regs[6])/regs[9], regs[5]/regs[9], color = colors[1] )
+plt.plot( regs[0], (regs[5]+regs[6])/regs[9], color = colors[1], label = "sheets", linewidth=2.0 )
 #Fraction of Filaments
-plt.fill_between( regs[0], (regs[5]+regs[6]+regs[7])/regs[9], (regs[5]+regs[6])/regs[9], color = 'green' )
-plt.plot( regs[0], (regs[5]+regs[6]+regs[7])/regs[9], color = 'green', label = "filaments", linewidth=2.0 )
+plt.fill_between( regs[0], (regs[5]+regs[6]+regs[7])/regs[9], (regs[5]+regs[6])/regs[9], color = colors[2] )
+plt.plot( regs[0], (regs[5]+regs[6]+regs[7])/regs[9], color = colors[2], label = "filaments", linewidth=2.0 )
 #Fraction of Knots
-plt.fill_between( regs[0], 1.0, (regs[5]+regs[6]+regs[7])/regs[9], color = 'gray' )
-plt.plot( regs[0], regs[0]*0.0, color = 'gray', label = "knots", linewidth=2.0 )
+plt.fill_between( regs[0], 1.0, (regs[5]+regs[6]+regs[7])/regs[9], color = colors[3] )
+plt.plot( regs[0], regs[0]*0.0, color = colors[3], label = "knots", linewidth=2.0 )
 
 plt.xlim( L_min, 1.0 )
 plt.legend( loc='lower right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
@@ -71,8 +73,8 @@ plt.ylabel( "Volume fraction" )
 #Lambda_th line
 
 plt.text( Lambda_opt + 0.03, 0.3, '$\lambda^%s_{opt}$=%1.3f'%(web[0],Lambda_opt), fontsize = 12,\
-color = "black", rotation = 90 )
-plt.plot( [Lambda_opt,Lambda_opt], [0, 1.0], linestyle = '-', color = "black", linewidth = 2 )
+color = "white", rotation = 90 )
+plt.plot( [Lambda_opt,Lambda_opt], [0, 1.0], linestyle = '-', color = "black", linewidth = 2.5 )
 
 #plt.subplots_adjust(  )
 if sys.argv[2] == '1':
