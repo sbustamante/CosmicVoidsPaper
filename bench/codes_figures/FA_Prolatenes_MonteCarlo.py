@@ -12,9 +12,9 @@ execfile('_Head.py')
 #			PARAMETERS
 #==================================================================================================
 #Number of points
-N = 500000
+N = 100000
 #Normalization condition
-Rmax = 3.0
+Rmax = 6.0
 Rmin = -1.0
 #Scale of the plot
 Nscale = 1.0
@@ -22,7 +22,7 @@ Nscale = 1.0
 n_fa = int(10/Nscale)+1
 n_p = int(10/Nscale)
 #Tiny value of the FA and the prolatenes (<0.5)
-frac = 0.1
+frac = 0.0
 #Resolution
 Nres = 4
 
@@ -105,7 +105,7 @@ if sys.argv[1] == "1":
 		z = rz * np.outer(np.ones_like(u), np.cos(v))
 
 		# Plot:
-		ax.plot_surface(x, y, z,  rstride=10, cstride=10, color='#cdc9c9')
+		ax.plot_surface(x, y, z,  rstride=10, cstride=10, color='#cdc9c9', linewidth=4)
 
 		# Adjustment of the axes, so that they all have the same span:
 		max_radius = max(rx, ry, rz)*2/3.
