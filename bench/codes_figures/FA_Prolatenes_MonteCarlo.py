@@ -12,7 +12,7 @@ execfile('_Head.py')
 #			PARAMETERS
 #==================================================================================================
 #Number of points
-N = 50000
+N = 500000
 #Normalization condition
 Rmax = 3.0
 Rmin = -1.0
@@ -22,7 +22,9 @@ Nscale = 1.0
 n_fa = int(10/Nscale)+1
 n_p = int(10/Nscale)
 #Tiny value of the FA and the prolatenes (<0.5)
-frac = 0.47
+frac = 0.1
+#Resolution
+Nres = 4
 
 #==================================================================================================
 #			FUNCTIONS
@@ -57,6 +59,7 @@ for i in xrange(N):
 p = np.array(p)
 fa = np.array(fa)
 l = np.array(l)
+cont = np.array(range(N))
     
     
 #==================================================================================================
@@ -84,7 +87,9 @@ if sys.argv[1] == "1":
 	    ax = fig.add_subplot(111, projection='3d')
 
 	    try:
-		coef = l[ (fa<fa_array[fai+1]-fa_tin)*(fa>=fa_array[fai]+fa_tin)*(p<p_array[pi+1]-p_tin)*(p>=p_array[pi]+p_tin) ][0]
+		cont_tmp = cont[ (fa<fa_array[fai+1]-fa_tin)*(fa>=fa_array[fai]+fa_tin)*(p<p_array[pi+1]-p_tin)*(p>=p_array[pi]+p_tin) ]
+		i_c = cont_tmp[np.argsort( fa[cont_tmp] )[0]]
+		coef = l[ i_c ]
 		coef = coef - Rmin
 		
 		rx, ry, rz = 1.0/coef
@@ -100,7 +105,7 @@ if sys.argv[1] == "1":
 		z = rz * np.outer(np.ones_like(u), np.cos(v))
 
 		# Plot:
-		ax.plot_surface(x, y, z,  rstride=4, cstride=4, color='b')
+		ax.plot_surface(x, y, z,  rstride=10, cstride=10, color='#cdc9c9')
 
 		# Adjustment of the axes, so that they all have the same span:
 		max_radius = max(rx, ry, rz)*2/3.
@@ -110,7 +115,7 @@ if sys.argv[1] == "1":
 		None
 	
 	    plt.axis('off')
-	    plt.savefig( "tmp_%d%d.png"%(fai,pi), dpi=10*Nscale )
+	    plt.savefig( "tmp_%d%d.png"%(fai,pi), dpi=10*Nscale*Nres )
 	    plt.close()
 	    
 
@@ -122,7 +127,7 @@ if sys.argv[1] == "1":
 	for pi in xrange(n_p-1):
 	    im = Image.open("./tmp_%d%d.png"%(fai,pi) )
 	    height = im.size[1]
-	    fig.figimage(im, 75+30*Nscale+Nscale*60*pi, 55+60*Nscale*fai, zorder = 2)
+	    fig.figimage(im, Nres*(75+30*Nscale+Nscale*60*pi), Nres*(55+60*Nscale*fai), zorder = 2)
 	    
 	    ax.set_xlim( -1.2, 1.2 )
 	    ax.set_ylim( 0, 1 )
@@ -130,6 +135,6 @@ if sys.argv[1] == "1":
 	    ax.set_xlabel( "Prolatenes" )
 	    ax.set_ylabel( "Fractional Anisotropy" )
 	    
-    fig.savefig( '%sFA_Prolatenes.png'%(figures_fold) )
+    fig.savefig( '%sFA_Prolatenes.png'%(figures_fold), dpi=100*Nres )
     
     os.system( "rm *.png" )
