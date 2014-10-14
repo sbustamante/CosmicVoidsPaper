@@ -532,63 +532,6 @@ and profiles of number of halos.
 
 
 %-------------------------------------------------------------------------
-\subsection{Shape of voids}
-\label{subsec:shape_voids}
-%-------------------------------------------------------------------------
-
-
-Quantifying the shape of voids is gaining importance due to cosmological 
-tests such as the Alcock-Paczynski test \SRKED{[Sutter et al 2012]}, so 
-we compute here the reduced inertia tensor through the next expression in 
-order to determine shape distributions of bulk voids.
-
-
-%.........................................................................
-%Reduced inertia tensor
-\eq{ReducedIntertia}
-{ \tau_{ij} = \sum_l \frac{ x_{l,i}x_{l,j}  }{R_l^2} }
-%.........................................................................
-where $l$ is an index associated to each cell of the current region, 
-$i$ and $j$ indexes run over each spatial direction and finally 
-$R_l$ is defined as $R_l^2 = x_{l,1}^2 + x_{l,2}^2 + x_{l,3}^2$. All 
-positions are measured from the respective geometric center of each void.
-
-
-The eigenvalues of the reduced inertia tensor, i.e. the principal moments
-of inertia, are used to quantify the shape of each bulk void. They are 
-denoted as $\tau_1$, $\tau_2$ and $\tau_3$ such that $\tau_1 \leq \tau_2
-\leq \tau_3$. In Figure \ref{fig:distro_inertia} we show the computed
-distributions for $\tau_1/\tau_2$ and $\tau_2/\tau_3$ for voids larger 
-than 8 cells in order to avoid statistic fluctuations due to small regions.
-We rather calculate histograms for these ratio quantities instead of each 
-single value in order to avoid using an arbitrary normalization. For both 
-schemes, it can be noticed that the shape distribution is completely 
-spread out, thereby indicating a non-preferred geometry of void regions, 
-which is in agreement with the well established high anisotropy of matter 
-flows associated to this type of region. 
-
-
-For a better quantification, we also perform a classification of the shape 
-of voids by setting a threshold in the analysed ratio quantities. An 
-anisotropic or tri-axial shape correspond to voids where $\tau_1/\tau_2 < 
-0.7$ and $\tau_2/\tau_3 < 0.7$, where there is not any symmetry among the
-principal directions. We find about $57.2\% \sim 61.0\%$ of total voids 
-consistent with this shape, for the T-web and V-web respectively. A 
-pancake or quasi-oblate shape is associated to voids where $\tau_1/\tau_2 
-< 0.7$ and $\tau_2/\tau_3 > 0.7$. We found $13.1\% \sim 17.9\%$ of 
-consistent voids. Filamentary or quasi-prolate voids satisfy $\tau_1/\tau_2 
-> 0.7$ and $\tau_2/\tau_3 < 0.7$, with $25.4\% \sim 18.1\%$ of all voids.
-Finally, isotropic or quasi-spheric voids are found when $\tau_1/\tau_2 
-> 0.7$ and $\tau_2/\tau_3 > 0.7$, with $4.2\% \sim 3.1\%$ of total voids 
-compatible with this shape. The threshold value of $0.7$ adopted here for
-the ratios of the moments of inertia is just for illustrative purposes, 
-where such distinction is rather fuzzy and continuous. However, the 
-previous analysis allows us to conclude that voids are quite asymmetric 
-structures.
-
-
-
-%-------------------------------------------------------------------------
 \subsection{Density profile of voids}
 \label{subsec:density_voids}
 %-------------------------------------------------------------------------
@@ -806,30 +749,5 @@ to fit the numerical density profiles of our voids.
 \end{flushleft}
 %.........................................................................
 
-
-%.........................................................................
-%FIGURE 7: shape-distributions
-\begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 6mm 1mm 5mm 4mm, clip, keepaspectratio=true,
-  width=0.75\textheight]{./figures/voids_inertia_tensor.pdf}
-  
-  \captionof{figure}{\small Volume functions of voids catalogued by each 
-  used scheme. Left panel (watershed transform over the FA field of the T-web 
-  scheme). Central panel (over the FA field of the V-web scheme). Right panel 
-  (over the density field). Gray curves correspond to voids without boundary 
-  removal whereas black curves are associated to voids merged through boundary 
-  removal process. Dotted lines correspond to original continuous fields, 
-  while segmented lines correspond to fields with a 1st-order median filtering 
-  and continuous lines to a 2nd-order median filtering.}
-
-  \label{fig:shape_distro}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
 
 \end{document}
