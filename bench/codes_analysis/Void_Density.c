@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 {   
     FILE *in, *out;
     FLOAT2 *delta;
+    FLOAT2 RC_mag;
     char filename[NMAX1];
     int eig;
     
@@ -88,8 +89,9 @@ int main(int argc, char **argv)
 	
 	//Overall index
 	n = kt + n_x*(jt + n_x*it);
-	
-	fprintf( out, "%d\t%d\t%d\t%1.5e\n", i,j,k,delta[n] );
+	//Radial distance
+	RC_mag = sqrt( pow(X-i,2) + pow(Y-j,2) + pow(Z-k,2) );
+	fprintf( out, "%1.5e\t%1.5e\n", RC_mag, delta[n] );
     }
     
     fclose( out );

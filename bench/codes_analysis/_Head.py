@@ -223,22 +223,22 @@ def Regions_Histograms( filename_eig, filename_delta, min_L, max_L, N_L, min_D, 
 #Density profile of a void in a box
 #..................................................................................................
 def Void_Density( filename_delta, X, Y, Z, R ):
-    os.system( "./Void_Density.out %s temp.tmp %d %d %d %d"%( 
+    os.system( "./Void_Density.out %s temp.tmpr %d %d %d %d"%( 
     filename_delta, X, Y, Z, R ) )
-    datos = np.transpose( np.loadtxt( "temp.tmp" ) )
-    os.system( "rm temp.tmp" )
-    return np.array([datos[0],datos[1],datos[2]]), datos[3]
+    datos = np.transpose( np.loadtxt( "temp.tmpr" ) )
+    os.system( "rm temp.tmpr" )
+    return datos[0], datos[1]
 
 
 #..................................................................................................
 #Radial projected velocity profile of a void in a box
 #..................................................................................................
 def Void_Velocity( filename_delta, filename_momentum, X, Y, Z, R ):
-    os.system( "./Void_Velocity.out %s %s temp.tmp %d %d %d %d"%( 
+    os.system( "./Void_Velocity.out %s %s temp.tmpv %d %d %d %d"%( 
     filename_delta, filename_momentum, X, Y, Z, R ) )
-    datos = np.transpose( np.loadtxt( "temp.tmp" ) )
-    os.system( "rm temp.tmp" )
-    return np.array([datos[0],datos[1],datos[2]]), datos[3]
+    datos = np.transpose( np.loadtxt( "temp.tmpv" ) )
+    os.system( "rm temp.tmpv" )
+    return datos[0], datos[1]
 
 
 #..................................................................................................

@@ -72,18 +72,30 @@ extent = [0, Box_L, 0, Box_L]
 
 #Loading Density filename
 delta_filename = '%s%sTweb/%d/Delta%s'%(foldglobal,simulation,N_sec,smooth)
+#Loading Mass filename
+mass_filename = '%s%sVweb/%d/M'%(foldglobal,simulation,N_sec)
+#Loading Momentums filename
+px_filename = '%s%sVweb/%d/P_0'%(foldglobal,simulation,N_sec)
+py_filename = '%s%sVweb/%d/P_1'%(foldglobal,simulation,N_sec)
+pz_filename = '%s%sVweb/%d/P_2'%(foldglobal,simulation,N_sec)
 #Loading Vweb filename
 eig_filename = '%s%s%s/%d/Eigen%s'%(foldglobal,simulation,web,N_sec,smooth)
 #Loading general catalog of halos
 GH = np.loadtxt('%s%sC_GH_%s.dat'%(foldglobal,simulation,catalog))
 #Catalogue of voids
 voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%s/void_index.dat"%\
-(foldglobal, simulation, web, N_sec, void_scheme, config ), Cut, 'plain', Coor = axe )    
+(foldglobal, simulation, web, N_sec, void_scheme, config ), Cut, 'plain', Coor = axe )
+
 #Loading Fields
 delta = CutFieldZ( delta_filename, Cut, 32, Coor = axe )
 eig1 = CutFieldZ( eig_filename+"_1", Cut, 16, Coor = axe )
 eig2 = CutFieldZ( eig_filename+"_2", Cut, 16, Coor = axe )
 eig3 = CutFieldZ( eig_filename+"_3", Cut, 16, Coor = axe )
+mass = CutFieldZ( mass_filename, Cut, 32, Coor = axe )
+px = CutFieldZ( px_filename, Cut, 32, Coor = axe )
+py = CutFieldZ( py_filename, Cut, 32, Coor = axe )
+pz = CutFieldZ( pz_filename, Cut, 32, Coor = axe )
+
 #Calculating contour of voids
 contours = np.zeros( (N_sec,N_sec) )
 #Sweeping matrix
@@ -126,6 +138,7 @@ plt.xlabel( "[$h^{-1}$ Mpc]" )
 
 #Void Regions
 plt.subplot( 1, 3, 3 )
+extent = [0, N_sec, 0, N_sec]
 #Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
 #plt.plot( Coor[0], Coor[1], 'o', color = 'white', markersize = 4 )
 #Void basins
@@ -136,6 +149,13 @@ voids2 = lista[ voids.astype(int) ]
 plt.imshow( np.transpose(voids2[::,::-1]), cmap = 'spectral', extent = extent, vmin = -num_voids/20., vmax = num_voids,\
 interpolation = 'none' )
 plt.imshow( np.transpose(contours[::,::-1]), cmap = cmap2, extent = extent, vmin = 0, vmax = 1 )
+
+#Velocity field
+X,Y = meshgrid( arange(0,N_sec,1),arange(0,N_sec,1) )
+Vx = np.transpose((np.sign(px)*np.abs(px)/(1.0*mass))[::,::-1])
+Vy = np.transpose((np.sign(py)*np.abs(py)/(1.0*mass))[::,::])
+norm = 100.
+#quiver( X, Y, Vx/norm, Vy/norm, color='k', units='x', zorder=2, scale = 1, alpha=0.2)
 
 plt.title( "Distribution of voids" )
 plt.yticks( (),() )

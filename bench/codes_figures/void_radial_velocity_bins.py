@@ -27,15 +27,15 @@ void_scheme = sys.argv[2]
 #Cutt of respect to the number of cells
 N_cut = 2
 
-#Number of middle points for mapping the velocity field
-N = 100
+#Number of middle points for mapping the density field
+N = 50
 #Number of times the effective radius of the void
-Rreff = 2.0
+Rreff = 2.5
 #Effective radial bins 
-#RadBins = [ 1, 2.3, 3.6, 4.8, 6.5, 20 ]
-RadBins = [ 1, 2.6, 4.2, 6.0, 20 ]
+#RadBins = [ 0, 2, 4, 6, 8, 10, 12, 14, 16 ]
+RadBins = [ 0, 1.5, 3, 4.5, 6, 7.5, 9, 10.5, 12 ]
 #Colors 
-color = ["green", "blue", "red", "black", "cyan"]
+color = ["#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000"]
 #Labels 
 labels = { "FAG":"FA-WT", "DLG":"Density-WT" }
 
@@ -73,7 +73,7 @@ for ri in xrange( len(RadBins)-1 ):
 	    vel = vprofile[:,1]
 	    vel[np.abs(vel)==0.00] = np.min(vel)
 	    try:
-		vel_interp = interp.interp1d( ur/ur[-1]*Rreff, vel )
+		vel_interp = interp.interp1d( ur, vel )
 		#Finding median and quartiles
 		values.append( vel_interp(r) )
             except:
@@ -81,8 +81,8 @@ for ri in xrange( len(RadBins)-1 ):
         values = np.sort(values)
         try:
             median[i_r] = values[ int(len(values)*0.5) ]
-            #Q1[i_r] = values[ int(len(values)*0.25) ]
-            #Q2[i_r] = values[ int(len(values)*0.75) ]
+            #Q1[i_r] = -values[ int(len(values)*0.25) ]
+            #Q2[i_r] = -values[ int(len(values)*0.75) ]
         except:
             pass
         i_r += 1
@@ -95,13 +95,12 @@ for ri in xrange( len(RadBins)-1 ):
     
 plt.ylabel( "radial velocity $v \cdot u_r$ [km/s]" )
 plt.xlabel( "Normalized radius $r/r_{eff}$" )
-plt.ylim( (-800,200) )
+plt.ylim( (-40,100) )
 plt.grid(1)
 plt.title( "%s %s"%(web, labels[void_scheme]) )
-plt.legend( loc="lower right", fancybox=True, shadow=True, fontsize=9 )
+plt.legend( loc="lower right", fancybox=True, shadow=True, fontsize=9, ncol=2 )
 plt.subplots_adjust( right = 0.95, left = 0.15, top = 0.95 )
 if sys.argv[3] == '1':
     plt.savefig( '%svoids_velocity_%s%s.pdf'%(figures_fold,web,void_scheme) )
 else:
     plt.show()
-    

@@ -8,27 +8,11 @@
 //Usage  Void_Velocity.out <delta_filename> <momentum_filename> <output_filename> <X> <Y> <Z> <R>
 
 
-//Function to compute radial velocity of cell belonging to the current void
-FLOAT2 radial_velocity( int XC, int YC, int ZC, 
-			int X, int Y, int Z, 
-			FLOAT1 Vx, FLOAT1 Vy, FLOAT1 Vz )
-{
-    FLOAT2 RC_mag, Vel_proj;
-    
-    //Norm of relative distance vector
-    RC_mag = sqrt( pow(XC-X,2) + pow(YC-Y,2) + pow(ZC-Z,2) );
-  
-    //Projecting velocity vector
-    Vel_proj = ( Vx*(X-XC) + Vy*(Y-YC) + Vz*(Z-ZC) )/RC_mag;
-    
-    return Vel_proj;
-}
-
-
 int main(int argc, char **argv)
 {   
     FILE *in, *out;
     FLOAT2 *delta;
+    FLOAT2 RC_mag;
     FLOAT1 *p1, *p2, *p3;
     FLOAT1 vn1, vn2, vn3, v_rad;
     char filename[NMAX1];
@@ -51,10 +35,10 @@ int main(int argc, char **argv)
     
     //Loading centre and radius of void============================================================
     int X, Y, Z, R;
-    X = atoi( argv[3] );	//X coordinate
-    Y = atoi( argv[4] );	//Y coordinate
-    Z = atoi( argv[5] );	//Z coordinate
-    R = atoi( argv[6] );	//Radius of void
+    X = atoi( argv[4] );	//X coordinate
+    Y = atoi( argv[5] );	//Y coordinate
+    Z = atoi( argv[6] );	//Z coordinate
+    R = atoi( argv[7] );	//Radius of void
     //=============================================================================================
            	
     //LOADING DENSITY FIELD========================================================================
@@ -135,7 +119,6 @@ int main(int argc, char **argv)
 	    fread(&dumb,sizeof(int),1,in);}}
     //=============================================================================================
     
-    
     //Creating file to store density
     out=fopen(argv[3], "w");
     
@@ -162,10 +145,9 @@ int main(int argc, char **argv)
 	vn2 = p2[n]/delta[n];
 	vn3 = p3[n]/delta[n];
 	//Radial projection
-	v_rad = radial_velocity( X, Y, Z, i, j, k, vn1, vn2, vn3 );
-// 	printf( "%f  %f  %f	%f\n", vn1, vn2, vn3, v_rad );
-	
-	fprintf( out, "%d\t%d\t%d\t%1.5e\n", i,j,k,v_rad );
+	RC_mag = sqrt( pow(X-i,2) + pow(Y-j,2) + pow(Z-k,2) );
+	v_rad = ( vn1*(i-X) + vn2*(j-Y) + vn3*(k-Z) )/RC_mag;;
+	fprintf( out, "%1.5e\t%1.5e\n", RC_mag, v_rad );
     }
     
     fclose( out );

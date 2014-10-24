@@ -28,14 +28,14 @@ void_scheme = sys.argv[2]
 N_cut = 2
 
 #Number of middle points for mapping the density field
-N = 100
+N = 25
 #Number of times the effective radius of the void
-Rreff = 2.0
+Rreff = 2.5
 #Effective radial bins 
-#RadBins = [ 1, 2.3, 3.6, 4.8, 6.5, 20 ]
-RadBins = [ 1, 2.6, 4.2, 6.0, 20 ]
+#RadBins = [ 0, 2, 4, 6, 8, 10, 12, 14, 16 ]
+RadBins = [ 0, 1.5, 3, 4.5, 6, 7.5, 9, 10.5, 12 ]
 #Colors 
-color = ["green", "blue", "red", "black", "cyan"]
+color = ["#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000"]
 #Labels 
 labels = { "FAG":"FA-WT", "DLG":"Density-WT" }
 
@@ -68,12 +68,14 @@ for ri in xrange( len(RadBins)-1 ):
 		(data_figures_fold,void_scheme,web,i))
 	    except:
                 pass
+	    if len(rprofile)==2:
+		continue
 	    #interpolating
 	    ur = rprofile[:,0]/r_eff(voids[i-1,1])
 	    rho = rprofile[:,1]
 	    rho[np.abs(rho)==0.00] = np.min(rho)
 	    try:
-		rho_interp = interp.interp1d( ur/ur[-1]*Rreff, rho )
+		rho_interp = interp.interp1d( ur, rho )
 		#Finding median and quartiles
 		values.append( rho_interp(r) )
             except:
@@ -95,13 +97,12 @@ for ri in xrange( len(RadBins)-1 ):
     
 plt.ylabel( "Density contrast $\delta$" )
 plt.xlabel( "Normalized radius $r/r_{eff}$" )
-plt.ylim( (-1,0.0) )
+plt.ylim( (-1,0.2) )
 plt.grid(1)
 plt.title( "%s %s"%(web, labels[void_scheme]) )
-plt.legend( loc="lower right", fancybox=True, shadow=True, fontsize=9 )
+plt.legend( loc="lower right", fancybox=True, shadow=True, fontsize=9, ncol=2 )
 plt.subplots_adjust( right = 0.95, left = 0.15, top = 0.95 )
 if sys.argv[3] == '1':
     plt.savefig( '%svoids_density_%s%s.pdf'%(figures_fold,web,void_scheme) )
 else:
     plt.show()
-    

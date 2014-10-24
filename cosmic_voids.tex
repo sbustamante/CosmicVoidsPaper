@@ -179,16 +179,13 @@ estimations.
 
 This paper is organized as follows. In section 2 we describe the used
 simulation for testing our void finding algorithm, i.e. the Bolshoi
-simulation. Alternatively to the web schemes Tweb and Vweb, we propose 
-a heuristic web classifier based on three thresholds of the density field. 
-This is used in order to illustrate the differences of our scheme with a
-density-based classifier. A detailed description of these methods is 
-presented in section 3. In section 4 we describe how the FA can be used 
-for tracing the structure of voids. Once obtained meaningful catalogues 
-of voids for each scheme, we proceed to compare some typical and general 
-interest properties of voids such as volume functions, distributions of 
-size and density and velocity profiles. This is done in section 5. Finally 
-in section 6 we analyse and evaluate our findings.
+simulation. A detailed description of these methods is presented in 
+section 3. In section 4 we describe how the FA can be used for tracing the 
+structure of voids. Once obtained meaningful catalogues of voids for each 
+scheme, we proceed to compare some typical and general interest properties 
+of voids such as volume functions, distributions of size and density and 
+velocity profiles. This is done in section 5. Finally in section 6 we 
+analyse and evaluate our findings.
 
 
 
@@ -325,61 +322,6 @@ approach for the threshold choosing based on the maximization of the
 fractional anisotropy field occurring in filaments and very dense walls.
 
 
-%-------------------------------------------------------------------------
-\subsection{The density-based web finder}
-\label{subsec:Vweb}
-%-------------------------------------------------------------------------
-
-
-Although the density field is a key quantity for understanding the 
-large-scale Universe, the filamentary structure of the Cosmic Web is 
-poorly traced by it (see e.g. Fig. \ref{fig:FA_field}). In order to 
-compare our new proposal based on the the fractional anisotropy as a 
-tracer field of voids, we define a very basic approach for environmental 
-finding based on three thresholds of the density field. 
-
-
-%.........................................................................
-%Table with volume filling fraction
-\begin{table}[h]
-\begin{flushleft}
-\begin{center}
-  \begin{tabular}{c  c  c  c c} \hline\hline
-	\textbf{Volume}  &				&\textbf{Scheme}& \\
-	\textbf{Filling} &				&				&					  &  \textbf{Threshold} \\ 
-	\textbf{Fraction}&\textbf{Tweb}&\textbf{Vweb}	&	\textbf{Density}  &  $\bf{\delta_{th}}$  \\ \hline
-	Voids			 &	$54.88\%$	&	$47.06\%$	&	$50.97\%$	 	  &	$ -0.57$			\\ 
-	Sheets		     &	$33.21\%$	&	$39.54\%$	&	$36.38\%$ 	      &	$0.60$				\\
-	Filaments		 &	$11.16\%$	&	$12.18\%$	&	$11.67\%$ 		  &	$8.82$				\\
-	Knots			 &	$0.75\%$	&	$1.22\%$	&	$0.98\%$  		  &	--		\\ \hline\hline
-  \end{tabular}  
-  \captionof{table}{\small VFF for each type of environment and for each
-  web scheme. VFF for the density-based scheme are defined as the 
-  arithmetic mean of the Tweb and the Vweb. The last column corresponds 
-  to the threshold values in the density field in order to obtain the 
-  required VFF. Note there is not any value associated to knots as there 
-  is not a higher order environment.}
-  
-  \label{tab:VFF}
-\end{center}
-\end{flushleft}
-\end{table}
-%.........................................................................
-
-
-In next section we shall describe an alternative approximation to select 
-the threshold value $\lambda_{th}$. One of the main results is the similar 
-volume filling fraction (VFF) for each environment in both web schemes 
-(see Fig. \ref{fig:VFF}). Using this result, we propose here a heuristic 
-classification of the Cosmic Web based on three density thresholds 
-assigned to each boundary (i.e. void-sheet, sheet-filament and 
-filament-knot)\footnote{The progressive sequence void-sheet-filament-knot 
-along any path through the Cosmic Web should be always satisfied as each 
-used field is smoothed.} such that the corresponding VFF values are 
-similar to the values obtained for the Tweb and the Vweb, specifically 
-they are defined to be the arithmetic mean of both schemes.
-
-
 %*************************************************************************
 \section{Finding voids}
 \label{sec:bulk_voids}
@@ -408,12 +350,12 @@ way as \citet{Libeskind13}, as a tracer of cosmic voids.
 %.........................................................................
 where the eigenvalues are taken from either the Tweb or the Vweb 
 (FA-Tweb and FA-Vweb respectively). Such as it is defined, $FA=0$ 
-corresponds with a isotropic dynamic and $FA=1$ with a highly anisotropic 
+corresponds with an isotropic dynamic and $FA=1$ with a highly anisotropic 
 distribution.
 
 
 In left panels of Fig. \ref{fig:FA_field} we calculate the FA for both 
-web schemes and the logarithmic density field over a slide of the 
+web schemes and the logarithmic density field for a slide of the 
 simulation. Some important points can be concluded of this figure.
 
 
@@ -425,7 +367,7 @@ becoming gradually more anisotropic at outer regions.
 exhibits very narrow distribution around knots whereas for the Vweb, these
 distributions are more spread out, thereby indicating strong differences 
 between the density and the velocity fields in highly non-linear regions.
-\item The filamentary structure of the Cosmic Web is very good traced by
+\item The filamentary structure of the Cosmic Web is very well traced by
 high FA values (black regions), thus indicating very anisotropic dynamics 
 for sheets and filaments.
 \item The density field poorly traces the Cosmic Web. This is a somehow 
@@ -589,25 +531,25 @@ to fit the numerical density profiles of our voids.
 
 %.........................................................................
 %FIGURE 1: Volume Filling Fractions for environs
-\begin{flushleft}
-\begin{figure*}
-\centering
-  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/cosmicweb_volume_Tweb.pdf}
-  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/cosmicweb_volume_Vweb.pdf}  
-  
-  \captionof{figure}{\small Volume Filling Fraction for each type of 
-  environment with respect to the chosen threshold $\lambda_{th}$ for both
-  web schemes (Tweb, left panel. Vweb, right panel). For each case, the 
-  threshold value is chosen such that the fractional anisotropy along the 
-  void-sheet boundaries has a median value of $FA=0.95$.}
-
-  \label{fig:VFF}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
+%\begin{flushleft}
+%\begin{figure*}
+%\centering
+%  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
+%  width=0.3\textheight]{./figures/cosmicweb_volume_Tweb.pdf}
+%  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
+%  width=0.3\textheight]{./figures/cosmicweb_volume_Vweb.pdf}  
+%  
+%  \captionof{figure}{\small Volume Filling Fraction for each type of 
+%  environment with respect to the chosen threshold $\lambda_{th}$ for both
+%  web schemes (Tweb, left panel. Vweb, right panel). For each case, the 
+%  threshold value is chosen such that the fractional anisotropy along the 
+%  void-sheet boundaries has a median value of $FA=0.95$.}
+%
+%  \label{fig:VFF}
+%  \vspace{0.1 cm}
+%
+%\end{figure*}
+%\end{flushleft}
 %.........................................................................
 
 
@@ -669,8 +611,8 @@ to fit the numerical density profiles of our voids.
   \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
   width=0.73\textheight]{./figures/cosmicweb_FA_Vweb.pdf}
   \vspace{0.1 cm}  
-  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_density.pdf}
+%  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
+%  width=0.73\textheight]{./figures/cosmicweb_density.pdf}
   
   \captionof{figure}{\small Left panels show the visual impression of the 
   Cosmic Web for each web scheme (T-web, upper panels. V-web, middle 
@@ -724,20 +666,20 @@ to fit the numerical density profiles of our voids.
 \begin{figure*}
 \centering
   \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_density_TwebFAG.pdf}
+  width=0.3\textheight]{./figures/voids_density_TwebFAG.pdf}
   \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_density_VwebFAG.pdf}
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_density_TwebDLG.pdf}
+  width=0.3\textheight]{./figures/voids_density_VwebFAG.pdf}
+%  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
+%  width=0.24\textheight]{./figures/voids_density_TwebDLG.pdf}
   
   \
   
   \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_velocity_TwebFAG.pdf}
+  width=0.3\textheight]{./figures/voids_velocity_TwebFAG.pdf}
   \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_velocity_VwebFAG.pdf}
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_velocity_TwebDLG.pdf}
+  width=0.3\textheight]{./figures/voids_velocity_VwebFAG.pdf}
+%  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
+%  width=0.24\textheight]{./figures/voids_velocity_TwebDLG.pdf}
   
   \captionof{figure}{\small Density and velocity profiles of voids for 
   each finding scheme.}
