@@ -34,6 +34,10 @@ compile:
 		@echo -e
 		$(COMPILER) Void_Velocity.c -lm -o Void_Velocity.out
 		@echo -e
+		$(COMPILER) Void_Density_All.c -lm -o Void_Density_All.out
+		@echo -e
+		$(COMPILER) Void_Velocity_All.c -lm -o Void_Velocity_All.out
+		@echo -e
 
 clean:
 		rm -f *.out

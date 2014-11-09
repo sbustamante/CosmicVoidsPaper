@@ -639,3 +639,11 @@ def box_plot( Quintile, min, max, Q1, Q3, Median, subplot, color, width="fixed",
     subplot.hlines( min, 0.05+Quintile*0.9/4-tick, 0.05+Quintile*0.9/4+tick, color, "-", linewidth = 2 )
     subplot.hlines( max, 0.05+Quintile*0.9/4-tick, 0.05+Quintile*0.9/4+tick, color, "-", linewidth = 2 )
     subplot.add_patch(rect1)
+    
+def gaussian_filter( X, Y, R ):
+    func = interp.interp1d( X, Y )
+    gauss = lambda x, R: 1/(R*np.sqrt(2*np.pi))*np.exp( -0.5*x**2/R**2 )
+    Ysoft = []
+    for x in X:
+	Ysoft.append( integ.quad( lambda xp: func(xp)*gauss( xp-x, R ), X[0], X[-1] )[0] )
+    return Ysoft

@@ -28,14 +28,13 @@ void_scheme = sys.argv[2]
 N_cut = 2
 
 #Number of middle points for mapping the density field
-N = 50
+N = 40
 #Number of times the effective radius of the void
-Rreff = 2.5
+Rreff = 8
 #Effective radial bins 
-#RadBins = [ 0, 2, 4, 6, 8, 10, 12, 14, 16 ]
-RadBins = [ 0, 1.5, 3, 4.5, 6, 7.5, 9, 10.5, 12 ]
+RadBins = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16 ]
 #Colors 
-color = ["#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000"]
+color = ["#000000","#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
 #Labels 
 labels = { "FAG":"FA-WT", "DLG":"Density-WT" }
 
@@ -69,9 +68,11 @@ for ri in xrange( len(RadBins)-1 ):
 	    except:
                 pass
 	    #interpolating
-	    ur = vprofile[:,0]/r_eff(voids[i-1,1])
 	    vel = vprofile[:,1]
-	    vel[np.abs(vel)==0.00] = np.min(vel)
+	    ur = vprofile[ np.isnan(vel)==False ,0]
+	    vel = vel[ np.isnan(vel)==False ]
+	    Reffi = r_eff(voids[i,1])
+	    	    
 	    try:
 		vel_interp = interp.interp1d( ur, vel )
 		#Finding median and quartiles
@@ -81,8 +82,8 @@ for ri in xrange( len(RadBins)-1 ):
         values = np.sort(values)
         try:
             median[i_r] = values[ int(len(values)*0.5) ]
-            #Q1[i_r] = -values[ int(len(values)*0.25) ]
-            #Q2[i_r] = -values[ int(len(values)*0.75) ]
+            #Q1[i_r] = values[ int(len(values)*0.25) ]
+            #Q2[i_r] = values[ int(len(values)*0.75) ]
         except:
             pass
         i_r += 1

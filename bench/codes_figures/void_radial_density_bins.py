@@ -28,14 +28,14 @@ void_scheme = sys.argv[2]
 N_cut = 2
 
 #Number of middle points for mapping the density field
-N = 25
+N = 40
 #Number of times the effective radius of the void
-Rreff = 2.5
+Rreff = 8
 #Effective radial bins 
-#RadBins = [ 0, 2, 4, 6, 8, 10, 12, 14, 16 ]
-RadBins = [ 0, 1.5, 3, 4.5, 6, 7.5, 9, 10.5, 12 ]
+RadBins = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16 ]
+#RadBins = [ 1, 3, 5, 7, 9, 11, 13, 14 ]
 #Colors 
-color = ["#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000"]
+color = ["#000000","#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
 #Labels 
 labels = { "FAG":"FA-WT", "DLG":"Density-WT" }
 
@@ -57,7 +57,7 @@ for ri in xrange( len(RadBins)-1 ):
     median = np.zeros( N )
     Q1 = np.zeros( N )
     Q2 = np.zeros( N )
-    Rnorm = np.linspace( 0.01, Rreff, N )
+    Rnorm = np.linspace( 0, Rreff, N )
     #Loading single voids
     i_r = 0
     for r in Rnorm:
@@ -70,14 +70,16 @@ for ri in xrange( len(RadBins)-1 ):
                 pass
 	    if len(rprofile)==2:
 		continue
-	    #interpolating
-	    ur = rprofile[:,0]/r_eff(voids[i-1,1])
+	    #interpolating and filtering nan data
 	    rho = rprofile[:,1]
-	    rho[np.abs(rho)==0.00] = np.min(rho)
+	    ur = rprofile[ np.isnan(rho)==False ,0]
+	    rho = rho[ np.isnan(rho)==False ]
+	    Reffi = r_eff(voids[i,1])
+	    
 	    try:
 		rho_interp = interp.interp1d( ur, rho )
 		#Finding median and quartiles
-		values.append( rho_interp(r) )
+		values.append( rho_interp( r ) )
             except:
                 pass
         values = np.sort(values)
