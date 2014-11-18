@@ -6,11 +6,12 @@
 
 #define FLOAT1 float
 #define FLOAT2 double
+#define NMAX0 200
 #define NMAX1 2000
 #define NMAX2 30000
 #define CELL2MPC 0.9765625
 
-//Usage  Void_Density_Bins.out <delta_filename> <output_folder> <Void_Index> <CM> <Bins> <Rmax> <Rvmin> <Rvmax> <Nint>
+//Usage  Void_Density_Bins.out <delta_filename> <output_folder> <Void_Index> <CM> <Bins> <Rmax> <Rvmin> <Rvmax> <Nrint> <dmin> <dmax> <Ndint>
 
 
 /**************************************************************************************************
@@ -24,38 +25,10 @@ struct void_region{
     };
 
 struct bins{
-    long int Ncells;
+    int Ncells;
     float Rint;
-    double rho_median;
-    double *rhos;
+    float delta;
     };
-
-/**************************************************************************************************
-			      FUNCTIONS
-**************************************************************************************************/
-//Median of a list
-float median( struct bins bin )
-{
-    long int i, j;
-    int breaker;
-    double dumb;
-    
-    for( j=0; j<bin.Ncells; j++ ){
-	breaker = 0;	//False
-	for( i=0; i<bin.Ncells-1; i++ ){
-	    if( bin.rhos[i]>bin.rhos[i+1] ){
-		dumb = bin.rhos[i];
-		bin.rhos[i] = bin.rhos[i+1];
-		bin.rhos[i+1] = dumb;
-		breaker = 1;	//True
-	    }
-	}
-	if( breaker == 0 ) break;
-    }
-  
-    return bin.rhos[(int)(bin.Ncells/2.0)];
-}
-
     
 
 int main(int argc, char **argv)
@@ -66,12 +39,12 @@ int main(int argc, char **argv)
     char filename[NMAX1];
     
     struct void_region voids[NMAX2];
-    struct bins *rho_bins;
-    
+    struct bins rho_bins[NMAX0][NMAX0];
+        
     int i,j,k;
     int ic,jc,kc;
     int it,jt,kt;
-    int iv, ibin, itbin;
+    int iv, ibin, jbin, itbin;
     long long int n, Ncells;
     
     //Grid variables===============================================================================
@@ -85,13 +58,16 @@ int main(int argc, char **argv)
     //=============================================================================================
     
     //Loading centre and radius of void============================================================
-    int Nbins, R, Nvoids, Rint, Nint;
-    float Rvmin, Rvmax;
+    int Nbins, R, Nvoids, Rint, Nint, Ndbins;
+    float Rvmin, Rvmax, dmin, dmax;
     Nbins = atoi( argv[5] );	//Number of radial bins
     R = atoi( argv[6] );	//Radius of void
     Rvmin = atof( argv[7] );	//Minimum bin radius for void stacking
     Rvmax = atof( argv[8] );	//Maximum bin radius for void stacking
     Nint = atoi( argv[9] );	//Number of intervals for void stacking
+    dmin = atof( argv[10] );	//Minimum bin delta for void stacking
+    dmax = atof( argv[11] );	//Maximum bin delta for void stacking
+    Ndbins = atoi( argv[12] );	//Number of intervals for void stacking for delta
            	
     //LOADING DENSITY FIELD========================================================================
     sprintf(filename, "%s", argv[1]);
@@ -159,48 +135,33 @@ int main(int argc, char **argv)
     //=============================================================================================
 
     //HISTOGRAMS===================================================================================
-    rho_bins = (struct bins *)calloc( Nbins, sizeof( struct bins ) );
-    //Reseting bins with normed radius and null cells
-    for( i=0; i<Nbins; i++ ){
-	rho_bins[i].Rint = 1.0*R*(i+1)/Nbins;
-	rho_bins[i].Ncells = 1;
-	rho_bins[i].rhos = (double *)calloc( rho_bins[i].Ncells, sizeof( double ) );
-	rho_bins[i].rhos[0] = 0;
-    }
- 
+    for( i=0; i<Nbins; i++ )
+	for( j=0; j<Ndbins; j++ ){
+	    //Reseting bins
+	    rho_bins[i][j].Rint = R*i/Nbins;
+	    rho_bins[i][j].delta = dmin + j/Ndbins*(dmax-dmin);}
+    
     //SWEEPING VALUES
     itbin = Nint;
-    
-    out = fopen( "data", "w" );
-    
+
     for( iv=0; iv<Nvoids; iv++ ){
 	//If passing to the next bin
 	if( voids[iv].R*CELL2MPC < Rvmin + (itbin-1)*(Rvmax-Rvmin)/Nint ){
-	    fclose(out);
-	    break;
 	  
-	    //Saving previous bin
-// 	    printf( "\n\nSaving bins between effective radius [%f,%f]\n",
-// 	    Rvmin + (itbin)*(Rvmax-Rvmin)/Nint,
-// 	    Rvmin + (itbin-1)*(Rvmax-Rvmin)/Nint);
-
-	    //Creating file to store density
+	    //Saving current bin
 	    sprintf( filename, "%s/density_%1.2f-%1.2f.dat", argv[2],
 	    Rvmin + (itbin)*(Rvmax-Rvmin)/Nint,
 	    Rvmin + (itbin-1)*(Rvmax-Rvmin)/Nint);
 	    out = fopen( filename, "w" );
-	    //Calculating medians
-	    for( i=0; i<Nbins; i++ ){
-// 		printf( "\tIn bin: %d\t\tNcells: %ld\n", i, rho_bins[i].Ncells );
-// 		rho_bins[i].rho_median = median( rho_bins[i] );
-		fprintf( out, "%1.5e\t%1.5e\n", rho_bins[i].Rint ,rho_bins[i].rho_median );
-		//Reseting bins
-		MY_FREE( rho_bins[i].rhos );
-		rho_bins[i].Ncells = 1;
-		rho_bins[i].rhos = (double *)calloc( rho_bins[i].Ncells, sizeof( double ) );
-	    }
-// 	    printf("\n");
-	    fclose( out );
+
+	    //Storing information
+	    for( j=0; j<Ndbins; j++ ){
+		for( i=0; i<Nbins; i++ ){
+		    fprintf( out, "%d\t", rho_bins[i][j].Ncells );
+		    //Reseting bins
+		    rho_bins[i][j].Ncells = 0;}
+		fprintf( out, "\n" );}
+		fclose( out );
 	    itbin --;}
 		
 	//Saving density field inside effecive radius of void
@@ -224,20 +185,16 @@ int main(int argc, char **argv)
 	    //Radial distance
 	    RC_mag = sqrt( pow(voids[iv].C[0]-i,2) + pow(voids[iv].C[1]-j,2) + pow(voids[iv].C[2]-k,2) )/voids[iv].R;
 	    ibin = (int)(RC_mag/R*Nbins);
+	    jbin = (int)( (delta[n]-dmin)/(dmax-dmin)*Ndbins );
+// 	    printf( "%d\t%lf\t\t%d\t%f\n", jbin, delta[n], ibin, RC_mag);
 	    //Only spherical bins
-	    if( ibin < Nbins ){
+	    if( ibin < Nbins && jbin < Ndbins ){
 		//Storing cells
 		voids[iv].rho_mean += delta[n];
 		voids[iv].Ncells ++ ;
-		
-		fprintf( out, "%1.5e\t%1.5e\n", RC_mag ,delta[n] );
-		
-		rho_bins[ibin].Ncells ++;
-		rho_bins[ibin].rhos = (double *)realloc(rho_bins[ibin].rhos, \
-		rho_bins[ibin].Ncells*sizeof( double ) );
-		rho_bins[ibin].rhos[ rho_bins[ibin].Ncells-1 ] = delta[n];}}
-		
-	printf( "In void %d\t\t Mean density of the void = %e\n", iv, voids[iv].rho_mean/voids[iv].Ncells );}
+		rho_bins[ibin][jbin].Ncells ++;}}
+    }		
+// 	printf( "In void %d\t\t Mean density of the void = %e\n", iv, voids[iv].rho_mean/voids[iv].Ncells );}
     //=============================================================================================
     
     return 0;

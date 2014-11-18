@@ -32,9 +32,10 @@ N = 40
 #Number of times the effective radius of the void
 Rreff = 8
 #Effective radial bins 
-RadBins = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16 ]
+RadBins = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 12 ]
 #Colors 
-color = ["#000000","#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
+#color = ["#000000","#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
+color = ["#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
 #Labels 
 labels = { "FAG":"FA-WT", "DLG":"Density-WT" }
 
@@ -81,7 +82,8 @@ for ri in xrange( len(RadBins)-1 ):
                 pass
         values = np.sort(values)
         try:
-            median[i_r] = values[ int(len(values)*0.5) ]
+	    median[i_r] = np.mean(values)
+            #median[i_r] = values[ int(len(values)*0.5) ]
             #Q1[i_r] = values[ int(len(values)*0.25) ]
             #Q2[i_r] = values[ int(len(values)*0.75) ]
         except:
@@ -90,16 +92,20 @@ for ri in xrange( len(RadBins)-1 ):
     median[median==0] = nan
     Q1[Q1==0] = nan
     Q2[Q2==0] = nan
+    Rnorm = Rnorm[ np.isnan(median)==False ]
+    Q1 = Q1[ np.isnan(median)==False ]
+    Q2 = Q2[ np.isnan(median)==False ]
+    median = median[ np.isnan(median)==False ]
     plt.fill_between( Rnorm, Q1, Q2, alpha = 0.3, color = color[ri] )
-    plt.plot( Rnorm, median, color = color[ri], linewidth = 2, 
+    plt.plot( [0]+list(Rnorm), [0]+list(median), color = color[ri], linewidth = 2, 
     label = "%1.2f$\leq$r$_{eff}$<%1.2f"%(reff_range[0],reff_range[1]) )
     
 plt.ylabel( "radial velocity $v \cdot u_r$ [km/s]" )
 plt.xlabel( "Normalized radius $r/r_{eff}$" )
-plt.ylim( (-40,100) )
+plt.ylim( (-20,80) )
 plt.grid(1)
 plt.title( "%s %s"%(web, labels[void_scheme]) )
-plt.legend( loc="lower right", fancybox=True, shadow=True, fontsize=9, ncol=2 )
+plt.legend( loc="upper right", fancybox=True, shadow=True, fontsize=9, ncol=2 )
 plt.subplots_adjust( right = 0.95, left = 0.15, top = 0.95 )
 if sys.argv[3] == '1':
     plt.savefig( '%svoids_velocity_%s%s.pdf'%(figures_fold,web,void_scheme) )

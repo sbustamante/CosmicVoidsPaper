@@ -32,10 +32,10 @@ N = 40
 #Number of times the effective radius of the void
 Rreff = 8
 #Effective radial bins 
-RadBins = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16 ]
-#RadBins = [ 1, 3, 5, 7, 9, 11, 13, 14 ]
+RadBins = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 12 ]
 #Colors 
-color = ["#000000","#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
+#color = ["#000000","#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
+color = ["#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
 #Labels 
 labels = { "FAG":"FA-WT", "DLG":"Density-WT" }
 
@@ -84,7 +84,8 @@ for ri in xrange( len(RadBins)-1 ):
                 pass
         values = np.sort(values)
         try:
-            median[i_r] = values[ int(len(values)*0.5) ]
+            median[i_r] = np.mean(values)
+            #median[i_r] = values[ int(len(values)*0.5) ]
             #Q1[i_r] = values[ int(len(values)*0.25) ]
             #Q2[i_r] = values[ int(len(values)*0.75) ]
         except:

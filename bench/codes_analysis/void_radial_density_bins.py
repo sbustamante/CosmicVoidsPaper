@@ -29,15 +29,23 @@ void_scheme = sys.argv[2]
 #Cutt of respect to the number of cells
 N_cut = 2
 
-#Bins of histogram
-bins = 10
+#Bins of histogram of radius
+bins = 100
 #Number of times the effective radius of the void
-Nreff = 4
+Nreff = 6
+
+#Bins of histogram of radius
+Dbins = 100
+#Minimum delta
+Dlmin = -1
+#Maximum delta
+Dlmax = 4
 
 #Interval of radius [Mpc]
 Rmin = 1
 Rmax = 14
 Nint = 13
+
 
 
 #==================================================================================================
@@ -50,4 +58,5 @@ CM = "%s/%s/%s/%d/voids%s/voids_%s/GC.dat"%(foldglobal, simulation, web, N_sec, 
 
 os.system( "rm Void_Density_Bins.out" )
 os.system( "make Void_Density_Bins" )
-os.system( "./Void_Density_Bins.out %s %s %s %s %d %d %f %f %d >log.dat"%( filename_delta, out_folder, indexes, CM, bins, Nreff, Rmin, Rmax, Nint ) )
+os.system( "./Void_Density_Bins.out %s %s %s %s %d %d %f %f %d %f %d %d"%\
+( filename_delta, out_folder, indexes, CM, bins, Nreff, Rmin, Rmax, Nint, Dlmin, Dlmax, Dbins ) )

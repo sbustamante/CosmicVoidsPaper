@@ -150,13 +150,13 @@ int main(int argc, char **argv)
 	    //Radial distance
 	    RC_mag = sqrt( pow(voids[iv].C[0]-i,2) + pow(voids[iv].C[1]-j,2) + pow(voids[iv].C[2]-k,2) )/voids[iv].R;
 	    ibin = (int)(RC_mag/R*Nbins);
-	    rho[ibin] += delta[n];
+	    rho[ibin] += delta[n]+1;
 	    count[ibin] ++;
 	}
 
 	//Initializing histograms
 	for( i=0; i<Nbins; i++ ){
-	    fprintf( out, "%1.5e\t%1.5e\n", 1.0*i*R/Nbins, rho[i]/count[i] );
+	    fprintf( out, "%1.5e\t%1.5e\n", 1.0*i*R/Nbins, rho[i]/count[i]-1 );
 	    rho[i] = 0.0;
 	    count[i] = 0;}
 	
