@@ -35,7 +35,7 @@ bins = 100
 Nreff = 6
 
 #Bins of histogram of radius
-Dbins = 100
+Dbins = 5
 #Minimum delta
 Dlmin = -1
 #Maximum delta

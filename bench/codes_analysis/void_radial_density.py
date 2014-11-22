@@ -57,7 +57,7 @@ Nreff = 8
 #(foldglobal, simulation, web, N_sec, void_scheme, config ))
 
 ##Sweeping throughout all regions
-#for i_void in xrange(8440, len(voids[0])):
+#for i_void in xrange(0, len(voids[0])):
     #sys.stdout.write( " In region:\t%d\r" %(int(i_void)) )
     #sys.stdout.flush()
     
@@ -94,7 +94,8 @@ Nreff = 8
 filename_delta = "%s/%s/%s/%d/Delta%s"%(foldglobal, simulation, web, N_sec, smooth)
 out_folder = "%svoids_density_%s/%s"%(data_figures_fold,void_scheme,web)
 indexes = "%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%(foldglobal, simulation, web, N_sec, void_scheme, config )
-CM = "%s/%s/%s/%d/voids%s/voids_%s/GC.dat"%(foldglobal, simulation, web, N_sec, void_scheme, config )
+#CM = "%s/%s/%s/%d/voids%s/voids_%s/GC.dat"%(foldglobal, simulation, web, N_sec, void_scheme, config )
+CM = "%s/%s/%s/%d/voids%s/voids_%s/DC.dat"%(foldglobal, simulation, web, N_sec, void_scheme, config )
 
 os.system( "rm Void_Density_All.out" )
 os.system( "make compile" )

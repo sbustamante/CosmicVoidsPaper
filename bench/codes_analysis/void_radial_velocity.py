@@ -95,7 +95,7 @@ filename_m = "%s/%s/%s/%d/M"%(foldglobal, simulation, "Vweb", N_sec)
 filename_p = "%s/%s/%s/%d/P"%(foldglobal, simulation, "Vweb", N_sec)
 out_folder = "%svoids_density_%s/%s"%(data_figures_fold,void_scheme,web)
 indexes = "%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%(foldglobal, simulation, web, N_sec, void_scheme, config )
-CM = "%s/%s/%s/%d/voids%s/voids_%s/GC.dat"%(foldglobal, simulation, web, N_sec, void_scheme, config )
+CM = "%s/%s/%s/%d/voids%s/voids_%s/DC.dat"%(foldglobal, simulation, web, N_sec, void_scheme, config )
 
 os.system( "rm Void_Velocity_All.out" )
 os.system( "make compile" )
