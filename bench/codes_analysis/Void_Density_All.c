@@ -4,7 +4,7 @@
 #define FLOAT1 float
 #define FLOAT2 double
 #define NMAX1 2000
-#define NMAX2 30000
+#define NMAX2 60000
 
 //Usage  Void_Density_All.out <delta_filename> <output_folder> <Void_Index> <CM> <Bins> <Rmax>
 
@@ -82,7 +82,7 @@ int main(int argc, char **argv)
     
     //LOADING VOIDS INDEXES========================================================================
     if(!(in=fopen(argv[3], "r"))){
-	fprintf(stderr, "Problem opening file %s\n", argv[2]);
+	fprintf(stderr, "Problem opening file %s\n", argv[3]);
 	exit(1);}
     
     //Reading
@@ -97,7 +97,7 @@ int main(int argc, char **argv)
     
     //LOADING VOIDS CM=============================================================================
     if(!(in=fopen(argv[4], "r"))){
-	fprintf(stderr, "Problem opening file %s\n", argv[2]);
+	fprintf(stderr, "Problem opening file %s\n", argv[4]);
 	exit(1);}
     
     //Reading

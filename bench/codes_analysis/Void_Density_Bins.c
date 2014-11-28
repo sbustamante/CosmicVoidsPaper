@@ -25,7 +25,7 @@ struct void_region{
     };
 
 struct bins{
-    int Ncells;
+    float Mcells;
     float Rint;
     float delta;
     };
@@ -157,9 +157,9 @@ int main(int argc, char **argv)
 	    //Storing information
 	    for( j=0; j<Ndbins; j++ ){
 		for( i=0; i<Nbins; i++ ){
-		    fprintf( out, "%d\t", rho_bins[i][j].Ncells );
+		    fprintf( out, "%f\t", rho_bins[i][j].Mcells );
 		    //Reseting bins
-		    rho_bins[i][j].Ncells = 0;}
+		    rho_bins[i][j].Mcells = 0;}
 		fprintf( out, "\n" );}
 		fclose( out );
 	    itbin --;}
@@ -192,7 +192,7 @@ int main(int argc, char **argv)
 		//Storing cells
 		voids[iv].rho_mean += delta[n];
 		voids[iv].Ncells ++ ;
-		rho_bins[ibin][jbin].Ncells ++;}}
+		rho_bins[ibin][jbin].Mcells += delta[n]+1;}}
     }		
 // 	printf( "In void %d\t\t Mean density of the void = %e\n", iv, voids[iv].rho_mean/voids[iv].Ncells );}
     //=============================================================================================

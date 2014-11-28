@@ -40,9 +40,15 @@ compile:
 		@echo -e
 		$(COMPILER) Void_Velocity_All.c -lm -o Void_Velocity_All.out
 		@echo -e
+		$(COMPILER) Void_FA_Bins.c -lm -o Void_FA_Bins.out
+		@echo -e
 
 Void_Density_Bins:
 		$(COMPILER) Void_Density_Bins.c -lm -o Void_Density_Bins.out
+		@echo -e
+
+Void_FA_All:
+		$(COMPILER) Void_FA_All.c -lm -o Void_FA_All.out
 		@echo -e
 		
 clean:

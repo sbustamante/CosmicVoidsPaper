@@ -4,7 +4,7 @@
 #define FLOAT1 double
 #define FLOAT2 double
 #define NMAX1 2000
-#define NMAX2 35000
+#define NMAX2 60000
 
 //Usage  Void_Velocity_All.out <mass_filename> <momentum_filename> <output_folder> <Void_Index> <CM> <Bins> <Rmax>
 
@@ -82,7 +82,7 @@ int main(int argc, char **argv)
     fread(&(delta[0]),sizeof(FLOAT2), n_total, in);
     fread(&dumb,sizeof(int),1,in);
     //=============================================================================================
-    
+
     //LOADING MOMENTUM VECTOR======================================================================
     for( pcomp=0; pcomp<3; pcomp++ ){
 	sprintf(filename, "%s_%d", argv[2], pcomp );
@@ -129,10 +129,10 @@ int main(int argc, char **argv)
 	    fread(&(p3[0]),sizeof(FLOAT1), n_total, in);
 	    fread(&dumb,sizeof(int),1,in);}}
     //=============================================================================================
-    
+
     //LOADING VOIDS INDEXES========================================================================
     if(!(in=fopen(argv[4], "r"))){
-	fprintf(stderr, "Problem opening file %s\n", argv[2]);
+	fprintf(stderr, "Problem opening file %s\n", argv[4]);
 	exit(1);}
     
     //Reading
@@ -147,7 +147,7 @@ int main(int argc, char **argv)
     
     //LOADING VOIDS CM=============================================================================
     if(!(in=fopen(argv[5], "r"))){
-	fprintf(stderr, "Problem opening file %s\n", argv[2]);
+	fprintf(stderr, "Problem opening file %s\n", argv[5]);
 	exit(1);}
     
     //Reading
@@ -162,7 +162,7 @@ int main(int argc, char **argv)
 	
     fclose( in );
     //=============================================================================================
-     
+
     //Histograms
     float vel[NMAX1];
     int count[NMAX1];

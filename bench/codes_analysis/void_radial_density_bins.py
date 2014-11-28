@@ -3,7 +3,7 @@
 #This code computes radial histograms of the density profile of voids as computed by the three 
 #defined schemes
 #
-#Usage: run void_radial_density.py <Vweb or Tweb> <FAG or DLT> <Nth MF and BR>
+#Usage: run void_radial_density_bins.py <Vweb or Tweb> <FAG or DLT> <Nth MF and BR>
 #
 #by: Sebastian Bustamante
 
