@@ -356,8 +356,7 @@ distribution.
 
 In left panels of Fig. \ref{fig:FA_field} we calculate the FA for both 
 web schemes over a slide of the simulation. Some important points can be 
-concluded from this figure (these results are consistent with those of 
-\citet{Libeskind13}).
+concluded from this figure:
 
 
 %.........................................................................
@@ -411,28 +410,28 @@ above these values, voids would span over very anisotropic regions, which
 must correspond to sheets and filaments. A threshold below would imply 
 very low volume filling fractions of voids and dominant sheets. Finally, 
 the density field do not correlate well with $\lambda_1$ (as calculated 
-for both web schemes). Moreover, due to its monotonic increase, an estimate 
-of an optimal threshold is not as clear as for the FA.
+for both web schemes), and due to its monotonic increase, an estimate of 
+an optimal threshold is not as clear as for the FA.
 
 
 Once set the optimal thresholds for the web schemes, we proceed in Fig. 
-\ref{fig:FAShapeness} to sample the FA along with the prolatenes for a 
-random sample of cells classified into the four environments. Then, we 
-associate a spheroidal geometry with different ranges of these properties
-in order to illustrate the underlying local dynamics of the sampled cells.
-
-
-From this figure we conclude that sheets displays, as expected, very 
-anisotropic distributions, namely above $FA=0.95$. They are also biased 
-towards oblate geometries, however there are some elongated sheets as 
-well. Filaments are not as anisotropic as sheets, ranging from middle up 
-to high FA values. They exhibit prolate geometries, but a considerable 
-amount of them are biased towards slightly more oblate values. Voids and 
-knots are the only environments featuring with low FA values, thus 
-indicating very isotropic expanding/collapsing dynamics at their centres. 
-However, voids span over a very wide range of FA and geometries, whereas 
-knots only span over low to middle FA values and display a biased oblate 
-geometry.
+\ref{fig:FAShapeness} to sample the FA and the prolateness for a random 
+sample of cells previously classified into one of the four environments. 
+The prolateness is introduced here for differentiating sheets and filaments
+featuring high FA values. In order to illustrate the underlying local 
+dynamics sampled by the cells, we also sketch different spheroidal 
+geometries according to the relative strength of each eigenvalue, and 
+then, we associate them to different ranges of the FA and the prolateness. 
+From this, we conclude sheets display very anisotropic distributions, 
+namely above $FA=0.95$. They are also biased towards oblate geometries, 
+however there are some elongated sheets as well. Filaments are not as 
+anisotropic as sheets, ranging from middle up to high FA values. They 
+exhibit prolate geometries, but a considerable fraction of them are biased 
+towards slightly more oblate values. Voids and knots are the only 
+environments featuring with low FA values, thus indicating very isotropic 
+expanding/collapsing dynamics at their centres. However, voids span over 
+a very wide range of FA and geometries, whereas knots only span over low 
+to middle FA values and display a biased oblate geometry.
 
 
 %-------------------------------------------------------------------------
@@ -514,6 +513,12 @@ to fit the numerical density profiles of our voids.
 }
 %.........................................................................
 
+
+\[ \mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr \]
+
+\[ \mathcal{C} < 1 \]
+
+\[ \mathcal{C} > 1 \]
 
 
 %*************************************************************************
@@ -597,7 +602,14 @@ to fit the numerical density profiles of our voids.
   \includegraphics[trim = 0mm 1mm 0mm 1mm, clip, keepaspectratio=true,
   width=0.3\textheight]{./figures/FA_Prolatenes.png}  
   
-  \captionof{figure}{\small }
+  \captionof{figure}{\small Fractional anisotropy and prolateness for a 
+  random sample of cells (left panel) and for different spherical 
+  geometries (right panel). For the cells, each environment is coded with
+  a different colour, i.e. voids corresponds with dark blue points, 
+  sheets with green, filaments with orange and knots with cyan. The axis 
+  of the spheroids are computed from the relative strengths of the 
+  eigenvalues, so their shape sketch the relative expanding/collapsing 
+  dynamics into each direction.}
 
   \label{fig:FAShapeness}
   \vspace{0.1 cm}
@@ -616,14 +628,10 @@ to fit the numerical density profiles of our voids.
   \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
   width=0.3\textheight]{./figures/voids_regions_volume_all.pdf}
   
-  \captionof{figure}{\small Volume functions of voids catalogued by each 
-  used scheme. Left panel (watershed transform over the FA field of the T-web 
-  scheme). Central panel (over the FA field of the V-web scheme). Right panel 
-  (over the density field). Gray curves correspond to voids without boundary 
-  removal whereas black curves are associated to voids merged through boundary 
-  removal process. Dotted lines correspond to original continuous fields, 
-  while segmented lines correspond to fields with a 1st-order median filtering 
-  and continuous lines to a 2nd-order median filtering.}
+  \captionof{figure}{\small Volume functions of voids for both built 
+  catalogues. Watershed-Tweb (red curves), Watershed-Vweb (blue curves).
+  Continuous lines corresponds with the total number of voids, dot-dashed
+  with sub-compensated voids and dashed lines with over-compensated voids. }
 
   \label{fig:volume_function}
   \vspace{0.1 cm}
@@ -638,14 +646,35 @@ to fit the numerical density profiles of our voids.
 \begin{flushleft}
 \begin{figure*}
 \centering
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_density_TwebFAG0.pdf}
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_density_VwebFAG0.pdf}
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_density_TwebFAG1.pdf}
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_density_VwebFAG1.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_density_TwebFAG0.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_velocity_TwebFAG0.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_FA_TwebFAG0.pdf}
+  
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_density_VwebFAG0.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_velocity_VwebFAG0.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_FA_VwebFAG0.pdf}
+  
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_density_TwebFAG1.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_velocity_TwebFAG1.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_FA_TwebFAG1.pdf}
+
+  
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_density_VwebFAG1.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_velocity_VwebFAG1.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.24\textheight]{./figures/voids_FA_VwebFAG1.pdf}  
+  
 
   \captionof{figure}{\small Density of voids for each finding scheme.}
 
@@ -654,68 +683,6 @@ to fit the numerical density profiles of our voids.
 
 \end{figure*}
 \end{flushleft}
-%.........................................................................
-
-
-%.........................................................................
-%FIGURE 6: Velocity profile of voids for each defined scheme
-\begin{flushleft}
-\begin{figure*}
-\centering
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_velocity_TwebFAG0.pdf}
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_velocity_VwebFAG0.pdf}
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_velocity_TwebFAG1.pdf}
-  \includegraphics[trim = 1mm 2mm 4mm 0mm, clip, keepaspectratio=true,
-  width=0.25\textheight]{./figures/voids_velocity_VwebFAG1.pdf}
-
-  \captionof{figure}{\small Velocity of voids for each finding scheme.}
-
-  \label{fig:RhoVel}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
-
-
-%.........................................................................
-%FIGURE 1: Volume Filling Fractions for environs
-%\begin{flushleft}
-%\begin{figure*}
-%\centering
-%  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
-%  width=0.3\textheight]{./figures/cosmicweb_volume_Tweb.pdf}
-%  \includegraphics[trim = 2mm 2mm 5mm 6mm, clip, keepaspectratio=true,
-%  width=0.3\textheight]{./figures/cosmicweb_volume_Vweb.pdf}  
-%  
-%  \captionof{figure}{\small Volume Filling Fraction for each type of 
-%  environment with respect to the chosen threshold $\lambda_{th}$ for both
-%  web schemes (Tweb, left panel. Vweb, right panel). For each case, the 
-%  threshold value is chosen such that the fractional anisotropy along the 
-%  void-sheet boundaries has a median value of $FA=0.95$.}
-%
-%  \label{fig:VFF}
-%  \vspace{0.1 cm}
-%
-%\end{figure*}
-%\end{flushleft}
-%.........................................................................
-
-
-%.........................................................................
-%%FIGURE 4: density field,impression
-%\begin{figure*}
-%\centering
-
-%  \includegraphics[trim = 16mm 10mm 295mm 12mm, clip, keepaspectratio=true,
-%  width=0.27\textheight]{./figures/cosmicweb_density.pdf}  
-%  \captionof{figure}{\small }
-
-%  \label{fig:density_field}
-%\end{figure*}
 %.........................................................................
 
 

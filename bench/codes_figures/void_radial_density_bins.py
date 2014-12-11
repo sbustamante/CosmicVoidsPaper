@@ -3,7 +3,8 @@
 #This code computes radial histograms of the density profile of voids as computed by the three 
 #defined schemes
 #
-#Usage: run void_radial_density_bins.py <Vweb or Tweb> <FAG or DLT> <show(0) or save(1)>
+#Usage: run void_radial_density_bins.py <Vweb or Tweb> <FAG or DLT> <undercomp(0) overcomp(1)> 
+#<show(0) or save(1)> <no label(0) or label(1)>
 #
 #by: Sebastian Bustamante
 
@@ -26,19 +27,26 @@ web = sys.argv[1]
 void_scheme = sys.argv[2]
 #Cutt of respect to the number of cells
 N_cut = 2
+#Configuration 
+config = "01"
+#Compensated
+comp = int(sys.argv[3])
 
 #Number of middle points for mapping the density field
-N = 40
+N = 80
 #Number of times the effective radius of the void
 Rreff = 8
 #Effective radial bins 
-RadBins = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 12 ]
+#RadBins = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 12 ]
+RadBins = [ 2.0, 3.2, 4.4, 5.6, 6.8, 8.3, 12 ]
 #Colors 
 #color = ["#000000","#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
-color = ["#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
+#color = ["#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
+color = ["#0000BE", "#067EF4", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
 #Labels 
 labels = { "FAG":"FA-WT", "DLG":"Density-WT" }
-
+#Compensated
+comp_label = ["Subcompensated", "Overcompensated"]
 
 #Effective radius function
 def r_eff(X):
@@ -47,12 +55,22 @@ def r_eff(X):
 #==================================================================================================
 #			COMPUTING RADIAL PROFILES OF DENSITY FOR EVERY RADIAL BIN
 #==================================================================================================
-plt.figure( figsize=(5.5,5) )
+fig = plt.figure( figsize=(4.5,4) )
+ax = fig.add_subplot(111)
+#Embedded subplot
+#rect = [0.58,0.05,0.45,0.45]
+#ax1 = add_subplot_axes(ax,rect)
 for ri in xrange( len(RadBins)-1 ):
     reff_range = [ RadBins[ri],RadBins[ri+1] ]
     #Loading index of voids
-    voids = np.loadtxt('%svoids_density_%s/void_regions_%s.dat'%(data_figures_fold,void_scheme,web))
-    indexes = voids[ (reff_range[0]<=r_eff(voids[:,1]))*(r_eff(voids[:,1])<reff_range[1]) ,0 ]
+    voids = np.loadtxt("%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%\
+    (foldglobal, simulation, web, N_sec, void_scheme, config ))
+    #Loading compensated
+    compensated = np.loadtxt("%s/%s/%s/%d/voids%s/voids_%s/comp_half.dat"%\
+    (foldglobal, simulation, web, N_sec, void_scheme, config ))
+  
+    indexes = voids[ (reff_range[0]<=r_eff(voids[:,1])) & (r_eff(voids[:,1])<reff_range[1]) & ( compensated[:,1] == comp ) ,0 ]
+    print len(indexes)
     #Calculating median and quartiles
     median = np.zeros( N )
     Q1 = np.zeros( N )
@@ -65,7 +83,7 @@ for ri in xrange( len(RadBins)-1 ):
         for i in indexes:
 	    try:
 		rprofile = np.loadtxt('%svoids_density_%s/%s/void_%d_DR.dat'%
-		(data_figures_fold,void_scheme,web,i))
+		(data_figures_fold,void_scheme,web,i-1))
 	    except:
                 pass
 	    if len(rprofile)==2:
@@ -75,7 +93,7 @@ for ri in xrange( len(RadBins)-1 ):
 	    ur = rprofile[ np.isnan(rho)==False ,0]
 	    rho = rho[ np.isnan(rho)==False ]
 	    Reffi = r_eff(voids[i,1])
-	    
+	    #plt.plot( ur, rho, lw = 0.05 )
 	    try:
 		rho_interp = interp.interp1d( ur, rho )
 		#Finding median and quartiles
@@ -94,18 +112,27 @@ for ri in xrange( len(RadBins)-1 ):
     median[median==0] = nan
     Q1[Q1==0] = nan
     Q2[Q2==0] = nan
-    plt.fill_between( Rnorm, Q1, Q2, alpha = 0.3, color = color[ri] )
-    plt.plot( Rnorm, median, color = color[ri], linewidth = 2, 
+    #ax.fill_between( Rnorm, Q1, Q2, alpha = 0.3, color = color[ri] )
+    ax.plot( Rnorm, median, color = color[ri], linewidth = 2, 
     label = "%1.2f$\leq$r$_{eff}$<%1.2f"%(reff_range[0],reff_range[1]) )
+    #ax1.plot( Rnorm, median, color = color[ri], linewidth = 2 )
     
-plt.ylabel( "Density contrast $\delta$" )
-plt.xlabel( "Normalized radius $r/r_{eff}$" )
-plt.ylim( (-1,0.2) )
-plt.grid(1)
-plt.title( "%s %s"%(web, labels[void_scheme]) )
-plt.legend( loc="lower right", fancybox=True, shadow=True, fontsize=9, ncol=2 )
-plt.subplots_adjust( right = 0.95, left = 0.15, top = 0.95 )
-if sys.argv[3] == '1':
-    plt.savefig( '%svoids_density_%s%s.pdf'%(figures_fold,web,void_scheme) )
+#Formating main plot
+ax.set_ylabel( "Density contrast $\delta$" )
+ax.set_xlabel( "Normalized radius $r/r_{eff}$" )
+ax.set_ylim( (-1,0.6) )
+ax.grid(1)
+ax.set_title( "%s %s (%s)"%(web, labels[void_scheme], comp_label[comp]) )
+if sys.argv[5] == '1':
+    ax.legend( loc="upper right", fancybox=True, shadow=True, fontsize=9, ncol=2 )
+fig.subplots_adjust( right = 0.95, left = 0.16, top = 0.94, bottom = 0.11 )
+
+#Formating embedded plot
+#ax1.set_ylim( (-1,-0.2) )
+#ax1.set_xlim( (0,1) )
+#ax1.grid(1)
+
+if sys.argv[4] == '1':
+    plt.savefig( '%svoids_density_%s%s%s.pdf'%(figures_fold,web,void_scheme,comp) )
 else:
     plt.show()

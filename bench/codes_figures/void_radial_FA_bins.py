@@ -1,10 +1,10 @@
-#void_radial_velocity_bins.py
+#void_radial_FA_bins.py
 #
-#This code computes radial histograms of the velocity profile of voids as computed by the three 
+#This code computes FA histograms of the density profile of voids as computed by the three 
 #defined schemes
 #
-#Usage: run void_radial_velocity_bins.py <Vweb or Tweb> <FAG or DLT> <overcomp(0) undercomp(1)> 
-#<show(0) or save(1)>  <no label(0) or label(1)>
+#Usage: run void_FA_density_bins.py <Vweb or Tweb> <FAG or DLT> <overcomp(0) undercomp(1)> 
+#<show(0) or save(1)> <no label(0) or label(1)>
 #
 #by: Sebastian Bustamante
 
@@ -33,7 +33,7 @@ config = "01"
 comp = int(sys.argv[3])
 
 #Number of middle points for mapping the density field
-N = 40
+N = 80
 #Number of times the effective radius of the void
 Rreff = 8
 #Effective radial bins 
@@ -53,14 +53,10 @@ def r_eff(X):
     return ((10**np.log10(X)*(0.9765625)**3)/( 4*np.pi/3. ))**(1/3.)
 
 #==================================================================================================
-#			COMPUTING RADIAL PROFILES OF VELOCITY FOR EVERY RADIAL BIN
+#			COMPUTING RADIAL PROFILES OF DENSITY FOR EVERY RADIAL BIN
 #==================================================================================================
 fig = plt.figure( figsize=(4.5,4) )
 ax = fig.add_subplot(111)
-#Embedded subplot
-#rect = [0.1,0.05,0.4,0.4]
-#ax1 = add_subplot_axes(ax,rect)
-
 for ri in xrange( len(RadBins)-1 ):
     reff_range = [ RadBins[ri],RadBins[ri+1] ]
     #Loading index of voids
@@ -76,32 +72,34 @@ for ri in xrange( len(RadBins)-1 ):
     median = np.zeros( N )
     Q1 = np.zeros( N )
     Q2 = np.zeros( N )
-    Rnorm = np.linspace( 0.01, Rreff, N )
+    Rnorm = np.linspace( 0, Rreff, N )
     #Loading single voids
     i_r = 0
     for r in Rnorm:
         values = []
         for i in indexes:
 	    try:
-		vprofile = np.loadtxt('%svoids_density_%s/%s/void_%d_VR.dat'%
+		rprofile = np.loadtxt('%svoids_density_%s/%s/void_%d_FA.dat'%
 		(data_figures_fold,void_scheme,web,i-1))
 	    except:
                 pass
-	    #interpolating
-	    vel = vprofile[:,1]
-	    ur = vprofile[ np.isnan(vel)==False ,0]
-	    vel = vel[ np.isnan(vel)==False ]
+	    if len(rprofile)==2:
+		continue
+	    #interpolating and filtering nan data
+	    rho = rprofile[:,1]
+	    ur = rprofile[ np.isnan(rho)==False ,0]
+	    rho = rho[ np.isnan(rho)==False ]
 	    Reffi = r_eff(voids[i,1])
-	    	    
+	    #plt.plot( ur, rho, lw = 0.05 )
 	    try:
-		vel_interp = interp.interp1d( ur, vel )
+		rho_interp = interp.interp1d( ur, rho )
 		#Finding median and quartiles
-		values.append( vel_interp(r) )
+		values.append( rho_interp( r ) )
             except:
                 pass
         values = np.sort(values)
         try:
-	    median[i_r] = np.mean(values)
+            median[i_r] = np.mean(values)
             #median[i_r] = values[ int(len(values)*0.5) ]
             #Q1[i_r] = values[ int(len(values)*0.25) ]
             #Q2[i_r] = values[ int(len(values)*0.75) ]
@@ -111,34 +109,22 @@ for ri in xrange( len(RadBins)-1 ):
     median[median==0] = nan
     Q1[Q1==0] = nan
     Q2[Q2==0] = nan
-    Rnorm = Rnorm[ np.isnan(median)==False ]
-    Q1 = Q1[ np.isnan(median)==False ]
-    Q2 = Q2[ np.isnan(median)==False ]
-    median = median[ np.isnan(median)==False ]
-    #plt.fill_between( Rnorm, Q1, Q2, alpha = 0.3, color = color[ri] )
-    ax.plot( [0]+list(Rnorm), [0]+list(median), color = color[ri], linewidth = 2, 
+    #ax.fill_between( Rnorm, Q1, Q2, alpha = 0.3, color = color[ri] )
+    ax.plot( Rnorm, median, color = color[ri], linewidth = 2, 
     label = "%1.2f$\leq$r$_{eff}$<%1.2f"%(reff_range[0],reff_range[1]) )
-    #ax1.plot( [0]+list(Rnorm), [0]+list(median), color = color[ri], linewidth = 2, 
-    #label = "%1.2f$\leq$r$_{eff}$<%1.2f"%(reff_range[0],reff_range[1]) )
-   
+    
 #Formating main plot
-ax.set_ylabel( "radial velocity $v \cdot u_r$ [km/s]" )
+ax.set_ylabel( "Fractional Anisotropy" )
 ax.set_xlabel( "Normalized radius $r/r_{eff}$" )
-ax.set_ylim( (-40,40) )
+ax.set_ylim( (0.3,1.0) )
 ax.grid(1)
 ax.set_title( "%s %s (%s)"%(web, labels[void_scheme], comp_label[comp]) )
 if sys.argv[5] == '1':
-    ax.legend( loc="upper right", fancybox=True, shadow=True, fontsize=9, ncol=3 )
+    ax.legend( loc="lower right", fancybox=True, shadow=True, fontsize=9, ncol=2 )
 fig.subplots_adjust( right = 0.95, left = 0.16, top = 0.94, bottom = 0.11 )
-
-#Formating embedded plot
-#ax1.set_ylim( (0,40) )
-#ax1.set_xlim( (0,1) )
-#ax1.grid(1)
 
 
 if sys.argv[4] == '1':
-    plt.savefig( '%svoids_velocity_%s%s%s.pdf'%(figures_fold,web,void_scheme,comp) )
+    plt.savefig( '%svoids_FA_%s%s%s.pdf'%(figures_fold,web,void_scheme,comp) )
 else:
     plt.show()
-    
