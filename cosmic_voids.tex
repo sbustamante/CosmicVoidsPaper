@@ -24,21 +24,23 @@ No. 18A-10, Edificio Ip, Bogot\'a, Colombia
 \maketitle
 
 \begin{abstract}
-Finding and characterizing voids in the large scale structure of the
-universe is an important task in cosmological studies. 
+Finding and characterizing underdense regions (voids) in the large
+scale structure of the Universe is an important task in cosmological
+studies.  
 In this paper we present a novel approach to find voids in
 cosmological simulations.  
-It is based on algorithms that use the tidal and the
-velocity shear tensors to define the cosmic web.
+Our approach is based on algorithms that use the tidal and the
+velocity shear tensors to locally define the cosmic web.
 Voids are identified using the fractional anisotropy (FA) computed
-from the eigenvalues of each web scheme. We define the void boundaries
-using a watershed transform based on the local minima of the FA; the
-boundaries are regions where the FA is maximized, corresponding to
-walls and filaments.  This void definition does not have any free
-parameter and does not make any assumption on the shape or structure
-of the voids.  We test the method on the Bolshoi simulation and report
-on the density and velocity profiles for the voids found using this
-new scheme.
+from the eigenvalues of each web scheme. 
+We define the void boundaries using a watershed transform based on the
+local minima of the FA and its boundaries as the regions where the FA
+is maximized
+This void identification technique does not have any free parameters
+and does not make any assumption on the shape or structure of the
+voids.  
+We test the method on the Bolshoi simulation and report on the density
+and velo ity profiles for the voids found using this new scheme. 
 \end{abstract}
 
 \begin{keywords}
@@ -57,20 +59,20 @@ Methods: data analysis - numerical - N-body simulations
 %*************************************************************************
 
 
-Since voids where discovered in the first compiled galaxy surveys 
-\citep{Chincarini75, Gregory78, Einasto80M, Einasto80N, Kirshner81, 
-Kirshner87}, they have been identified, along with the filamentary and 
-hierarchically clustered nature of the Cosmic Web, as one of the most 
-striking features of the Megaparsec Universe \citep{Bond96}. Nevertheless,
-due to the large volume extension of void regions ($\sim 5-10\ \mbox{Mpc} 
-h^{-1}$), statistically meaningful catalogues of voids \citep{Pan10, 
-Sutter12b, Nadathur14} only have become available after modern large 
-galaxy surveys like the two-degree field Galaxy Redshift Survey \citep{
-Colless01, Colless03} and the Sloan Digital Sky Survey \citep{York00,
-Abazajian03}, thereby triggering a plethora of more refined observational 
-and statistical studies of voids throughout the last decade \citep{Hoyle04,
-Croton04, Rojas05, Ceccarelli06, Patiri06a, Tikhonov06, Patiri06b, 
-Tikhonov07, BendaBeckmann08, Foster09, Ceccarelli13, Sutter14a}
+Since voids were found in the first compiled galaxy surveys 
+they have been identified as one of the most striking features of the
+Cosmic Web \citep{Chincarini75,  Gregory78, Einasto80M, Einasto80N,
+  Kirshner81,  Kirshner87, Bond96}. 
+However,  due to the large volume extension of void regions ($\sim
+5-10\ \mbox{Mpc}  h^{-1}$), statistically meaningful catalogues of
+voids \citep{Pan10,  Sutter12b, Nadathur14} have only become available
+through  modern galaxy surveys like the two-degree field Galaxy
+Redshift Survey \citep{ Colless01, Colless03} and the Sloan Digital
+Sky Survey \citep{York00, Abazajian03}.
+This advancement generated a great interest to study voids
+observationally during the last decade \citep{Hoyle04, Croton04, Rojas05,
+  Ceccarelli06, Patiri06a, Tikhonov06, Patiri06b,Tikhonov07,
+  BendaBeckmann08, Foster09, Ceccarelli13, Sutter14a}. 
 
 
 On the theoretical side, early descriptions of the evolution of the 
