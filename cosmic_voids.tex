@@ -8,7 +8,7 @@
 %=========================================================================
 %		FRONT MATTER
 %=========================================================================
-\title{Fractional anisotropy as a tracer of cosmic voids}
+\title{Tidal field anisotropy as a tracer of cosmic voids}
 \author[S. Bustamante and J.E. Forero-Romero]{
 \parbox[t]{\textwidth}{\raggedright 
   Sebastian Bustamante \thanks{sebastian.bustamante@udea.edu.co}$^{1}$,
@@ -133,99 +133,44 @@ environment depending on the counting of the number of eigenvalues below an
 user-defined threshold ($\lambda_{rm th}$): voids, sheets, filaments and
 knots for $3,2,1$ or $0$ eigenvalues below $\lambda_{\rm th}$, respectively.
 
-%%
+This procedure allows a new description of the internal structure
+of voids that goes beyond a simple definition of a void as just an
+underdense regions in the large-scale matter distribution.
+The tidal and the shear tensors encode more information than the
+density field as they trace the collapsing or expanding
+nature of the matter field, which defines the dynamics of the Cosmic
+Web. 
 
-The tidal and the shear tensors have proven to be more fundamental than 
-the density field as they also trace the collapsing or expanding nature of 
-the matter field, which ultimately is what defines the underlying dynamics 
-of the Cosmic Web. Furthermore, the density field is degenerated regarding 
-the defined types of environment \citep{Hahn07}, which implies that is not 
-possible to assign a priori a range of density values to each of them. 
-This yields that the usually adopted definition of voids as simply 
-underdense regions in the large-scale matter distribution, is not precise 
-enough as it excludes a proper description of the internal structure of 
-voids.
+The tracer that we use to define the voids is the fractional
+anisotropy (FA) computed from the set of eigenvalues of the tensor
+under consideration. 
+The FA  was initially introduced by \citet{Basser95} to quantify the
+anisotropy degree of the diffusivity of water molecules through
+cerebral tissue in nuclear magnetic resonance
+imaging.
+\citet{Libeskind13} introduced this concept in the context of Cosmic
+Web classification schemes.
 
-
-Following the recent trend of using digital image-processing techniques 
-developed in other disciplines (e.g. medical sciences and computer imaging) 
-for analysing the structure of the Cosmic Web, we propose here, much in 
-the same way as \citet{Libeskind13}, the fractional anisotropy (FA) as a 
-tracer of the internal structure and the outline of cosmic voids. The FA 
-was initially introduced by \citet{Basser95} for quantifying the 
-anisotropy degree of the diffusivity of water molecules through cerebral
-tissue in nuclear magnetic resonance imaging. In this context we use the 
-same quantity for determining the anisotropy degree of the local 
-environment from either the orbital dynamics as set by the eigenvalues of
-the tidal tensor (Tweb), or the dynamics of the velocity field as set by 
-the eigenvalues of the shear tensor (Vweb). In both cases, the FA is not
-determined directly from the density field, it hence is suitable for 
-describing both, the structure of high non-linear regions (e.g. filaments,
-knots and very dense walls) as well as the fainter substructure exhibited 
-by quasi-linear regions like voids.
-
-
-Once established the FA as the tracer field of cosmic voids, we proceed to
+Once we establish the FA as a conveniente tracer for voids, we proceed to
 identify individual voids as basins of local minima. For this purpose we
-implement a technique developed by \citet{Beucher79} and \citet{Beucher93} 
-and widely used in the field of image analysis and mathematical morphology, 
-i.e. the \textit{watershed transform algorithm}. This technique has been 
-already implemented on void finding schemes by \citet{Platen07} and 
-\citet{Neyrinck08} with very interesting results, where individual voids 
-are identified as catching basins of local minima of the density field. 
-The appeal of this algorithm consists in that is parameter-free and does 
-not require any assumption on the shape and morphology of voids. 
-Although we use a \textit{cloud-in-cell} (\texttt{CIC}) algorithm on a 
-Cartesian mesh for estimating the density and tensor fields, instead of 
-the more sophisticated \textit{Delaunay tessellation for field estimator} 
-(\texttt{DTFE}) technique \citep{Schaap00}, our implementation of the 
-watershed transform should not be significantly affected as we are 
-interested in low density regions where the \texttt{CIC} gives similar 
-estimations.
+implement a \textit{watershed transform algorithm}
+\citep{Beucher79,Beucher93} which has been already implemented on void
+finding schemes\citep{Platen07,Neyrinck08} defining voids as catching
+basins of local minima of the density field.  
+We use insted minima of the FA field to find define the voids.
 
 
-This paper is organized as follows. In section 2 we describe the used
-simulation for testing our void finding algorithm, i.e. the Bolshoi
-simulation. A detailed description of these methods is presented in 
-section 3. In section 4 we describe how the FA can be used for tracing the 
-structure of voids. Once obtained meaningful catalogues of voids for each 
-scheme, we proceed to compare some typical and general interest properties 
-of voids such as volume functions, distributions of size and density and 
-velocity profiles. This is done in section 5. Finally in section 6 we 
-analyse and evaluate our findings.
-
-
-
-%*************************************************************************
-\section{The Simulation}
-\label{sec:the_simulation}
-%*************************************************************************
-
-
-We use here an unconstrained cosmological simulation (the Bolshoi 
-simulation) to identify the possible large scale environment and the 
-distribution of cosmic voids at $z=0$. The Bolshoi simulation follows the 
-non-linear evolution of a dark matter density field on a cubic volume of 
-size $250$\hMpc sampled with $2048^3$ particles. The cosmological 
-parameters in the simulation are $\Omega_{\rm m}=0.27$, $\Omega_{\Lambda}
-=0.73$, $h=0.70$, $n=0.95$ and $\sigma_{8}=0.82$ for the matter density, 
-cosmological constant, dimensionless Hubble parameter, spectral index of 
-primordial density perturbations and normalization for the power spectrum
-respectively, consistent with the seventh year of data of the Wilkinson 
-Microwave Anisotropy Probe (WMAP) \citep{Jarosik11}. For more detailed 
-technical information about the simulation, see \citet{Klypin11}.
-
-
-For estimating the density and velocity fields we use a 
-\textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
-cells, corresponding to a resolution of $0.98$\hMpc per cell side. Then, 
-through finite-differences and FFT methods the tidal and shear tensors 
-are computed. Finally, the eigenvalues and eigenvectors of the tensor are
-obtained for each cell of the grid. Neglecting substructures presented 
-below Megaparsec scales and taking into account our focus in voids, which
-are a prominent characteristic of the Megaparsec Universe, we apply a 
-Gaussian softening of one cell to all fields.
-
+This paper is organized as follows. 
+In Section \ref{sec:algorithms_cosmic_web} we describe the algorithms
+we use to find the cosmic web in N-body simulations. 
+Then in Section \ref{sec:bulk_voids} we explain in detail our void
+finder based on the fractional anisotropy of the tidal and shear
+tensor fields. 
+In Section \ref{sec:experiments} we describe the setup
+for the numerical experiments we perform to show the performance of
+the new void finding technique. 
+Our results are presented in \ref{sec:results} to finally comment and
+conclude about this findings in Section \ref{sec:conclusions}. 
 
 
 %*************************************************************************
@@ -329,8 +274,11 @@ approach for the threshold choosing based on the maximization of the
 fractional anisotropy field occurring in filaments and very dense walls.
 
 
+
+
+
 %*************************************************************************
-\section{Finding voids}
+\section{A new void finding technique}
 \label{sec:bulk_voids}
 %*************************************************************************
 
@@ -386,6 +334,18 @@ high values in sheets and filaments and becoming low again in knots.
 \end{itemize}
 %.........................................................................
 
+\subsection{Watershed algorithm}
+\label{sec:watershed}
+
+This algorithm is parameter-free and does  not require any assumption
+on the shape and morphology of voids.  
+Although we use a \textit{cloud-in-cell} (\texttt{CIC}) algorithm on a 
+Cartesian mesh for estimating the density and tensor fields, instead of 
+the more sophisticated \textit{Delaunay tessellation for field estimator} 
+(\texttt{DTFE}) technique \citep{Schaap00}, our implementation of the 
+watershed transform should not be significantly affected as we are 
+interested in low density regions where the \texttt{CIC} gives similar 
+estimations.
 
 %-------------------------------------------------------------------------
 \subsection{Voids using web schemes}
@@ -448,10 +408,43 @@ to middle FA values and display a biased oblate geometry.
 
 
 
+%*************************************************************************
+\section{Numerical Experiments}
+\label{sec:experiments}
+%*************************************************************************
+
+
+We use here an unconstrained cosmological simulation (the Bolshoi 
+simulation) to identify the possible large scale environment and the 
+distribution of cosmic voids at $z=0$. The Bolshoi simulation follows the 
+non-linear evolution of a dark matter density field on a cubic volume of 
+size $250$\hMpc sampled with $2048^3$ particles. The cosmological 
+parameters in the simulation are $\Omega_{\rm m}=0.27$, $\Omega_{\Lambda}
+=0.73$, $h=0.70$, $n=0.95$ and $\sigma_{8}=0.82$ for the matter density, 
+cosmological constant, dimensionless Hubble parameter, spectral index of 
+primordial density perturbations and normalization for the power spectrum
+respectively, consistent with the seventh year of data of the Wilkinson 
+Microwave Anisotropy Probe (WMAP) \citep{Jarosik11}. For more detailed 
+technical information about the simulation, see \citet{Klypin11}.
+
+
+For estimating the density and velocity fields we use a 
+\textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
+cells, corresponding to a resolution of $0.98$\hMpc per cell side. Then, 
+through finite-differences and FFT methods the tidal and shear tensors 
+are computed. Finally, the eigenvalues and eigenvectors of the tensor are
+obtained for each cell of the grid. Neglecting substructures presented 
+below Megaparsec scales and taking into account our focus in voids, which
+are a prominent characteristic of the Megaparsec Universe, we apply a 
+Gaussian softening of one cell to all fields.
+
+
+
+
 
 %*************************************************************************
-\section{Properties of voids}
-\label{sec:properties}
+\section{Results}
+\label{sec:results}
 %*************************************************************************
 
 
