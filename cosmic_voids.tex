@@ -151,13 +151,13 @@ imaging.
 \citet{Libeskind13} introduced this concept in the context of Cosmic
 Web classification schemes.
 
-Once we establish the FA as a conveniente tracer for voids, we proceed to
-identify individual voids as basins of local minima. For this purpose we
-implement a \textit{watershed transform algorithm}
-\citep{Beucher79,Beucher93} which has been already implemented on void
-finding schemes\citep{Platen07,Neyrinck08} defining voids as catching
-basins of local minima of the density field.  
-We use insted minima of the FA field to find define the voids.
+Once we establish the FA as a void tracer, we proceed to
+identify individual voids as basins of local minima. 
+For this we implement a \textit{watershed transform algorithm}
+\citep{Beucher79,Beucher93} which has been used to define as catching
+basins of local minima of the density field
+\citep{Platen07,Neyrinck08}; we use insted minima of the FA field to
+find define the voids. 
 
 
 This paper is organized as follows. 
@@ -166,11 +166,10 @@ we use to find the cosmic web in N-body simulations.
 Then in Section \ref{sec:bulk_voids} we explain in detail our void
 finder based on the fractional anisotropy of the tidal and shear
 tensor fields. 
-In Section \ref{sec:experiments} we describe the setup
-for the numerical experiments we perform to show the performance of
-the new void finding technique. 
+In Section \ref{sec:experiments} we describe the numerical experiments
+we perform to show the performance of the new void finding technique.  
 Our results are presented in \ref{sec:results} to finally comment and
-conclude about this findings in Section \ref{sec:conclusions}. 
+conclude about these findings in Section \ref{sec:conclusions}. 
 
 
 %*************************************************************************
