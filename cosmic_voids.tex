@@ -173,7 +173,7 @@ conclude about these findings in Section \ref{sec:conclusions}.
 
 
 %*************************************************************************
-\section{Algorithms to quantify the Cosmic Web}
+\section{Algorithms to label the Cosmic Web}
 \label{sec:algorithms_cosmic_web}
 %*************************************************************************
 
@@ -184,25 +184,25 @@ conclude about these findings in Section \ref{sec:conclusions}.
 %-------------------------------------------------------------------------
 
 
-This scheme was initially proposed by \citet{Hahn07} as a novel 
-alternative for classifying the Cosmic Web based on the tidal tensor, 
-that is somehow more fundamental than the density field as it also allows 
-to quantify the orbital dynamics of the matter field. This approach 
-consists of a second-order expansion of the equations of motion around 
-local minima of the gravitational potential and then extended to any 
-position. The second-order term corresponds to the tidal tensor, which is
-defined as the Hessian matrix of the normalized gravitational potential
+This scheme was initially proposed by \citet{Hahn07} as an
+alternative for classifying the Cosmic Web based on the tidal tensor.
+The tidal tensor allows a classification in terms of the orbital
+dinamics of the matter field
+This approach extends to second-order the equations of motion around 
+local minima of the gravitational potential. 
+The second-order term corresponds to the tidal tensor, which is
+defined as the Hessian matrix of the normalized gravitational
+potential.
 
 
 %.........................................................................
 %Tidal Tensor
 \eq{V_web}
-{	T_{\alpha\beta} = \frac{\partial^2\phi}{\partial x_{\alpha}\partial x_{\beta}}	}
+{	T_{\alpha\beta} = \frac{\partial^2\phi}{\partial x_{\alpha}\partial x_{\beta}},	}
 %.........................................................................
-where the physical gravitational potential has been rescaled by a factor 
-$4\pi G\bar{\rho}$ in such a way that $\phi$ satisfies the following 
-equation
-
+where the physical gravitational potential has been rescaled by a
+factor of   $4\pi G\bar{\rho}$ in such a way that $\phi$ satisfies the following 
+Poisson equation
 
 %.........................................................................
 %Poisson
@@ -210,69 +210,105 @@ equation
 {	\nabla^2\phi = \delta,	}
 %.........................................................................
 with $\bar{\rho}$ the average density in the Universe, $G$ the 
-gravitational constant and $\delta$ the dimensionless matter overdensity.
+gravitational constant and $\delta$ the dimensionless matter
+overdensity. 
 
 
-Since the tidal tensor can be represented in any cell by a real and 
-symmetric $3\times 3$ matrix, it is ensured the possibility to diagonalize 
+Since the tidal tensor can be represented by a real and  symmetric
+$3\times 3$ matrix, it is always possible to diagonalize  
 it and obtain three real eigenvalues $\lambda_{1}\geq\lambda_{2}\geq
-\lambda_3$. This set of eigenvalues can be used as indicators of the local 
-orbital stability in each proper direction, which in turn can be 
-translated into a classification scheme of the Cosmic Web. A counting of 
-the number of positive (stable) or negative (unstable) eigenvalues allows 
-to catalogue a single cell into one of the next four types of environment: 
+\lambda_3$ with its corresponding eigenvectors ${\bf u}_{1}$, ${\bf u}_{2}$,
+${\bf u}_{3}$. 
+This set of eigenvalues are indicators of the local  orbital stability
+in each direction ${\bf u}_i$, which is to label the Cosmic Web.
+The number of positive (stable) or negative (unstable) eigenvalues allows 
+to label a location into one of the next four types of environment: 
 voids (3 negatives eigenvalues), sheets (2), filaments (1) and knots (0). 
-A significant improvement to this scheme was introduced by \citet{Forero09}
+A modification to this scheme was introduced by \citet{Forero09}
 by means of a relaxation of the stability criterion. The relative strength 
 of each eigenvalue is no longer defined by the sign, but instead by a
-threshold value $\lambda_{th}$ that can be tuned in such a way that the
-visual impression of the web-like matter distribution is reproduced.
-
-
-
+threshold value $\lambda_{\rm th}$ that can be tuned in such a way
+that the visual impression of the web-like matter distribution is
+reproduced. 
+ 
 %-------------------------------------------------------------------------
 \subsection{The velocity web (Vweb)}
 \label{subsec:Vweb}
 %-------------------------------------------------------------------------
 
 
-We also use a kinematical scheme to define the Cosmic Web environment in 
-the simulation. The scheme has been thoroughly described in 
-\citet{Hoffman12} and applied to study the shape and spin alignment in the
-Bolshoi simulation in \citet{Libeskind13}. We refer the reader to these 
-papers to find a detailed description of the algorithm, its limitations 
-and capabilities. The Vweb scheme for environment finding is based on the
+We also use a kinematic scheme to define the Cosmic Web environment in 
+the simulation, which has been thoroughly described in 
+\cite{Hoffman12}.
+This scheme has been used to study the shape, spin and peculiar
+velocity alignments of dark matter halos with the cosmic web
+\citep{Libeskind13,Forero2014}. 
+We refer the reader to these papers to find a detailed description of
+the algorithm, its limitations  and capabilities.    
+The Vweb scheme for environment finding is based on the
 local velocity shear tensor calculated from the smoothed dark matter 
-velocity field in the simulation. The central quantity is given by the 
-following dimensionless expression
-
+velocity field in the simulation. This tensor is given by the 
+following expression
 
 %.........................................................................
 %V-Web Definition
 \eq{V_web}
 {	\Sigma_{\alpha\beta} = -\frac{1}{2H_0}\pr{\frac{\partial v_{\alpha}}
-{\partial x_{\beta}}+\frac{\partial v_{\beta}}{\partial x_{\alpha}}}	}
+{\partial x_{\beta}}+\frac{\partial v_{\beta}}{\partial x_{\alpha}}},}
 %.........................................................................
 where $v_{\alpha}$ and $x_{\alpha}$ represent the $\alpha$ component of 
 the comoving velocity and position, respectively. Like the tidal tensor, 
 $\Sigma_{\alpha\beta}$ can be represented by a $3\times 3$ symmetric 
-matrix with real values, hence diagonalizing it is obtained three real 
-eigenvalues $\lambda_{1}\geq\lambda_{2}\geq\lambda_3$ whose sum (the 
-trace of $\Sigma_{\alpha\beta}$) is proportional to the divergence of the 
-local velocity field smoothed on the physical scale ${\mathcal R}$. 
+matrix with real values, making it possible to find three real
+eigenvalues and its corresponding eigenvectors.
+%$\lambda_{1}\geq\lambda_{2}\geq\lambda_3$.
+%whose sum (the 
+%trace of $\Sigma_{\alpha\beta}$) is proportional to the divergence of the 
+%local velocity field smoothed on the physical scale ${\mathcal R}$. 
+
+In this case we also use the relative strength of the three eigenvalues with 
+respect to a threshold value $\lambda_{th}$ to classify the cosmic web
+in the four web types we have already described.
+
+Usually, the threshold is a free parameter that is tuned to reproduce
+the visual appearence of the comic web. 
+In this paper we take a different approach.
+We find the optimal value of the threshold based on the maximization
+of the fractional anisotropy field in the locations label as filaments
+and walls. 
 
 
-In the same way, the relative strength of the three eigenvalues with 
-respect to a threshold value $\lambda_{th}$ allows for the local 
-classification of the matter distribution into the previous four web types. 
-For the threshold choosing in both schemes, the Tweb and the Vweb, it is
-usual to fine-tuning the value in such a way that the visual appearance of
-the Cosmic Web as seen in simulations and galaxy surveys is reproduced. 
-However, we do not take this approach here, instead we propose a novel 
-approach for the threshold choosing based on the maximization of the 
-fractional anisotropy field occurring in filaments and very dense walls.
+\section{Numerical Simulations}
+\label{sec:simulatins}
+
+We use the Bolshoi simulation to test the method describe in the
+paper. 
+This simulation follows the non-linear evolution of a dark
+matter density field on a cubic volume of  size $250$\hMpc sampled
+with $2048^3$ particles. 
+The cosmological parameters in the simulation are $\Omega_{\rm m}=0.27$,  $\Omega_{\Lambda}  =0.73$, $h=0.70$,
+$n=0.95$ and $\sigma_{8}=0.82$ for the matter density,   cosmological
+constant, dimensionless Hubble parameter, spectral index of
+primordial density perturbations and normalization for the power
+spectrum, respectively. 
+This values are consistent with the seventh year of data of the Wilkinson 
+Microwave Anisotropy Probe (WMAP) \citep{Jarosik11}. 
+For more detailed  technical information about the simulation, see
+\citet{Klypin11}. 
 
 
+We find the cosmic web we estimate first the density and velocity
+fields using a  \textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
+cells, corresponding to a spatial resolution of $0.98$\hMpc per cell
+side.  
+These fields are smoothed with a gaussian filter with a width of
+$\sigma=0.98$\hMpc. 
+We compute the tidal and shear tensors through finite-differences and
+Finally, the eigenvalues and eigenvectors of the tensor are
+obtained for each grid cell.
+The data we use here is publicly available through the MultiDark
+database \url{http://www.multidark.org/MultiDark/} which is described
+in \citet{Riebe11}.
 
 
 
@@ -290,52 +326,127 @@ fractional anisotropy field occurring in filaments and very dense walls.
 
 The fractional anisotropy (FA), as developed by \citet{Basser95}, was 
 conceived to quantify the anisotropy degree of a diffusion process, e.g. 
-the diffusivity of water molecules through cerebral issue in nuclear
-magnetic resonance imaging. Here we propose the FA, much in the same 
-way as \citet{Libeskind13}, as a tracer of cosmic voids.
+the diffusivity of water molecules through cerebral tissue in nuclear
+magnetic resonance imaging. 
+Here we propose the FA, much in the same way as \citet{Libeskind13},
+as a tracer of cosmic voids. 
 
 
+The FA is defined as follows.
 %.........................................................................
 %Fractional anisotropy
 \eq{fractional_anisotropy}
-{ FA = \frac{1}{\sqrt{3}}\sqrt{ \frac{ (\lambda_1 - \lambda_3)^2 + 
+{{\mathrm{FA}} = \frac{1}{\sqrt{3}}\sqrt{ \frac{ (\lambda_1 - \lambda_3)^2 + 
 (\lambda_2 - \lambda_3)^2 + (\lambda_1 - \lambda_2)^2}{ \lambda_1^2 + 
-\lambda_2^2 + \lambda_3^2} } }
+\lambda_2^2 + \lambda_3^2} },}
 %.........................................................................
 where the eigenvalues are taken from either the Tweb or the Vweb 
-(FA-Tweb and FA-Vweb respectively). Such as it is defined, $FA=0$ 
-corresponds with an isotropic dynamic and $FA=1$ with a highly anisotropic 
+(FA-Tweb and FA-Vweb respectively). Such as it is defined, FA$=0$ 
+corresponds to an isotropic distribution ($\lambda_1=\lambda_2=\lambda_3$) and FA$=1$ with a highly anisotropic 
 distribution.
 
 
-In left panels of Fig. \ref{fig:FA_field} we calculate the FA for both 
-web schemes over a slide of the simulation. Some important points can be 
-concluded from this figure:
-
+In left panels of Fig. \ref{fig:FA_field} we show the FA field for both 
+web schemes over a slide of the simulation. 
+From this Figure we can observe that both voids and knots display a highly isotropic
+expanding dynamic at their centres, becoming gradually more
+anisotropic at outer regions. 
+On the other hand the filamentary structure is traced by high FA
+values. These characteristics are the key to use the FA as a tracer of
+cosmic voids. 
 
 %.........................................................................
-\begin{itemize}
-\item Voids display a highly isotropic expanding dynamic at their centres, 
-becoming gradually more anisotropic at outer regions.
-\item Knots feature with very isotropic collapses. For the Tweb, the FA 
-exhibits very narrow distribution around knots. For the Vweb, these
-distributions are more spread out, thereby indicating strong differences 
-between the density and the velocity fields in highly non-linear regions.
-\item The filamentary structure of the Cosmic Web is well traced by high 
-FA values (black regions), thus indicating very anisotropic dynamics for 
-sheets and filaments.
-\item The FA, unlike the density field, displays a non-monotonic behaviour, 
-where low values are characteristic of central regions of voids, reaching 
-high values in sheets and filaments and becoming low again in knots. 
-%\item The density field poorly traces the Cosmic Web. This is a somehow 
-%expected result due to the semi-infinite range of the density field, what 
-%makes more difficult to trace structures.
-\end{itemize}
+%FIGURE 1: FA and vissual impression
+\begin{figure*}
+  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
+  width=0.73\textheight]{./figures/cosmicweb_FA_Tweb.pdf}
+  \vspace{0.1 cm}
+  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
+  width=0.73\textheight]{./figures/cosmicweb_FA_Vweb.pdf}
+  \caption{Left colum. Visual impression of the 
+  FA field over a slide of the simulation for each web scheme (T-web, upper 
+  panels. V-web, middle panels). 
+  Middle column. Components of the Cosmic Web using $\lambda_{th}$
+  values that put an upper bound of $FA=0.95$ to voids. Voids
+  corresponds with white, sheets to gray, filaments to dark gray and
+  knots with black regions. 
+  Right column. Sketches the distribution of the catalogued voids by
+  our method.}
+  \label{fig:FA_field}
+\end{figure*}
 %.........................................................................
 
-\subsection{Watershed algorithm}
+
+%-------------------------------------------------------------------------
+\subsection{Fractional anisotropy as a void tracer}
+\label{subsec:web_voids}
+%-------------------------------------------------------------------------
+
+%FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
+\begin{flushleft}
+\begin{figure*}
+\centering
+
+  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/FA_L1.pdf}
+  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/delta_L1.pdf}  
+  
+  \captionof{figure}{\small Distributions of the FA (left panel) and the 
+  density field (right panel) with respect to the eigenvalue $\lambda_1$ 
+  for each web scheme (Tweb, red lines. Vweb, blue lines) as calculated 
+  over all cells of the grid. Thick central lines correspond with the median 
+  and filled regions with the $50\%$ of the distribution.}
+
+  \label{fig:L1_correlations}
+  \vspace{0.1 cm}
+
+\end{figure*}
+\end{flushleft}
+%.........................................................................
+
+
+Voids are regions where $\lambda_3\leq\lambda_2\leq
+\lambda_1\leq\lambda_{th}$. 
+This implies that a void is completely fixed by the relative strength
+of the $\lambda_1$ eigenvalue with respect to the $\lambda_{th}$.   
+As we  increase/decrease the threshold value $\lambda_{th}$, voids
+increase/decrease progressively through contours of
+increasing/decreasing $\lambda_1$.   
+ 
+Voids are thus characterized by low values of both FA and
+$\lambda_1$. 
+In Fig. \ref{fig:L1_correlations} we show that the these two values
+are indeed closely correlated.  
+The left panel shows the correlation between $\lambda_1$ and $FA$ for
+all the grid cells in the simulation while the right panel shows the
+correlation between $\lambda_1$ and the local overdensity $\delta$.  
+This shows that the overdensity has a large scatter at fixed
+$\lambda_1$. 
+
+From Figs. \ref{fig:FA_field} and \ref{fig:L1_correlations} we
+conclude that the FA is a good tracer of voids as it is almost perfectly
+correlated with low values of $\lambda_1$. 
+We propose that voids should be composed completely by regions of
+FA$<0.95$.
+If we increase the values of $\lambda_1$ from its minimum until it
+we reach FA$=0.95$ in \ref{fig1:L1_correlations} we find that this
+correspond to critical values of $\lambda_{1}^T = 0.265$ and
+$\lambda_{1}^V = 0.175$ for the Tweb and Vweb, respectively.
+This means that setting $\lambda_{th}$ to either
+$\lambda_{1}^T$/$\lambda_{1}^{V}$ automatically produces voids with
+all the cells $FA<0.95$.   
+The middle column in Fig. \ref{fig:FA_field} shows the web
+classification for this choice of $\lambda_{th}$, demonstrating that
+it is a sensible choice to define voids. 
+
+   
+
+
+\subsection{Defining voids with a watershed algorithm}
 \label{sec:watershed}
 
+{\bf Reescribir para describir lo que hace el algoritmo}
 This algorithm is parameter-free and does  not require any assumption
 on the shape and morphology of voids.  
 Although we use a \textit{cloud-in-cell} (\texttt{CIC}) algorithm on a 
@@ -346,98 +457,28 @@ watershed transform should not be significantly affected as we are
 interested in low density regions where the \texttt{CIC} gives similar 
 estimations.
 
-%-------------------------------------------------------------------------
-\subsection{Voids using web schemes}
-\label{subsec:web_voids}
-%-------------------------------------------------------------------------
+%Once set the optimal thresholds for the web schemes, we proceed in Fig. 
+%\ref{fig:FAShapeness} to sample the FA and the prolateness for a random 
+%sample of cells previously classified into one of the four
+%environments.
+ 
+%The prolateness is introduced here for differentiating sheets and filaments
+%featuring high FA values. 
+%In order to illustrate the underlying local 
+%dynamics sampled by the cells, we also sketch different spheroidal 
+%geometries according to the relative strength of each eigenvalue, and 
+%then, we associate them to different ranges of the FA and the prolateness. 
 
-
-For both web schemes, voids are regions where $\lambda_3\leq\lambda_2\leq
-\lambda_1\leq\lambda_{th}$. This implies that the outlines of voids
-are completely fixed by the relative strength of the $\lambda_1$ 
-eigenvalue with respect to the threshold value. Therefore, as we 
-increase/decrease the threshold value $\lambda_{th}$, voids expand/diminish
-progressively through contours of $\lambda_1$. In Fig. 
-\ref{fig:L1_correlations} we calculate the distribution of the FA as well
-as of the density field with respect to $\lambda_1$ over all cells of the 
-grid.
-
-
-From Fig. \ref{fig:L1_correlations} we conclude that the FA is a good
-tracer of voids as is almost perfectly correlated with low values of 
-$\lambda_1$. Then, it reaches a maximum value, namely sheets and filaments, 
-for finally reaching knots, which feature low FA values. This behaviour can 
-be thought as a sort of one-dimensional tomography of the Cosmic Web. This
-characteristic allows us to propose an optimal threshold value for both 
-web schemes where the FA is maximized. Specifically we propose a value of 
-$FA=0.95$, corresponding with a threshold $\lambda_{opt}^T = 0.265$ for
-the Tweb and $\lambda_{opt}^V = 0.175$ for the Vweb.  For a threshold 
-above these values, voids would span over very anisotropic regions, which 
-must correspond to sheets and filaments. A threshold below would imply 
-very low volume filling fractions of voids and dominant sheets. Finally, 
-the density field do not correlate well with $\lambda_1$ (as calculated 
-for both web schemes), and due to its monotonic increase, an estimate of 
-an optimal threshold is not as clear as for the FA.
-
-
-Once set the optimal thresholds for the web schemes, we proceed in Fig. 
-\ref{fig:FAShapeness} to sample the FA and the prolateness for a random 
-sample of cells previously classified into one of the four environments. 
-The prolateness is introduced here for differentiating sheets and filaments
-featuring high FA values. In order to illustrate the underlying local 
-dynamics sampled by the cells, we also sketch different spheroidal 
-geometries according to the relative strength of each eigenvalue, and 
-then, we associate them to different ranges of the FA and the prolateness. 
-From this, we conclude sheets display very anisotropic distributions, 
-namely above $FA=0.95$. They are also biased towards oblate geometries, 
-however there are some elongated sheets as well. Filaments are not as 
-anisotropic as sheets, ranging from middle up to high FA values. They 
-exhibit prolate geometries, but a considerable fraction of them are biased 
-towards slightly more oblate values. Voids and knots are the only 
-environments featuring with low FA values, thus indicating very isotropic 
-expanding/collapsing dynamics at their centres. However, voids span over 
-a very wide range of FA and geometries, whereas knots only span over low 
-to middle FA values and display a biased oblate geometry.
-
-
-%-------------------------------------------------------------------------
-\subsection{Identifying void regions through web schemes}
-\label{subsec:identification}
-%-------------------------------------------------------------------------
-
-
-
-%*************************************************************************
-\section{Numerical Experiments}
-\label{sec:experiments}
-%*************************************************************************
-
-
-We use here an unconstrained cosmological simulation (the Bolshoi 
-simulation) to identify the possible large scale environment and the 
-distribution of cosmic voids at $z=0$. The Bolshoi simulation follows the 
-non-linear evolution of a dark matter density field on a cubic volume of 
-size $250$\hMpc sampled with $2048^3$ particles. The cosmological 
-parameters in the simulation are $\Omega_{\rm m}=0.27$, $\Omega_{\Lambda}
-=0.73$, $h=0.70$, $n=0.95$ and $\sigma_{8}=0.82$ for the matter density, 
-cosmological constant, dimensionless Hubble parameter, spectral index of 
-primordial density perturbations and normalization for the power spectrum
-respectively, consistent with the seventh year of data of the Wilkinson 
-Microwave Anisotropy Probe (WMAP) \citep{Jarosik11}. For more detailed 
-technical information about the simulation, see \citet{Klypin11}.
-
-
-For estimating the density and velocity fields we use a 
-\textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
-cells, corresponding to a resolution of $0.98$\hMpc per cell side. Then, 
-through finite-differences and FFT methods the tidal and shear tensors 
-are computed. Finally, the eigenvalues and eigenvectors of the tensor are
-obtained for each cell of the grid. Neglecting substructures presented 
-below Megaparsec scales and taking into account our focus in voids, which
-are a prominent characteristic of the Megaparsec Universe, we apply a 
-Gaussian softening of one cell to all fields.
-
-
+%From this, we conclude sheets display very anisotropic distributions, 
+%namely above $FA=0.95$. They are also biased towards oblate geometries, 
+%however there are some elongated sheets as well. Filaments are not as 
+%anisotropic as sheets, ranging from middle up to high FA values. They 
+%exhibit prolate geometries, but a considerable fraction of them are biased 
+%towards slightly more oblate values. Voids and knots are the only 
+%environments featuring with low FA values, thus indicating very isotropic 
+%expanding/collapsing dynamics at their centres. However, voids span over 
+%a very wide range of FA and geometries, whereas knots only span over low 
+%to middle FA values and display a biased oblate geometry.
 
 
 
@@ -534,87 +575,34 @@ to fit the numerical density profiles of our voids.
 \bibliographystyle{latex/mn2e}
 \bibliography{references}
 
-%.........................................................................
-%FIGURE 1: FA and vissual impression
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_FA_Tweb.pdf}
-  \vspace{0.1 cm}
-  \includegraphics[trim = 16mm 10mm 5mm 12mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_FA_Vweb.pdf}
-  
-  \captionof{figure}{\small Left panels show the visual impression of the 
-  FA field over a slide of the simulation for each web scheme (T-web, upper 
-  panels. V-web, middle panels). Black regions correspond with high values, 
-  i.e. FA$\approx 1$, while white and light yellow regions to FA$\approx 0$. 
-  It is worth noting the degeneration of low values of FA for knots and 
-  central regions of voids, thus indicating a high isotropy for both 
-  processes. In the same way, high values of FA are consistent with the 
-  anisotropic geometry exhibited by filaments and very flat sheets. Middle 
-  panels sketch the components of the Cosmic Web using the optimal threshold 
-  values. Voids corresponds with white, sheets to gray, filaments to dark 
-  gray and knots with black regions. Finally right panels sketch the 
-  distribution of the catalogued voids by our method.}
-
-  \label{fig:FA_field}
-
-  
-\end{figure*}
-%.........................................................................
 
 
 %.........................................................................
-%FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
-\begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/FA_L1.pdf}
-  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/delta_L1.pdf}  
-  
-  \captionof{figure}{\small Distributions of the FA (left panel) and the 
-  density field (right panel) with respect to the eigenvalue $\lambda_1$ 
-  for each web scheme (Tweb, red lines. Vweb, blue lines) as calculated 
-  over all cells of the grid. Thick central lines correspond with the median 
-  and filled regions with the $50\%$ of the distribution.}
-
-  \label{fig:L1_correlations}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
-
 
 %.........................................................................
 %FIGURE 3: FA of some regions and shape illustration
-\begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 0mm 1mm 0mm 1mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/FA_Prolatenes_Vweb.pdf}
-  \includegraphics[trim = 0mm 1mm 0mm 1mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/FA_Prolatenes.png}  
+%\begin{flushleft}
+%\begin{figure*}
+%\centering
+%  \includegraphics[trim = 0mm 1mm 0mm 1mm, clip, keepaspectratio=true,
+%  width=0.3\textheight]{./figures/FA_Prolatenes_Vweb.pdf}
+%  \includegraphics[trim = 0mm 1mm 0mm 1mm, clip, keepaspectratio=true,
+%  width=0.3\textheight]{./figures/FA_Prolatenes.png}  
   
-  \captionof{figure}{\small Fractional anisotropy and prolateness for a 
-  random sample of cells (left panel) and for different spherical 
-  geometries (right panel). For the cells, each environment is coded with
-  a different colour, i.e. voids corresponds with dark blue points, 
-  sheets with green, filaments with orange and knots with cyan. The axis 
-  of the spheroids are computed from the relative strengths of the 
-  eigenvalues, so their shape sketch the relative expanding/collapsing 
-  dynamics into each direction.}
+%  \captionof{figure}{\small Fractional anisotropy and prolateness for a 
+%  random sample of cells (left panel) and for different spherical 
+%  geometries (right panel). For the cells, each environment is coded with
+%  a different colour, i.e. voids corresponds with dark blue points, 
+%  sheets with green, filaments with orange and knots with cyan. The axis 
+%  of the spheroids are computed from the relative strengths of the 
+%  eigenvalues, so their shape sketch the relative expanding/collapsing 
+%  dynamics into each direction.}
 
-  \label{fig:FAShapeness}
-  \vspace{0.1 cm}
+%  \label{fig:FAShapeness}
+%  \vspace{0.1 cm}
 
-\end{figure*}
-\end{flushleft}
+%\end{figure*}
+%\end{flushleft}
 %.........................................................................
 
 
