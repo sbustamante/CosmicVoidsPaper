@@ -87,7 +87,7 @@ voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%s/void_index.dat"%\
 (foldglobal, simulation, web, N_sec, void_scheme, config ), Cut, 'plain', Coor = axe )
 
 #Loading Fields
-delta = CutFieldZ( delta_filename, Cut, 32, Coor = axe )
+#delta = CutFieldZ( delta_filename, Cut, 32, Coor = axe )
 eig1 = CutFieldZ( eig_filename+"_1", Cut, 16, Coor = axe )
 eig2 = CutFieldZ( eig_filename+"_2", Cut, 16, Coor = axe )
 eig3 = CutFieldZ( eig_filename+"_3", Cut, 16, Coor = axe )
@@ -123,11 +123,12 @@ plt.imshow( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )[::,::-1]), ex
 plt.title( "Fractional Anisotropy (%s)"%web )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
-plt.xlabel( "[$h^{-1}$ Mpc]" )
+plt.xlabel( "[	$h^{-1}$ Mpc]" )
 
-plt.colorbar( orientation = "horizontal", fraction = 0.05, pad = 0.02 )
+#plt.colorbar( orientation = "horizontal", fraction = 0.03, pad = 0.025 )
 
-##Visual impression
+
+#Visual impression
 plt.subplot( 1, 3, 2 )
 Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
 plt.plot( Coor[0], Coor[1], '.', color = 'blue', markersize = 1 )
