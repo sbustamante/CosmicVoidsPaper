@@ -64,7 +64,7 @@ they have been identified as one of the most striking features of the
 Cosmic Web \citep{Chincarini75,  Gregory78, Einasto80M, Einasto80N,
   Kirshner81, Zeldovich82,Kirshner87, Bond96}. 
 However,  due to the large volume extension of void regions ($\sim
-5-10\ \mbox{Mpc}  h^{-1}$), statistically meaningful catalogues of
+5-10\ \mbox{Mpc}  h^{-1}$), statistically meaningful catalogs of
 voids \citep{Pan10,  Sutter12b, Nadathur14} have only become available
 through  modern galaxy surveys like the two-degree field Galaxy
 Redshift Survey \citep{ Colless01, Colless03} and the Sloan Digital
@@ -76,7 +76,7 @@ observationally during the last decade \citep{Hoyle04, Croton04, Rojas05,
 
 
 On the theoretical side the rough theoretical framework that explains
-the origin of voids was stablished in the seminal work of
+the origin of voids was established in the seminal work of
 \citet{Zeldovich70} and refined in the following decades.  
 The first detailed theoretical models describing formation, dynamics
 and properties of  voids \citep{Hoffman82, Icke84, Bertschinger85,
@@ -144,7 +144,7 @@ Web.
 The tracer that we use to define the voids is the fractional
 anisotropy (FA) computed from the set of eigenvalues of the tensor
 under consideration. 
-The FA  was initially introduced by \citet{Basser95} to quantify the
+The FA was initially introduced by \citet{Basser95} to quantify the
 anisotropy degree of the diffusivity of water molecules through
 cerebral tissue in nuclear magnetic resonance
 imaging.
@@ -302,7 +302,7 @@ fields using a  \textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $
 cells, corresponding to a spatial resolution of $0.98$\hMpc per cell
 side.  
 These fields are smoothed with a gaussian filter with a width of
-$\sigma=0.98$\hMpc. 
+$\sigma=0.98$\hMpc.
 We compute the tidal and shear tensors through finite-differences and
 Finally, the eigenvalues and eigenvectors of the tensor are
 obtained for each grid cell.
@@ -348,8 +348,8 @@ distribution.
 
 In left panels of Fig. \ref{fig:FA_field} we show the FA field for both 
 web schemes over a slide of the simulation. 
-From this Figure we can observe that both voids and knots display a highly isotropic
-expanding dynamic at their centres, becoming gradually more
+From this Figure we can observe that both, voids and knots, display a highly 
+isotropic expanding dynamic at their centres, becoming gradually more
 anisotropic at outer regions. 
 On the other hand the filamentary structure is traced by high FA
 values. These characteristics are the key to use the FA as a tracer of
@@ -360,7 +360,6 @@ cosmic voids.
 \begin{figure*}
   \includegraphics[trim = 16mm 8mm 5mm 12mm, clip, keepaspectratio=true,
   width=0.73\textheight]{./figures/cosmicweb_FA_Tweb.pdf}
-  \vspace{0.1 cm}
   \includegraphics[trim = 16mm 8mm 5mm 12mm, clip, keepaspectratio=true,
   width=0.73\textheight]{./figures/cosmicweb_FA_Vweb.pdf}
   \caption{Left colum. Visual impression of the 
@@ -399,7 +398,6 @@ cosmic voids.
   and filled regions with the $50\%$ of the distribution.}
 
   \label{fig:L1_correlations}
-  \vspace{0.1 cm}
 
 \end{figure*}
 \end{flushleft}
@@ -430,7 +428,7 @@ correlated with low values of $\lambda_1$.
 We propose that voids should be composed completely by regions of
 FA$<0.95$.
 If we increase the values of $\lambda_1$ from its minimum until it
-we reach FA$=0.95$ in \ref{fig1:L1_correlations} we find that this
+we reach FA$=0.95$ in \ref{fig:L1_correlations} we find that this
 correspond to critical values of $\lambda_{1}^T = 0.265$ and
 $\lambda_{1}^V = 0.175$ for the Tweb and Vweb, respectively.
 This means that setting $\lambda_{th}$ to either
@@ -442,20 +440,39 @@ it is a sensible choice to define voids.
 
    
 
-
 \subsection{Defining voids with a watershed algorithm}
 \label{sec:watershed}
 
-{\bf Reescribir para describir lo que hace el algoritmo}
-This algorithm is parameter-free and does  not require any assumption
-on the shape and morphology of voids.  
-Although we use a \textit{cloud-in-cell} (\texttt{CIC}) algorithm on a 
-Cartesian mesh for estimating the density and tensor fields, instead of 
-the more sophisticated \textit{Delaunay tessellation for field estimator} 
-(\texttt{DTFE}) technique \citep{Schaap00}, our implementation of the 
-watershed transform should not be significantly affected as we are 
-interested in low density regions where the \texttt{CIC} gives similar 
-estimations.
+
+Once established the FA as a good tracer of voids, the next step is to
+find individuals voids in the overall distribution. For this purpose, we
+use the \textit{watershed transform algorithm} \citep{Beucher79,Beucher93}, 
+in which a void is identified as the catching basin of a local minimum of
+the FA. The use of this algorithm is advantageous as it is parameter-free 
+and does not require any assumption on the shape and morphology of voids. 
+
+
+Previous implementations of this technique as those of \citet{Platen07,
+Neyrinck08} have shown remarkable results regarding voids finding, however
+they use the density field instead of the FA field. On the other hand, we 
+use a \textit{cloud-in-cell} (\texttt{CIC}) algorithm on a Cartesian mesh for 
+estimating the density and tensor fields, instead of the more sophisticated 
+\textit{Delaunay tessellation for field estimator} (\texttt{DTFE}) technique 
+\citep{Schaap00}, but our implementation of the watershed transform should 
+not be significantly affected as we are interested in low density regions 
+where the \texttt{CIC} gives similar estimations.
+
+
+As suggested by \citet{Platen07} and references therein, it is necessary to
+apply a threshold merger in order to reduce spurious features and to avoid 
+void hierarchization. A natural choice is a threshold of $\delta = -0.8$, 
+which means that any ridge between two voids with density below that value
+would be removed and the respective voids merged. As we are working with the
+FA, the equivalent threshold according to Fig. \ref{fig:L1_correlations} is
+$FA = 0.65$. In right panels of Fig. \ref{fig:FA_field} we show the resulting
+catalogs of voids for both schemes.
+
+
 
 %Once set the optimal thresholds for the web schemes, we proceed in Fig. 
 %\ref{fig:FAShapeness} to sample the FA and the prolateness for a random 
@@ -520,38 +537,6 @@ and profiles of number of halos.
 %-------------------------------------------------------------------------
 
 
-Describing the density profiles of voids is quite important in order to 
-compare and match simulation with observational surveys, allowing possible
-constrains for different cosmology models \SRKED{[Hamaous, et.al 2014]}. 
-Here, and taking into account the previous results, we rather use an 
-ellipsoidal approximation to describe and fit the shape of bulk voids, so 
-we use the next ellipsoidal radial coordinate to describe density profiles.
-
-
-%.........................................................................
-%Ellipsoidal radial coordinate
-\eq{radial_coordinate}
-{
-r^2 = \frac{x^2}{\tau_1^2} + \frac{y^2}{\tau_2^2} + \frac{z^2}{\tau_3^2},
-\ \ \ \ 0\leq r \leq 1
-}
-%.........................................................................
-where we take the principal moments of inertia $\{\tau_i \}$ as the 
-lengths of the principal axes of the ellipsoid and each one of the 
-cartesian coordinates as measured in the rotated frame of each void.
-
-
-We use the same analytic density profile that \SRKED{[Hamaous, et.al 2014]} 
-to fit the numerical density profiles of our voids.
-
-
-%.........................................................................
-%Density profile
-\eq{density_profile}
-{
-\delta_v(r) = \delta_c\frac{1-(r/r_s)^\alpha}{1+(r/r_v)^\beta}
-}
-%.........................................................................
 
 
 \[ \mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr \]
@@ -616,7 +601,7 @@ to fit the numerical density profiles of our voids.
   width=0.3\textheight]{./figures/voids_regions_volume_all.pdf}
   
   \captionof{figure}{\small Volume functions of voids for both built 
-  catalogues. Watershed-Tweb (red curves), Watershed-Vweb (blue curves).
+  catalogs. Watershed-Tweb (red curves), Watershed-Vweb (blue curves).
   Continuous lines corresponds with the total number of voids, dot-dashed
   with sub-compensated voids and dashed lines with over-compensated voids. }
 
