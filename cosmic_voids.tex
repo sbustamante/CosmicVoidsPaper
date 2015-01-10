@@ -162,12 +162,13 @@ find define the voids.
 
 This paper is organized as follows. 
 In Section \ref{sec:algorithms_cosmic_web} we describe the algorithms
-we use to find the cosmic web in N-body simulations. 
+we use to find the cosmic web in N-body simulations. In Section 
+\ref{sec:simulations} we describe the used simulation.
 Then in Section \ref{sec:bulk_voids} we explain in detail our void
 finder based on the fractional anisotropy of the tidal and shear
-tensor fields. 
-In Section \ref{sec:experiments} we describe the numerical experiments
-we perform to show the performance of the new void finding technique.  
+tensor fields.
+%In Section \ref{sec:experiments} we describe the numerical experiments
+%we perform to show the performance of the new void finding technique.
 Our results are presented in \ref{sec:results} to finally comment and
 conclude about these findings in Section \ref{sec:conclusions}. 
 
@@ -279,7 +280,7 @@ and walls.
 
 
 \section{Numerical Simulations}
-\label{sec:simulatins}
+\label{sec:simulations}
 
 We use the Bolshoi simulation to test the method describe in the
 paper. 
@@ -342,8 +343,8 @@ The FA is defined as follows.
 %.........................................................................
 where the eigenvalues are taken from either the Tweb or the Vweb 
 (FA-Tweb and FA-Vweb respectively). Such as it is defined, FA$=0$ 
-corresponds to an isotropic distribution ($\lambda_1=\lambda_2=\lambda_3$) and FA$=1$ with a highly anisotropic 
-distribution.
+corresponds to an isotropic distribution ($\lambda_1=\lambda_2=\lambda_3$) 
+and FA$=1$ with a highly anisotropic distribution.
 
 
 In left panels of Fig. \ref{fig:FA_field} we show the FA field for both 
@@ -439,9 +440,10 @@ classification for this choice of $\lambda_{th}$, demonstrating that
 it is a sensible choice to define voids. 
 
    
-
+%-------------------------------------------------------------------------
 \subsection{Defining voids with a watershed algorithm}
 \label{sec:watershed}
+%-------------------------------------------------------------------------
 
 
 Once established the FA as a good tracer of voids, the next step is to
@@ -471,7 +473,6 @@ would be removed and the respective voids merged. As we are working with the
 FA, the equivalent threshold according to Fig. \ref{fig:L1_correlations} is
 $FA = 0.65$. In right panels of Fig. \ref{fig:FA_field} we show the resulting
 catalogs of voids for both schemes.
-
 
 
 %Once set the optimal thresholds for the web schemes, we proceed in Fig. 
@@ -506,25 +507,67 @@ catalogs of voids for both schemes.
 
 
 %-------------------------------------------------------------------------
+\subsection{Enclosed mass}
+\label{subsec:enclosedmass}
+%-------------------------------------------------------------------------thereby allowing a good classification criterion
+
+
+When we analyse individual density profiles of voids (see left panels of
+Fig. \ref{fig:RhoVel}), they seem to be distributed in two different 
+families, differentiated by the presence or absence or a compensation 
+ridge (e.g. see also Fig. 14 of \citet{Colberg05}). In order to discriminate 
+each void in one of the families, we propose the compensation index, which 
+is defined as the mass of a void enclosed at a spherical volume of radius $R$ 
+and normalized by the mass of the same volume as assuming the mean background
+density instead
+
+\eq{compensation}
+{\mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr}
+
+We choose an integration radius of $R=4r_{eff}$, which is large enough to 
+enclose the compensation ridge for a typical void in case there is one. 
+This leads us to voids with $\mathcal{C}>1$ have more mass than expected, 
+constituting the family of overcompensated voids. These voids generally 
+exhibit a compensation ridge. In the same fashion, voids with 
+$\mathcal{C}<1$ constitute the family of subcompensated voids.
+
+
+
+%-------------------------------------------------------------------------
 \subsection{The void size distribution}
 \label{subsec:shape_voids}
 %-------------------------------------------------------------------------
 
 
+%.........................................................................
+%FIGURE 3: volume functions
+\begin{flushleft}
+\begin{figure}
+\centering
+
+  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
+  width=0.3\textheight]{./figures/voids_regions_volume_all.pdf}
+  
+  \captionof{figure}{\small Volume size distribution of voids for both
+  catalogs. FA-Tweb (red curves), FA-Vweb (blue curves).
+  Continuous lines corresponds with the total number of voids, dot-dashed
+  with sub-compensated voids and dashed lines with over-compensated voids. }
+
+  \label{fig:volume_function}
+  \vspace{0.1 cm}
+
+\end{figure}
+\end{flushleft}
+%.........................................................................
+
+
 
 %-------------------------------------------------------------------------
-\subsection{Density profile of voids}
+\subsection{Physical profiles of voids}
 \label{subsec:density_voids}
 %-------------------------------------------------------------------------
 
 
-
-
-\[ \mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr \]
-
-\[ \mathcal{C} < 1 \]
-
-\[ \mathcal{C} > 1 \]
 
 
 %*************************************************************************
@@ -546,7 +589,7 @@ catalogs of voids for both schemes.
 %.........................................................................
 
 %.........................................................................
-%FIGURE 3: FA of some regions and shape illustration
+%FIGURE -: FA of some regions and shape illustration
 %\begin{flushleft}
 %\begin{figure*}
 %\centering
@@ -573,29 +616,7 @@ catalogs of voids for both schemes.
 
 
 %.........................................................................
-%FIGURE 4: volume functions
-\begin{flushleft}
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/voids_regions_volume_all.pdf}
-  
-  \captionof{figure}{\small Volume functions of voids for both built 
-  catalogs. Watershed-Tweb (red curves), Watershed-Vweb (blue curves).
-  Continuous lines corresponds with the total number of voids, dot-dashed
-  with sub-compensated voids and dashed lines with over-compensated voids. }
-
-  \label{fig:volume_function}
-  \vspace{0.1 cm}
-
-\end{figure*}
-\end{flushleft}
-%.........................................................................
-
-
-%.........................................................................
-%FIGURE 5: Density profile of voids for each defined scheme
+%FIGURE 4: Density profile of voids for each defined scheme
 \begin{flushleft}
 \begin{figure*}
 \centering
