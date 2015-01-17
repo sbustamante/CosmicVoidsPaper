@@ -113,8 +113,8 @@ classified into two main types. First, geometric schemes based on
 point spatial or redshift  distribution of galaxies in surveys or dark
 matter halos in  simulations \citep{Kauffmann91, Muller00,
   Gottlober03, Hoyle04, Brunino07,  Foster09, Micheletti14, Sutter14};
-second, schemes based on the smooth  and continuous matter density
-field either from simulations or from  reconstruction procedures on
+second, schemes based on the smooth and continuous matter density
+field either from simulations or from reconstruction procedures on
 surveys \citep{Plionis02, Colberg05,  Shandarin06, Platen07,
   Neyrinck08, MunozCuartas11, Neyrinck13, Ricciardelli2013}.
 
@@ -524,7 +524,7 @@ volume as assuming the mean background density instead
 \eq{compensation}
 {\mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr}
 
-We choose an integration radius of $R=4r_{eff}$, that is large enough to 
+We choose an integration radius of $R=4\reff$, that is large enough to 
 enclose the compensation ridge for a typical void in case there is one. 
 This leads us to voids with $\mathcal{C}>1$ having more mass than expected, 
 constituting the family of overcompensated voids. These voids generally 
@@ -560,7 +560,7 @@ subcompensated voids.
 
 Since the shape of the voids exhibit a wide range of geometries, a common 
 way to represent their size is through the equivalent spherical radius or
-effective radius, defined as $r_{eff} = [3/(4\pi)V]^{1/3}$, with $V$ the 
+effective radius, defined as $\reff = [3/(4\pi)V]^{1/3}$, with $V$ the 
 total volume of the void. As mentioned before, we applied a threshold merger
 in order to avoid void hierarchization, what means we are working with the
 top hierarchy of voids. We limit our findings to voids with effective radius
@@ -604,7 +604,7 @@ larger scales abundances of subcompensated voids become comparable. This
 is somehow expected as larger voids are more likely to abut other voids.
 A recent estimation of the radius of the local void gives $r_{LV}\approx
 10$ Mpc \citep{Nasonova11}. Taking the dimensionless Hubble constant as 
-$h = 0.70$, the size of the local void would be around $r_{eff} = 7$
+$h = 0.70$, the size of the local void would be around $\reff = 7$
 \hMpc\ in the shown distribution. For both schemes, this places the local
 void as a rather common void in terms of size, and more likely to be
 overcompensated.
@@ -665,12 +665,13 @@ overcompensated.
 
 In Fig. \ref{fig:RhoVel} we analyse the internal properties of the found 
 voids. We calculate the contrast density, radial-projected velocity and 
-FA profiles. For this purpose we catalogue all the voids into several 
-radial bins in order to capture possible size effects. Then, for each void, 
+FA profiles. For this purpose we catalogue all the voids in several radial 
+bins in order to capture possible size effects; moreover we show profiles 
+for both, subcompensated and overcompensated voids. Then, for each void, 
 we take the distance of each member cell to the void centre along with the 
 properties of interest. Normalizing these distances with the effective 
-radius, we stack all the voids catalogued in a radial bin in order to 
-compute radial profiles of the properties of interest.
+radius, we stack all the voids of a radial bin in order to compute the 
+radial profiles.
 
 
 %.........................................................................
@@ -679,14 +680,52 @@ compute radial profiles of the properties of interest.
 %.........................................................................
 
 
-In Fig. \ref{fig:RhoVel} we analyse the internal properties of the found 
-voids. We calculate the contrast density, radial-projected velocity and 
-FA profiles. For this purpose we catalogue all the voids into several 
-radial bins in order to capture possible size effects. Then, for each void, 
-we take the distance of each member cell to the void centre along with the 
-properties of interest. Normalizing these distances with the effective 
-radius, we stack all the voids catalogued in a radial bin in order to 
-compute radial profiles of the properties of interest.
+In left panels of Fig. \ref{fig:RhoVel} we compute density profiles of 
+voids stacked according to their size and their compensation index. 
+Instead of calculating the radial internal structure inside an effective
+radius, we opted for a radius well beyond that value ($8\ \reff$) in order 
+to capture the properties of neighbour structures as well. 
+
+
+A first interesting result is the value at the void centres: the larger the 
+void, the more underdense their value at the centre, ranging from $\delta
+\approx-0.95$ for the largest voids ($8.3-12\ \hMpc$) to $\delta\approx 
+-0.8$ for the smallest voids ($2-3.2\ \hMpc$). This holds for all the voids 
+in both schemes. These very low values are consistent with most of the void 
+finding schemes based on smooth and continuous fields from simulation or 
+reconstruction procedures on surveys \citep{Plionis02, Colberg05, Shandarin06, 
+Platen07, Neyrinck08, MunozCuartas11, Neyrinck13, Ricciardelli2013}, unlike
+geometrical approaches based on point distributions, where central values
+are generally higher \citep{Colberg08}.
+
+
+Another important result is the steepness of the profiles at inner
+regions. For subcompensated voids, larger voids are more steep, reaching
+the mean density value at lower radius. Smaller voids exhibit moderate
+slopes, reaching the mean density at much larger radius. This indicates 
+smaller subcompensated voids are embedded into low density structures like 
+larger voids and still forming regions like walls. For subcompensated large
+voids, outer radial layers are so vast that all sort of structures are 
+stacked, thus reaching the mean density at lower radius. This result 
+remains also for overcompensated voids, where larger voids reach first 
+both, the compensation ridge and then the mean density value.
+
+
+Regarding overcompensated voids, a final result is related to the height 
+of the compensation ridge: the larger the void size, the lower the ridge
+height. This implies that overcompensated smaller voids are embedded in 
+very high density regions, unlike their subcompensated counterpart, thus 
+indicating two possibly different processes for small voids formation. 
+Larger voids exhibit lower ridges as outer radial layers also includes all
+sort of structures, thus being the difference between large overcompensated
+and subcompensated voids less conclusive.
+
+
+All the previous results hold for both finding schemes, thereby pointing 
+out to an universal radial profile of voids (subcompensated and 
+overcompensated), and not only for the internal structure \citep{Colberg05, 
+Ricciardelli2013}, but also for outer regions \citep{Lavaux12, Hamaus14}.
+
 
 %.........................................................................
 \subsubsection{Velocity profiles}
