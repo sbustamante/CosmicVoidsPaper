@@ -12,7 +12,7 @@
 \author[S. Bustamante and J.E. Forero-Romero]{
 \parbox[t]{\textwidth}{\raggedright 
   Sebastian Bustamante \thanks{sebastian.bustamante@udea.edu.co}$^{1}$,
-  Jaime E. Forero-Romero$^{2}$ 
+  Jaime E. Forero-Romero \thanks{je.forero@uniandes.edu.co}$^{2}$ 
 }
 \vspace*{6pt}\\
 $^1$Instituto de F\'{\i}sica - FCEN, Universidad de Antioquia, Calle
@@ -35,12 +35,13 @@ Voids are identified using the fractional anisotropy (FA) computed
 from the eigenvalues of each web scheme. 
 We define the void boundaries using a watershed transform based on the
 local minima of the FA and its boundaries as the regions where the FA
-is maximized
+is maximized.
 This void identification technique does not have any free parameters
 and does not make any assumption on the shape or structure of the
 voids.  
 We test the method on the Bolshoi simulation and report on the density
-and velo ity profiles for the voids found using this new scheme. 
+and velocity profiles for the voids found using this new scheme. 
+We find that...
 \end{abstract}
 
 \begin{keywords}
@@ -58,82 +59,77 @@ Methods: data analysis - numerical - N-body simulations
 \label{sec:introduction}
 %*************************************************************************
 
-
-Since voids were found in the first compiled galaxy surveys 
-they have been identified as one of the most striking features of the
-Cosmic Web \citep{Chincarini75,  Gregory78, Einasto80M, Einasto80N,
-  Kirshner81, Zeldovich82,Kirshner87, Bond96}. 
-However,  due to the large volume extension of void regions ($\sim
+Voids have been identified as one of the most striking features of the
+Universe on its larges scales since they were found in the first
+galaxy surveys \citep{Chincarini75, Gregory78, Einasto80M, Einasto80N,
+  Kirshner81, Zeldovich82,Kirshner87}.  
+However, due to the large volume extension of void regions ($\sim
 5-10\ \mbox{Mpc}  h^{-1}$), statistically meaningful catalogues of
 voids \citep{Pan10,  Sutter12b, Nadathur14} have only become available
-through  modern galaxy surveys like the two-degree field Galaxy
-Redshift Survey \citep{ Colless01, Colless03} and the Sloan Digital
-Sky Survey \citep{York00, Abazajian03}.
-This advancement generated a great interest to study voids
-observationally during the last decade \citep{Hoyle04, Croton04, Rojas05,
+through modern galaxy surveys such as the two-degree field Galaxy
+Redshift Survey (2dF) \citep{ Colless01, Colless03} and the Sloan
+Digital Sky Survey (SDSS)\citep{York00, Abazajian03}.
+These observational breakthughs generated a great interest in the last
+decade to study voids \citep{Hoyle04, Croton04, Rojas05,
   Ceccarelli06, Patiri06a, Tikhonov06, Patiri06b,Tikhonov07,
   BendaBeckmann08, Foster09, Ceccarelli13, Sutter14a}. 
 
 
-On the theoretical side the rough theoretical framework that explains
+On the theoretical side the basic framework that explains
 the origin of voids was established in the seminal work of
 \citet{Zeldovich70} and refined in the following decades.  
 The first detailed theoretical models describing formation, dynamics
 and properties of  voids \citep{Hoffman82, Icke84, Bertschinger85,
   Blumenthal92} were  complemented and extended by numerical studies
 \citep{Martel90, Regos91, Weygaert93, Dubinski93, Bond96}. 
-Currently, the dominant tendency to study voids relies on using data
-from N-body simulations. For an extensive compilation of previous 
+Currently, the most popular approach to study voids relies on N-body
+simulations. For an extensive compilation of previous  
 numerical works we refer the reader to \citet{Colberg08}.
 
 
 The relevance of voids to cosmological studies can be summarized in
 three aspects \citep{Platen07}. 
-First, voids are a key ingredient of the Cosmic Web. 
-They dominate the volume distribution at large-scales and
-additionally, they compensate overdense structures in the total budget
-of  matter.  
-Second, voids provide a valuable resource for inferring and probing 
-cosmological parameters as their structure and dynamics are highly 
-determined by these values. 
-Third, they are a  largely a largely pristine environment to test
-galaxy evolution.
+Firstly, voids are a key ingredient of the Cosmic Web. 
+They dominate the volume distribution at large scales and
+additionally, compensating overdense structures in the total matter
+budget. 
+Secondly, voids provide a valuable resource to estimate  
+cosmological parameters as their structure and dynamics are sensitive
+to them. 
+Finally, they are a largely pristine environment to test galaxy
+evolution. 
 
 
-Although a visual recognition of voids in galaxy surveys and simulations
-is possible in most cases, a formal systematic identification is desirable
-for statistical studies. 
-However, the community does not have an unambiguous definition of cosmic
-voids. 
-There are nany different void finding techniques in the literature
-(for a detailed comparison of different schemes,  see the Void Finder
-Comparison Project \citet{Colberg08}). 
+Although visual recognition of voids in galaxy surveys and simulations
+is possible in most cases, we need a clear algorithmic identification
+procedure to make statistical studies.
+Nevertheless, the community has not reached yet an unambiguous
+definition of cosmic voids, with many different void finding
+techniques in the literature  (for a detailed comparison of different
+schemes,  see the publication on the results of the Void Finder
+Comparison Project \citet{Colberg08}).  
 In spite of the diversity of existing schemes, they can be roughly
-classified into two main types. First, geometric schemes based on
-point spatial or redshift  distribution of galaxies in surveys or dark
-matter halos in  simulations \citep{Kauffmann91, Muller00,
-  Gottlober03, Hoyle04, Brunino07,  Foster09, Micheletti14, Sutter14};
-second, schemes based on the smooth and continuous matter density
+classified into two types. First, geometric schemes based on
+point distributions (either real or redshift space) of galaxies in
+surveys or dark matter halos in  simulations \citep{Kauffmann91, Muller00, 
+  Gottlober03, Hoyle04, Brunino07,  Foster09, Micheletti14, Sutter14}.
+Second, schemes based on the smooth and continuous matter density
 field either from simulations or from reconstruction procedures on
 surveys \citep{Plionis02, Colberg05,  Shandarin06, Platen07,
-  Neyrinck08, MunozCuartas11, Neyrinck13, Ricciardelli2013}.
+  Neyrinck08, MunozCuartas11, Neyrinck13, Ricciardelli2013}. 
+Our work is based on the second kind of schemes. 
 
 
-Here we introduce a new tracer of the structure of cosmic voids that
-can be used once the continous matter density or velocity distribution
-is known. 
+Here we introduce a new algorithm to define voids over the continous
+matter density or velocity distribution defined on a fixed and
+homogeneous spatial grid.
 The algorithm is based on two tensorial schemes used to classify the
 cosmic web. 
 The first (the T-web) is based on the Hessian of the gravitational potential or
 tidal tensor \citep{Hahn07, Forero09}. 
 The second (the V-web) is based on the velocity shear tensor
 \citep{Hoffman12}. 
-These web schemes classify the Cosmic Web into four different types of
-environment depending on the counting of the number of eigenvalues below an 
-user-defined threshold ($\lambda_{rm th}$): voids, sheets, filaments and
-knots for $3,2,1$ or $0$ eigenvalues below $\lambda_{\rm th}$, respectively.
-
-This procedure allows a new description of the internal structure
+Our procedure allows a description of the internal structure
 of voids that goes beyond a simple definition of a void as just an
 underdense regions in the large-scale matter distribution.
 The tidal and the shear tensors encode more information than the
@@ -147,28 +143,24 @@ under consideration.
 The FA was initially introduced by \citet{Basser95} to quantify the
 anisotropy degree of the diffusivity of water molecules through
 cerebral tissue in nuclear magnetic resonance
-imaging.
-\citet{Libeskind13} introduced this concept in the context of Cosmic
-Web classification schemes.
+imaging and \citet{Libeskind13} introduced this concept in the context
+of Cosmic Web classification schemes. 
 
 Once we establish the FA as a void tracer, we proceed to
-identify individual voids as basins of local minima. 
-For this we implement a \textit{watershed transform algorithm}
-\citep{Beucher79,Beucher93} which has been used to define as catching
-basins of local minima of the density field
-\citep{Platen07,Neyrinck08}; we use insted minima of the FA field to
-find define the voids. 
-
+identify individual voids as basins of FA local minima. 
+At this point we implement a \textit{watershed transform algorithm}
+\citep{Beucher79,Beucher93} which has been used to define voids as
+catching basins of local minima of the density field
+\citep{Platen07,Neyrinck08}.
 
 This paper is organized as follows. 
 In Section \ref{sec:algorithms_cosmic_web} we describe the algorithms
-we use to find the cosmic web in N-body simulations. In Section 
-\ref{sec:simulations} we describe the used simulation.
-Then in Section \ref{sec:bulk_voids} we explain in detail our void
-finder based on the fractional anisotropy of the tidal and shear
-tensor fields.
-%In Section \ref{sec:experiments} we describe the numerical experiments
-%we perform to show the performance of the new void finding technique.
+we use to find the cosmic web in N-body simulations. 
+In Section  \ref{sec:simulations} we describe the N-body simulation we
+use to test our algorithm. 
+In Section \ref{sec:bulk_voids} we explain in detail our void finder
+based on the fractional anisotropy of the tidal and shear tensor
+fields. 
 Our results are presented in \ref{sec:results} to finally comment and
 conclude about these findings in Section \ref{sec:conclusions}. 
 
