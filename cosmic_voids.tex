@@ -1,7 +1,96 @@
-\documentclass[a4,useAMS,usenatbib,usegraphicx]{latex/mn2e} 
+\documentclass[a4,useAMS,usenatbib,usegraphicx]{mn2e} 
 %\documentclass{latex/emulateapj} 
 %External Packages and personalized macros
-\include{latex/macros}
+%=========================================================================
+%		EXTERNAL PACKAGES
+%=========================================================================
+\usepackage{amsmath} 
+\usepackage{amssymb} 
+%\usepackage[section]{placeins}
+\usepackage {graphicx}
+%\usepackage{graphics}
+\usepackage[dvips]{epsfig}
+\usepackage{epsfig}  
+\usepackage{color}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+\usepackage{caption}
+%Non reposionated tables
+\usepackage{float}
+\restylefloat{table}
+
+%=========================================================================
+%		INTERNAL MACROS
+%=========================================================================
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\ba{\begin{eqnarray}}
+\def\ea{\end{eqnarray}}
+
+% To highlight comments 
+\definecolor{red}{rgb}{1,0.0,0.0}
+\newcommand{\red}{\color{red}}
+\definecolor{darkgreen}{rgb}{0.0,0.5,0.0}
+\newcommand{\SRK}[1]{\textcolor{darkgreen}{\bf SRK: \textit{#1}}}
+\newcommand{\SRKED}[1]{\textcolor{darkgreen}{\bf #1}}
+
+\newcommand{\LCDM}{$\Lambda$CDM~}
+\newcommand{\beq}{\begin{eqnarray}}  
+\newcommand{\eeq}{\end{eqnarray}}  
+\newcommand{\zz}{$z\sim 3$} 
+\newcommand{\apj}{ApJ}  
+\newcommand{\apjs}{ApJS}  
+\newcommand{\apjl}{ApJL}  
+\newcommand{\aj}{AJ}  
+\newcommand{\mnras}{MNRAS}  
+\newcommand{\mnrassub}{MNRAS accepted}  
+\newcommand{\aap}{A\&A}  
+\newcommand{\aaps}{A\&AS}  
+\newcommand{\araa}{ARA\&A}  
+\newcommand{\nat}{Nature}  
+\newcommand{\physrep}{PhR}
+\newcommand{\pasp}{PASP}    
+\newcommand{\pasj}{PASJ}    
+\newcommand{\avg}[1]{\langle{#1}\rangle}  
+\newcommand{\ly}{{\ifmmode{{\rm Ly}\alpha}\else{Ly$\alpha$}\fi}}
+\newcommand{\hMpc}{{\ifmmode{h^{-1}{\rm Mpc}}\else{$h^{-1}$Mpc}\fi}}  
+\newcommand{\hGpc}{{\ifmmode{h^{-1}{\rm Gpc}}\else{$h^{-1}$Gpc}\fi}}  
+\newcommand{\hmpc}{{\ifmmode{h^{-1}{\rm Mpc}}\else{$h^{-1}$Mpc}\fi}}  
+\newcommand{\hkpc}{{\ifmmode{h^{-1}{\rm kpc}}\else{$h^{-1}$kpc}\fi}}  
+\newcommand{\hMsun}{{\ifmmode{h^{-1}{\rm {M_{\odot}}}}\else{$h^{-1}{\rm{M_{\odot}}}$}\fi}}  
+\newcommand{\hmsun}{{\ifmmode{h^{-1}{\rm {M_{\odot}}}}\else{$h^{-1}{\rm{M_{\odot}}}$}\fi}}  
+\newcommand{\Msun}{{\ifmmode{{\rm {M_{\odot}}}}\else{${\rm{M_{\odot}}}$}\fi}}  
+\newcommand{\msun}{{\ifmmode{{\rm {M_{\odot}}}}\else{${\rm{M_{\odot}}}$}\fi}}  
+\newcommand{\lya}{{Lyman$\alpha$~}}
+\newcommand{\clara}{{\texttt{CLARA}}~}
+\newcommand{\rand}{{\ifmmode{{\mathcal{R}}}\else{${\mathcal{R}}$ }\fi}}  
+%SAMPLES
+\newcommand{\GHBDM}{\texttt{GH}$_{\mbox{\tiny{BDM}}}$ }
+\newcommand{\GHFOF}{\texttt{GH}$_{\mbox{\tiny{FOF}}}$ }
+\newcommand{\IHBDM}{\texttt{IH}$_{\mbox{\tiny{BDM}}}$ }
+\newcommand{\IHFOF}{\texttt{IH}$_{\mbox{\tiny{FOF}}}$ }
+\newcommand{\PBDM}{\texttt{P}$_{\mbox{\tiny{BDM}}}$ }
+\newcommand{\PFOF}{\texttt{P}$_{\mbox{\tiny{FOF}}}$ }
+\newcommand{\IPBDM}{\texttt{IP}$_{\mbox{\tiny{BDM}}}$ }
+\newcommand{\IPFOF}{\texttt{IP}$_{\mbox{\tiny{FOF}}}$ }
+\newcommand{\RIPBDM}{\texttt{RIP}$_{\mbox{\tiny{BDM}}}$ }
+\newcommand{\RIPFOF}{\texttt{RIP}$_{\mbox{\tiny{FOF}}}$ }
+
+
+%MY COMMANDS #############################################################
+\newcommand{\sub}[1]{\mbox{\scriptsize{#1}}}
+\newcommand{\dtot}[2]{ \frac{ d #1 }{d #2} }
+\newcommand{\dpar}[2]{ \frac{ \partial #1 }{\partial #2} }
+\newcommand{\pr}[1]{ \left( #1 \right) }
+\newcommand{\corc}[1]{ \left[ #1 \right] }
+\newcommand{\lla}[1]{ \left\{ #1 \right\} }
+\newcommand{\bds}[1]{\boldsymbol{ #1 }}
+\newcommand{\oiint}{\displaystyle\bigcirc\!\!\!\!\!\!\!\!\int\!\!\!\!\!\int}
+\newcommand{\mathsize}[2]{\mbox{\fontsize{#1}{#1}\selectfont $#2$}}
+\newcommand{\eq}[2]{\begin{equation} \label{eq:#1} #2 \end{equation}}
+\newcommand{\lth}{$\lambda_{th}$ }
+\newcommand{\reff}{{\ifmmode{r_{\mbox{\tiny eff}}}\else{$r_{\mbox{\tiny eff}}$}\fi}}
+%#########################################################################
 
 \begin{document}
 
@@ -156,23 +245,32 @@ catching basins of local minima of the density field
 This paper is organized as follows. 
 In Section \ref{sec:algorithms_cosmic_web} we describe the algorithms
 we use to find the cosmic web in N-body simulations. 
-In Section  \ref{sec:simulations} we describe the N-body simulation we
-use to test our algorithm. 
 In Section \ref{sec:bulk_voids} we explain in detail our void finder
 based on the fractional anisotropy of the tidal and shear tensor
 fields. 
+In Section  \ref{sec:simulations} we describe the N-body simulation we
+use to test our algorithm. 
 Our results are presented in \ref{sec:results} to finally comment and
 conclude about these findings in Section \ref{sec:conclusions}. 
 
 
 %*************************************************************************
-\section{Algorithms to label the Cosmic Web}
+\section{Algorithms to find the Cosmic Web}
 \label{sec:algorithms_cosmic_web}
 %*************************************************************************
 
+In next two subsections we describe the major features of the two
+algorithms (T-web and V-web) we use to find and classify the cosmic web in cosmological
+N-body simulations. 
+These schemes have also been used to develop other kind of studies
+such as the alignment of the shape, spin and peculiar velocity of dark
+matter halos with the cosmic web \citep{Libeskind13,Forero2014}.
+We refer the reader to the paper of \cite{Forero09} and
+\cite{Hoffman12} to read a detailed description of each algorithm. 
+
 
 %-------------------------------------------------------------------------
-\subsection{The tidal web (Tweb)}
+\subsection{The tidal web (T-Web)}
 \label{subsec:Tweb}
 %-------------------------------------------------------------------------
 
@@ -180,7 +278,7 @@ conclude about these findings in Section \ref{sec:conclusions}.
 This scheme was initially proposed by \citet{Hahn07} as an
 alternative for classifying the Cosmic Web based on the tidal tensor.
 The tidal tensor allows a classification in terms of the orbital
-dinamics of the matter field
+dinamics of the matter field.
 This approach extends to second-order the equations of motion around 
 local minima of the gravitational potential. 
 The second-order term corresponds to the tidal tensor, which is
@@ -206,39 +304,34 @@ with $\bar{\rho}$ the average density in the Universe, $G$ the
 gravitational constant and $\delta$ the dimensionless matter
 overdensity. 
 
-
 Since the tidal tensor can be represented by a real and  symmetric
 $3\times 3$ matrix, it is always possible to diagonalize  
 it and obtain three real eigenvalues $\lambda_{1}\geq\lambda_{2}\geq
 \lambda_3$ with its corresponding eigenvectors ${\bf u}_{1}$, ${\bf u}_{2}$,
 ${\bf u}_{3}$. 
-This set of eigenvalues are indicators of the local  orbital stability
-in each direction ${\bf u}_i$, which is to label the Cosmic Web.
+The eigenvalues are indicators of the local  orbital stability
+in each direction ${\bf u}_i$. 
+The sign of the eigenvalues can be used to classify the Cosmic Web.
 The number of positive (stable) or negative (unstable) eigenvalues allows 
 to label a location into one of the next four types of environment: 
-voids (3 negatives eigenvalues), sheets (2), filaments (1) and knots (0). 
+voids (3 negative eigenvalues), sheets (2), filaments (1) and knots (0). 
+
 A modification to this scheme was introduced by \citet{Forero09}
-by means of a relaxation of the stability criterion. The relative strength 
-of each eigenvalue is no longer defined by the sign, but instead by a
-threshold value $\lambda_{\rm th}$ that can be tuned in such a way
-that the visual impression of the web-like matter distribution is
-reproduced. 
+by means of a relaxation of the stability criterion. 
+The relative strength  of each eigenvalue is no longer defined by the
+sign, but instead by a threshold value $\lambda_{\rm th}$ that can be
+tuned in such a way that the visual impression of the web-like matter
+distribution is reproduced. 
  
 %-------------------------------------------------------------------------
-\subsection{The velocity web (Vweb)}
+\subsection{The velocity web (V-Web)}
 \label{subsec:Vweb}
 %-------------------------------------------------------------------------
 
 
 We also use a kinematic scheme to define the Cosmic Web environment in 
-the simulation, which has been thoroughly described in 
-\cite{Hoffman12}.
-This scheme has been used to study the shape, spin and peculiar
-velocity alignments of dark matter halos with the cosmic web
-\citep{Libeskind13,Forero2014}. 
-We refer the reader to these papers to find a detailed description of
-the algorithm, its limitations  and capabilities.    
-The Vweb scheme for environment finding is based on the
+the simulation introduced by \cite{Hoffman12}.
+The V-web scheme for environment finding is based on the
 local velocity shear tensor calculated from the smoothed dark matter 
 velocity field in the simulation. This tensor is given by the 
 following expression
@@ -254,14 +347,10 @@ the comoving velocity and position, respectively. Like the tidal tensor,
 $\Sigma_{\alpha\beta}$ can be represented by a $3\times 3$ symmetric 
 matrix with real values, making it possible to find three real
 eigenvalues and its corresponding eigenvectors.
-%$\lambda_{1}\geq\lambda_{2}\geq\lambda_3$.
-%whose sum (the 
-%trace of $\Sigma_{\alpha\beta}$) is proportional to the divergence of the 
-%local velocity field smoothed on the physical scale ${\mathcal R}$. 
 
 In this case we also use the relative strength of the three eigenvalues with 
 respect to a threshold value $\lambda_{th}$ to classify the cosmic web
-in the four web types we have already described.
+in the four web types already mentioned.
 
 Usually, the threshold is a free parameter that is tuned to reproduce
 the visual appearence of the comic web. 
@@ -269,39 +358,7 @@ In this paper we take a different approach.
 We find the optimal value of the threshold based on the maximization
 of the fractional anisotropy field in the locations label as filaments
 and walls. 
-
-
-\section{Numerical Simulations}
-\label{sec:simulations}
-
-We use the Bolshoi simulation to test the method describe in the
-paper. 
-This simulation follows the non-linear evolution of a dark
-matter density field on a cubic volume of  size $250$\hMpc\ sampled
-with $2048^3$ particles. 
-The cosmological parameters in the simulation are $\Omega_{\rm m}=0.27$,  $\Omega_{\Lambda}  =0.73$, $h=0.70$,
-$n=0.95$ and $\sigma_{8}=0.82$ for the matter density,   cosmological
-constant, dimensionless Hubble parameter, spectral index of
-primordial density perturbations and normalization for the power
-spectrum, respectively. 
-This values are consistent with the seventh year of data of the Wilkinson 
-Microwave Anisotropy Probe (WMAP) \citep{Jarosik11}. 
-For more detailed  technical information about the simulation, see
-\citet{Klypin11}. 
-
-
-We find the cosmic web we estimate first the density and velocity
-fields using a  \textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
-cells, corresponding to a spatial resolution of $0.98$\hMpc\ per cell
-side.  
-These fields are smoothed with a gaussian filter with a width of
-$\sigma=0.98$\hMpc.
-We compute the tidal and shear tensors through finite-differences and
-Finally, the eigenvalues and eigenvectors of the tensor are
-obtained for each grid cell.
-The data we use here is publicly available through the MultiDark
-database \url{http://www.multidark.org/MultiDark/} which is described
-in \citet{Riebe11}.
+This is described in detailed in the next Section.
 
 
 
@@ -321,8 +378,8 @@ The fractional anisotropy (FA), as developed by \citet{Basser95}, was
 conceived to quantify the anisotropy degree of a diffusion process, e.g. 
 the diffusivity of water molecules through cerebral tissue in nuclear
 magnetic resonance imaging. 
-Here we propose the FA, much in the same way as \citet{Libeskind13},
-as a tracer of cosmic voids. 
+Here we present the FA, much in the same way as \citet{Libeskind13},
+to use it as a tracer of cosmic voids.
 
 
 The FA is defined as follows.
@@ -333,8 +390,8 @@ The FA is defined as follows.
 (\lambda_2 - \lambda_3)^2 + (\lambda_1 - \lambda_2)^2}{ \lambda_1^2 + 
 \lambda_2^2 + \lambda_3^2} },}
 %.........................................................................
-where the eigenvalues are taken from either the Tweb or the Vweb 
-(FA-Tweb and FA-Vweb respectively). Such as it is defined, FA$=0$ 
+where the eigenvalues can be taken from either the T-web or the Vweb 
+(FA-T-web and FA-Vweb respectively). Such as it is defined, FA$=0$ 
 corresponds to an isotropic distribution ($\lambda_1=\lambda_2=\lambda_3$) 
 and FA$=1$ with a highly anisotropic distribution.
 
@@ -352,9 +409,9 @@ cosmic voids.
 %FIGURE 1: FA and vissual impression
 \begin{figure*}
   \includegraphics[trim = 16mm 8mm 5mm 12mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_FA_Tweb.pdf}
+  width=0.73\textheight]{cosmicweb_FA_Tweb.pdf}
   \includegraphics[trim = 16mm 8mm 5mm 12mm, clip, keepaspectratio=true,
-  width=0.73\textheight]{./figures/cosmicweb_FA_Vweb.pdf}
+  width=0.73\textheight]{cosmicweb_FA_Vweb.pdf}
   \caption{Left colum. Visual impression of the 
   FA field over a slide of the simulation for each web scheme (T-web, upper 
   panels. V-web, middle panels). 
@@ -381,13 +438,13 @@ cosmic voids.
 \centering
 
   \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/FA_L1.pdf}
+  width=0.3\textheight]{FA_L1.pdf}
   \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/delta_L1.pdf}  
+  width=0.3\textheight]{delta_L1.pdf}  
   
   \captionof{figure}{\small Distributions of the FA (left panel) and the 
   density field (right panel) with respect to the eigenvalue $\lambda_1$ 
-  for each web scheme (Tweb, red lines. Vweb, blue lines) as calculated 
+  for each web scheme (T-web, red lines. Vweb, blue lines) as calculated 
   over all cells of the grid. Thick central lines correspond with the median 
   and filled regions with the $50\%$ of the distribution.}
 
@@ -423,7 +480,7 @@ FA$<0.95$.
 If we increase the values of $\lambda_1$ from its minimum until it
 we reach FA$=0.95$ in \ref{fig:L1_correlations} we find that this
 correspond to critical values of $\lambda_{1}^T = 0.265$ and
-$\lambda_{1}^V = 0.175$ for the Tweb and Vweb, respectively.
+$\lambda_{1}^V = 0.175$ for the T-web and Vweb, respectively.
 This means that setting $\lambda_{th}$ to either
 $\lambda_{1}^T$/$\lambda_{1}^{V}$ automatically produces voids with
 all the cells $FA<0.95$.   
@@ -492,6 +549,39 @@ catalogues of voids for both schemes.
 
 
 
+\section{Numerical Simulation}
+\label{sec:simulations}
+
+We use the Bolshoi simulation to test the method describe in the
+paper. 
+This simulation follows the non-linear evolution of a dark
+matter density field on a cubic volume of  size $250$\hMpc\ sampled
+with $2048^3$ particles. 
+The cosmological parameters in the simulation are $\Omega_{\rm m}=0.27$,  $\Omega_{\Lambda}  =0.73$, $h=0.70$,
+$n=0.95$ and $\sigma_{8}=0.82$ for the matter density,   cosmological
+constant, dimensionless Hubble parameter, spectral index of
+primordial density perturbations and normalization for the power
+spectrum, respectively. 
+This values are consistent with the seventh year of data of the Wilkinson 
+Microwave Anisotropy Probe (WMAP) \citep{Jarosik11}. 
+For more detailed  technical information about the simulation, see
+\citet{Klypin11}. 
+
+
+We find the cosmic web we estimate first the density and velocity
+fields using a  \textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
+cells, corresponding to a spatial resolution of $0.98$\hMpc\ per cell
+side.  
+These fields are smoothed with a gaussian filter with a width of
+$\sigma=0.98$\hMpc.
+We compute the tidal and shear tensors through finite-differences and
+Finally, the eigenvalues and eigenvectors of the tensor are
+obtained for each grid cell.
+The data we use here is publicly available through the MultiDark
+database \url{http://www.multidark.org/MultiDark/} which is described
+in \citet{Riebe11}.
+
+
 %*************************************************************************
 \section{Results}
 \label{sec:results}
@@ -537,10 +627,10 @@ subcompensated voids.
 \centering
 
   \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{./figures/voids_regions_volume_all.pdf}
+  width=0.3\textheight]{voids_regions_volume_all.pdf}
 
   \captionof{figure}{\small Volume size distribution of voids for both
-  catalogues. FA-Tweb (red curves), FA-Vweb (blue curves).
+  catalogues. FA-T-web (red curves), FA-Vweb (blue curves).
   Continuous lines corresponds with the total number of voids, dot-dashed
   with sub-compensated voids and dashed lines with over-compensated voids. }
 
@@ -559,7 +649,7 @@ top hierarchy of voids. We limit our findings to voids with effective radius
 greater than the smoothing length of the density field, i.e. $\sim 1$\hMpc. 
 Below that scale numerical resolution effects becomes important. We find a
 volume filling fraction of voids of $54.88\%$ of the total volume of the 
-simulation for the FA-Tweb and $47.06\%$ for the FA-Vweb.
+simulation for the FA-T-web and $47.06\%$ for the FA-Vweb.
 
 
 In Fig. \ref{fig:volume_function} we show the void size distributions
@@ -568,7 +658,7 @@ overcompensated and subcompensated void subsamples. The central region of
 the distributions ($3$\hMpc\ -- $6$\hMpc), exhibit an approximately flat 
 shape, contrary to expected from highly non-linear structures like dark 
 matter halos, where the abundances increase for smaller structures. 
-The distribution of the FA-Tweb is consistent with a two-barrier problem 
+The distribution of the FA-T-Web is consistent with a two-barrier problem 
 \citep{Sheth04}: formation of large voids is inhibited by the 
 \textit{void-in-void} problem (first barrier), where large voids are 
 constituted hierarchically of smaller ones. In turn, formation of small 
@@ -582,7 +672,7 @@ problem as it predicts large abundances of smaller voids. However, an
 interesting result is the difference between the overcompensated and 
 subcompensated subsamples. Subcompensated voids, which are expected to 
 be embedded in low-density regions like walls and larger voids, exhibit
-smaller abundances compatible with the result of the FA-Tweb. Then, the 
+smaller abundances compatible with the result of the FA-T-Web. Then, the 
 most dramatic contribution to the overabundance of small voids for the 
 FA-Vweb comes from overcompensated voids. This implies that, although
 nearby non-linear structures squeeze out embedded smaller voids, the
@@ -613,33 +703,33 @@ overcompensated.
 \begin{figure*}
 \centering
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_density_TwebFAG0.pdf}
+  width=0.24\textheight]{voids_density_TwebFAG0.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_velocity_TwebFAG0.pdf}
+  width=0.24\textheight]{voids_velocity_TwebFAG0.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_FA_TwebFAG0.pdf}
+  width=0.24\textheight]{voids_FA_TwebFAG0.pdf}
   
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_density_VwebFAG0.pdf}
+  width=0.24\textheight]{voids_density_VwebFAG0.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_velocity_VwebFAG0.pdf}
+  width=0.24\textheight]{voids_velocity_VwebFAG0.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_FA_VwebFAG0.pdf}
+  width=0.24\textheight]{voids_FA_VwebFAG0.pdf}
   
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_density_TwebFAG1.pdf}
+  width=0.24\textheight]{voids_density_TwebFAG1.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_velocity_TwebFAG1.pdf}
+  width=0.24\textheight]{voids_velocity_TwebFAG1.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_FA_TwebFAG1.pdf}
+  width=0.24\textheight]{voids_FA_TwebFAG1.pdf}
 
   
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_density_VwebFAG1.pdf}
+  width=0.24\textheight]{voids_density_VwebFAG1.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_velocity_VwebFAG1.pdf}
+  width=0.24\textheight]{voids_velocity_VwebFAG1.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{./figures/voids_FA_VwebFAG1.pdf}  
+  width=0.24\textheight]{voids_FA_VwebFAG1.pdf}  
   
 
   \captionof{figure}{\small Physical internal properties of voids for 
@@ -791,34 +881,7 @@ is also avoided.
 \section*{Acknowledgments}  
 %*************************************************************************
 
-
-\bibliographystyle{latex/mn2e}
+\bibliographystyle{mn2e}
 \bibliography{references}
 
-
-%.........................................................................
-%FIGURE -: FA of some regions and shape illustration
-%\begin{flushleft}
-%\begin{figure*}
-%\centering
-%  \includegraphics[trim = 0mm 1mm 0mm 1mm, clip, keepaspectratio=true,
-%  width=0.3\textheight]{./figures/FA_Prolatenes_Vweb.pdf}
-%  \includegraphics[trim = 0mm 1mm 0mm 1mm, clip, keepaspectratio=true,
-%  width=0.3\textheight]{./figures/FA_Prolatenes.png}  
-  
-%  \captionof{figure}{\small Fractional anisotropy and prolateness for a 
-%  random sample of cells (left panel) and for different spherical 
-%  geometries (right panel). For the cells, each environment is coded with
-%  a different colour, i.e. voids corresponds with dark blue points, 
-%  sheets with green, filaments with orange and knots with cyan. The axis 
-%  of the spheroids are computed from the relative strengths of the 
-%  eigenvalues, so their shape sketch the relative expanding/collapsing 
-%  dynamics into each direction.}
-
-%  \label{fig:FAShapeness}
-%  \vspace{0.1 cm}
-
-%\end{figure*}
-%\end{flushleft}
-%.........................................................................
 \end{document}
