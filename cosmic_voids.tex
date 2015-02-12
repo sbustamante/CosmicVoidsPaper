@@ -269,7 +269,7 @@ conclude about these findings in Section \ref{sec:conclusions}.
   width=0.73\textheight]{cosmicweb_FA_Vweb.pdf}
   \caption{Left colum. Visual impression of the 
   Fractional Anisotropy field over a slide of the simulation for each
-  web scheme (T-Web is up. V-Web is down).  
+  web scheme (T-Web top. V-Web bottom).  
   Middle column. Cosmic Web identification. Voids
   are white, sheets are light gray, filaments are dark gray and
   knots are black.
@@ -469,11 +469,10 @@ $\lambda_1$.
 
 In Fig. \ref{fig:L1_correlations} we show that the these two values
 are indeed closely correlated.  
-The left panel shows the correlation between $\lambda_1$ and $FA$ for
+The right panel shows the correlation between $\lambda_1$ and $\delta$ for
 all the grid cells in the simulation while the right panel shows the
-correlation between $\lambda_1$ and the local overdensity $\delta$.  
-This shows that the overdensity has a large scatter at fixed
-$\lambda_1$. 
+correlation between $\lambda_1$ and the FA. This shows that the
+overdensity has a large scatter at fixed $\lambda_1$. 
 
 From Figs. \ref{fig:FA_field} and \ref{fig:L1_correlations} we
 conclude that the FA is a good tracer of voids as it is almost perfectly
@@ -486,10 +485,10 @@ correspond to critical values of $\lambda_{1}^T = 0.265$ and
 $\lambda_{1}^V = 0.175$ for the T-web and Vweb, respectively.
 This means that setting $\lambda_{th}$ to either
 $\lambda_{1}^T$/$\lambda_{1}^{V}$ automatically produces voids with
-all the cells $FA<0.95$.   
-The middle column in Fig. \ref{fig:FA_field} shows the web
+all the cells FA$<0.95$.   
+The middle panels in Figure \ref{fig:FA_field} show the web
 classification for this choice of $\lambda_{th}$, demonstrating that
-it is a sensible choice to define voids. 
+this FA level is a sensitive choice to define voids.
 
    
 %-------------------------------------------------------------------------
@@ -501,29 +500,26 @@ it is a sensible choice to define voids.
 The previous section shows that FA is a good void tracer, but it does
 not automatically suggest how to define the boundary of individual
 voids.
-For this purpose, we
-use the \textit{watershed transform algorithm}
+For this purpose, we use the \textit{watershed transform algorithm}
 \citep{Beucher79,Beucher93} to identify a void as the basin of FA
 local minimum. 
-The advantage of this definition is that we can
-now forget about the free parameter $\lambda_{th}$. 
-Additionally, this algorithm does not require any assumption on the
-shape and/or morphology of the tentative voids. 
+The advantage of this definition is that it does not require any
+assumption on the shape and/or morphology of the tentative voids. 
 
+However, there are two main differences in our approach with respect to other
+watershed implementations.
+First, the watershed technique commonly uses the the density field
+instead of the FA field as we do in this paper
+\citep{Platen07,Neyrinck08}.   
+Second, we estimate all relevant quantities on a Cartesian mesh of
+fixed cell size, while other works use an adaptive Delaunay tessellation
+\citep{Schaap00}.
+However, from the analysis of our results it does not 
+introduce supurious results, at least with the mass resolution we have
+in the N-body simulation. 
 
-The watershed technique has been already implemented to find voids \citet{Platen07,
-Neyrinck08} however it used the density field instead of the FA
-field as we suggest in this paper. 
-Another difference with respect to other void finding implementations
-is that we estimate all relevant quantities on a Cartesian mesh of fixed cell
-size, while it other works use an adaptive Delaunay tessellation
-\citep{Schaap00}. 
-However from the analysis of our results this different does not seem
-to introduce supurious results, at least with the mass resolution we
-have in the N-body simulation.
-
-This watershed algorithm still needs a threshold value to reduce
-spurious features and to avoid void hierarchization.  
+The watershed algorithm also needs a threshold value to reduce
+spurious features and prevent void hierarchization.  
 If the density field is used, a typical threshold is
 $\delta = -0.8$ \citep{Platen07},  which means that any ridge between
 two voids with overdensity below that value is removed to merge the
@@ -542,8 +538,11 @@ From the second panel we have a very tight correlation of $\lambda_1$
 with the FA, indicating that in turn $\lambda_1=0.0$ corresponds to a
 FA=$0.65$ which is the value that we have used to remove ridges. 
 
-The right column in Figure \ref{fig:FA_field} shows all the voids that
-have been identified using the watershed algorithm on the FA field.
+The right column in Figure \ref{fig:FA_field} shows all the individual
+voids that have been identified using the watershed algorithm on the
+FA field. 
+In what follows we describe the numerical simulation we have used to
+find voids and their detailed properties characterization.
 
 
 \section{Numerical Simulation}
