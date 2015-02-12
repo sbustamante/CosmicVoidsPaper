@@ -548,68 +548,51 @@ find voids and their detailed properties characterization.
 \section{Numerical Simulation}
 \label{sec:simulations}
 
-We use the Bolshoi simulation to test the method describe in the
-paper. 
+We use the Bolshoi simulation to test our void finding method. 
 This simulation follows the non-linear evolution of a dark
 matter density field on a cubic volume of  size $250$\hMpc\ sampled
 with $2048^3$ particles. 
-The cosmological parameters in the simulation are $\Omega_{\rm m}=0.27$,  $\Omega_{\Lambda}  =0.73$, $h=0.70$,
-$n=0.95$ and $\sigma_{8}=0.82$ for the matter density,   cosmological
+The cosmological parameters in the simulation are $\Omega_{\rm
+  m}=0.27$,  $\Omega_{\Lambda}  =0.73$, $h=0.70$, $n=0.95$ and
+$\sigma_{8}=0.82$ for the matter density,   cosmological 
 constant, dimensionless Hubble parameter, spectral index of
 primordial density perturbations and normalization for the power
 spectrum, respectively. 
-This values are consistent with the seventh year of data of the Wilkinson 
-Microwave Anisotropy Probe (WMAP) \citep{Jarosik11}. 
+These values are consistent with the ninth year of data of the
+Wilkinson  Microwave Anisotropy Probe (WMAP) \citep{Hinshaw2013}. 
 For more detailed  technical information about the simulation, see
 \citet{Klypin11}. 
 
 
-We find the cosmic web we estimate first the density and velocity
-fields using a  \textit{cloud-in-cell} (\texttt{CIC}) algorithm onto a grid of $256^3$ 
-cells, corresponding to a spatial resolution of $0.98$\hMpc\ per cell
-side.  
-These fields are smoothed with a gaussian filter with a width of
-$\sigma=0.98$\hMpc.
-We compute the tidal and shear tensors through finite-differences and
-Finally, the eigenvalues and eigenvectors of the tensor are
-obtained for each grid cell.
-The data we use here is publicly available through the MultiDark
-database \url{http://www.multidark.org/MultiDark/} which is described
-in \citet{Riebe11}.
-
+We use data for the cosmic web identification that is publicly
+available through the MultiDark database
+\url{http://www.multidark.org/MultiDark/} which is described in
+\citet{Riebe11}. 
+Here we briefly describe the process to obtain the data. 
+For details see \cite{Forero09} (T-Web) and
+\cite{Hoffman12,Forero2014} (V-Web). 
+This data is based on a  \textit{cloud-in-cell} (\texttt{CIC})
+interpolation of the density and velocity fields of the simulation
+onto a grid of $256^3$  cells, corresponding to a spatial resolution
+of $0.98$\hMpc\ per cell side.    
+These fields are smoothed with a gaussian filter with a width of 
+$\sigma=0.98$\hMpc. 
+The tidal and shear tensors and corresponding eigenvalues are computed
+through finite-differences over the potential and velocity fields.
 
 %*************************************************************************
 \section{Results}
 \label{sec:results}
 %*************************************************************************
 
+We limit our results to voids with effective radius larger than the
+smoothing length of the density field, i.e. $\sim 1$\hMpc.  
+Below that scale numerical resolution effects become important. 
+With that choice we find a volume filling fraction $54.88\%$ and
+$47.06\%$ for the FA-Vweb. 
 
-%-------------------------------------------------------------------------
-\subsection{Enclosed mass}
-\label{subsec:enclosedmass}
-%-------------------------------------------------------------------------
-
-
-When we analyse individual density profiles of voids (see left panels of
-Fig. \ref{fig:RhoVel}), they seem to be distributed in two different 
-families, differentiated by the presence or absence of a compensation 
-ridge (e.g. see also Fig. 14 of \citet{Colberg05}). In order to 
-discriminate each void in one of the families, we propose the compensation 
-index $\mathcal{C}$, which is defined as the mass of a void enclosed in a 
-spherical volume of radius $R$ and normalized by the mass of the same 
-volume as assuming the mean background density instead
-
-\eq{compensation}
-{\mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr}
-
-We choose an integration radius of $R=4\reff$, that is large enough to 
-enclose the compensation ridge for a typical void in case there is one. 
-This leads us to voids with $\mathcal{C}>1$ having more mass than expected, 
-constituting the family of overcompensated voids. These voids generally 
-exhibit a compensation ridge associated to dense nearby structures. In the 
-same fashion, voids with $\mathcal{C}<1$ constitute the family of 
-subcompensated voids.
-
+In the following subsections we describe the results for the size
+distribution and different radial profiles for all our samples.
 
 %-------------------------------------------------------------------------
 \subsection{The void size distribution}
@@ -636,56 +619,66 @@ subcompensated voids.
 %.........................................................................
 
 
-Since the shape of the voids exhibit a wide range of geometries, a common 
-way to represent their size is through the equivalent spherical radius or
+Void shapes exhibit a wide range of geometries.
+To define their size we use its equivalent spherical radius or
 effective radius, defined as $\reff = [3/(4\pi)V]^{1/3}$, with $V$ the 
-total volume of the void. As mentioned before, we applied a threshold merger
-in order to avoid void hierarchization, what means we are working with the
-top hierarchy of voids. We limit our findings to voids with effective radius
-greater than the smoothing length of the density field, i.e. $\sim 1$\hMpc. 
-Below that scale numerical resolution effects becomes important. We find a
-volume filling fraction of voids of $54.88\%$ of the total volume of the 
-simulation for the FA-T-web and $47.06\%$ for the FA-Vweb.
+total volume of the void. 
+In Figure \ref{fig:volume_function} we show the void size
+distributions for the T-Web and the V-Web.
+
+We see that the void distribution for the T-Web is broadly consistent with the
+expectations from a two-barrier problem  \citep{Sheth04}. 
+The formation of large voids is limited by the \textit{void-in-void}
+problem (first barrier), where large voids are constituted
+hierarchically of smaller ones. 
+In turn, the formation of small  voids is damped by the
+\textit{void-in-cloud} problem (second barrier),  where nearby
+collapsing structures limit the abundance of embedded small  voids.  
 
 
-In Fig. \ref{fig:volume_function} we show the void size distributions
-for both schemes and for the overall distribution of voids as well as for 
-overcompensated and subcompensated void subsamples. The central region of
-the distributions ($3$\hMpc\ -- $6$\hMpc), exhibit an approximately flat 
-shape, contrary to expected from highly non-linear structures like dark 
-matter halos, where the abundances increase for smaller structures. 
-The distribution of the FA-T-Web is consistent with a two-barrier problem 
-\citep{Sheth04}: formation of large voids is inhibited by the 
-\textit{void-in-void} problem (first barrier), where large voids are 
-constituted hierarchically of smaller ones. In turn, formation of small 
-voids is damped by the \textit{void-in-cloud} problem (second barrier), 
-where nearby collapsing structures limit the abundance of embedded small 
-voids.
+We also find that the V-Web scheme produces an over-abundance of small
+voids compared to the resuls of the T-Web.
+A large number of these small voids are embedded in dense regions. 
+They are visible in the middle panel of Figure \ref{fig:FA_field} as
+the small bubbles located inside sheets.
+The existence of these small voids could be qualitatively explained by
+dynamics of shell crossing in collapsing sheets. 
+When matter colides into a sheet, at their center it is possible to
+find crossing matter planes that effectively give a possitively
+divergen velocity field, which gives a void identification by the
+T-Web algorithm. This points has been discussed in \citet{Hoffman12}.
 
+Comparing the abundance of large voids in the two web schemes, we find
+that the V-Web is limited to have voids on the scale of $\sim 10$\hMpc,
+while the T-Web scheme includes voids as large as $\sim 15$\hMpc. 
+Large voids in the T-Web scheme have a velocity structure that
+induces a split by the watersched algorithm in the V-Web. 
+This is eviden in the right panel of Figure \ref{fig:FA_field}.
 
-The FA-Vweb scheme does not tackle properly the \textit{void-in-cloud} 
-problem as it predicts large abundances of smaller voids. However, an 
-interesting result is the difference between the overcompensated and 
-subcompensated subsamples. Subcompensated voids, which are expected to 
-be embedded in low-density regions like walls and larger voids, exhibit
-smaller abundances compatible with the result of the FA-T-Web. Then, the 
-most dramatic contribution to the overabundance of small voids for the 
-FA-Vweb comes from overcompensated voids. This implies that, although
-nearby non-linear structures squeeze out embedded smaller voids, the
-rapid and isotropic collapse in these zones, along with the more rugged 
-nature of the velocity field make these voids still detectable by this 
-scheme.
+%-------------------------------------------------------------------------
+\subsection{Compenseated and overcompensated voids}
+\label{subsec:enclosedmass}
+%-------------------------------------------------------------------------
 
+We find that voids are distributed in two different  families differentiated by the
+presence/absence of an overdense matter ridge in their density
+profiles. 
+To discriminate each void in one of the families we use the
+compensation  index $\mathcal{C}$.
+It is defined as the mass of a void enclosed in a spherical volume of
+radius $R$ and normalized by the mass of the same volume assuming
+it is filled by matter with the mean background density.
 
-For both schemes overcompensated voids are more abundant, however at 
-larger scales abundances of subcompensated voids become comparable. This 
-is somehow expected as larger voids are more likely to abut other voids.
-A recent estimation of the radius of the local void gives $r_{LV}\approx
-10$ Mpc \citep{Nasonova11}. Taking the dimensionless Hubble constant as 
-$h = 0.70$, the size of the local void would be around $\reff = 7$
-\hMpc\ in the shown distribution. For both schemes, this places the local
-void as a rather common void in terms of size, and more likely to be
-overcompensated.
+\eq{compensation}
+{\mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr}
+
+We choose an integration radius of $R=4\reff$, that is large enough to 
+enclose the compensation ridge for a typical void in case there is one. 
+This leads us to voids with $\mathcal{C}>1$ having more mass than expected, 
+constituting the family of overcompensated voids. These voids generally 
+exhibit a compensation ridge associated to dense nearby structures. In the 
+same fashion, voids with $\mathcal{C}<1$ constitute the family of 
+subcompensated voids.
 
 
 %-------------------------------------------------------------------------
