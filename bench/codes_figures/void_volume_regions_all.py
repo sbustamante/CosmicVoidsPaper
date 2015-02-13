@@ -21,9 +21,10 @@ labels = ['FA-Tweb', 'FA-Vweb', 'Density']
 #Void finder scheme (FAG or FOF)
 void_scheme = 'FAG'
 #Schemes used for each web
-#schemes = [ "21","31","51" ]
-#schemes = [ "01","01","01" ]
 schemes = [ "01","01","01" ]
+#linestyles
+linestyles = ["-", "--"]
+
 
 #Colors
 colors = ["red", "blue", "green"]
@@ -75,16 +76,21 @@ for web in webs:
 	
     #Normal Plot
     if sys.argv[1] == '0':
-	ax1[0].semilogy( hist1d[1][:-1], distro, linewidth = 3.0, linestyle = "-",\
+	ax1[0].semilogy( hist1d[1][:-1], distro, linewidth = 3.0, linestyle = linestyles[i_web],\
 	#color = colors[i_web], label = "%s (%s-order MF)"%(labels[i_web], schemes[i_web][0]) )
 	color = colors[i_web], label = "%s"%(labels[i_web]) )
-	ax1[0].semilogy( hist1d_o[1][:-1], distro_o, "--", linewidth = 2,\
-	color = colors[i_web], label = "%s SC"%(labels[i_web]) )
-	ax1[0].semilogy( hist1d_u[1][:-1], distro_u, "-.", linewidth = 2,\
-	color = colors[i_web], label = "%s OC"%(labels[i_web]) )
+	
+	#Subcompensated voids
+	#ax1[0].semilogy( hist1d_o[1][:-1], distro_o, "--", linewidth = 2,\
+	#color = colors[i_web], label = "%s SC"%(labels[i_web]) )
+	
+	#Overcompensated voids
+	#ax1[0].semilogy( hist1d_u[1][:-1], distro_u, "-.", linewidth = 2,\
+	#color = colors[i_web], label = "%s OC"%(labels[i_web]) )
+      
     #Cumulative Plot
     else:
-	ax1[0].plot( hist1d[1][:-1], distro, linewidth = 2.0, linestyle = "-",\
+	ax1[0].plot( hist1d[1][:-1], distro, linewidth = 2.0, linestyle = linestyles[i_web],\
 	#color = colors[i_web], label = "%s (%s-order MF)"%(labels[i_web], schemes[i_web][0]) )
 	color = colors[i_web], label = "%s"%(labels[i_web]) )
       
