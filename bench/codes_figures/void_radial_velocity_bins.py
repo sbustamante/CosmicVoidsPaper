@@ -33,16 +33,17 @@ config = "01"
 comp = int(sys.argv[3])
 
 #Number of middle points for mapping the density field
-N = 40
+N = 80
 #Number of times the effective radius of the void
 Rreff = 8
 #Effective radial bins 
-#RadBins = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 12 ]
 RadBins = [ 2.0, 3.2, 4.4, 5.6, 6.8, 8.3, 12 ]
 #Colors 
 #color = ["#000000","#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
 #color = ["#000066", "#0000BE", "#067EF4", "#23F0D5", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
 color = ["#0000BE", "#067EF4", "#67BD65", "#FFFF00", "#FF8000", "#FF0000", "#800000"]
+#Linewidths
+linewidths = [ 2, 2.25, 2.5, 2.75, 3.0, 3.25 ]
 #Labels 
 labels = { "FAG":"FA-WT", "DLG":"Density-WT" }
 #Compensated
@@ -55,11 +56,8 @@ def r_eff(X):
 #==================================================================================================
 #			COMPUTING RADIAL PROFILES OF VELOCITY FOR EVERY RADIAL BIN
 #==================================================================================================
-fig = plt.figure( figsize=(4.5,4) )
+fig = plt.figure( figsize=(5.8,5) )
 ax = fig.add_subplot(111)
-#Embedded subplot
-#rect = [0.1,0.05,0.4,0.4]
-#ax1 = add_subplot_axes(ax,rect)
 
 for ri in xrange( len(RadBins)-1 ):
     reff_range = [ RadBins[ri],RadBins[ri+1] ]
@@ -87,11 +85,13 @@ for ri in xrange( len(RadBins)-1 ):
 		(data_figures_fold,void_scheme,web,i-1))
 	    except:
                 pass
+	    if len(vprofile)==2:
+		continue
 	    #interpolating
 	    vel = vprofile[:,1]
 	    ur = vprofile[ np.isnan(vel)==False ,0]
 	    vel = vel[ np.isnan(vel)==False ]
-	    Reffi = r_eff(voids[i,1])
+	    #Reffi = r_eff(voids[i,1])
 	    	    
 	    try:
 		vel_interp = interp.interp1d( ur, vel )
@@ -116,7 +116,7 @@ for ri in xrange( len(RadBins)-1 ):
     Q2 = Q2[ np.isnan(median)==False ]
     median = median[ np.isnan(median)==False ]
     #plt.fill_between( Rnorm, Q1, Q2, alpha = 0.3, color = color[ri] )
-    ax.plot( [0]+list(Rnorm), [0]+list(median), color = color[ri], linewidth = 2, 
+    ax.plot( [0]+list(Rnorm), [0]+list(median), color = color[ri], linewidth = linewidths[ri], 
     label = "%1.2f$\leq$r$_{eff}$<%1.2f"%(reff_range[0],reff_range[1]) )
     #ax1.plot( [0]+list(Rnorm), [0]+list(median), color = color[ri], linewidth = 2, 
     #label = "%1.2f$\leq$r$_{eff}$<%1.2f"%(reff_range[0],reff_range[1]) )
@@ -128,7 +128,7 @@ ax.set_ylim( (-40,40) )
 ax.grid(1)
 ax.set_title( "%s %s (%s)"%(web, labels[void_scheme], comp_label[comp]) )
 if sys.argv[5] == '1':
-    ax.legend( loc="upper right", fancybox=True, shadow=True, fontsize=9, ncol=3 )
+    ax.legend( loc="upper right", fancybox=True, shadow=True, fontsize=9, ncol=2 )
 fig.subplots_adjust( right = 0.95, left = 0.16, top = 0.94, bottom = 0.11 )
 
 #Formating embedded plot

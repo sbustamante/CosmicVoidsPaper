@@ -22,7 +22,7 @@ labels = ['FA-Tweb', 'FA-Vweb', 'Density']
 void_scheme = 'FAG'
 #Schemes used for each web
 schemes = [ "01","01","01" ]
-#linestyles
+#Linestyles
 linestyles = ["-", "--"]
 
 

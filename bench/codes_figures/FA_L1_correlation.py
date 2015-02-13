@@ -21,6 +21,8 @@ smooth = '_s1'
 webs = ['Tweb', 'Vweb']
 #Colors and labels
 colors = [ 'red', 'blue' ]
+#Linestyles
+linestyles = ["-", "--"]
 
 #==================================================================================================
 #Typical halo mass for each environment
@@ -35,11 +37,12 @@ for web in webs:
 
     #Quartiles regions-------
     plt.fill_between( quartiles[:,0], quartiles[:,1], quartiles[:,3], color = colors[i_web], alpha = 0.2 )
-    plt.plot( quartiles[:,0], quartiles[:,1], color = colors[i_web], linewidth = 1, linestyle = '-' )
-    plt.plot( quartiles[:,0], quartiles[:,3], color = colors[i_web], linewidth = 1, linestyle = '-' )
+    plt.plot( quartiles[:,0], quartiles[:,1], color = colors[i_web], linewidth = 1, linestyle = linestyles[i_web] )
+    plt.plot( quartiles[:,0], quartiles[:,3], color = colors[i_web], linewidth = 1, linestyle = linestyles[i_web] )
 
     #Medians-----------------
-    plt.plot( quartiles[:,0], quartiles[:,2], color = colors[i_web], linewidth = 3, label = web )
+    plt.plot( quartiles[:,0], quartiles[:,2], color = colors[i_web], linewidth = 3, label = web, \
+    linestyle = linestyles[i_web] )
     
     plt.grid(1)
     plt.ylabel( 'FA', fontsize = 12 )
