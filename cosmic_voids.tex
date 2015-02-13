@@ -440,9 +440,9 @@ These characteristics are key to use the FA as a tracer of cosmic voids.
 \centering
 
   \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{delta_L1.pdf}  
+  width=0.35\textheight]{delta_L1.pdf}  
   \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{FA_L1.pdf}
+  width=0.35\textheight]{FA_L1.pdf}
 
   
   \captionof{figure}{\small Distributions of the FA (left panel) and the 
@@ -606,7 +606,7 @@ distribution and different radial profiles for all our samples.
 \centering
 
   \includegraphics[trim = 0mm 0mm 0mm 0mm, clip, keepaspectratio=true,
-  width=0.3\textheight]{voids_regions_volume_all.pdf}
+  width=0.35\textheight]{voids_regions_volume_all.pdf}
 
   \captionof{figure}{\small Volume size distribution of voids for both
   catalogues. FA-T-web (red curves), FA-Vweb (blue curves).
@@ -622,7 +622,8 @@ distribution and different radial profiles for all our samples.
 Void shapes exhibit a wide range of geometries.
 To define their size we use its equivalent spherical radius or
 effective radius, defined as $\reff = [3/(4\pi)V]^{1/3}$, with $V$ the 
-total volume of the void. 
+total volume of the void computed from the individual grid cells
+assigned to the void.   
 In Figure \ref{fig:volume_function} we show the void size
 distributions for the T-Web and the V-Web.
 
@@ -631,60 +632,29 @@ expectations from a two-barrier problem  \citep{Sheth04}.
 The formation of large voids is limited by the \textit{void-in-void}
 problem (first barrier), where large voids are constituted
 hierarchically of smaller ones. 
-In turn, the formation of small  voids is damped by the
+In turn, the formation of small voids is damped by the
 \textit{void-in-cloud} problem (second barrier),  where nearby
-collapsing structures limit the abundance of embedded small  voids.  
+collapsing structures limit the abundance of small embedded voids. 
 
 
 We also find that the V-Web scheme produces an over-abundance of small
 voids compared to the resuls of the T-Web.
-A large number of these small voids are embedded in dense regions. 
+A large number of these small voids are embedded in overdense regions. 
 They are visible in the middle panel of Figure \ref{fig:FA_field} as
-the small bubbles located inside sheets.
-The existence of these small voids could be qualitatively explained by
+small bubbles located inside sheets.
+The existence of these small voids can be explained by
 dynamics of shell crossing in collapsing sheets. 
-When matter colides into a sheet, at their center it is possible to
-find crossing matter planes that effectively give a possitively
-divergen velocity field, which gives a void identification by the
-T-Web algorithm. This points has been discussed in \citet{Hoffman12}.
+As matter colides into a sheet, in their symmetry plane one will
+find crossing ahseets that effectively give a positive divergence in
+the velocity field, resulting in a void identification by the
+V-Web algorithm. This points has been discussed in \citet{Hoffman12}.  
 
 Comparing the abundance of large voids in the two web schemes, we find
 that the V-Web is limited to have voids on the scale of $\sim 10$\hMpc,
 while the T-Web scheme includes voids as large as $\sim 15$\hMpc. 
 Large voids in the T-Web scheme have a velocity structure that
-induces a split by the watersched algorithm in the V-Web. 
-This is eviden in the right panel of Figure \ref{fig:FA_field}.
-
-%-------------------------------------------------------------------------
-\subsection{Compenseated and overcompensated voids}
-\label{subsec:enclosedmass}
-%-------------------------------------------------------------------------
-
-We find that voids are distributed in two different  families differentiated by the
-presence/absence of an overdense matter ridge in their density
-profiles. 
-To discriminate each void in one of the families we use the
-compensation  index $\mathcal{C}$.
-It is defined as the mass of a void enclosed in a spherical volume of
-radius $R$ and normalized by the mass of the same volume assuming
-it is filled by matter with the mean background density.
-
-\eq{compensation}
-{\mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr}
-
-We choose an integration radius of $R=4\reff$, that is large enough to 
-enclose the compensation ridge for a typical void in case there is one. 
-This leads us to voids with $\mathcal{C}>1$ having more mass than expected, 
-constituting the family of overcompensated voids. These voids generally 
-exhibit a compensation ridge associated to dense nearby structures. In the 
-same fashion, voids with $\mathcal{C}<1$ constitute the family of 
-subcompensated voids.
-
-
-%-------------------------------------------------------------------------
-\subsection{Physical profiles of voids}
-\label{subsec:properties_voids}
-%-------------------------------------------------------------------------
+induces a split by the watershed algorithm in the V-Web. 
+This is evident in the right panel of Figure \ref{fig:FA_field}.
 
 
 %.........................................................................
@@ -692,33 +662,56 @@ subcompensated voids.
 \begin{figure*}
 \centering
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_density_TwebFAG0.pdf}
+  width=0.32\textheight]{voids_density_TwebFAG0.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_velocity_TwebFAG0.pdf}
-  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_FA_TwebFAG0.pdf}
-  
-  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_density_VwebFAG0.pdf}
-  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_velocity_VwebFAG0.pdf}
-  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_FA_VwebFAG0.pdf}
-  
-  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_density_TwebFAG1.pdf}
-  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_velocity_TwebFAG1.pdf}
-  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_FA_TwebFAG1.pdf}
+  width=0.32\textheight]{voids_density_TwebFAG1.pdf}
 
-  
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_density_VwebFAG1.pdf}
+  width=0.32\textheight]{voids_density_VwebFAG0.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_velocity_VwebFAG1.pdf}
+  width=0.32\textheight]{voids_density_VwebFAG1.pdf}
+
+  \captionof{figure}{\small Physical internal properties of voids for 
+  the two finding scheme. Density field (left panels), radial-projected
+  velocity field (middle panels) and FA field (right panels). The analysis
+  is performed for both, subcompensated (first two rows) and overcompensated
+  voids (last two rows).}
+  \label{fig:RhoVel}
+  \vspace{0.1 cm}
+\end{figure*}
+
+\begin{figure*}
+\centering  
   \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
-  width=0.24\textheight]{voids_FA_VwebFAG1.pdf}  
+  width=0.32\textheight]{voids_velocity_TwebFAG0.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.32\textheight]{voids_velocity_TwebFAG1.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.32\textheight]{voids_velocity_VwebFAG0.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.32\textheight]{voids_velocity_VwebFAG1.pdf}
+  \captionof{figure}{\small Physical internal properties of voids for 
+  the two finding scheme. Density field (left panels), radial-projected
+  velocity field (middle panels) and FA field (right panels). The analysis
+  is performed for both, subcompensated (first two rows) and overcompensated
+  voids (last two rows).}
+
+  \label{fig:RhoVel}
+  \vspace{0.1 cm}
+
+\end{figure*}
+
+
+\begin{figure*}
+\centering  
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.32\textheight]{voids_FA_TwebFAG0.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.32\textheight]{voids_FA_VwebFAG0.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.32\textheight]{voids_FA_TwebFAG1.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 0mm, clip, keepaspectratio=true,
+  width=0.32\textheight]{voids_FA_VwebFAG1.pdf}  
   
 
   \captionof{figure}{\small Physical internal properties of voids for 
@@ -734,8 +727,47 @@ subcompensated voids.
 %.........................................................................
 
 
-In Fig. \ref{fig:RhoVel} we analyse the internal properties of the found 
-voids. We calculate the contrast density, radial-projected velocity and 
+
+%-------------------------------------------------------------------------
+\subsection{Subcompensated and overcompensated voids}
+\label{subsec:enclosedmass}
+%-------------------------------------------------------------------------
+
+We find that voids are distributed in two different  families
+differentiated by the 
+presence/absence of an overdense matter ridge in their density
+profiles. 
+To discriminate each void in one of the families we use the
+compensation  index $\mathcal{C}$.
+It is defined as the mass of a void enclosed in a spherical volume of
+radius $R$ and normalized by the mass of the same volume assuming
+it is filled by matter with the mean background density.
+
+\eq{compensation}
+{\mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr}
+
+We choose an integration radius of $R=4\reff$, that is large enough to 
+enclose the compensation ridge for a typical void in case there is one. 
+This leads us to voids with $\mathcal{C}>1$ having more mass than expected, 
+constituting the family of overcompensated voids. 
+These voids generally  exhibit a compensation ridge associated to
+dense nearby structures. 
+In the same fashion, voids with $\mathcal{C}<1$ constitute the family
+of  subcompensated voids. 
+
+In Figure \ref{fig:RhoVel} we show the density and velocity profiles
+of voids splitted in these two families. 
+In the left column it becomes clear the difference between sub- and
+overcompensated voids.
+
+%.........................................................................
+\subsection{Density profiles}
+\label{subsec:density_voids}
+%.........................................................................
+
+
+
+We calculate the contrast density, radial-projected velocity and 
 FA profiles. For this purpose we catalogue all the voids in several radial 
 bins in order to capture possible size effects; moreover we show profiles 
 for both, subcompensated and overcompensated voids. Then, for each void, 
@@ -744,30 +776,29 @@ properties of interest. Normalizing these distances with the effective
 radius, we stack all the voids of a radial bin in order to compute the 
 radial profiles.
 
-
-%.........................................................................
-\subsubsection{Density profiles}
-\label{subsubsec:density_voids}
-%.........................................................................
-
-
-In left panels of Fig. \ref{fig:RhoVel} we compute density profiles of 
-voids stacked according to their size and their compensation index. 
-Instead of calculating the radial internal structure inside the effective
-radius, we opted for a radius well beyond that value ($8\ \reff$) in order 
-to capture the properties of neighbour structures as well. 
+The left column in Figure \ref{fig:RhoVel} shows the results of
+stacked density profiles for different void sizes. 
+We normalize the radial coordinate with the effective radius to check
+for possible universal features among voids. 
+We calculate the profile out to a radius $8\ \reff$  to capture the
+the point where the overdensity reaches the mean value.
 
 
-A first interesting result is the value at the void centres: the larger the 
-void, the more underdense their value at the centre, ranging from $\delta
-\approx-0.95$ for the largest voids ($8.3-12\ \hMpc$) to $\delta\approx 
--0.8$ for the smallest voids ($2-3.2\ \hMpc$). This holds for all the voids 
-in both schemes. These very low values are consistent with most of the void 
-finding schemes based on smooth and continuous fields from simulation or 
-reconstruction procedures on surveys \citep{Plionis02, Colberg05, Shandarin06, 
-Platen07, Neyrinck08, MunozCuartas11, Neyrinck13, Ricciardelli2013}, unlike
-geometrical approaches based on point distributions, where central values
-are generally higher \citep{Colberg08}.
+A first interesting result is the overdensity value at the void's
+center.
+We find that larger voids have a lower overdensity value.
+The largest voids ($8.3-12\ \hMpc$) have an underdensity
+$\approx-0.95$ while smaller voids  ($2-3.2\ \hMpc$) fall around $\delta\approx 
+-0.8$ at their centers.
+This holds for both web schemes. 
+
+These values are consistent with most of the void finding schemes
+based on smooth and continuous fields from simulation or
+reconstruction procedures on surveys \citep{Plionis02, Colberg05,
+  Shandarin06,  Platen07, Neyrinck08, MunozCuartas11, Neyrinck13,
+  Ricciardelli2013}, unlike geometrical approaches based on point
+distributions, where central density values are generally higher
+\citep{Colberg08}. 
 
 
 Another important result is the steepness of the profiles at inner
