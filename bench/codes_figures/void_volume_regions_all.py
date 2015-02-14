@@ -33,7 +33,7 @@ colors = ["red", "blue", "green"]
 #			CONSTRUCTING REGIONS VOLUME
 #==================================================================================================
 
-fig = plt.figure( figsize=(5,5) )
+fig = plt.figure( figsize=(5.8,5) )
 fig.subplots_adjust( top = 0.9, right = 0.95, left = 0.15, wspace = 0.05, bottom = 0.1 )
 ax1 = [fig.add_subplot(1,1,i+1) for i in xrange(1)]
 ax2 = [ax1[i].twiny() for i in xrange(1)]
@@ -77,16 +77,15 @@ for web in webs:
     #Normal Plot
     if sys.argv[1] == '0':
 	ax1[0].semilogy( hist1d[1][:-1], distro, linewidth = 3.0, linestyle = linestyles[i_web],\
-	#color = colors[i_web], label = "%s (%s-order MF)"%(labels[i_web], schemes[i_web][0]) )
 	color = colors[i_web], label = "%s"%(labels[i_web]) )
 	
 	#Subcompensated voids
-	#ax1[0].semilogy( hist1d_o[1][:-1], distro_o, "--", linewidth = 2,\
-	#color = colors[i_web], label = "%s SC"%(labels[i_web]) )
+	#ax1[0].semilogy( hist1d_o[1][:-1], distro_o, lw = 1.5, linestyle = linestyles[i_web],\
+	#color = colors[i_web], label = "%s $C<1$"%(labels[i_web]) )
 	
 	#Overcompensated voids
-	#ax1[0].semilogy( hist1d_u[1][:-1], distro_u, "-.", linewidth = 2,\
-	#color = colors[i_web], label = "%s OC"%(labels[i_web]) )
+	#ax1[0].semilogy( hist1d_u[1][:-1], distro_u, lw = 3.0, linestyle = linestyles[i_web],\
+	#color = colors[i_web], label = "%s $C>1$"%(labels[i_web]) )
       
     #Cumulative Plot
     else:
