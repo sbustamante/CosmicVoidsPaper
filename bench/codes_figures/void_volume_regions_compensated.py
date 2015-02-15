@@ -60,9 +60,9 @@ for web in webs:
     comp = np.loadtxt("%s/%s/%s/%d/voids%s/voids_%s/comp_half.dat"%\
     (foldglobal, simulation, web, N_sec, void_scheme, schemes[i_web] ))
 
-    hist1d = np.histogram( tick_function(np.log10(void_regs[1])) , bins=15, normed=False )
-    hist1d_o = np.histogram( tick_function(np.log10(void_regs[1][comp[:,1]==1])) , bins=15, normed=False )
-    hist1d_u = np.histogram( tick_function(np.log10(void_regs[1][comp[:,1]==0])) , bins=15, normed=False )
+    hist1d = np.histogram( tick_function(np.log10(void_regs[1])) , bins=15, normed=False, range=(0,15) )
+    hist1d_o = np.histogram( tick_function(np.log10(void_regs[1][comp[:,1]==1])) , bins=15, normed=False, range=(0,15) )
+    hist1d_u = np.histogram( tick_function(np.log10(void_regs[1][comp[:,1]==0])) , bins=15, normed=False, range=(0,15) )
     
     #Normal distribution
     if sys.argv[1] == '0':
@@ -75,9 +75,14 @@ for web in webs:
 	distro = distro/(1.0*distro[0])
 	
     #Normal Plot
-    if sys.argv[1] == '0':
-	ax1[0].semilogy( hist1d[1][:-1], distro, linewidth = 3.0, linestyle = linestyles[i_web],\
-	color = colors[i_web], label = "%s"%(labels[i_web]) )
+    if sys.argv[1] == '0':	
+	#Subcompensated voids
+	ax1[0].plot( hist1d_o[1][:-1], distro_o/distro, lw = 1.5, linestyle = linestyles[i_web],\
+	color = colors[i_web], label = "%s $C<1$"%(labels[i_web]) )
+	
+	#Overcompensated voids
+	ax1[0].plot( hist1d_u[1][:-1], distro_u/distro, lw = 3.0, linestyle = linestyles[i_web],\
+	color = colors[i_web], label = "%s $C>1$"%(labels[i_web]) )
       
     #Cumulative Plot
     else:
@@ -94,16 +99,16 @@ for i in range(1):
     #ax1[i].set_xticks( np.linspace(0,16,30) )
     ax1[i].set_xticks( np.linspace(0,16,6) )
     ax1[i].set_xlim( (0,16) )
-    ax1[i].set_ylim( (0,10**-3) )
+    ax1[i].set_ylim( (0,1) )
     #Cumulative distribution
     if sys.argv[1] == '1':
-	ax1[i].set_ylim( (0,1) )
+	#ax1[i].set_ylim( (0,1) )
 	for hcut in np.linspace(0,1,9+1):
 	    ax1[i].hlines( hcut, 0, 16, linestyle="--", color = "black", linewidth=1.0 )
     
-    ax1[i].set_ylabel( "Voids number density [$n/($Mpc$/h)^3$]" )
+    ax1[i].set_ylabel( "Fraction of voids" )
     ax1[i].set_xlabel( "Effective radius [Mpc/$h$]" )
-    ax1[i].legend( loc='upper right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
+    ax1[i].legend( loc='lower center', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
 
     #Axe 2
     ax2[i].set_xlim( (0,4.2) )
@@ -115,6 +120,6 @@ for i in range(1):
     ax2[i].set_xlabel( "Comoving volume [$\log_{10}($ Mpc $h^{-1} )^{-3}$]" )
 
 if sys.argv[2] == '1':
-    plt.savefig( '%svoids_regions_volume_all.pdf'%(figures_fold) )
+    plt.savefig( '%svoids_regions_volume_compensated.pdf'%(figures_fold) )
 else:
     plt.show()
