@@ -558,11 +558,9 @@ find voids and their detailed properties characterization.
   \includegraphics[trim = 2mm 2mm 2mm 0mm, clip, keepaspectratio=true,
   width=0.35\textheight]{voids_regions_volume_compensated.pdf}
 
-  \captionof{figure}{\small Volume size distribution of voids for both
-  catalogues. FA-T-web (continuous red curves), FA-Vweb (dashed blue 
-  curves). Left panel, total distributions. Right panel, distributions of 
-  subcompensanted and overcompensanted voids. }
-
+  \captionof{figure}{\small Void size distribution (left) and fraction
+    of overcompensated/subcompensated voids. The continous (dashed)
+    curves correspond to the T-Web (V-Web).}
   \label{fig:volume_function}
 
 \end{figure*}
@@ -906,10 +904,60 @@ voiding the contamination from external structures.
 \label{sec:conclusions}
 %*************************************************************************
 
-We propose in this paper a new method to find and describe void in
-cosmological dark matter simulations.
-The basis of our metho is the anisotropy of the eigenvalues from tensors
-constructed to describe the cosmic web. 
+We propose in this paper that the anisotropy of the eigenvalues from
+tensors constructed to describe the cosmic web is a good tracer of
+cosmic voids. Based on this idea we go on to implement a watershed
+algorithm o the fractional anisotropy to find voids voids in a N-body
+cosmological simulations. We perform this tests on the results of two
+different tensorial schemes, the T-Web and the V-web.
+
+The first quantity we take a look at is the void size distribution
+characterized by an effective radius. 
+We find that for T-Web voids the shape of this function corresponds to
+standard expectations. 
+However, for the V-Web we find an overabundance of the smallest voids
+due to artifacts in the web finding scheme in sheets and small
+fragmented voids inside the largest voids already identified in the
+T-Web, perhaps due to the complex velocity structure in large voids
+compared to a simpler density/gravitational potential anatomy.
+ 
+A second step in the characterization of the voids found by our method
+was the separation into subcompensated and overcompensated samples. 
+In the T-Web $60\%$ of the voids are overcompensated, meaning that
+they are located in denser regions with a clear delimiting ridge. 
+For the V-web the overcompensated fraction increases from $60\%$ to
+$80\%$ as the void size decreases, supporting the picture of smaller
+spurious voids located in matter sheets.
+
+Finally we proceed with an ever more detailed void characterization
+through the radially averaged profiles of density, radial velocity and
+fractional anisotropy. 
+In thi case we studied separately the subcompensated and
+overcompensated voids, split this time in samples with different
+effective radii.
+
+In the density profiles the most interesting feature is that the 
+profile has a similar shape for all the different void sizes once the
+radial coordinate is expressed in units of the effective radius. 
+In these profiles it is evident the presence of an overdense ridge
+around $2<r/r_{\rm eff}<3$ for the overcompensated voids.
+Subcompensated voids do not show such a ridge keeping its density
+lower than the average value up to $r/r_{\rm eff}\sim 8$.
+
+In other studies where voids are found using considerations on the
+density fields the ridge is, almost by definition, located around
+$r/r_{\rm eff}\sim 1$ and the subcompensated voids reach average
+density around $r/r_{\rm eff}\sim 3$. 
+This indicates that voids defined by boundaries in the FA are close to
+a factor of $2$ smaller than voids found by density only considerations.
+
+
+Our results extend the evidence for a universal density profile down
+to smaller sizes as the one probed by \cite{Hamaus14}. 
+
+
+
+
 
 
 %*************************************************************************
