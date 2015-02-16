@@ -97,7 +97,7 @@
 %=========================================================================
 %		FRONT MATTER
 %=========================================================================
-\title{Tidal field anisotropy as a tracer of cosmic voids}
+\title{Tensor anisotropy as a tracer of cosmic voids}
 \author[S. Bustamante and J.E. Forero-Romero]{
 \parbox[t]{\textwidth}{\raggedright 
   Sebastian Bustamante \thanks{sebastian.bustamante@udea.edu.co}$^{1}$,
@@ -116,9 +116,8 @@ No. 18A-10, Edificio Ip, Bogot\'a, Colombia
 Finding and characterizing underdense regions (voids) in the large
 scale structure of the Universe is an important task in cosmological
 studies.  
-In this paper we present a new algorithm to find voids in
-cosmological simulations.  
-Our approach is based on algorithms that use the tidal and the
+In this paper we present a new method to find voids in
+cosmological simulations based on algorithms that use the tidal and the
 velocity shear tensors to locally define the cosmic web.
 Voids are identified using the fractional anisotropy (FA) computed
 from the eigenvalues of each web scheme. 
@@ -148,7 +147,7 @@ Methods: data analysis - numerical - N-body simulations
 \label{sec:introduction}
 %*************************************************************************
 
-Voids have been identified as one of the most striking features of the
+Cosmic voids are one of the most striking features of the
 Universe on its larges scales since they were found in the first
 galaxy surveys \citep{Chincarini75, Gregory78, Einasto80M, Einasto80N,
   Kirshner81, Zeldovich82,Kirshner87}.  
@@ -242,16 +241,16 @@ At this point we implement a \textit{watershed transform algorithm}
 catching basins of local minima of the density field
 \citep{Platen07,Neyrinck08}.
 
-This paper is organized as follows. 
-In Section \ref{sec:algorithms_cosmic_web} we describe the algorithms
-we use to find the cosmic web in N-body simulations. 
-In Section \ref{sec:bulk_voids} we explain in detail our void finder
-based on the fractional anisotropy of the tidal and shear tensor
-fields. 
-In Section  \ref{sec:simulations} we describe the N-body simulation we
-use to test our algorithm. 
-Our results are presented in \ref{sec:results} to finally comment and
-conclude about these findings in Section \ref{sec:conclusions}. 
+%This paper is organized as follows. 
+%In Section \ref{sec:algorithms_cosmic_web} we describe the algorithms
+%we use to find the cosmic web in N-body simulations. 
+%In Section \ref{sec:bulk_voids} we explain in detail our void finder
+%based on the fractional anisotropy of the tidal and shear tensor
+%fields. 
+%In Section  \ref{sec:simulations} we describe the N-body simulation we
+%use to test our algorithm. 
+%Our results are presented in \ref{sec:results} to finally comment and
+%conclude about these findings in Section \ref{sec:conclusions}. 
 
 
 %*************************************************************************
@@ -267,26 +266,29 @@ conclude about these findings in Section \ref{sec:conclusions}.
   width=0.73\textheight]{cosmicweb_FA_Tweb.pdf}
   \includegraphics[trim = 16mm 8mm 5mm 12mm, clip, keepaspectratio=true,
   width=0.73\textheight]{cosmicweb_FA_Vweb.pdf}
-  \caption{Left colum. Visual impression of the 
-  Fractional Anisotropy field over a slide of the simulation for each
-  web scheme (T-Web top. V-Web bottom).  
-  Middle column. Cosmic Web identification. Voids
-  are white, sheets are light gray, filaments are dark gray and
-  knots are black.
-  Right column. Colors are voids identified by our Fractional
-  Anisotropy method.}
+  \caption{Visual impression of different quantities/algorithm results
+    mentioned in this paper. Fractional Anisotropy field
+    (left); osmic web classification (middle) where voids are white,
+    sheets are light gray, filaments are dark gray and knots are
+    black; and colored individual voids. Top/bottom corresponds to the 
+    T-Web/V-Web.}
   \label{fig:FA_field}
 \end{figure*}
 %.........................................................................
 
-In next two subsections we describe the major features of the two
-algorithms (T-web and V-web) we use to find and classify the cosmic web in cosmological
-N-body simulations. 
-These schemes have also been used to develop other kind of studies
-such as the alignment of the shape, spin and peculiar velocity of dark
-matter halos with the cosmic web \citep{Libeskind13,Forero2014}.
-We refer the reader to the paper of \cite{Forero09} and
-\cite{Hoffman12} to read a detailed description of each algorithm. 
+Our new method to find voids is based on two existing cosmic web
+classification schemes that work on cosmological N-body simularions.
+Both schemes depend on the construction of tensors based on the
+hessian of the potential (T-Web scheme) and the shear of the velocity
+(V-Web scheme). 
+These algorithms have been used to develop other
+kind of studies such as the alignment of the shape, spin and peculiar
+velocity of dark matter halos with the cosmic web
+\citep{Libeskind13,Forero2014}. 
+Here we summarize the most relevant aspects of each scheme, we refer
+the reader to the papers of \cite{Forero09} (T-Web) and
+\cite{Hoffman12} (V-Web) for detailed descriptions. 
+
 
 
 %-------------------------------------------------------------------------
@@ -348,13 +350,11 @@ distribution is reproduced.
 \label{subsec:Vweb}
 %-------------------------------------------------------------------------
 
-
-We also use a kinematic scheme to define the Cosmic Web environment in 
-the simulation introduced by \cite{Hoffman12}.
-The V-web scheme for environment finding is based on the
-local velocity shear tensor calculated from the smoothed dark matter 
-velocity field in the simulation. This tensor is given by the 
-following expression
+The V-web scheme for environment finding introduced by
+\cite{Hoffman12} is based on the local velocity shear tensor
+calculated from the smoothed dark matter  velocity field in the
+simulation. 
+This tensor is given by the  following expression
 
 %.........................................................................
 %V-Web Definition
@@ -445,12 +445,16 @@ These characteristics are key to use the FA as a tracer of cosmic voids.
   width=0.35\textheight]{FA_L1.pdf}
 
   
-  \captionof{figure}{\small Distributions of the FA (left panel) and the 
-  density field (right panel) with respect to the eigenvalue $\lambda_1$ 
-  for each web scheme (T-web, red lines. Vweb, blue lines) as calculated 
-  over all cells of the grid. Thick central lines correspond with the median 
-  and filled regions with the $50\%$ of the distribution.}
-
+  \captionof{figure}{\small Overdensity (left) and Fractional
+    Anisotropy (right) with respect to the eigenvalue $\lambda_1$ 
+    for each web scheme (T-web, continous lines. Vweb, dashed lines) calculated 
+    over all cells of the grid. Thick central lines correspond are the
+    median and filled regions include $50\%$ of all values. This
+    information is necesary to define void boundaries in the watershed
+    algorithm. The vertical lines in the right hand plot show the
+    equivalent threshold values for the T-Web and V-web in order to
+    have voids composed by cells with Fractional Anisotropy equal or
+    less than $0.95$.}
   \label{fig:L1_correlations}
 
 \end{figure*}
@@ -544,6 +548,25 @@ FA field.
 In what follows we describe the numerical simulation we have used to
 find voids and their detailed properties characterization.
 
+%.........................................................................
+%FIGURE 3: volume functions
+\begin{figure*}
+\centering
+
+  \includegraphics[trim = 2mm 2mm 2mm 0mm, clip, keepaspectratio=true,
+  width=0.35\textheight]{voids_regions_volume_all.pdf}
+  \includegraphics[trim = 2mm 2mm 2mm 0mm, clip, keepaspectratio=true,
+  width=0.35\textheight]{voids_regions_volume_compensated.pdf}
+
+  \captionof{figure}{\small Volume size distribution of voids for both
+  catalogues. FA-T-web (continuous red curves), FA-Vweb (dashed blue 
+  curves). Left panel, total distributions. Right panel, distributions of 
+  subcompensanted and overcompensanted voids. }
+
+  \label{fig:volume_function}
+
+\end{figure*}
+%.........................................................................
 
 \section{Numerical Simulation}
 \label{sec:simulations}
@@ -600,25 +623,7 @@ distribution and different radial profiles for all our samples.
 %-------------------------------------------------------------------------
 
 
-%.........................................................................
-%FIGURE 3: volume functions
-\begin{figure*}
-\centering
 
-  \includegraphics[trim = 2mm 2mm 2mm 0mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{voids_regions_volume_all.pdf}
-  \includegraphics[trim = 2mm 2mm 2mm 0mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{voids_regions_volume_compensated.pdf}
-
-  \captionof{figure}{\small Volume size distribution of voids for both
-  catalogues. FA-T-web (continuous red curves), FA-Vweb (dashed blue 
-  curves). Left panel, total distributions. Right panel, distributions of 
-  subcompensanted and overcompensanted voids. }
-
-  \label{fig:volume_function}
-
-\end{figure*}
-%.........................................................................
 
 
 Void shapes exhibit a wide range of geometries.
