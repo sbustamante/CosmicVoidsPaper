@@ -37,6 +37,7 @@ fig = plt.figure( figsize=(5.8,5) )
 fig.subplots_adjust( top = 0.9, right = 0.95, left = 0.15, wspace = 0.05, bottom = 0.1 )
 ax1 = [fig.add_subplot(1,1,i+1) for i in xrange(1)]
 ax2 = [ax1[i].twiny() for i in xrange(1)]
+#ax3 = [ax1[i].twinx() for i in xrange(1)]
 
 tick_locations = np.linspace(0,16,6)
 #Function to build the second axe
@@ -60,35 +61,27 @@ for web in webs:
     comp = np.loadtxt("%s/%s/%s/%d/voids%s/voids_%s/comp_half.dat"%\
     (foldglobal, simulation, web, N_sec, void_scheme, schemes[i_web] ))
 
-    hist1d = np.histogram( tick_function(np.log10(void_regs[1])) , bins=15, normed=False, range=(0,15) )
-    hist1d_o = np.histogram( tick_function(np.log10(void_regs[1][comp[:,1]==1])) , bins=15, normed=False, range=(0,15) )
-    hist1d_u = np.histogram( tick_function(np.log10(void_regs[1][comp[:,1]==0])) , bins=15, normed=False, range=(0,15) )
+    hist1d = np.histogram( tick_function(np.log10(void_regs[1])) , bins=25, normed=False, range=(0,15) )
+    hist1d_o = np.histogram( tick_function(np.log10(void_regs[1][comp[:,1]==1])) , bins=25, normed=False, range=(0,15) )
+    hist1d_u = np.histogram( tick_function(np.log10(void_regs[1][comp[:,1]==0])) , bins=25, normed=False, range=(0,15) )
     
-    #Normal distribution
-    if sys.argv[1] == '0':
-	distro = hist1d[0]/(250.**3)
-	distro_o = hist1d_o[0]/(250.**3)
-	distro_u = hist1d_u[0]/(250.**3)
-    #Cumulative distribution
-    else:
-	distro = np.cumsum(hist1d[0][::-1])[::-1]
-	distro = distro/(1.0*distro[0])
-	
-    #Normal Plot
-    if sys.argv[1] == '0':	
-	#Subcompensated voids
-	ax1[0].plot( hist1d_o[1][:-1], distro_o/distro, lw = 1.5, linestyle = linestyles[i_web],\
-	color = colors[i_web], label = "%s $C<1$"%(labels[i_web]) )
-	
-	#Overcompensated voids
-	ax1[0].plot( hist1d_u[1][:-1], distro_u/distro, lw = 3.0, linestyle = linestyles[i_web],\
-	color = colors[i_web], label = "%s $C>1$"%(labels[i_web]) )
-      
+    distro_u = np.cumsum(hist1d_u[0])
+    #print distro_u[-1], np.cumsum(hist1d[0])[-1]
+    distro_u = distro_u/(1.0*np.cumsum(hist1d[0])[-1])
+    
+    distro_o = np.cumsum(hist1d_o[0])
+    #print distro_o[-1], np.cumsum(hist1d[0])[-1]
+    distro_o = distro_o/(1.0*np.cumsum(hist1d[0])[-1])
+   	      
     #Cumulative Plot
-    else:
-	ax1[0].plot( hist1d[1][:-1], distro, linewidth = 2.0, linestyle = linestyles[i_web],\
-	#color = colors[i_web], label = "%s (%s-order MF)"%(labels[i_web], schemes[i_web][0]) )
-	color = colors[i_web], label = "%s"%(labels[i_web]) )
+    ax1[0].plot( hist1d[1][:-1], distro_u, linewidth = 3.0, linestyle = linestyles[i_web],\
+    color = colors[i_web], label = "%s $C<1$"%(labels[i_web]) )
+
+    ax1[0].plot( hist1d[1][:-1], distro_o, linewidth = 1.5, linestyle = linestyles[i_web],\
+    color = colors[i_web], label = "%s $C>1$"%(labels[i_web]) )
+    
+    #ax1[0].plot( hist1d[1][:-1], distro_o+1-distro_o, linewidth = 1.0, linestyle = linestyles[i_web],\
+    #color = colors[i_web], label = "%s"%(labels[i_web]) )
       
     i_web += 1
     
@@ -101,14 +94,13 @@ for i in range(1):
     ax1[i].set_xlim( (0,16) )
     ax1[i].set_ylim( (0,1) )
     #Cumulative distribution
-    if sys.argv[1] == '1':
-	#ax1[i].set_ylim( (0,1) )
-	for hcut in np.linspace(0,1,9+1):
-	    ax1[i].hlines( hcut, 0, 16, linestyle="--", color = "black", linewidth=1.0 )
+    #ax1[i].set_ylim( (0,1) )
+    #for hcut in np.linspace(0,1,9+1):
+	#ax1[i].hlines( hcut, 0, 16, linestyle="--", color = "black", linewidth=1.0 )
     
-    ax1[i].set_ylabel( "Fraction of voids" )
+    ax1[i].set_ylabel( "Cumulative fraction of voids" )
     ax1[i].set_xlabel( "Effective radius [Mpc/$h$]" )
-    ax1[i].legend( loc='lower center', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
+    ax1[i].legend( loc='left center', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
 
     #Axe 2
     ax2[i].set_xlim( (0,4.2) )
@@ -118,8 +110,16 @@ for i in range(1):
 	tick_label.append( "%1.1f"%(0 if tick==0 else np.log10(4*np.pi/3.*(tick)**3)) )
     ax2[i].set_xticklabels( tick_label )
     ax2[i].set_xlabel( "Comoving volume [$\log_{10}($ Mpc $h^{-1} )^{-3}$]" )
+    
+    #Axe 3
+    #ax3[i].set_ylim( (0,1) )
+    #tick_locationsy = np.linspace( 0, 1, 6 )
+    #ax3[i].set_yticks( tick_locationsy )
+    #ax3[i].set_yticklabels( ["%1.1f"%(tick) for tick in tick_locationsy[::-1]] )
+    #ax3[i].set_xlabel( "Comoving volume [$\log_{10}($ Mpc $h^{-1} )^{-3}$]" )
+    
 
-if sys.argv[2] == '1':
+if sys.argv[1] == '1':
     plt.savefig( '%svoids_regions_volume_compensated.pdf'%(figures_fold) )
 else:
     plt.show()
