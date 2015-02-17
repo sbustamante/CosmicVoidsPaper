@@ -98,7 +98,7 @@ for i in range(1):
     #for hcut in np.linspace(0,1,9+1):
 	#ax1[i].hlines( hcut, 0, 16, linestyle="--", color = "black", linewidth=1.0 )
     
-    ax1[i].set_ylabel( "Cumulative fraction of voids" )
+    ax1[i].set_ylabel( "Cumulative fraction of voids ($<R_{eff}$)" )
     ax1[i].set_xlabel( "Effective radius [Mpc/$h$]" )
     ax1[i].legend( loc='left center', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
 
