@@ -213,7 +213,7 @@ matter density or velocity distribution defined on a fixed and
 homogeneous spatial grid.
 The algorithm uses the results from two tensorial schemes used to
 classify the cosmic web.
-The first (the T-web) is based on the Hessian of the gravitational potential or
+The first (the T-Web) is based on the Hessian of the gravitational potential or
 tidal tensor \citep{Hahn07, Forero09}. 
 The second (the V-web) is based on the velocity shear tensor
 \citep{Hoffman12}. 
@@ -626,16 +626,18 @@ In turn, the formation of small voids is damped by the
 collapsing structures limit the abundance of small embedded voids.  
 
 We also find that the V-Web scheme produces an over-abundance of small
-voids compared to the resuls of the T-Web.
+voids compared to T-Web.
 A large number of these small voids are embedded in overdense regions. 
 They are visible in the middle panel of Figure \ref{fig:FA_field} as
 tiny white bubbles located inside sheets.
 The existence of these small voids can be explained by
-dynamics of shell crossing in collapsing sheets. 
-As matter colides into a sheet, in their symmetry plane one will
-find crossing sheets that effectively give a positive divergence in
-the velocity field, resulting in a void identification by the
-V-Web algorithm. This has been already discussed in \citet{Hoffman12}.  
+dynamics of shell crossing in collapsing sheets as discussed in
+\citet{Hoffman12}.    
+The main argument is that as matter colides into a pancake-like
+fashion crossing sheets encounter each other at the symmetry plane.
+This effectively gives a positive divergence in the velocity
+field, resulting in a void identification by the V-Web algorithm. 
+
 
 Comparing the abundance of large voids in the two web schemes, we find
 that the V-Web is limited to have voids on the scale of $\sim 10$\hMpc,
@@ -936,23 +938,35 @@ This indicates that voids defined by boundaries in the FA are close to
 a factor of $2$ smaller than voids found by density only considerations.
 
 The velocity profiles show the expected correlation with the features
-already observed in the density, most notably the radial velocity is
-cero close to flat regions in the density profile and positive around
+already observed in the density, most notably the radial velocity goes to
+zero close to flat regions in the density profile and is positive around
 regions of increasing density with radius. 
 
- 
 The Fractional Anisotropy profiles also show remarkable similarities,
-(inside each class of subcompensated and overcompensated)
+(inside each class of subcompensated and overcompensated voids)
 and a close correlation with the behaviour in the density and velocity
 profiles. 
-From these profiles it becomes clear that our choice to delimit an
-overcompensated void coincides with a ridge in the fractional
-anisotropy. For the subcompensated voids the void boundary is located
-for regions with an average FA value of $\sim 0.7-0.8$.
+From these profiles it becomes clear that the limit of overcompensated
+void coincides with a ridge in of FA values close to $0.9$. 
+This value is close to the limit FA=$0.95$ we impose in the watershed
+algorithm, indicating that these voids are very close to spherical.
+For the subcompensated voids the FA quickly increases to FA values of 
+$\sim 0.7-0.8$ at $r/r_{\rm eff}\sim 1$ to find a plateau, which is
+quite far from the limiting FA$=0.95$ suggesting that these voids are
+far from spherical. 
 
-Put together, the results for the radial profiles support the 
-evidence for a universal density profile using smaller void sizes
-than the ones probed by \cite{Hamaus14}. 
+Put together, the results for the radially averaged profiles support the 
+evidence for a universal density profile.  
+This extends the work done
+by \cite{Hamaus14} to smaller void sizes.  
+
+The method we present here finds voids with reasonable properties
+compared to different results published in the literature. 
+This gives support to a new tracer, the Fractional Anisotropy, to be
+used in the study of cosmic voids. 
+Furthermore, the complementary physical picture in the two different
+web finding algorithms opens the possibilities to make a joint
+analysis of the tidal and dynamical structure of voids. 
 
 
 
