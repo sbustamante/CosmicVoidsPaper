@@ -113,23 +113,28 @@ No. 18A-10, Edificio Ip, Bogot\'a, Colombia
 \maketitle
 
 \begin{abstract}
-Finding and characterizing underdense regions (voids) in the large
-scale structure of the Universe is an important task in cosmological
-studies.  
-In this paper we present a new method to find voids in
-cosmological simulations based on algorithms that use the tidal and the
-velocity shear tensors to locally define the cosmic web.
-Voids are identified using the fractional anisotropy (FA) computed
-from the eigenvalues of each web scheme. 
-We define the void boundaries using a watershed transform based on the
-local minima of the FA and its boundaries as the regions where the FA
-is maximized.
-This void identification technique does not have any free parameters
-and does not make any assumption on the shape or structure of the
-voids.  
-We test the method on the Bolshoi simulation and report on the density
-and velocity profiles for the voids found using this new scheme. 
-We find that...
+We present a new method to find voids in cosmological simulations
+based on algorithms that use the tidal and the velocity shear tensors
+to locally define the cosmic web. 
+We use the fractional anisotropy (FA) computed from the eigenvalues
+of each web scheme as void tracer and find the voids using a watershed
+transform based on the local minima of the FA
+This void identification technique does not make any assumption on the
+shape or structure of the voids. 
+We test the method on the Bolshoi simulation and report on the
+abundance and radial averaged profiles for the density, velocity and
+fractional anistropy.
+We find that voids in the velocity shear web are smaller than voids in
+the tidal web, with a particular overabundance of very small voids in
+the inner region of filaments/sheets.
+We clasify voids as overcompansated/subcompensated depending on the
+presence/absence of an overdense matter ridge in their density
+profile, finding that close to $65\%$ and $35\%$  of the total
+population are classified into each category, respectively.
+We find evidence for the existence of universal profiles once the
+radial coordinate is normalized to the effective radius of each void
+from the radiallly averaged profiles for density, velocity and
+fractional anisotropy. 
 \end{abstract}
 
 \begin{keywords}
@@ -241,7 +246,7 @@ this point we implement a \textit{watershed transform algorithm}
 \citep{Beucher79,Beucher93} which has been used to define voids as
 catching basins of local minima of the density field \citep{Platen07,Neyrinck08}.
 Finally we find and charachterize voids in a N-body (\S
-\ref{sec:simulations} and \S \ref{results}) using density, velocity and
+\ref{sec:simulations} and \S \ref{sec:results}) using density, velocity and
 fractional anisotropy profiles.  We use these results to comment on
 the qualities of our algorithm (\S \ref{sec:conclusions}).  
 
@@ -874,7 +879,7 @@ than in the T-Web scheme.
 The difference between the radius where the density ridge is reached 
 ($r_{\rm eff}=3$) and the radius of the FA  ridge ($r_{\rm eff}=1$ )
 justifies in a more quantiative way the qualitative argument
-we present in Section \ref{sec:watershed} to define void boundaries in
+we present in sub-section \ref{subsec:watershed} to define void boundaries in
 our method.  Namely that as we increase the void boundary, we reach
 first middle density walls, before reashing high density structures
 associated with high anisotropy, making the FA  ridge a  natural voids
@@ -934,8 +939,10 @@ In other studies where voids are found using considerations on the
 density fields the ridge is, almost by definition, located around
 $r/r_{\rm eff}\sim 1$ and the subcompensated voids reach average
 density around $r/r_{\rm eff}\sim 3$. 
-This indicates that voids defined by boundaries in the FA are close to
-a factor of $2$ smaller than voids found by density only considerations.
+This indicates that voids defined by FA boundaries are close smaller 
+than voids found by density only considerations close by a factor of
+$2$. 
+
 
 The velocity profiles show the expected correlation with the features
 already observed in the density, most notably the radial velocity goes to
@@ -967,7 +974,6 @@ used in the study of cosmic voids.
 Furthermore, the complementary physical picture in the two different
 web finding algorithms opens the possibilities to make a joint
 analysis of the tidal and dynamical structure of voids. 
-
 
 
 %*************************************************************************
