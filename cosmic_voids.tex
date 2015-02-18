@@ -211,15 +211,15 @@ Our work is based on the second kind of schemes.
 Here we introduce a new algorithm to define voids over the continous
 matter density or velocity distribution defined on a fixed and
 homogeneous spatial grid.
-The algorithm is based on two tensorial schemes used to classify the
-cosmic web. 
+The algorithm uses the results from two tensorial schemes used to
+classify the cosmic web.
 The first (the T-web) is based on the Hessian of the gravitational potential or
 tidal tensor \citep{Hahn07, Forero09}. 
 The second (the V-web) is based on the velocity shear tensor
 \citep{Hoffman12}. 
-Our procedure allows a description of the internal structure
-of voids that goes beyond a simple definition of a void as just an
-underdense regions in the large-scale matter distribution.
+Our procedure allows for a description of the internal structure
+of voids that goes beyond a simple definition of a void as an
+underdense region in the large-scale matter distribution.
 The tidal and the shear tensors encode more information than the
 density field as they trace the collapsing or expanding
 nature of the matter field, which defines the dynamics of the Cosmic
@@ -234,23 +234,17 @@ cerebral tissue in nuclear magnetic resonance
 imaging and \citet{Libeskind13} introduced this concept in the context
 of Cosmic Web classification schemes. 
 
-Once we establish the FA as a void tracer, we proceed to
-identify individual voids as basins of FA local minima. 
-At this point we implement a \textit{watershed transform algorithm}
+In the next sections (\S \ref{sec:algorithms_cosmic_web} and \S
+\ref{sec:bulk_voids}) we establish the FA as a void tracer and then
+proceed to identify individual voids as basins of FA local minima.  At
+this point we implement a \textit{watershed transform algorithm}
 \citep{Beucher79,Beucher93} which has been used to define voids as
-catching basins of local minima of the density field
-\citep{Platen07,Neyrinck08}.
+catching basins of local minima of the density field \citep{Platen07,Neyrinck08}.
+Finally we find and charachterize voids in a N-body (\S
+\ref{sec:simulations} and \S \ref{results}) using density, velocity and
+fractional anisotropy profiles.  We use these results to comment on
+the qualities of our algorithm (\S \ref{sec:conclusions}).  
 
-%This paper is organized as follows. 
-%In Section \ref{sec:algorithms_cosmic_web} we describe the algorithms
-%we use to find the cosmic web in N-body simulations. 
-%In Section \ref{sec:bulk_voids} we explain in detail our void finder
-%based on the fractional anisotropy of the tidal and shear tensor
-%fields. 
-%In Section  \ref{sec:simulations} we describe the N-body simulation we
-%use to test our algorithm. 
-%Our results are presented in \ref{sec:results} to finally comment and
-%conclude about these findings in Section \ref{sec:conclusions}. 
 
 
 %*************************************************************************
@@ -268,7 +262,7 @@ catching basins of local minima of the density field
   width=0.73\textheight]{cosmicweb_FA_Vweb.pdf}
   \caption{Visual impression of different quantities/algorithm results
     mentioned in this paper. Fractional Anisotropy field
-    (left); osmic web classification (middle) where voids are white,
+    (left); cosmic web classification (middle) where voids are white,
     sheets are light gray, filaments are dark gray and knots are
     black; and colored individual voids. Top/bottom corresponds to the 
     T-Web/V-Web.}
@@ -296,9 +290,8 @@ the reader to the papers of \cite{Forero09} (T-Web) and
 \label{subsec:Tweb}
 %-------------------------------------------------------------------------
 
-
-This scheme was initially proposed by \citet{Hahn07} as an
-alternative for classifying the Cosmic Web based on the tidal tensor.
+This scheme was initially proposed by \citet{Hahn07}  to find the
+Cosmic Web based on the tidal tensor. 
 The tidal tensor allows a classification in terms of the orbital
 dinamics of the matter field.
 This approach extends to second-order the equations of motion around 
@@ -395,9 +388,8 @@ This is described in detailed in the next Section.
 
 
 The fractional anisotropy (FA), as developed by \citet{Basser95}, was 
-conceived to quantify the anisotropy degree of a diffusion process, e.g. 
-the diffusivity of water molecules through cerebral tissue in nuclear
-magnetic resonance imaging. 
+conceived to quantify the anisotropy of the diffusivity of water
+molecules through cerebral tissue in nuclear magnetic resonance imaging. 
 Here we present the FA, much in the same way as \citet{Libeskind13},
 to use it as a tracer of cosmic voids.
 
@@ -410,10 +402,10 @@ The FA is defined as follows.
 (\lambda_2 - \lambda_3)^2 + (\lambda_1 - \lambda_2)^2}{ \lambda_1^2 + 
 \lambda_2^2 + \lambda_3^2} },}
 %.........................................................................
-where the eigenvalues can be taken from either the T-web or the Vweb 
-(FA-T-web and FA-Vweb respectively). Such as it is defined, FA$=0$ 
+where the eigenvalues can be taken from either the T-Web or the V-Web 
+(FA-T-Web and FA-V-Web respectively). Such as it is defined, FA$=0$ 
 corresponds to an isotropic distribution ($\lambda_1=\lambda_2=\lambda_3$) 
-and FA$=1$ with a highly anisotropic distribution.
+and FA$=1$ to a highly anisotropic distribution.
 
 
 In the left and middle panels of Figure \ref{fig:FA_field} we show the
@@ -424,8 +416,8 @@ and black in the middle panel of Figure 1) display low FA values at
 their  centres, becoming gradually more anisotropic at outer regions.  
 On the other hand the filamentary structure (grey in the middle panel
 of Figure 1) is traced by high FA values.  
-These characteristics are key to use the FA as a tracer of cosmic voids. 
-
+This characteristic is the  key to use the FA as a tracer of cosmic
+voids.  
 
 
 %-------------------------------------------------------------------------
@@ -447,7 +439,7 @@ These characteristics are key to use the FA as a tracer of cosmic voids.
   
   \captionof{figure}{\small Overdensity (left) and Fractional
     Anisotropy (right) with respect to the eigenvalue $\lambda_1$ 
-    for each web scheme (T-web, continous lines. Vweb, dashed lines) calculated 
+    for each web scheme (T-Web, continous lines. V-Web, dashed lines) calculated 
     over all cells of the grid. Thick central lines correspond are the
     median and filled regions include $50\%$ of all values. This
     information is necesary to define void boundaries in the watershed
@@ -486,7 +478,7 @@ FA$<0.95$.
 If we increase the values of $\lambda_1$ from its minimum until it
 we reach FA$=0.95$ in \ref{fig:L1_correlations} we find that this
 correspond to critical values of $\lambda_{1}^T = 0.265$ and
-$\lambda_{1}^V = 0.175$ for the T-web and Vweb, respectively.
+$\lambda_{1}^V = 0.175$ for the T-Web and V-Web, respectively.
 This means that setting $\lambda_{th}$ to either
 $\lambda_{1}^T$/$\lambda_{1}^{V}$ automatically produces voids with
 all the cells FA$<0.95$.   
@@ -497,30 +489,29 @@ this FA level is a sensitive choice to define voids.
    
 %-------------------------------------------------------------------------
 \subsection{Defining voids with a watershed algorithm}
-\label{sec:watershed}
+\label{subsec:watershed}
 %-------------------------------------------------------------------------
 
 
-The previous section shows that FA is a good void tracer, but it does
-not automatically suggest how to define the boundary of individual
-voids.
+The previous Section shows that FA is a good void tracer, but how
+should we actually define the boundary of individual voids?
 For this purpose, we use the \textit{watershed transform algorithm}
 \citep{Beucher79,Beucher93} to identify a void as the basin of FA
-local minimum. 
+local minima with boundaries of FA$=0.95$. 
 The advantage of this definition is that it does not require any
 assumption on the shape and/or morphology of the tentative voids. 
 
 However, there are two main differences in our approach with respect to other
 watershed implementations.
-First, the watershed technique commonly uses the the density field
-instead of the FA field as we do in this paper
+First, the watershed technique commonly uses the density field
+instead of the FA field as we do here
 \citep{Platen07,Neyrinck08}.   
 Second, we estimate all relevant quantities on a Cartesian mesh of
 fixed cell size, while other works use an adaptive Delaunay tessellation
 \citep{Schaap00}.
-However, from the analysis of our results it does not 
-introduce supurious results, at least with the mass resolution we have
-in the N-body simulation. 
+However, from the analysis of our results the choice of a fixed
+Cartesian mesh does not induce wrong results, at least with
+the mass resolution we have in the N-body simulation. 
 
 The watershed algorithm also needs a threshold value to reduce
 spurious features and prevent void hierarchization.  
@@ -532,21 +523,18 @@ In our case we have to find a corresponding FA value
 to define this threshold. 
 
 In Figure \ref{fig:L1_correlations} we find the correlations of
-the eigenvalue $\lambda_1$ with he matter overdensity (left panel) and
+the eigenvalue $\lambda_1$ with the matter overdensity (left panel) and
 the FA (right panel).
-We can use this information to find the FA threshold. 
-From the left panel we see that an underdensity of $\delta=-0.8$ is
-correspond to values of $\lambda_1=0.0$, regardless of the web-finding
+We can use this information to find the equivalent FA threshold. 
+From the left panel we see that an underdensity of $\delta=-0.8$ 
+corresponds to $\lambda_1=0.0$, regardless of the web-finding
 scheme.
 From the second panel we have a very tight correlation of $\lambda_1$
 with the FA, indicating that in turn $\lambda_1=0.0$ corresponds to a
-FA=$0.65$ which is the value that we have used to remove ridges. 
-
+FA=$0.65$ which is the value that we choose to remove ridges. 
 The right column in Figure \ref{fig:FA_field} shows all the individual
 voids that have been identified using the watershed algorithm on the
 FA field. 
-In what follows we describe the numerical simulation we have used to
-find voids and their detailed properties characterization.
 
 %.........................................................................
 %FIGURE 3: volume functions
@@ -620,10 +608,6 @@ distribution and different radial profiles for all our samples.
 \label{subsec:shape_voids}
 %-------------------------------------------------------------------------
 
-
-
-
-
 Void shapes exhibit a wide range of geometries.
 To define their size we use its equivalent spherical radius or
 effective radius, defined as $\reff = [3/(4\pi)V]^{1/3}$, with $V$ the 
@@ -635,31 +619,31 @@ distributions for the T-Web and the V-Web.
 We see that the void distribution for the T-Web is broadly consistent with the
 expectations from a two-barrier problem  \citep{Sheth04}. 
 The formation of large voids is limited by the \textit{void-in-void}
-problem (first barrier), where large voids are constituted
+mechanism (first barrier), where large voids are constituted
 hierarchically of smaller ones. 
 In turn, the formation of small voids is damped by the
-\textit{void-in-cloud} problem (second barrier),  where nearby
-collapsing structures limit the abundance of small embedded voids. 
-
+\textit{void-in-cloud} mechanism (second barrier),  where nearby
+collapsing structures limit the abundance of small embedded voids.  
 
 We also find that the V-Web scheme produces an over-abundance of small
 voids compared to the resuls of the T-Web.
 A large number of these small voids are embedded in overdense regions. 
 They are visible in the middle panel of Figure \ref{fig:FA_field} as
-small bubbles located inside sheets.
+tiny white bubbles located inside sheets.
 The existence of these small voids can be explained by
 dynamics of shell crossing in collapsing sheets. 
 As matter colides into a sheet, in their symmetry plane one will
-find crossing ahseets that effectively give a positive divergence in
+find crossing sheets that effectively give a positive divergence in
 the velocity field, resulting in a void identification by the
-V-Web algorithm. This points has been discussed in \citet{Hoffman12}.  
+V-Web algorithm. This has been already discussed in \citet{Hoffman12}.  
 
 Comparing the abundance of large voids in the two web schemes, we find
 that the V-Web is limited to have voids on the scale of $\sim 10$\hMpc,
 while the T-Web scheme includes voids as large as $\sim 15$\hMpc. 
 Large voids in the T-Web scheme have a velocity structure that
 induces a split by the watershed algorithm in the V-Web. 
-This is evident in the right panel of Figure \ref{fig:FA_field}.
+This increased granularity in the velocity structure of voids is
+evident in the left and right panels of Figure \ref{fig:FA_field}. 
 
 
 %.........................................................................
