@@ -18,6 +18,11 @@
 %Non reposionated tables
 \usepackage{float}
 \restylefloat{table}
+%Multiple columns support for tables
+\usepackage{array}
+\usepackage{booktabs}
+\setlength{\heavyrulewidth}{1.5pt}
+\setlength{\abovetopsep}{4pt}
 
 %=========================================================================
 %		INTERNAL MACROS
@@ -749,10 +754,43 @@ In the left column it becomes clear the difference between sub- and
 overcompensated voids.
 
 %.........................................................................
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{c | c c | c c}
+\toprule
+\multicolumn{1}{c}{}&  \multicolumn{2}{c}{\textbf{Tweb}} & \multicolumn{2}{c}{\textbf{Vweb}}\\
+%\midrule
+\textbf{bin [\hMpc]}   & $\bf{C<1}$   & $\bf{C>1}$    & $\bf{C<1}$   & $\bf{C>1}$\\ \hline
+%\midrule
+$<2.0$        &  997 & 495   & 13480  & 711\\
+$2.0-3.2$     &  791 & 471   & 2581   & 583\\
+$3.2-4.4$     &  941 & 469   & 2168   & 656\\
+$4.4-5.6$     &  869 & 467   & 1934   & 724\\
+$5.6-6.8$     &  769 & 395   & 1287   & 584\\
+$6.8-8.3$     &  665 & 362   & 700    & 315\\
+$8.3-12.0$    &  587 & 333   & 123    & 61\\
+$>12.0$       &  29  & 23    & 0      & 0\\ \hline
+\textbf{total}& 5648 & 3015  & 22273  & 3634\\
+\bottomrule
+\end{tabular}
+\caption{Number of voids for each bin of effective radius and for 
+subcompensanted and overcompansated samples.}
+\label{tab:number_voids}
+\end{table}
+%.........................................................................
+
+\
+
+\
+
+In Table \ref{tab:number_voids} we also show the number of voids found in 
+each of the bins of effective radius used for the stacked radial profiles.
+
+
+%.........................................................................
 \subsection{Density profiles}
 \label{subsec:density_voids}
 %.........................................................................
-
 
 
 We calculate the contrast density, radial-projected velocity and 
