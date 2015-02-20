@@ -121,9 +121,10 @@ No. 18A-10, Edificio Ip, Bogot\'a, Colombia
 We present a new method to find voids in cosmological simulations
 based on algorithms that use the tidal and the velocity shear tensors
 to locally define the cosmic web. 
-We use the fractional anisotropy (FA) computed from the eigenvalues
-of each web scheme as void tracer and find the voids using a watershed
-transform based on the local minima of the FA
+We use show that fractional anisotropy (FA) computed from the eigenvalues
+of each web scheme is a good void tracers. 
+Based on this result we identify voids using a watershed
+transform based on the local minima of the FA field.
 This void identification technique does not make any assumption on the
 shape or structure of the voids. 
 We test the method on the Bolshoi simulation and report on the
@@ -136,7 +137,7 @@ We clasify voids as overcompansated/subcompensated depending on the
 presence/absence of an overdense matter ridge in their density
 profile, finding that close to $65\%$ and $35\%$  of the total
 population are classified into each category, respectively.
-We find evidence for the existence of universal profiles once the
+Finally, we find evidence for the existence of universal profiles once the
 radial coordinate is normalized to the effective radius of each void
 from the radiallly averaged profiles for density, velocity and
 fractional anisotropy. 
@@ -270,17 +271,18 @@ the qualities of our algorithm (\S \ref{sec:conclusions}).
   width=0.73\textheight]{cosmicweb_FA_Tweb.pdf}
   \includegraphics[trim = 16mm 8mm 5mm 12mm, clip, keepaspectratio=true,
   width=0.73\textheight]{cosmicweb_FA_Vweb.pdf}
-  \caption{Visual impression of different quantities/algorithm results
-    mentioned in this paper. Fractional Anisotropy field
-    (left); cosmic web classification (middle) where voids are white,
-    sheets are light gray, filaments are dark gray and knots are
-    black; and colored individual voids. Top/bottom corresponds to the 
-    T-Web/V-Web.}
+  \caption{Visual impression of different results mentioned in this
+    paper for a slice of $1\hMpc$ width in the Bolshoi simulation.  
+    Fractional Anisotropy field (left); cosmic web classification
+    (middle) where voids are white, sheets are light gray, filaments
+    are dark gray and knots are black; and colored individual
+    voids found by the a watershed algorithm on the Fractional
+    Anisotropy field. Top/bottom corresponds to the T-Web/V-Web.}
   \label{fig:FA_field}
 \end{figure*}
 %.........................................................................
 
-Our new method to find voids is based on two existing cosmic web
+Our new void finding method is based on two existing cosmic web
 classification schemes that work on cosmological N-body simularions.
 Both schemes depend on the construction of tensors based on the
 hessian of the potential (T-Web scheme) and the shear of the velocity
@@ -450,13 +452,14 @@ voids.
   \captionof{figure}{\small Overdensity (left) and Fractional
     Anisotropy (right) with respect to the eigenvalue $\lambda_1$ 
     for each web scheme (T-Web, continous lines. V-Web, dashed lines) calculated 
-    over all cells of the grid. Thick central lines correspond are the
-    median and filled regions include $50\%$ of all values. This
-    information is necesary to define void boundaries in the watershed
-    algorithm. The vertical lines in the right hand plot show the
-    equivalent threshold values for the T-Web and V-web in order to
-    have voids composed by cells with Fractional Anisotropy equal or
-    less than $0.95$.}
+    over all grid cells in the Bolshoi simulation. 
+    Thick central lines are the median and filled regions include $50\%$ of all
+    cells. 
+    This information is necesary to define void boundaries in
+    the watershed algorithm. 
+    The vertical lines show the equivalent threshold values for the
+    T-Web and V-web in order to have voids composed by cells with
+    Fractional Anisotrop equal or less than $0.95$.}
   \label{fig:L1_correlations}
 
 \end{figure*}
@@ -556,8 +559,9 @@ FA field.
   \includegraphics[trim = 2mm 2mm 2mm 0mm, clip, keepaspectratio=true,
   width=0.35\textheight]{voids_regions_volume_compensated.pdf}
 
-  \captionof{figure}{\small Void size distribution (left) and fraction
-    of overcompensated/subcompensated voids. The continous (dashed)
+  \captionof{figure}{\small Left panel, void size distribution. Right
+    panel, fraction of overcompensated/subcompensated ($C>1/C<1$)voids as a
+    function of the effective radius. The continous (dashed)
     curves correspond to the T-Web (V-Web).}
   \label{fig:volume_function}
 
@@ -779,12 +783,8 @@ subcompensanted and overcompansated samples.}
 \end{table}
 %.........................................................................
 
-\
-
-\
-
-In Table \ref{tab:number_voids} we also show the number of voids found in 
-each of the bins of effective radius used for the stacked radial profiles.
+Table \ref{tab:number_voids} lists the number of voids in 
+each effective radius bin For the two web finding methods. 
 
 
 %.........................................................................
