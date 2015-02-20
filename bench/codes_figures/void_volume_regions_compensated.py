@@ -79,13 +79,13 @@ for web in webs:
 	
     #Normal Plot
     if sys.argv[1] == '0':	
-	#Subcompensated voids
-	ax1[0].plot( hist1d_o[1][:-1], distro_o/distro, lw = 1.5, linestyle = linestyles[i_web],\
-	color = colors[i_web], label = "%s $C<1$"%(labels[i_web]) )
-	
 	#Overcompensated voids
-	ax1[0].plot( hist1d_u[1][:-1], distro_u/distro, lw = 3.0, linestyle = linestyles[i_web],\
+	ax1[0].plot( hist1d_o[1][:-1], distro_o/distro, lw = 1.5, linestyle = linestyles[i_web],\
 	color = colors[i_web], label = "%s $C>1$"%(labels[i_web]) )
+	
+	#Subcompensated voids
+	ax1[0].plot( hist1d_u[1][:-1], distro_u/distro, lw = 3.0, linestyle = linestyles[i_web],\
+	color = colors[i_web], label = "%s $C<1$"%(labels[i_web]) )
       
     #Cumulative Plot
     else:
