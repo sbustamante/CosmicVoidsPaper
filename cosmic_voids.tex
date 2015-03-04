@@ -119,14 +119,13 @@ No. 18A-10, Edificio Ip, Bogot\'a, Colombia
 
 \begin{abstract}
 We present a new method to find voids in cosmological simulations
-based on algorithms that use the tidal and the velocity shear tensors
-to locally define the cosmic web. 
-We show that fractional anisotropy (FA) computed from the eigenvalues
-of each web scheme is a good void tracer. 
-Based on this result we identify voids using a watershed
-transform based on the local minima of the FA field.
-This void identification technique does not make any assumption on the
-shape or structure of the voids. 
+based on the tidal and the velocity shear tensors
+definitions of the cosmic web. 
+We use the fractional anisotropy (FA) computed from the eigenvalues
+of each web scheme as a void tracer.
+We identify voids using a watershed transform based on the local
+minima of the FA field without making any assumption on the shape or
+structure of the voids.  
 We test the method on the Bolshoi simulation and report on the
 abundance and radial averaged profiles for the density, velocity and
 fractional anistropy.
@@ -141,6 +140,9 @@ Finally, we find evidence for the existence of universal profiles once the
 radial coordinate is normalized to the effective radius of each void
 from the radiallly averaged profiles for density, velocity and
 fractional anisotropy. 
+Put together, all these results show that the FA is a reliable tracer
+for voids, which can be used in complementarity to other existing
+methods and tracers.
 \end{abstract}
 
 \begin{keywords}
@@ -159,7 +161,7 @@ Methods: data analysis - numerical - N-body simulations
 %*************************************************************************
 
 Cosmic voids are one of the most striking features of the
-Universe on its larges scales since they were found in the first
+Universe on its larges scales ever since they were found in the first
 galaxy surveys \citep{Chincarini75, Gregory78, Einasto80M, Einasto80N,
   Kirshner81, Zeldovich82,Kirshner87}.  
 However, due to the large volume extension of void regions ($\sim
@@ -271,12 +273,12 @@ the qualities of our algorithm (\S \ref{sec:conclusions}).
   width=0.73\textheight]{cosmicweb_FA_Tweb.pdf}
   \includegraphics[trim = 16mm 8mm 5mm 12mm, clip, keepaspectratio=true,
   width=0.73\textheight]{cosmicweb_FA_Vweb.pdf}
-  \caption{Visual impression of different results mentioned in this
-    paper for a slice of $1\hMpc$ width in the Bolshoi simulation.  
+  \caption{Visual impression of different fields in a slice of
+    $1\hMpc$ width in the Bolshoi simulation.   
     Fractional Anisotropy field (left); cosmic web classification
     (middle) where voids are white, sheets are light gray, filaments
-    are dark gray and knots are black; and colored individual
-    voids found by the a watershed algorithm on the Fractional
+    are dark gray and knots are black; colored individual
+    voids (right) found by the a watershed algorithm on the Fractional
     Anisotropy field. Top/bottom corresponds to the T-Web/V-Web.}
   \label{fig:FA_field}
 \end{figure*}
@@ -453,8 +455,8 @@ voids.
     Anisotropy (right) with respect to the eigenvalue $\lambda_1$ 
     for each web scheme (T-Web, continous lines. V-Web, dashed lines) calculated 
     over all grid cells in the Bolshoi simulation. 
-    Thick central lines are the median and filled regions include $50\%$ of all
-    cells. 
+    Thick central lines are the median and filled regions include
+    $50\%$ of the cells in each bin.
     This information is necesary to define void boundaries in
     the watershed algorithm. 
     The vertical lines show the equivalent threshold values for the
@@ -933,41 +935,44 @@ avoiding the contamination from external structures.
 \label{sec:conclusions}
 %*************************************************************************
 
-We propose in this paper that the anisotropy of the eigenvalues from
-tensors constructed to describe the cosmic web is a good tracer of
-cosmic voids. Based on this idea we go on to implement a watershed
-algorithm o the fractional anisotropy to find voids voids in a N-body
-cosmological simulations. We perform this tests on the results of two
-different tensorial schemes, the T-Web and the V-web.
+In this paper we propose that the anisotropy of the eigenvalues from
+tidal and velocity shear tensors is a good tracer of  cosmic voids. 
+Based on this idea we go on to implement a watershed
+algorithm o the fractional anisotropy to find voids in a N-body
+cosmological simulation.
+We perform different test on the voids found on the anisotropy of two
+tensorial schemes, the T-Web and the V-web.  
 
-The first quantity we take a look at is the void size distribution
+The first quantity examine is the void size distribution
 characterized by an effective radius. 
 We find that for T-Web voids the shape of this function corresponds to
-standard expectations. 
-However, for the V-Web we find an overabundance of the smallest voids
-due to artifacts in the web finding scheme in sheets and small
-fragmented voids inside the largest voids already identified in the
-T-Web, perhaps due to the complex velocity structure in large voids
-compared to a simpler density/gravitational potential anatomy.
- 
-A second step in the characterization of the voids found by our method
-was the separation into subcompensated and overcompensated samples. 
-In the T-Web $35\%$ of the voids are overcompensated, meaning that
-they are located in denser regions with a clear delimiting ridge. 
-For the V-web the subcompensated fraction increases from $65\%$ to
-$85\%$ as the void size decreases, supporting the picture of smaller
-spurious voids located in low density matter sheets.
+standard expectations from a two-barrier setup. 
+However, for the V-Web we find an overabundance of the smallest voids.
+This is due to artifacts in the web finding scheme in sheets and also
+to the smaller fragmented voids inside the largest voids already
+identified in the T-Web. 
+The void fragmentation hints at a complex velocity structure in large
+voids compared to its simpler density/gravitational potential anatomy.  
 
-Finally we proceed with an ever more detailed void characterization
+A second step in the characterization of the voids found by our method
+is the separation into subcompensated and overcompensated samples. 
+In the T-Web $35\%$ of the voids are overcompensated ($65\%$
+subcompensated), meaning that they are located in denser regions with
+a clear delimiting ridge.   
+For the V-web the subcompensated fraction rises from $65\%$ to $85\%$ as the
+void size decreases, supporting the picture of smaller spurious voids
+located in low density matter sheets.   
+
+Finally we proceed with an more detailed void characterization
 through the radially averaged profiles of density, radial velocity and
 fractional anisotropy. 
-In thi case we studied separately the subcompensated and
+In this case we study separately the subcompensated and
 overcompensated voids, split this time in samples with different
-effective radii.
+effective radii. 
 
-In the density profiles the most interesting feature is that the 
-profile has a similar shape for all the different void sizes once the
-radial coordinate is expressed in units of the effective radius. 
+For the density the most interesting feature is that the  profile has
+a similar shape for all the different void sizes once the radial
+coordinate is expressed in units of the effective radius.  
 In these profiles it is evident the presence of an overdense ridge
 around $2<r/r_{\rm eff}<3$ for the overcompensated voids.
 Subcompensated voids do not show such a ridge keeping its density
@@ -977,15 +982,15 @@ In other studies where voids are found using considerations on the
 density fields the ridge is, almost by definition, located around
 $r/r_{\rm eff}\sim 1$ and the subcompensated voids reach average
 density around $r/r_{\rm eff}\sim 3$. 
-This indicates that voids defined by FA boundaries are smaller 
-than voids found by density only considerations close by a radial factor 
-of $2$. 
-
+This indicates that voids defined by FA boundaries are smaller  than
+voids found by density only considerations close by a radial factor of
+$2$.   
 
 The velocity profiles show the expected correlation with the features
-already observed in the density, most notably the radial velocity goes to
-zero close to flat regions in the density profile and is positive around
-regions of increasing density with radius. 
+already observed in the density.
+Most notably the radial velocity goes to zero close to flat regions in
+the density profile and is positive around regions of increasing
+density with radius.  
 
 The Fractional Anisotropy profiles also show remarkable similarities,
 (inside each class of subcompensated and overcompensated voids)
