@@ -106,7 +106,7 @@ plt.semilogy( r_eff(10**(hist1d[1][:-1])), hist1d[0], color = "black", linewidth
 plt.ylabel( "Number of voids" )
 plt.xlabel( "Effective comoving radius Mpc $h^{-1}$" )
 plt.grid(1)
-plt.title( "Distribution of neighbour voids %s"%(web) )
+plt.title( "Distribution of isolated voids %s"%(web) )
 
 if sys.argv[3] == '1':
     plt.savefig( '%svoids_neighbours_%s%s.pdf'%(figures_fold,web,void_scheme) )
