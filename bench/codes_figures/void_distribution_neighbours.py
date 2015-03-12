@@ -49,6 +49,8 @@ plt.figure( figsize=(2*5.8,5) )
 
 #Lonely voids
 alone_voids = []
+alone_voids_o = []
+alone_voids_s = []
 
 #Sweeping radial bins
 for ri in xrange( len(RadBins)-1 ):
@@ -76,6 +78,10 @@ for ri in xrange( len(RadBins)-1 ):
 	    Nneigh = 0	
 	if Nneigh==0:
 	    alone_voids.append( voids[i-1,1] )
+	    if compensated[i-1,1] == 0:
+		alone_voids_s.append( voids[i-1,1] )
+	    else:
+		alone_voids_o.append( voids[i-1,1] )
 	else:
 	    for neigh in neighbours[1:]:
 		try:
@@ -101,8 +107,17 @@ plt.title( "Distribution of neighbour voids %s"%(web) )
 plt.legend( loc="lower center", fancybox=True, shadow=True, fontsize=9, ncol=2 )
 
 plt.subplot(1,2,2)
+#Total histogram
 hist1d = np.histogram( np.log10(alone_voids) , bins=20, normed=False )
-plt.semilogy( r_eff(10**(hist1d[1][:-1])), hist1d[0], color = "black", linewidth = 2 )
+plt.semilogy( r_eff(10**(hist1d[1][:-1])), hist1d[0], color = "black", linewidth = 2, label = "Total" )
+#Overcompensated histogram
+hist1d = np.histogram( np.log10(alone_voids_o) , bins=20, normed=False )
+plt.semilogy( r_eff(10**(hist1d[1][:-1])), hist1d[0], color = "blue", linewidth = 2, label = "C>1" )
+#Subcompensated histogram
+hist1d = np.histogram( np.log10(alone_voids_s) , bins=20, normed=False )
+plt.semilogy( r_eff(10**(hist1d[1][:-1])), hist1d[0], color = "red", linewidth = 2, label = "C<1" )
+
+plt.legend( loc="upper right", fancybox=True, shadow=True, fontsize=9, ncol=1 )
 plt.ylabel( "Number of voids" )
 plt.xlabel( "Effective comoving radius Mpc $h^{-1}$" )
 plt.grid(1)
