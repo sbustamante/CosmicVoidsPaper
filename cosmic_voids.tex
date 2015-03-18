@@ -295,9 +295,9 @@ These algorithms have been used to develop other
 kind of studies such as the alignment of the shape, spin and peculiar
 velocity of dark matter halos with the cosmic web
 \citep{Libeskind13,Forero2014}. 
-Here we summarize the most relevant aspects of each scheme, we refer
-the reader to the papers of \cite{Forero09} (T-Web) and
-\cite{Hoffman12} (V-Web) for detailed descriptions. 
+Here we summarize the most relevant aspects of each scheme. 
+We refer the reader to the papers of \cite{Forero09} (T-Web) and
+\cite{Hoffman12} (V-Web) for detailed descriptions.  
 
 
 
@@ -314,7 +314,7 @@ This approach extends to second-order the equations of motion around
 local minima of the gravitational potential. 
 The second-order term corresponds to the tidal tensor, which is
 defined as the Hessian matrix of the normalized gravitational
-potential.
+potential
 
 
 %.........................................................................
@@ -384,10 +384,12 @@ in the four web types already mentioned.
 Usually, the threshold is a free parameter that is tuned to reproduce
 the visual appearence of the comic web. 
 In this paper we take a different approach.
-We find the optimal value of the threshold based on the maximization
-of the fractional anisotropy field in the locations label as filaments
-and walls. 
-This is described in detailed in the next Section.
+In this work we propose an optimal value of the threshold based on the
+maximization of the fractional anisotropy field in the locations label
+as filaments and walls. 
+This threshold does not enter into our computations. 
+We simply offer this estimate as a guide to readers familiar with the
+meaning of this threshold.
 
 
 %-------------------------------------------------------------------------
@@ -456,14 +458,14 @@ corresponds to an isotropic distribution ($\lambda_1=\lambda_2=\lambda_3$)
 and FA$=1$ to a highly anisotropic distribution.
 
 
-In the left and middle panels of Figure \ref{fig:FA_field} we show the
+In the left and middle panels of Fig. \ref{fig:FA_field} we show the
 FA field and web classification for both  web schemes over a slice of
 an N-body simulation (described in Section \ref{sec:simulations}). 
 Comparing these two panels we see that voids and knots (white
-and black in the middle panel of Figure 1) display low FA values at
+and black in the middle panel of Fig. 1) display low FA values at
 their  centres, becoming gradually more anisotropic at outer regions.  
 On the other hand the filamentary structure (grey in the middle panel
-of Figure 1) is traced by high FA values.  
+of Fig. 1) is traced by high FA values.  
 This characteristic is the  key to use the FA as a tracer of cosmic
 voids.  
 
@@ -504,7 +506,7 @@ $\lambda_{1}^V = 0.175$ for the T-Web and V-Web, respectively.
 This means that setting $\lambda_{th}$ to either
 $\lambda_{1}^T$/$\lambda_{1}^{V}$ automatically produces voids with
 all the cells FA$<0.95$.   
-The middle panels in Figure \ref{fig:FA_field} show the web
+The middle panels in Fig. \ref{fig:FA_field} show the web
 classification for this choice of $\lambda_{th}$, demonstrating that
 this FA level is a sensitive choice to define voids.
 
@@ -532,7 +534,7 @@ Second, we estimate all relevant quantities on a Cartesian mesh of
 fixed cell size, while other works use an adaptive Delaunay tessellation
 \citep{Schaap00}.
 However, from the analysis of our results the choice of a fixed
-Cartesian mesh does not induce wrong results, at least with
+Cartesian mesh does not induce spurious results, at least with
 the mass resolution we have in the N-body simulation. 
 
 The watershed algorithm also needs a threshold value to reduce
@@ -544,7 +546,7 @@ respective voids.
 In our case we have to find a corresponding FA value
 to define this threshold. 
 
-In Figure \ref{fig:L1_correlations} we find the correlations of
+In Fig. \ref{fig:L1_correlations} we find the correlations of
 the eigenvalue $\lambda_1$ with the matter overdensity (left panel) and
 the FA (right panel).
 We can use this information to find the equivalent FA threshold. 
@@ -554,7 +556,7 @@ scheme.
 From the second panel we have a very tight correlation of $\lambda_1$
 with the FA, indicating that in turn $\lambda_1=0.0$ corresponds to a
 FA=$0.65$ which is the value that we choose to remove ridges. 
-The right column in Figure \ref{fig:FA_field} shows all the individual
+The right column in Fig. \ref{fig:FA_field} shows all the individual
 voids that have been identified using the watershed algorithm on the
 FA field. 
 
@@ -604,7 +606,7 @@ available through the MultiDark database
 \url{http://www.multidark.org/MultiDark/} which is described in
 \citet{Riebe11}. 
 Here we briefly describe the process to obtain the data. 
-For details see \cite{Forero09} (T-Web) and
+For details see \cite{Forero09} (T-Web);
 \cite{Hoffman12,Forero2014} (V-Web). 
 This data is based on a  \textit{cloud-in-cell} (\texttt{CIC})
 interpolation of the density and velocity fields of the simulation
@@ -623,8 +625,8 @@ through finite-differences over the potential and velocity fields.
 We limit our results to voids with effective radius larger than the
 smoothing length of the density field, i.e. $\sim 1$\hMpc.  
 Below that scale numerical resolution effects become important. 
-With that choice we find a volume filling fraction $54.88\%$ and
-$47.06\%$ for the FA-Vweb. 
+With that choice we find a void volume filling fraction $54.88\%$ and
+$47.06\%$ for the FA-Vweb and the FA-Tweb, respectively.  
 
 In the following subsections we describe the results for the size
 distribution and different radial profiles for all our samples.
@@ -639,13 +641,13 @@ To define their size we use its equivalent spherical radius or
 effective radius, defined as $\reff = [3/(4\pi)V]^{1/3}$, with $V$ the 
 total volume of the void computed from the individual grid cells
 assigned to the void.   
-In Figure \ref{fig:volume_function} we show the void size
+In Fig. \ref{fig:volume_function} we show the void size
 distributions for the T-Web and the V-Web.
 
 We see that the void distribution for the T-Web is broadly consistent with the
 expectations from a two-barrier problem  \citep{Sheth04}. 
 The formation of large voids is limited by the \textit{void-in-void}
-mechanism (first barrier), where large voids are constituted
+mechanism (first barrier) where large voids are constituted
 hierarchically of smaller ones. 
 In turn, the formation of small voids is damped by the
 \textit{void-in-cloud} mechanism (second barrier),  where nearby
@@ -654,7 +656,7 @@ collapsing structures limit the abundance of small embedded voids.
 We also find that the V-Web scheme produces an over-abundance of small
 voids compared to T-Web.
 A large number of these small voids are embedded in overdense regions. 
-They are visible in the middle panel of Figure \ref{fig:FA_field} as
+They are already visible in the middle panel of Fig. \ref{fig:FA_field} as
 tiny white bubbles located inside sheets.
 The existence of these small voids can be explained by
 dynamics of shell crossing in collapsing sheets as discussed in
@@ -666,12 +668,12 @@ field, resulting in a void identification by the V-Web algorithm.
 
 
 Comparing the abundance of large voids in the two web schemes, we find
-that the V-Web is limited to have voids on the scale of $\sim 10$\hMpc,
-while the T-Web scheme includes voids as large as $\sim 15$\hMpc. 
-Large voids in the T-Web scheme have a velocity structure that
-induces a split by the watershed algorithm in the V-Web. 
+that the largest voids in the V-Web have $r_{\rm eff}\sim 10$\hMpc,
+while the T-Web scheme includes voids as large as $r_{\rm eff}\sim 15$\hMpc. 
+This suggests that large voids in the T-Web scheme have a velocity
+structure that splits them in the V-Web. 
 This increased granularity in the velocity structure of voids is
-evident in the left and right panels of Figure \ref{fig:FA_field}. 
+evident in the left and right panels of Fig. \ref{fig:FA_field}. 
 
 
 %.........................................................................
@@ -748,8 +750,7 @@ evident in the left and right panels of Figure \ref{fig:FA_field}.
 We find that voids are distributed in two different families
 differentiated by the 
 presence/absence of an overdense matter ridge in their density
-profiles. This result was also found by \citet{Ceccarelli13} when analysing
-voids in the SDSS.
+profiles. 
 To discriminate each void in one of the families we use the
 compensation  index $\mathcal{C}$.
 It is defined as the mass of a void enclosed in a spherical volume of
@@ -768,7 +769,7 @@ dense nearby structures.
 In the same fashion, voids with $\mathcal{C}<1$ constitute the family
 of  subcompensated voids. 
 
-In Figure \ref{fig:density_profile} we show the density and velocity profiles
+In Fig. \ref{fig:density_profile} we show the density and velocity profiles
 of voids splitted in these two families. 
 In the left column it becomes clear the difference between sub- and
 overcompensated voids.
@@ -810,30 +811,30 @@ each effective radius bin for the two web finding methods.
 
 
 We calculate the contrast density, radial-projected velocity and 
-FA profiles. For this purpose we catalogue all the voids in several radial 
-bins in order to capture possible size effects; moreover we show profiles 
-for both, subcompensated and overcompensated voids. Then, for each void, 
+FA profiles. 
+For this purpose we stack voids with similar effective radius.
+We also compute the profiles separately  for subcompensated and
+overcompensated voids. 
+For each void,  
 we take the distance of each member cell to the void centre along with the 
-properties of interest. Normalizing these distances with the effective 
-radius, we stack all the voids of a radial bin in order to compute the 
-radial profiles.
+properties of interest. 
+We normalize the radial distance with the effective radius and add the
+result to the stack.
 
-Figure \ref{fig:density_profile} shows the results of stacked density
+
+Fig. \ref{fig:density_profile} shows the results of stacked density
 profiles for different void sizes.  
-We normalize the radial coordinate with the effective radius to check
-for possible universal features among voids. 
 We calculate the profile out to a radius $8\ \reff$  to capture the
 point where the overdensity reaches the mean value.
 
 
-A first interesting result is the overdensity value at the void's
+The first interesting result is the overdensity value at the void's
 center.
 We find that larger voids have a lower overdensity value.
 The largest voids ($8.3-12\ \hMpc$) have an underdensity
-$\approx-0.95$ while smaller voids  ($2-3.2\ \hMpc$) fall around $\delta\approx 
+$\sim-0.95$ while smaller voids  ($2-3.2\ \hMpc$) fall around $\delta\sim 
 -0.8$ at their centers.
 This holds for both web schemes. 
-
 These values are consistent with most of the void finding schemes
 based on smooth and continuous fields from simulation or
 reconstruction procedures on surveys \citep{Plionis02, Colberg05,
@@ -849,10 +850,10 @@ In subcompensated voids, larger voids are steeper.
 Smaller voids exhibit moderate slopes, reaching the mean density at
 larger radii than larger voids.
 This suggests that smaller subcompensated voids are embedded into low
-density structures like voids or walls, while large subcompensated
-voids are surrounded  by dense structures, reaching the mean density
-at lower effective radii than smaller voids.
-In overcompensated voids larger voids reach first  both the
+density structures, while large subcompensated voids are surrounded
+by dense structures, reaching the mean density at lower effective
+radii than smaller voids. 
+In the overcompensated case larger voids reach first  both the
 compensation ridge and then the mean density value.  
 
 
@@ -879,7 +880,7 @@ voids with size $r_{\rm eff}<10$\hMpc.
 \label{subsec:velocity_voids}
 %.........................................................................
 
-In Figure \ref{fig:velocity_profile} we present the radial velocity
+In Fig. \ref{fig:velocity_profile} we present the radial velocity
 profiles. 
 Positive values correspond to outflows with respect to the center. 
 
@@ -912,7 +913,7 @@ velocity profile for voids \citep{Paz13, Hamaus14}.
 
 
 
-Figure \ref{fig:FA_profile} shows the results for the FA profiles.
+Fig. \ref{fig:FA_profile} shows the results for the FA profiles.
 We find that the FA clearly magnifies the difference between the
 internal profile $r_{\rm eff}<1$ and the external profile $r_{\rm
   eff}>1$. 
@@ -925,22 +926,26 @@ $r_{\rm eff}=1$ and decline to reach an asymptotic value of FA=$0.85$
 at larger radii.
 
 The central FA values also show a magnified trend with the void size. 
-Larger voids have lower FA values, more clearly than the same trend
+Large voids have lower FA values, amplifying the same trend
 observed with the central density value. 
-The voids in the V-Web scheme span a larger range of central FA values
-than in the T-Web scheme. 
+Finally, we observe that voids in the V-Web scheme span a larger range
+of central FA values than in the T-Web scheme.  
 
 The difference between the radius where the density ridge is reached 
 ($r_{\rm eff}=3$) and the radius of the FA  ridge ($r_{\rm eff}=1$ )
 justifies in a more quantiative way the qualitative argument
 we present in sub-section \ref{subsec:watershed} to define void boundaries in
-our method.  Namely that as we increase the void boundary, we reach
+our method.  
+Namely that as we increase the void boundary, we reach
 first middle density walls, before reashing high density structures
-associated with high anisotropy, making the FA  ridge a  natural voids
-boundary instead of the density ridge.  
+associated with high anisotropy. 
+This makes the FA ridge a reasonable
+boundary for voids compared to the traditional definition that puts
+the boundary at the density ridge.  
 
 We recognize that our choice produces smaller voids as compared with
-other voids finding methods, however this has the advantage of
+other voids finding methods. 
+We consider that this has the advantage of
 avoiding the contamination from external structures.
 
 
