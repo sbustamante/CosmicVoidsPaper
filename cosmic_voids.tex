@@ -136,10 +136,11 @@ We clasify voids as subcompensated/overcompansated depending on the
 absence/presence of an overdense matter ridge in their density
 profile, finding that close to $65\%$ and $35\%$ of the total
 population are classified into each category, respectively.
-Finally, we find evidence for the existence of universal profiles once the
-radial coordinate is normalized to the effective radius of each void
-from the radiallly averaged profiles for density, velocity and
-fractional anisotropy. 
+Finally, we find evidence for the existence of universal profiles from
+the radially averaged profiles for density, velocity and fractional
+anisotropy. 
+This requires that the radial coordinate is normalized to the
+effective radius of each void. 
 Put together, all these results show that the FA is a reliable tracer
 for voids, which can be used in complementarity to other existing
 methods and tracers.
@@ -939,30 +940,33 @@ avoiding the contamination from external structures.
 In this paper we propose that the anisotropy of the eigenvalues from
 tidal and velocity shear tensors is a good tracer of  cosmic voids. 
 Based on this idea we go on to implement a watershed
-algorithm o the fractional anisotropy to find voids in a N-body
+algorithm on the fractional anisotropy to find voids in a N-body
 cosmological simulation.
 We perform different test on the voids found on the anisotropy of two
 tensorial schemes, the T-Web and the V-web.  
 
-The first quantity examine is the void size distribution
+The first quantity we examine is the void size distribution
 characterized by an effective radius. 
-We find that for T-Web voids the shape of this function corresponds to
-standard expectations from a two-barrier setup. 
+We find that for the T-Web scheme the void size distribution has a
+shape consistent with standard expectations from a two-barrier setup. 
 However, for the V-Web we find an overabundance of the smallest voids.
-This is due to artifacts in the web finding scheme in sheets and also
-to the smaller fragmented voids inside the largest voids already
-identified in the T-Web. 
-The void fragmentation hints at a complex velocity structure in large
+This is due to two reasons. 
+First, there are artifacts in the web
+finding scheme inside sheets. 
+Second, there V-web produces smaller
+fragmented voids inside the largest voids found in the T-Web
+classification.  
+This void fragmentation hints at a complex velocity structure in large
 voids compared to its simpler density/gravitational potential anatomy.  
 
-A second step in the characterization of the voids found by our method
+A second step in the void characterization 
 is the separation into subcompensated and overcompensated samples. 
 In the T-Web $35\%$ of the voids are overcompensated ($65\%$
 subcompensated), meaning that they are located in denser regions with
 a clear delimiting ridge.   
 For the V-web the subcompensated fraction rises from $65\%$ to $85\%$ as the
 void size decreases, supporting the picture of smaller spurious voids
-located in low density matter sheets.   
+located in medium density matter sheets.   
 
 Finally we proceed with an more detailed void characterization
 through the radially averaged profiles of density, radial velocity and
@@ -993,8 +997,8 @@ Most notably the radial velocity goes to zero close to flat regions in
 the density profile and is positive around regions of increasing
 density with radius.  
 
-The Fractional Anisotropy profiles also show remarkable similarities,
-(inside each class of subcompensated and overcompensated voids)
+The Fractional Anisotropy profiles also show remarkable similarities
+inside each class of subcompensated and overcompensated voids
 and a close correlation with the behaviour in the density and velocity
 profiles. 
 From these profiles it becomes clear that the limit of overcompensated
@@ -1008,9 +1012,9 @@ far from spherical.
 
 Put together, the results for the radially averaged profiles support the 
 evidence for a universal density profile.  
-This extends the work done
-by \cite{Hamaus14} to smaller void sizes and by \cite{Ceccarelli13} for
-the SDSS.
+Our results extends to smaller void sizes the work done by
+\cite{Hamaus14} on simulations and by \cite{Ceccarelli13} on SDSS data.  
+
 
 The method we present here finds voids with reasonable properties
 compared to different results published in the literature. 
@@ -1026,12 +1030,15 @@ analysis of the tidal and dynamical structure of voids.
 %*************************************************************************
 
 
-We would like to thank Rien van de Weygaert for his thoughtful review and 
-very helpful suggestions. Also, we thank Nelson Padilla for his comments 
-on the manuscript. SB thanks Jaime Forero-Romero for all his support and 
-guidance while developing this work. SB also thanks Juan Carlos Mu\~noz-Cuartas 
+We would like to thank Rien van de Weygaert for his thoughtful review
+and  very helpful suggestions on this manuscript.  
+We also thank Nelson Padilla and Yehuda  Hoffman for their comments on
+the manuscript.  
+SB also thanks Juan Carlos Mu\~noz-Cuartas 
 for many clarifying discussions and helpful ideas.
-
+JEFR acknowledges financial support from Vicerrector\'ia de
+Investigaciones at Universidad de los Andes (Colombia) through a FAPA
+grant. 
 
 \bibliographystyle{mn2e}
 \bibliography{references}
