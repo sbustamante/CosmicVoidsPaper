@@ -389,6 +389,38 @@ and walls.
 This is described in detailed in the next Section.
 
 
+%-------------------------------------------------------------------------
+%FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
+\begin{figure*}
+\centering
+
+  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.35\textheight]{delta_L1.pdf}  
+  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.35\textheight]{FA_L1.pdf}
+
+  
+  \captionof{figure}{\small Overdensity (left) and Fractional
+    Anisotropy (right) with respect to the eigenvalue $\lambda_1$ 
+    for each web scheme (T-Web, continous lines. V-Web, dashed lines) calculated 
+    over all grid cells in the Bolshoi simulation. 
+    Thick central lines are the median and filled regions include
+    $50\%$ of the cells in each bin.
+    This information is necesary to define void boundaries in
+    the watershed algorithm. 
+    The vertical lines show the equivalent threshold values for the
+    T-Web and V-web in order to have voids composed by cells with
+    Fractional Anisotrop equal or less than $0.95$. 
+   This threshold on the eigenvalues does not influence our
+   computations. 
+   We show it as a guide to readers familiar with the
+   order of magnitude expectation for this threshold.}
+  \label{fig:L1_correlations}
+
+\end{figure*}
+%.........................................................................
+
+
 
 %*************************************************************************
 \section{A new void finding technique}
@@ -440,33 +472,6 @@ voids.
 \label{subsec:web_voids}
 %-------------------------------------------------------------------------
 
-
-%-------------------------------------------------------------------------
-%FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
-\begin{figure*}
-\centering
-
-  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{delta_L1.pdf}  
-  \includegraphics[trim = 2mm 2mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{FA_L1.pdf}
-
-  
-  \captionof{figure}{\small Overdensity (left) and Fractional
-    Anisotropy (right) with respect to the eigenvalue $\lambda_1$ 
-    for each web scheme (T-Web, continous lines. V-Web, dashed lines) calculated 
-    over all grid cells in the Bolshoi simulation. 
-    Thick central lines are the median and filled regions include
-    $50\%$ of the cells in each bin.
-    This information is necesary to define void boundaries in
-    the watershed algorithm. 
-    The vertical lines show the equivalent threshold values for the
-    T-Web and V-web in order to have voids composed by cells with
-    Fractional Anisotrop equal or less than $0.95$.}
-  \label{fig:L1_correlations}
-
-\end{figure*}
-%.........................................................................
 
 
 Voids are regions where $\lambda_3\leq\lambda_2\leq
@@ -565,7 +570,10 @@ FA field.
   \captionof{figure}{\small Left panel, void size distribution. Right
     panel, fraction of overcompensated/subcompensated ($C>1/C<1$)voids as a
     function of the effective radius. The continous (dashed)
-    curves correspond to the T-Web (V-Web).}
+    curves correspond to the T-Web (V-Web).
+    The abundance for small ($r_{eff}<2.0\hMpc$) overcompensated voids
+    shoots up in the V-Web scheme.
+    We provide in the body of the paper two reasons for this behaviour.}
   \label{fig:volume_function}
 
 \end{figure*}
