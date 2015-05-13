@@ -138,7 +138,7 @@ plt.colorbar( orientation = "horizontal", fraction = 0.03, pad = 0.025 )
 #Visual impression
 plt.subplot( 1, 3, 2 )
 Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
-plt.plot( Coor[0], Coor[1], '.', color = 'blue', markersize = 1 )
+#plt.plot( Coor[0], Coor[1], '.', color = 'blue', markersize = 1 )
 plt.imshow( -np.transpose(Scheme( eig1, eig2, eig3, Lambda_opt )[::,::-1]), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
 plt.title( "Visual impression for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
 plt.yticks( (),() )

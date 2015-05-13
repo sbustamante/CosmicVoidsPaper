@@ -46,7 +46,7 @@ for web in webs:
     
     plt.grid(1)
     plt.ylabel( 'FA', fontsize = 12 )
-    plt.xlabel( '$\log_{10}(\delta+1)$', fontsize = 12)
+    plt.xlabel( '$\delta+1$', fontsize = 12)
     plt.xlim( (0.025,10) )
     plt.ylim( (0,1) )
     plt.legend( loc='lower right', fancybox = True, shadow = True, ncol = 1, prop={'size':10} )
