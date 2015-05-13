@@ -36,6 +36,51 @@ figures_fold = '../../figures/'
 #==================================================================================================
 
 #..................................................................................................
+#Read a scalar binary field
+#..................................................................................................
+def read_CIC_scalar(filename):
+    f = open(filename, "rb")
+    dumb = f.read(38)
+
+    dumb = f.read(4)
+    n_x = f.read(4)
+    n_y = f.read(4)
+    n_z = f.read(4)
+    nodes = f.read(4)
+    x0 = f.read(4)
+    y0 = f.read(4)
+    z0 = f.read(4)
+    dx = f.read(4)
+    dy = f.read(4)
+    dz = f.read(4)
+    dumb = f.read(4)
+
+    n_x = (unpack('i', n_x))[0]
+    n_y = (unpack('i', n_y))[0]
+    n_z = (unpack('i', n_z))[0]
+    nodes = (unpack('i', nodes))[0]
+    dx = (unpack('f', dx))[0]
+    dy = (unpack('f', dy))[0]
+    dz = (unpack('f', dz))[0]
+    x0 = (unpack('f', x0))[0]
+    y0 = (unpack('f', y0))[0]
+    z0 = (unpack('f', z0))[0]
+    print n_x, n_y, n_z, nodes, dx, dy, dz
+
+    total_nodes = n_x * n_y *n_z
+    dumb = f.read(4)
+    array_data = f.read(total_nodes*4)
+    dumb = f.read(4)
+    format_s = str(total_nodes)+'f'
+    array_data = unpack(format_s, array_data)
+    f.close()
+    array_data  = np.array(array_data)
+    array_data.resize(n_z,n_y,n_x)
+    array_data = array_data.transpose()
+    return array_data
+  
+  
+#..................................................................................................
 #Cutting Halos in X axe
 #..................................................................................................
 def CutHaloX( X, thick, catalogue, plot=True, color='black' ):
@@ -257,6 +302,14 @@ def Scheme( eig1, eig2, eig3, Lamb ):
 		sch[i,j] += 1
 	    if eig3[i,j] > Lamb:
 		sch[i,j] += 1
+    return sch
+    
+    
+#..................................................................................................
+#Classification Scheme Flatten
+#..................................................................................................
+def Scheme_flatten( eig1, eig2, eig3, Lamb ):
+    sch = (eig1 > Lamb).astype(int) + (eig2 > Lamb).astype(int) + (eig3 > Lamb).astype(int)
     return sch
     
     

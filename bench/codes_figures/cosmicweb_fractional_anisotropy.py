@@ -56,6 +56,10 @@ alphas = np.ones( cmap2.N+3)
 alphas[0] = 0
 cmap2._lut[:,-1] = alphas
 
+#Effective radius function
+def r_eff(X):
+    return ((10**np.log10(X)*(0.9765625)**3)/( 4*np.pi/3. ))**(1/3.)
+
 #==================================================================================================
 #			PLOTING WEB SCHEME AND DENSITY FIELD FOR SIMULATION
 #==================================================================================================
@@ -85,6 +89,8 @@ GH = np.loadtxt('%s%sC_GH_%s.dat'%(foldglobal,simulation,catalog))
 #Catalogue of voids
 voids = CutFieldZ( "%s/%s/%s/%d/voids%s/voids_%s/void_index.dat"%\
 (foldglobal, simulation, web, N_sec, void_scheme, config ), Cut, 'plain', Coor = axe )
+sizes = r_eff( np.loadtxt( "%s/%s/%s/%d/voids%s/voids_%s/void_regions.dat"%\
+(foldglobal, simulation, web, N_sec, void_scheme, config ), usecols=(1,) ) )
 
 #Loading Fields
 #delta = CutFieldZ( delta_filename, Cut, 32, Coor = axe )
@@ -111,7 +117,7 @@ for i in xrange(N_sec):
 		if j + jc >= N_sec: jt = 0
 		if j + jc < 0: jt = N_sec-1
 		#Marking contours
-		if( voids[i,j] != voids[it,jt] ):
+		if( voids[i,j] != voids[it,jt] and contours[it,jt] == 0 ):
 		    contours[i,j] = 1
 
 #FA field
@@ -123,9 +129,10 @@ plt.imshow( np.transpose(Fractional_Anisotropy( eig1, eig2, eig3 )[::,::-1]), ex
 plt.title( "Fractional Anisotropy (%s)"%web )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
-plt.xlabel( "[	$h^{-1}$ Mpc]" )
+#plt.xlabel( "[$h^{-1}$ Mpc]" )
 
-#plt.colorbar( orientation = "horizontal", fraction = 0.03, pad = 0.025 )
+#COLOR BAR
+plt.colorbar( orientation = "horizontal", fraction = 0.03, pad = 0.025 )
 
 
 #Visual impression
@@ -133,7 +140,7 @@ plt.subplot( 1, 3, 2 )
 Coor, X = CutHaloZ( Cut*Box_L/(1.0*N_sec)-dx/2.0, dx, GH, plot = False )
 plt.plot( Coor[0], Coor[1], '.', color = 'blue', markersize = 1 )
 plt.imshow( -np.transpose(Scheme( eig1, eig2, eig3, Lambda_opt )[::,::-1]), extent = extent, vmin=-3, vmax=0, cmap = my_cmap4 )
-plt.title( "Visual impresion for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
+plt.title( "Visual impression for $\lambda_{th} = %1.3f$"%(Lambda_opt) )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
 plt.xlabel( "[$h^{-1}$ Mpc]" )
@@ -146,11 +153,16 @@ extent = [0, N_sec, 0, N_sec]
 #plt.plot( Coor[0], Coor[1], 'o', color = 'white', markersize = 4 )
 #Void basins
 num_voids = np.max( voids )
-lista = np.array([nan] + list(np.random.permutation( range(1,num_voids.astype(int)+1) )))
+#lista = np.array([nan] + list(np.random.permutation( range(1,num_voids.astype(int)+1) )))
 #voids
-voids2 = lista[ voids.astype(int) ]
-plt.imshow( np.transpose(voids2[::,::-1]), cmap = 'spectral', extent = extent, vmin = -num_voids/20., vmax = num_voids,\
+voids2 = sizes[ voids.astype(int) ]
+voids2[voids==0] = nan
+plt.imshow( np.transpose(voids2[::,::-1]), cmap = 'hot', extent = extent, vmin = 1, vmax = sizes.max(),\
 interpolation = 'none' )
+
+#COLOR BAR
+plt.colorbar( orientation = "horizontal", fraction = 0.03, pad = 0.025 )
+
 plt.imshow( np.transpose(contours[::,::-1]), cmap = cmap2, extent = extent, vmin = 0, vmax = 1 )
 
 #Velocity field
@@ -163,7 +175,7 @@ norm = 100.
 plt.title( "Distribution of voids" )
 plt.yticks( (),() )
 plt.xticks( (0,Box_L) )
-plt.xlabel( "[$h^{-1}$ Mpc]" )
+#plt.xlabel( "[$h^{-1}$ Mpc]" )
 
 plt.xlim( (0,Box_L) )
 plt.ylim( (0,Box_L) )
