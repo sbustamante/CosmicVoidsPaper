@@ -505,6 +505,16 @@ def density_lambda1_correlation( filename_eig, delta_file, lamb_min, lamb_max, N
     datos = np.loadtxt( "temp.tmp" )
     #os.system( "rm temp.tmp" )
     return datos
+  
+#..................................................................................................
+#Properties of central voids
+#..................................................................................................
+def density_FA_correlation( filename_eig, delta_file, delta_min, delta_max, N_delta, FA_min, FA_max, N_FA ):
+    os.system( "./Density_FA_Correlation.out %s %s %f %f %d %f %f %d"%
+    ( filename_eig, delta_file, delta_min, delta_max, N_delta, FA_min, FA_max, N_FA ) )
+    datos = np.loadtxt( "temp.tmp" )
+    #os.system( "rm temp.tmp" )
+    return datos
 
 #..................................................................................................
 #Void Finder

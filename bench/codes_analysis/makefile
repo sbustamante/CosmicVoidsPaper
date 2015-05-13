@@ -26,6 +26,8 @@ compile:
 		@echo -e
 		$(COMPILER) Density_L1_Correlation.c -lm -o Density_L1_Correlation.out
 		@echo -e
+		$(COMPILER) Density_FA_Correlation.c -lm -o Density_FA_Correlation.out
+		@echo -e
 		$(COMPILER) Central_Voids_Properties.c -lm -o Central_Voids_Properties.out
 		@echo -e
 		$(COMPILER) Density_Classification.c -lm -o Density_Classification.out
