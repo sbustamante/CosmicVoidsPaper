@@ -419,23 +419,21 @@ meaning of this threshold.
 
 %-------------------------------------------------------------------------
 %FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
-\begin{figure*}
+\begin{figure}
 \centering
 
   \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{delta_L1.pdf}  
+  width=0.30\textheight]{delta_L1.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{FA_L1.pdf}
+  width=0.30\textheight]{FA_L1.pdf}  
   \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{FA_delta.pdf}
-  \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{FA_environment.pdf}
+  width=0.30\textheight]{FA_delta.pdf}
 
-  
-  \captionof{figure}{\small Overdensity (upper left) and Fractional
-    Anisotropy (upper right) with respect to the eigenvalue $\lambda_1$ 
-    for each web scheme (T-Web, continous lines. V-Web, dashed lines) 
-    calculated over all grid cells in the Bolshoi simulation. 
+  \captionof{figure}{\small Density contrast (top) and Fractional
+    Anisotropy (middle) with respect to the eigenvalue $\lambda_1$ 
+    and with respect to each other (bottom) for each web scheme (T-Web, 
+    continous lines. V-Web, dashed lines) calculated over all grid cells 
+    in the Bolshoi simulation. 
     Thick central lines are the median and filled regions include
     $50\%$ of the cells in each bin. This information is necessary to 
     define void boundaries in the watershed algorithm. The vertical lines 
@@ -446,9 +444,29 @@ meaning of this threshold.
     order of magnitude expectation for this threshold.}
   \label{fig:L1_correlations}
 
-\end{figure*}
+\end{figure}
 %.........................................................................
 
+
+%-------------------------------------------------------------------------
+%FIGURE 3: Histograms for each environment regarding the FA value
+\begin{figure}
+\centering
+
+  \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.35\textheight]{FA_environment.pdf}
+
+  \captionof{figure}{\small Volume of each environment per FA 
+  ($dV_i/dFA,\ \ i=v,s,f,k$) normalized by the total volume per FA ($dV/dFA$).
+  Top/bottom corresponds to the T-Web/V-Web. For a given value of the FA, 
+  each line represents the volume contribution of the respective 
+  environment to the total volume with the same FA value. Above FA=0.95,
+  only sheets and filaments contribute to all the volume of the simulation
+  within that range of FA.}
+  \label{fig:FA_environment}
+
+\end{figure}
+%.........................................................................
 
 
 %*************************************************************************
@@ -527,17 +545,33 @@ increasing/decreasing $\lambda_1$.
 Voids are thus characterized by low values of both FA and
 $\lambda_1$.  
 
-
-In Fig. \ref{fig:L1_correlations} we show that the these two values
+% CORRECTION: ISSUE 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\before{In Fig. \ref{fig:L1_correlations} we show that the these two values
 are indeed closely correlated.  
 The right panel shows the correlation between $\lambda_1$ and $\delta$ for
 all the grid cells in the simulation while the right panel shows the
 correlation between $\lambda_1$ and the FA. This shows that the
-overdensity has a large scatter at fixed $\lambda_1$. 
+overdensity has a large scatter at fixed $\lambda_1$.}
 
-% CORRECTION: ISSUE 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+\after{In Fig. \ref{fig:L1_correlations} we show that the these two values
+are indeed closely correlated.  The top panel shows the correlation between 
+$\lambda_1$ and $\delta$ for all the grid cells in the simulation while the 
+bottom panel shows the correlation between $\lambda_1$ and the FA. The middle 
+panel shows the correlation between $\delta$ and the FA. This shows that the 
+density has a larger scatter at fixed $\lambda_1$ than the FA, yet large and 
+small values of the density remain still associated to low values of the FA.}
+
+
 \after{At this point, the eigenvalue $\lambda_1$ and the FA appear to be
-equally potential candidates for tracing cosmic voids, however, }
+equally potential candidates for tracing cosmic voids, however, the 
+eigenvalue $\lambda_1$ presents, along with the density, an undesirable 
+feature for a void tracer. As we move out from inner parts of voids to outer 
+parts, $\lambda_1$ and the density increase monotonically, making unclear 
+where to set the frontier of voids. On the other hand, the FA naturally 
+indicates the real frontier as regions where anisotropic collapse begin to 
+dominate, which, according to Fig. \ref{fig:FA_environment}, are associated
+mainly to sheets and, to a lesser extent, to filaments.}
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 From Figs. \ref{fig:FA_field} and \ref{fig:L1_correlations} we
@@ -607,7 +641,7 @@ voids that have been identified using the watershed algorithm on the
 FA field. 
 
 %.........................................................................
-%FIGURE 3: volume functions
+%FIGURE 4: volume functions
 \begin{figure*}
 \centering
 
@@ -723,7 +757,7 @@ evident in the left and right panels of Fig. \ref{fig:FA_field}.
 
 
 %.........................................................................
-%FIGURE 4: Density profile of voids for each defined scheme
+%FIGURE 5: Density profile of voids for each defined scheme
 \begin{figure*}
 \centering
   \includegraphics[trim = 2mm 2mm 5mm 0mm, clip, keepaspectratio=true,
@@ -762,7 +796,6 @@ evident in the left and right panels of Fig. \ref{fig:FA_field}.
   \label{fig:velocity_profile}
   \vspace{0.1 cm}
 \end{figure*}
-
 
 \begin{figure*}
 \centering  
