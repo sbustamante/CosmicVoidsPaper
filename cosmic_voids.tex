@@ -243,7 +243,7 @@ density/velocity fields as they trace the collapsing or expanding
 nature of the matter field, which defines the dynamics of the Cosmic
 Web. 
 
-% CORRECTION: ISSUE 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 \before{ The tracer that we use to define the 
 voids is the fractional anisotropy (FA) computed from the set of 
@@ -480,7 +480,7 @@ meaning of this threshold.
 \label{subsec:FA_voids}
 %-------------------------------------------------------------------------
 
-% CORRECTION: ISSUE 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 \before{The fractional anisotropy (FA), as developed by \citet{Basser95}, was 
 conceived to quantify the anisotropy of the diffusivity of water
@@ -545,7 +545,7 @@ increasing/decreasing $\lambda_1$.
 Voids are thus characterized by low values of both FA and
 $\lambda_1$.  
 
-% CORRECTION: ISSUE 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 \before{In Fig. \ref{fig:L1_correlations} we show that the these two values
 are indeed closely correlated.  
 The right panel shows the correlation between $\lambda_1$ and $\delta$ for
@@ -617,14 +617,26 @@ However, from the analysis of our results the choice of a fixed
 Cartesian mesh does not induce spurious results, at least with
 the mass resolution we have in the N-body simulation. 
 
-The watershed algorithm also needs a threshold value to reduce
+% CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\before{The watershed algorithm also needs a threshold value to reduce
 spurious features and prevent void hierarchization.  
 If the density field is used, a typical threshold is
 $\delta = -0.8$ \citep{Platen07},  which means that any ridge between
 two voids with overdensity below that value is removed to merge the
 respective voids. 
 In our case we have to find a corresponding FA value
-to define this threshold. 
+to define this threshold.}
+
+
+\after{The watershed algorithm also needs a threshold value to reduce
+spurious features and prevent void hierarchization.  
+If the density field is used, a typical threshold is
+$\delta = -0.8$ \citep{Platen07},  which means that, given two neighbour 
+voids, if the mean value of the density across their common boundary is 
+below that threshold, both voids are taken as just one void.
+In our case we have to find a corresponding FA value
+to define this threshold.}
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 In Fig. \ref{fig:L1_correlations} we find the correlations of
 the eigenvalue $\lambda_1$ with the matter overdensity (left panel) and
@@ -638,7 +650,8 @@ with the FA, indicating that in turn $\lambda_1=0.0$ corresponds to a
 FA=$0.65$ which is the value that we choose to remove ridges. 
 The right column in Fig. \ref{fig:FA_field} shows all the individual
 voids that have been identified using the watershed algorithm on the
-FA field. 
+FA field.
+
 
 %.........................................................................
 %FIGURE 4: volume functions
