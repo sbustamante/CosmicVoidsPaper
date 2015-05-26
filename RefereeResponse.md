@@ -102,20 +102,28 @@ More minor things:
     typically). If not, "effective" should be removed for clarity.** 
 
     Response:
-    We removed "effective" for clarity.
+    We removed "effective" for clarity. 
 
     
 10. **In Sect. 5.5, there are a few instances where I think you meant "r/r_eff =" instead of "r_eff =".**
 
+    Response:
+    We have revised all the instances and replaced r_eff by r/r_eff
+    wherever it was appropriate. 
 
-11. **All quantities are computed at the pixel scale, ~1 Mpc/h, correct? If the authors have any insights about 
-    how the results would change if this scale were changed, it would be helpful to state them. A quantitative 
-    discussion of how some results would change with a different scale would be great, but not necessary.**
+
+11. **All quantities are computed at the pixel scale, ~1 Mpc/h,
+    correct? If the authors have any insights about  how the results
+    would change if this scale were changed, it would be helpful to
+    state them. A quantitative  discussion of how some results would
+    change with a different scale would be great, but not necessary.** 
 
     
-12. **Finally, about the necessity of color: Figs 4-6, as they currently are, require color, but it would be 
-    easy for the authors to use different linestyles, as well, to make color unnecessary.**
+12. **Finally, about the necessity of color: Figs 4-6, as they
+currently are, require color, but it would be  easy for the authors to
+use different linestyles, as well, to make color unnecessary.** 
     
     Response:
-    - These figures have already different linewidths for each bin. We think it might be easier to have 6 
+    - These figures have already different linewidths for each bin. We
+    think it might be easier to have 6  
       different widths than 6 different linestyles.
