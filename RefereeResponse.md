@@ -118,6 +118,14 @@ More minor things:
     state them. A quantitative  discussion of how some results would
     change with a different scale would be great, but not necessary.** 
 
+    Response:
+    We now mention in the first paragraph of the Results section the
+    expected results for larger smoothing scales. Namely, that the
+    statistics for the cosmci web tend to be those of a random
+    Gaussian field.
+
+
+
     
 12. **Finally, about the necessity of color: Figs 4-6, as they
 currently are, require color, but it would be  easy for the authors to
