@@ -94,10 +94,15 @@ More minor things:
     cell in the lowest density regions.
 
     
-9. **Sect. 5.4: The sentence "subcompensated voids have outflowing ve- locity profiles all the way up to the 
-    effective radius where the average radial density reaches the average value" is a bit confusing; this is 
-    not r_eff, right? If so, this statement seems to be an understatement (v_r >0 out to several r_eff, 
-    typically). If not, "effective" should be removed for clarity.**
+9. **Sect. 5.4: The sentence "subcompensated voids have outflowing ve-
+    locity profiles all the way up to the effective radius where the
+    average radial density reaches the average value" is a bit
+    confusing; this is not r_eff, right? If so, this statement seems
+    to be an understatement (v_r >0 out to several r_eff,
+    typically). If not, "effective" should be removed for clarity.** 
+
+    Response:
+    We removed "effective" for clarity.
 
     
 10. **In Sect. 5.5, there are a few instances where I think you meant "r/r_eff =" instead of "r_eff =".**
