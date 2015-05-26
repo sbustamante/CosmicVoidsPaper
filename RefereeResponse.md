@@ -82,10 +82,16 @@ More minor things:
     is  also corrected.  
 
       
-8. **Sect 3.3, 2nd paragraph: I do not see why "the analysis of [y]our results" shows that a fixed Cartesian 
-    mesh does not induce spurious results". It's true, that the results look reasonable, but I think it would 
-    be better to state something about the level of discreteness noise, e.g. the number of zero-density cells, 
-    or the minimum if there are none.**
+8. **Sect 3.3, 2nd paragraph: I do not see why "the analysis of [y]our
+    results" shows that a fixed Cartesian  mesh does not induce
+    spurious results". It's true, that the results look reasonable,
+    but I think it would  be better to state something about the level
+    of discreteness noise, e.g. the number of zero-density cells,  or
+    the minimum if there are none.** 
+
+    Response:
+    We have rephrased this in terms of the number of particles per
+    cell in the lowest density regions.
 
     
 9. **Sect. 5.4: The sentence "subcompensated voids have outflowing ve- locity profiles all the way up to the 

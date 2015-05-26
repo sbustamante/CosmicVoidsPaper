@@ -614,9 +614,14 @@ instead of the FA field as we do here
 Second, we estimate all relevant quantities on a Cartesian mesh of
 fixed cell size, while other works use an adaptive Delaunay tessellation
 \citep{Schaap00}.
-However, from the analysis of our results the choice of a fixed
+\before{However, from the analysis of our results the choice of a fixed
 Cartesian mesh does not induce spurious results, at least with
-the mass resolution we have in the N-body simulation. 
+the mass resolution we have in the N-body simulation. }
+\after{Nevertheless, in our case the average number of particles per cell
+  is large enough ($512$ particles/cell) ensuring that the lowest
+  density regions are sampled with at least $\sim 10$ particles
+  ($\delta \sim-0.98$), which seems to avoid spurious results from a
+  noisy density field sampling.}  
 
 % CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 \before{The watershed algorithm also needs a threshold value to reduce
