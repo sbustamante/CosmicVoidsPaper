@@ -70,15 +70,16 @@ Conceptual:
 More minor things:
 ==
 
-7. **I'm confused a bit about the middle panels of Fig. 1. The title, "Visual impresion for lambda_th=..." 
-    is strange. Aren't there several thresholds here? Also, what are the blue dots? Also "impresion" is 
-    misspelled.**
+7. **I'm confused a bit about the middle panels of Fig. 1. The title,
+    "Visual impresion for lambda_th=..."  is strange. Aren't there
+    several thresholds here? Also, what are the blue dots? Also
+    "impresion" is  misspelled.**
     
     Response:
-    - For each cell, the environment is determined according the relative strenght of each eigenvalue with
-      respect to the lambda_th value, so only a threshold is required (please refer to 2nd paragraph of subsec. 
-      2.1). Blue dots were dark matter halos (FOF), but we have deleted them for clarity. Typo "impresion" 
-      also corrected.
+    - We have rewritten the caption. There are two different
+    thresholds, one for each web finder. Blue dots were dark matter
+    halos (FOF). We removed them for clarity. The typo ("impresion")
+    is  also corrected.  
 
       
 8. **Sect 3.3, 2nd paragraph: I do not see why "the analysis of [y]our results" shows that a fixed Cartesian 
