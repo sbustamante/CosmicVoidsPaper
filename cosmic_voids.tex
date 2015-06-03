@@ -420,32 +420,36 @@ meaning of this threshold.
 
 %-------------------------------------------------------------------------
 %FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
-\begin{figure}
+\begin{figure*}
 \centering
 
-  \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.30\textheight]{delta_L1.pdf}
-  \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.30\textheight]{FA_L1.pdf}  
-  \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.30\textheight]{FA_delta.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 10mm, keepaspectratio=true,
+  width=0.33\textwidth]{FA_delta.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 10mm, keepaspectratio=true,
+  width=0.33\textwidth]{delta_L1.pdf}
+  \includegraphics[trim = 1mm 0mm 5mm 10mm, keepaspectratio=true,
+  width=0.33\textwidth]{FA_L1.pdf}  
 
-  \captionof{figure}{\small Density contrast (top) and Fractional
-    Anisotropy (middle) with respect to the eigenvalue $\lambda_1$ 
-    and with respect to each other (bottom) for each web scheme (T-Web, 
-    continous lines. V-Web, dashed lines) calculated over all grid cells 
-    in the Bolshoi simulation. 
-    Thick central lines are the median and filled regions include
-    $50\%$ of the cells in each bin. This information is necessary to 
-    define void boundaries in the watershed algorithm. The vertical lines 
-    show the equivalent threshold values for the T-Web and V-web in order 
-    to have voids composed by cells with Fractional Anisotrop equal or 
-    less than $0.95$. This threshold on the eigenvalues does not influence 
+
+  \captionof{figure}{\small Fractional Anisotropy  as a function of
+    the overdensity (left) and the eigenvalue $\lambda_1$ (middle), and
+    density contrast (right) as a function of the
+    eigenvalue $\lambda_1$ for each web scheme (T-Web,  continous
+    lines. V-Web, dashed lines). Thick central lines are the median
+    and filled regions include $50\%$ of the cells in each bin. 
+    The left panel we confirms that underdense regions can be
+    identified with Fractional Anisotropy values less than $0.95$.
+    For this reason we define voids to be composed by cells with
+    Fractional Anisotropy equal or less than this value.
+    In the middle and right panel we show the equivalent eigenvalue
+    threshold for the T-Web and V-web corresponding to that
+    Fractional Anisotropy. 
+    This threshold on the eigenvalues does not influence 
     our computations. We show it as a guide to readers familiar with the
-    order of magnitude expectation for this threshold.}
+    order of magnitude expectation for this quantity.}
   \label{fig:L1_correlations}
 
-\end{figure}
+\end{figure*}
 %.........................................................................
 
 

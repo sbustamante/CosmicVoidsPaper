@@ -1,14 +1,19 @@
 Conceptual:
 ==
 
-1. **It seems that part of the motivation for using FA is that it is very well correlated with lambda_1, 
-    at low lambda_1. FA is a rather interesting quantity in itself, differentiating haloes and voids from 
+1. **It seems that part of the motivation for using FA is that it is
+    very well correlated with lambda_1,  at low lambda_1. FA is a
+    rather interesting quantity in itself, differentiating haloes and
+    voids from  
     filaments and walls, but it is not clear why it should be superior to lambda_1 for void finding. The 
-    authors should more clearly articulate why this might be, if there is a reason. The FA being "conceived 
-    to quantify the anisotropy of the diffusivity of water molecules through cerebral tissue in nuclear 
-    magnetic resonance imaging" should be elaborated on; this does not clarify the usefulness of the FA for 
-    cosmologists. Conceptually, I also wonder: do filaments and walls behave differently from each other in 
-    FA, or do they both have FA ~ 1?**
+    authors should more clearly articulate why this might be, if there
+    is a reason. The FA being "conceived  to quantify the anisotropy
+    of the diffusivity of water molecules through cerebral tissue in
+    nuclear  magnetic resonance imaging" should be elaborated on; this
+    does not clarify the usefulness of the FA for
+    cosmologists. Conceptually, I also wonder: do filaments and walls
+    behave differently from each other in  FA, or do they both have FA
+    ~ 1?** 
 
       Response: 
       - Although lambda_1 is the defining property of voids when using the T-web/V-web (1st paragraph of 
@@ -58,14 +63,14 @@ Conceptual:
       inferred from the figure. Small voids are indeed located inside sheets and filaments.
  
  
-6. **2D histograms of (lambda_1, delta) and (lambda_1, FA) are shown in Fig. 2, and I would appreciate also 
-    seeing a (FA, delta) 2D histogram, maybe with 1+delta on a log scale, which would help to clarify the 
-    physical meaning of FA.**
+6. **2D histograms of (lambda_1, delta) and (lambda_1, FA) are shown
+    in Fig. 2, and I would appreciate also  seeing a (FA, delta) 2D
+    histogram, maybe with 1+delta on a log scale, which would help to
+    clarify the  physical meaning of FA.**
     
     Response: 
-    - The requested histogram has been added as the bottom panel of Fig. 2. This shows that lower values of
-      the FA are associated to small (voids) and large values (clusters) of the density.
-
+    - We have included the new plot in Fig. 2. This shows that indeed
+    the overdensity of zero is found at the highest Fractional Anisotropy.
       
 More minor things:
 ==
