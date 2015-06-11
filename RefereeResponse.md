@@ -54,13 +54,18 @@ Conceptual:
     be superior.**
 
     
-5. **I am not convinced that the "tiny white bubbles located inside sheets" are embedded in overdense regions. 
-    Based just on Fig. 1, they could be physical, but small, voids. We also no nothing of their extent 
-    perpendicular to the plane of Fig. 1; we could just be looking of corners of much larger objects.**
-    
+5. **I am not convinced that the "tiny white bubbles located inside
+sheets" are embedded in overdense regions.  Based just on Fig. 1, they
+could be physical, but small, voids. We also no nothing of their
+extent  perpendicular to the plane of Fig. 1; we could just be looking
+of corners of much larger objects.** 
+     
     Response:
-    - In Right panels of Fig. 1, the color of each void refers now the effective radius. The size can now be
-      inferred from the figure. Small voids are indeed located inside sheets and filaments.
+    - In the right panels of Fig. 1, the color of each void refers now
+    the effective radius. The size could be inferred from the
+    figure. We have checked by visual inspection some cases and small
+    voids are indeed located inside sheets and filaments. This was
+    already found and explained in Hoffman et al. 2012. 
  
  
 6. **2D histograms of (lambda_1, delta) and (lambda_1, FA) are shown
