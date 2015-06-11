@@ -43,15 +43,25 @@ Conceptual:
     - We have added a clearer explanation of the ridge removing procedure (3rd paragraph of subsec. 3.3).
 
     
-4. **In Fig. 6, I only see a clear ridge in FA at r~r_eff in a few cases. the sentence in Sect. 5.5 "The 
-    difference between the radius where the density ridge is reached ([r/]reff = 3) and the radius of the 
-    FA ridge ([r/]reff = 1 ) ..." implies that I should see a ridge in FA at r~r_eff. Is this because the 
-    ridge is actually a 2D surface that is spherically averaged? It would be helpful to point this (or any 
-    other reasons) out. Also, the statement "This makes the FA ridge a reasonable boundary for voids compared 
-    to the traditional definition that puts the boundary at the density ridge" implies (perhaps 
-    unintentionally) that the FA ridge is a superior marker of the edge of a void than a density ridge. It is 
-    a physically different sort of ridge, and I agree that it is reasonable, but I do not see why it should 
-    be superior.**
+4. **In Fig. 6, I only see a clear ridge in FA at r~r_eff in a few
+    cases. the sentence in Sect. 5.5 "The  difference between the
+    radius where the density ridge is reached ([r/]reff = 3) and the
+    radius of the  FA ridge ([r/]reff = 1 ) ..." implies that I should
+    see a ridge in FA at r~r_eff. Is this because the ridge is
+    actually a 2D surface that is spherically averaged? It would be
+    helpful to point this (or any  other reasons) out. Also, the
+    statement "This makes the FA ridge a reasonable boundary for voids
+    compared  to the traditional definition that puts the boundary at
+    the density ridge" implies (perhaps  unintentionally) that the FA
+    ridge is a superior marker of the edge of a void than a density
+    ridge. It is  a physically different sort of ridge, and I agree
+    that it is reasonable, but I do not see why it should  be
+    superior.** 
+
+    Response:
+    - We now talk about "maxima" instead of "ridge" in the TA
+    profiles. We have also removed the references of the TA as a
+    "superior" characterization.
 
     
 5. **I am not convinced that the "tiny white bubbles located inside
