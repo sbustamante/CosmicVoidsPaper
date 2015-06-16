@@ -26,15 +26,24 @@ Conceptual:
 	associated with high values of the FA.
       
 
-2. **I did not understand the sentence at the end of Sect 2, "In this work we propose an optimal value of 
-    the threshold based on the maximization of the fractional anisotropy field in the locations label[ed] 
-    as filaments and walls," and this seems to be an important point. Is the threshold mentioned in this 
-    sentence a threshold in lambda_1, or FA? Is this the 0.95 threshold in FA? It seems to be a reasonable 
-    choice, but I do not see a sense in which it is "optimal," except that it seems to be the boundary 
-    between the FA being well-correlated with lambda_1 and not-so-well. Also, if this sentence is about the 
-    0.95 threshold, I do not see why it "does not enter into our computations," since the boundary of many 
-    voids will depend on this threshold. It would be useful to know for what fraction of voids the limit 
-    FA = 0.95 actually affects the boundary (in the case of the largest voids, I suppose).**
+2. **I did not understand the sentence at the end of Sect 2, "In this
+    work we propose an optimal value of  the threshold based on the
+    maximization of the fractional anisotropy field in the locations
+    label[ed]  as filaments and walls," and this seems to be an important point. Is the threshold mentioned in this 
+    sentence a threshold in lambda_1, or FA? Is this the 0.95
+    threshold in FA? It seems to be a reasonable choice, but I do not
+    see a sense in which it is "optimal," except that it seems to be
+    the boundary  between the FA being well-correlated with lambda_1
+    and not-so-well. Also, if this sentence is about the     0.95
+    threshold, I do not see why it "does not enter into our
+    computations," since the boundary of many    voids will depend on
+    this threshold. It would be useful to know for what fraction of
+    voids the limit    FA = 0.95 actually affects the boundary (in the
+    case of the largest voids, I suppose).** 
+
+    Response:
+    We have rewritten this paragraph. The threshold that is not
+    relevant to our computations is lambda_th, not FA=0.95.
 
     
 3. **I do not see how the value of FA=0.65 (corresponding to lambda_1 = 0) is used "to remove ridges."**
