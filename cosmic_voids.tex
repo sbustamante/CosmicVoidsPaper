@@ -641,26 +641,22 @@ to define this threshold.}
 \after{The watershed algorithm also needs a threshold value to reduce
 spurious features and prevent void hierarchization.  
 If the density field is used, a typical threshold is
-$\delta = -0.8$ \citep{Platen07},  which means that, given two neighbour 
+$\delta = -0.8$ \citep{Platen07},  which means that, given two neighbouring 
 voids, if the mean value of the density across their common boundary is 
-below that threshold, both voids are taken as just one void.
+below that threshold, the two voids are merged.
 In our case we have to find a corresponding FA value
 to define this threshold.}
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-In Fig. \ref{fig:L1_correlations} we find the correlations of
-the eigenvalue $\lambda_1$ with the matter overdensity (left panel) and
-the FA (right panel).
-We can use this information to find the equivalent FA threshold. 
-From the left panel we see that an underdensity of $\delta=-0.8$ 
-corresponds to $\lambda_1=0.0$, regardless of the web-finding
-scheme.
-From the second panel we have a very tight correlation of $\lambda_1$
-with the FA, indicating that in turn $\lambda_1=0.0$ corresponds to a
-FA=$0.65$ which is the value that we choose to remove ridges. 
+\after{In the left panel of Fig. \ref{fig:L1_correlations} we see how 
+the FA correlates with the matter overdensity. 
+A value of $\delta=-0.8$ corresponds to a value of $FA\sim 0.65$ regardless of
+the web-finding scheme. 
+This is the value we choose to remove ridges between two watershed
+voids. 
 The right column in Fig. \ref{fig:FA_field} shows all the individual
 voids that have been identified using the watershed algorithm on the
-FA field.
+FA field.}
 
 
 %.........................................................................

@@ -40,7 +40,8 @@ Conceptual:
 3. **I do not see how the value of FA=0.65 (corresponding to lambda_1 = 0) is used "to remove ridges."**
 
     Response: 
-    - We have added a clearer explanation of the ridge removing procedure (3rd paragraph of subsec. 3.3).
+    - We have improved our explanation about the ridge removing
+    procedure in the 3rd paragraph of subsection 3.3.  
 
     
 4. **In Fig. 6, I only see a clear ridge in FA at r~r_eff in a few
