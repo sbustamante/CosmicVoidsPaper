@@ -245,17 +245,7 @@ Web.
 
 % CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-\before{ The tracer that we use to define the 
-voids is the fractional anisotropy (FA) computed from the set of 
-eigenvalues of the tensor under consideration. 
-The FA was initially introduced by \citet{Basser95} to quantify the
-anisotropy degree of the diffusivity of water molecules through
-cerebral tissue in nuclear magnetic resonance
-imaging and \citet{Libeskind13} introduced this concept in the context
-of Cosmic Web classification schemes.}
-
-
-\after{The tracer that we use to define the voids is the fractional
+The tracer that we use to define the voids is the fractional
 anisotropy (FA) computed from the set of eigenvalues of the tensor
 under consideration. 
 The FA was initially introduced by \citet{Basser95} to quantify the
@@ -265,7 +255,7 @@ detect structures that restrict the otherwise isotropic Brownian movement
 of water molecules. Taking into account that this process is identical to 
 the velocity shear in the large-scale matter distribution, 
 \citet{Libeskind13} introduced the concept of the FA in the context of 
-Cosmic Web classification schemes.}
+Cosmic Web classification schemes.
 
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -455,22 +445,20 @@ with its meaning.
 
 %-------------------------------------------------------------------------
 %FIGURE 3: Histograms for each environment regarding the FA value
-\begin{figure}
-\centering
-
-  \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
-  width=0.35\textheight]{FA_environment.pdf}
-
-  \captionof{figure}{\small Volume of each environment per FA 
-  ($dV_i/dFA,\ \ i=v,s,f,k$) normalized by the total volume per FA ($dV/dFA$).
-  Top/bottom corresponds to the T-Web/V-Web. For a given value of the FA, 
-  each line represents the volume contribution of the respective 
-  environment to the total volume with the same FA value. Above FA=0.95,
-  only sheets and filaments contribute to all the volume of the simulation
-  within that range of FA.}
-  \label{fig:FA_environment}
-
-\end{figure}
+%\begin{figure}
+%\centering
+%  \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
+%  width=0.35\textheight]{FA_environment.pdf}
+%   \captionof{figure}{\small Volume of each environment per FA
+%   ($dV_i/dFA,\ \ i=v,s,f,k$) normalized by the total volume per FA
+%   ($dV/dFA$). 
+%  Top/bottom corresponds to the T-Web/V-Web. For a given value of the FA, 
+%  each line represents the volume contribution of the respective 
+%  environment to the total volume with the same FA value. Above FA=0.95,
+%  only sheets and filaments contribute to all the volume of the simulation
+%  within that range of FA.}
+%  \label{fig:FA_environment}
+%\end{figure}
 %.........................................................................
 
 
@@ -487,14 +475,7 @@ with its meaning.
 
 % CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-\before{The fractional anisotropy (FA), as developed by \citet{Basser95}, was 
-conceived to quantify the anisotropy of the diffusivity of water
-molecules through cerebral tissue in nuclear magnetic resonance imaging. 
-Here we present the FA, much in the same way as \citet{Libeskind13},
-to use it as a tracer of cosmic voids.}
-
-
-\after{The fractional anisotropy (FA), as developed by \citet{Basser95}, 
+The fractional anisotropy (FA), as developed by \citet{Basser95}, 
 was conceived to quantify the anisotropy of the diffusivity of water
 molecules through cerebral tissue in nuclear magnetic resonance imaging. 
 In this manner, barriers such as microtubules and cell membranes, that 
@@ -503,7 +484,7 @@ be detected. In a cosmological context, the problem of finding structures
 is very similar, where filaments and sheets restrict the otherwise 
 isotropic collapsing/expanding dynamics of the matter. Taking this into 
 account, we present here the FA, much in the same way as \citet{Libeskind13}, 
-to use it as a tracer of cosmic voids.}
+to use it as a tracer of cosmic voids.
 
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -551,24 +532,18 @@ Voids are thus characterized by low values of both FA and
 $\lambda_1$.  
 
 % CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-\before{In Fig. \ref{fig:L1_correlations} we show that the these two values
-are indeed closely correlated.  
-The right panel shows the correlation between $\lambda_1$ and $\delta$ for
-all the grid cells in the simulation while the right panel shows the
-correlation between $\lambda_1$ and the FA. This shows that the
-overdensity has a large scatter at fixed $\lambda_1$.}
 
 
-\after{In Fig. \ref{fig:L1_correlations} we show that the these two values
+In Fig. \ref{fig:L1_correlations} we show that the these two values
 are indeed closely correlated.  The top panel shows the correlation between 
 $\lambda_1$ and $\delta$ for all the grid cells in the simulation while the 
 bottom panel shows the correlation between $\lambda_1$ and the FA. The middle 
 panel shows the correlation between $\delta$ and the FA. This shows that the 
 density has a larger scatter at fixed $\lambda_1$ than the FA, yet large and 
-small values of the density remain still associated to low values of the FA.}
+small values of the density remain still associated to low values of the FA.
 
 
-\after{At this point, the eigenvalue $\lambda_1$ and the FA appear to be
+At this point, the eigenvalue $\lambda_1$ and the FA appear to be
 equally potential candidates for tracing cosmic voids, however, the 
 eigenvalue $\lambda_1$ presents, along with the density, an undesirable 
 feature for a void tracer. As we move out from inner parts of voids to outer 
@@ -576,7 +551,7 @@ parts, $\lambda_1$ and the density increase monotonically, making unclear
 where to set the frontier of voids. On the other hand, the FA naturally 
 indicates the real frontier as regions where anisotropic collapse begin to 
 dominate, which, according to Fig. \ref{fig:FA_environment}, are associated
-mainly to sheets and, to a lesser extent, to filaments.}
+mainly to sheets and, to a lesser extent, to filaments.
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 From Figs. \ref{fig:FA_field} and \ref{fig:L1_correlations} we
@@ -618,34 +593,22 @@ instead of the FA field as we do here
 Second, we estimate all relevant quantities on a Cartesian mesh of
 fixed cell size, while other works use an adaptive Delaunay tessellation
 \citep{Schaap00}.
-\before{However, from the analysis of our results the choice of a fixed
-Cartesian mesh does not induce spurious results, at least with
-the mass resolution we have in the N-body simulation. }
-\after{Nevertheless, in our case the average number of particles per cell
+Nevertheless, in our case the average number of particles per cell
   is large enough ($512$ particles/cell) ensuring that the lowest
   density regions are sampled with at least $\sim 10$ particles
   ($\delta \sim-0.98$), which seems to avoid spurious results from a
-  noisy density field sampling.}  
+  noisy density field sampling.
 
 % CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-\before{The watershed algorithm also needs a threshold value to reduce
-spurious features and prevent void hierarchization.  
-If the density field is used, a typical threshold is
-$\delta = -0.8$ \citep{Platen07},  which means that any ridge between
-two voids with overdensity below that value is removed to merge the
-respective voids. 
-In our case we have to find a corresponding FA value
-to define this threshold.}
 
-
-\after{The watershed algorithm also needs a threshold value to reduce
+The watershed algorithm also needs a threshold value to reduce
 spurious features and prevent void hierarchization.  
 If the density field is used, a typical threshold is
 $\delta = -0.8$ \citep{Platen07},  which means that, given two neighbouring 
 voids, if the mean value of the density across their common boundary is 
 below that threshold, the two voids are merged.
 In our case we have to find a corresponding FA value
-to define this threshold.}
+to define this threshold.
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 \after{In the left panel of Fig. \ref{fig:L1_correlations} we see how 
@@ -723,15 +686,13 @@ through finite-differences over the potential and velocity fields.
 
 We limit our results to voids with effective radius larger than the
 smoothing length of the density field, i.e. $\sim 1$\hMpc.  
-\before{Below that scale numerical resolution effects become
-  important. }
-\after{For smaller interpolation/smoothing scales the shot noise in
-  the low density regions starts to be noticeable.}
+For smaller interpolation/smoothing scales the shot noise in
+  the low density regions starts to be noticeable.
 With that choice we find a void volume filling fraction $54.88\%$ and
 $47.06\%$ for the FA-Vweb and the FA-Tweb, respectively.  
-\after{For larger smoothing scales ($>5\hMpc$) the density and shear fields
+For larger smoothing scales ($>5\hMpc$) the density and shear fields
   tend to be Gaussian and therefore follow closely the analytical environment abundance
-  predictions for Gaussian random fields \citep{Forero09,Alonso2015}. }
+  predictions for Gaussian random fields \citep{Forero09,Alonso2015}. 
 
 
 
@@ -991,12 +952,10 @@ In Fig. \ref{fig:velocity_profile} we present the radial velocity
 profiles. 
 Positive values correspond to outflows with respect to the center. 
 
-\before{We find that subcompensated voids have outflowing velocity profiles
-all the way up to the effective radius where the average radial
-density reaches the average value.}
-\after{We find that subcompensated voids have outflowing velocity profiles
+
+We find that subcompensated voids have outflowing velocity profiles
 all the way up to the radius where the average radial
-density reaches the average value.}
+density reaches the average value.
 For voids with sizes $\reff <8\hMpc$ the outflow is always
 positive, consistent with the fact that their density profiles do not
 reach the level $\delta=0$ in the range of explored radii.
