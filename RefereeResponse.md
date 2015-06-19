@@ -16,13 +16,19 @@ Conceptual:
     ~ 1?** 
 
       Response: 
-      - Although lambda_1 is the defining property of voids when using the T-web/V-web (1st paragraph of 
-	subsec 3.2), the FA exihibit a key advantage that makes it a better void tracer (please refer to 
-	3rd paragraph of subsec. 3.2 of the new version).
-      - Now it is explicitly explained why the FA, as defined in the context of MRI, is useful to cosmologist 
+      - Although lambda_1 is the defining property of voids when using
+      the FA has a key advantage that makes it a better void tracer,
+      namely that it is possible to define a boundary in regions with
+      FA~1. The boudary setting is more arbitrary in the case of using
+      lambda_1 as a tracer. We make this clarification in the 
+	3rd paragraph of subsec. 3.2 of the new version.
+      - Now it is explicitly explained why the FA, as defined in the
+      context of MRI, is useful to cosmologist  
 	(6th paragraph of introduction and 1st paragraph of subsec 3.1).
-      - A new figure (Fig 3.) was prepared. Histograms of the volume contribution of each environment for 
-	each value of the FA (3rd paragraph of subsec. 3.2). Sheets (mainly) and filaments are clearly 
+      - A new figure (Fig 3.) was prepared. Histograms of the volume
+      contribution of each environment for  
+	each value of the FA (3rd paragraph of subsec. 3.2). Sheets
+      (mainly) and filaments are clearly  
 	associated with high values of the FA.
       
 
