@@ -1,46 +1,58 @@
+Dear Editor,
+
+We thank the referee for a very detailed report. We feel that his/her
+comments have dramatically improved the clarity and readability of our
+paper. 
+
+We have addressed all the points raised by the referee. We include in
+this reply an answer to each comment. We have included the file main_diff.pdf
+showing the differences in the body of the paper.
+
+The Authors.
+
 Conceptual:
 ==
 
 1. **It seems that part of the motivation for using FA is that it is
     very well correlated with lambda_1,  at low lambda_1. FA is a
     rather interesting quantity in itself, differentiating haloes and
-    voids from  
-    filaments and walls, but it is not clear why it should be superior to lambda_1 for void finding. The 
-    authors should more clearly articulate why this might be, if there
-    is a reason. The FA being "conceived  to quantify the anisotropy
-    of the diffusivity of water molecules through cerebral tissue in
-    nuclear  magnetic resonance imaging" should be elaborated on; this
-    does not clarify the usefulness of the FA for
-    cosmologists. Conceptually, I also wonder: do filaments and walls
-    behave differently from each other in  FA, or do they both have FA
-    ~ 1?** 
+    voids from  filaments and walls, but it is not clear why it should
+    be superior to lambda_1 for void finding. The authors should more
+    clearly articulate why this might be, if there is a reason. The FA
+    being "conceived  to quantify the anisotropy of the diffusivity of
+    water molecules through cerebral tissue in nuclear  magnetic
+    resonance imaging" should be elaborated on; this does not clarify
+    the usefulness of the FA for cosmologists. Conceptually, I also
+    wonder: do filaments and walls behave differently from each other
+    in  FA, or do they both have FA ~ 1?** 
 
-      Response: 
-      - Although lambda_1 is the defining property of voids when using
+      Response:   
+      - Although lambda_1 is the defining property of voids, 
       the FA has a key advantage that makes it a better void tracer,
       namely that it is possible to define a boundary in regions with
-      FA~1. The boudary setting is more arbitrary in the case of using
-      lambda_1 as a tracer. We make this clarification in the 
-	3rd paragraph of subsec. 3.2 of the new version.
+      FA~1. Boudary setting becomes arbitrary in the case of using
+      lambda_1 as a tracer because lambda_1 is not bound. 
+      We make this clarification in the  3rd paragraph of subsec. 3.2
+      of the new version. 
       - Now it is explicitly explained why the FA, as defined in the
       context of MRI, is useful to cosmologist  
 	(6th paragraph of introduction and 1st paragraph of subsec 3.1).
-      - A new figure (Fig 3.) was prepared. Histograms of the volume
-      contribution of each environment for  
-	each value of the FA (3rd paragraph of subsec. 3.2). Sheets
-      (mainly) and filaments are clearly  
-	associated with high values of the FA.
+      - We prepare a new Figure (Fig. 3) to shows that filaments and
+      sheets have different behaviour in FA. Only sheets are
+      associated with high values of FA~1.  
+
       
 
 2. **I did not understand the sentence at the end of Sect 2, "In this
     work we propose an optimal value of  the threshold based on the
     maximization of the fractional anisotropy field in the locations
-    label[ed]  as filaments and walls," and this seems to be an important point. Is the threshold mentioned in this 
-    sentence a threshold in lambda_1, or FA? Is this the 0.95
-    threshold in FA? It seems to be a reasonable choice, but I do not
-    see a sense in which it is "optimal," except that it seems to be
-    the boundary  between the FA being well-correlated with lambda_1
-    and not-so-well. Also, if this sentence is about the     0.95
+    label[ed]  as filaments and walls," and this seems to be an
+    important point. Is the threshold mentioned in this  sentence a
+    threshold in lambda_1, or FA? Is this the 0.95 threshold in FA? It
+    seems to be a reasonable choice, but I do not see a sense in which
+    it is "optimal," except that it seems to be the boundary  between
+    the FA being well-correlated with lambda_1 and not-so-well. 
+    Also, if this sentence is about the     0.95   
     threshold, I do not see why it "does not enter into our
     computations," since the boundary of many    voids will depend on
     this threshold. It would be useful to know for what fraction of
@@ -48,11 +60,12 @@ Conceptual:
     case of the largest voids, I suppose).** 
 
     Response:
-    We have rewritten this paragraph. The threshold that is not
-    relevant to our computations is lambda_th, not FA=0.95.
+    We have rewritten this paragraph. The threshold that is 
+    irrrelevant to our computations is lambda_th, not FA=0.95.
 
     
-3. **I do not see how the value of FA=0.65 (corresponding to lambda_1 = 0) is used "to remove ridges."**
+3. **I do not see how the value of FA=0.65 (corresponding to lambda_1
+= 0) is used "to remove ridges."** 
 
     Response: 
     - We have improved our explanation about the ridge removing
@@ -141,10 +154,11 @@ More minor things:
     We removed "effective" for clarity. 
 
     
-10. **In Sect. 5.5, there are a few instances where I think you meant "r/r_eff =" instead of "r_eff =".**
+10. **In Sect. 5.5, there are a few instances where I think you meant
+"r/r_eff =" instead of "r_eff =".** 
 
     Response:
-    We have revised all the instances and replaced r_eff by r/r_eff
+    Indeed. We have revised all the instances and replaced r_eff by r/r_eff
     wherever it was appropriate. 
 
 
@@ -161,13 +175,11 @@ More minor things:
     Gaussian field.
 
 
-
-    
 12. **Finally, about the necessity of color: Figs 4-6, as they
 currently are, require color, but it would be  easy for the authors to
 use different linestyles, as well, to make color unnecessary.** 
     
     Response:
     - These figures have already different linewidths for each bin. We
-    think it might be easier to have 6  
-      different widths than 6 different linestyles.
+    think it might be easier to have 6 different widths than 6
+    different linestyles. 
