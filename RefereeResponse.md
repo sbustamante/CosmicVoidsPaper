@@ -88,8 +88,8 @@ Conceptual:
     superior.** 
 
     Response:
-    - We now talk about "maxima" instead of "ridge" in the TA
-    profiles. We have also removed the references of the TA as a
+    - We now talk about "maxima" instead of "ridge" in the FA
+    profiles. We have also removed the references of the FA as a
     "superior" characterization.
 
     
@@ -139,7 +139,7 @@ More minor things:
     the minimum if there are none.** 
 
     Response:
-    We have rephrased this in terms of the number of particles per
+    - We have rephrased this in terms of the number of particles per
     cell in the lowest density regions.
 
     
@@ -151,14 +151,14 @@ More minor things:
     typically). If not, "effective" should be removed for clarity.** 
 
     Response:
-    We removed "effective" for clarity. 
+    - We removed "effective" for clarity. 
 
     
 10. **In Sect. 5.5, there are a few instances where I think you meant
 "r/r_eff =" instead of "r_eff =".** 
 
     Response:
-    Indeed. We have revised all the instances and replaced r_eff by r/r_eff
+    - Indeed. We have revised all the instances and replaced r_eff by r/r_eff
     wherever it was appropriate. 
 
 
@@ -169,7 +169,7 @@ More minor things:
     change with a different scale would be great, but not necessary.** 
 
     Response:
-    We now mention in the first paragraph of the Results section the
+    - We now mention in the first paragraph of the Results section the
     expected results for larger smoothing scales. Namely, that the
     statistics for the cosmci web tend to be those of a random
     Gaussian field.
