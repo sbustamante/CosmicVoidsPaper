@@ -38,7 +38,7 @@ Conceptual:
       context of MRI, is useful to cosmologist  
 	(6th paragraph of introduction and 1st paragraph of subsec 3.1).
       - We prepare a new Figure (Fig. 3) to shows that filaments and
-      sheets have different behaviour in FA. Only sheets are
+      sheets have different behavior in FA. Only sheets are
       associated with high values of FA~1.  
 
       
@@ -61,7 +61,7 @@ Conceptual:
 
     Response:
     We have rewritten this paragraph. The threshold that is 
-    irrrelevant to our computations is lambda_th, not FA=0.95.
+    irrelevant to our computations is lambda_th, not FA=0.95.
 
     
 3. **I do not see how the value of FA=0.65 (corresponding to lambda_1
@@ -120,7 +120,7 @@ More minor things:
 ==
 
 7. **I'm confused a bit about the middle panels of Fig. 1. The title,
-    "Visual impresion for lambda_th=..."  is strange. Aren't there
+    "Visual impression for lambda_th=..."  is strange. Aren't there
     several thresholds here? Also, what are the blue dots? Also
     "impresion" is  misspelled.**
     
@@ -171,7 +171,7 @@ More minor things:
     Response:
     - We now mention in the first paragraph of the Results section the
     expected results for larger smoothing scales. Namely, that the
-    statistics for the cosmci web tend to be those of a random
+    statistics for the cosmic web tend to be those of a random
     Gaussian field.
 
 
