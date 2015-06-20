@@ -5,7 +5,7 @@ comments have dramatically improved the clarity and readability of our
 paper. 
 
 We have addressed all the points raised by the referee. We include in
-this reply an answer to each comment. We have included the file main_diff.pdf
+this reply an answer to each comment. We have included the file diff_cosmic_voids.pdf
 showing the differences in the body of the paper.
 
 The Authors.
