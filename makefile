@@ -28,7 +28,7 @@ DATAFOLD = data_figures
 
 pdflatex:	$(FILE_TEX).tex  
 		$(LATEX) $(FILE_TEX).tex 
-		bibtex ${FILE_TEX}
+#		bibtex ${FILE_TEX}
 		$(LATEX) $(FILE_TEX).tex 
 		$(LATEX) $(FILE_TEX).tex 
 
