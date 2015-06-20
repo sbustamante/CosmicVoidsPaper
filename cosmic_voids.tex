@@ -235,15 +235,14 @@ The first (the T-Web) is based on the Hessian of the gravitational potential or
 tidal tensor \citep{Hahn07, Forero09}. 
 The second (the V-web) is based on the velocity shear tensor
 \citep{Hoffman12}. 
-Our procedure allows for a description of the internal structure
-of voids that goes beyond a simple definition of a void as an
-underdense region in the large-scale matter distribution.
-The tidal and the shear tensors encode more information than the
-density/velocity fields as they trace the collapsing or expanding
-nature of the matter field, which defines the dynamics of the Cosmic
-Web. 
+Our procedure allows for a description of a void internal structure
+beyond a simple definition of a void as an underdense region in the
+large-scale matter distribution. 
+The tidal and the shear tensors
+encode more information than the density/velocity fields as they trace
+the collapsing or expanding nature of the matter field, which defines
+the dynamics of the Cosmic Web.  
 
-% CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 The tracer that we use to define the voids is the fractional
 anisotropy (FA) computed from the set of eigenvalues of the tensor
@@ -293,7 +292,7 @@ the qualities of our algorithm (\S \ref{sec:conclusions}).
     $\lambda_{\rm th}$ where voids are white, sheets are light gray,
     filaments are dark gray and knots are black; individual voids (right) found by 
     the a watershed algorithm on the Fractional Anisotropy field. Colours
-    in the right panels correspond with the effective radius of each void. }
+    in the right panel correspond with the effective radius of each void. }
   \label{fig:FA_field}
 \end{figure*}
 %.........................................................................
@@ -412,30 +411,34 @@ with its meaning.
 %FIGURE 2: Distributions of FA and density regarding the Lambda_1 eigenvalue
 \begin{figure*}
 \centering
-
   \includegraphics[trim = 1mm 0mm 5mm 10mm, keepaspectratio=true,
-  width=0.33\textwidth]{FA_delta.pdf}
+  width=0.33\textwidth]{FA_L1.pdf}  
   \includegraphics[trim = 1mm 0mm 5mm 10mm, keepaspectratio=true,
   width=0.33\textwidth]{delta_L1.pdf}
   \includegraphics[trim = 1mm 0mm 5mm 10mm, keepaspectratio=true,
-  width=0.33\textwidth]{FA_L1.pdf}  
-
-
-  \captionof{figure}{\small Fractional Anisotropy  as a function of
+  width=0.33\textwidth]{FA_delta.pdf}
+  \captionof{figure}{
+    Fractional Anisotropy  as a function of
     the overdensity (left) and the eigenvalue $\lambda_1$ (middle), and
     density contrast (right) as a function of the
     eigenvalue $\lambda_1$ for each web scheme (T-Web,  continous
-    lines. V-Web, dashed lines). Thick central lines are the median
+    lines. V-Web, dashed lines).     
+    Fractional Anisotropy  as a function of $\lambda_1$ (left),
+    overdensity as a function of $\lambda_1$ (middle) and Fractional
+    Anisotropy as a function of the overdensity (right).
+    Thick central lines are the median
     and filled regions include $50\%$ of the cells in each bin. 
-    The left panel we confirms that underdense regions can be
+    The left panel shows the tigth correlation between FA and
+    $\lambda_1$ in voids.
+    In the middle and right panel we show the equivalent eigenvalue
+    threshold for the T-Web and V-web corresponding to FA=$0.95$. 
+    The right panel confirms that underdense regions can be
     identified with Fractional Anisotropy values less than $0.95$.
     For this reason we define voids to be composed by cells with
     Fractional Anisotropy equal or less than this value.
-    In the middle and right panel we show the equivalent eigenvalue
-    threshold for the T-Web and V-web corresponding to that
-    Fractional Anisotropy. 
-    This threshold on the eigenvalues does not influence 
-    our computations. We show it as a guide to readers familiar with the
+    The threshold $\lambda_{\rm th}$ on the eigenvalues does not
+    influence our results. 
+    We show it as a guide to readers familiar with the
     order of magnitude expectation for this quantity.}
   \label{fig:L1_correlations}
 
@@ -445,20 +448,20 @@ with its meaning.
 
 %-------------------------------------------------------------------------
 %FIGURE 3: Histograms for each environment regarding the FA value
-%\begin{figure}
-%\centering
-%  \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
-%  width=0.35\textheight]{FA_environment.pdf}
-%   \captionof{figure}{\small Volume of each environment per FA
-%   ($dV_i/dFA,\ \ i=v,s,f,k$) normalized by the total volume per FA
-%   ($dV/dFA$). 
-%  Top/bottom corresponds to the T-Web/V-Web. For a given value of the FA, 
-%  each line represents the volume contribution of the respective 
-%  environment to the total volume with the same FA value. Above FA=0.95,
-%  only sheets and filaments contribute to all the volume of the simulation
-%  within that range of FA.}
-%  \label{fig:FA_environment}
-%\end{figure}
+\begin{figure}
+\centering
+  \includegraphics[trim = 1mm 0mm 5mm 10mm, clip, keepaspectratio=true,
+  width=0.35\textheight]{FA_environment.pdf}
+   \captionof{figure}{\small Volume of each environment per FA
+   ($dV_i/dFA,\ \ i=v,s,f,k$) normalized by the total volume per FA
+   ($dV/dFA$). 
+  Top/bottom corresponds to the T-Web/V-Web. For a given value of the FA, 
+  each line represents the volume contribution of the respective 
+  environment to the total volume with the same FA value. Above FA=0.95,
+  only sheets and filaments contribute to all the volume of the simulation
+  within that range of FA.}
+  \label{fig:FA_environment}
+\end{figure}
 %.........................................................................
 
 
@@ -509,7 +512,7 @@ Comparing these two panels we see that voids and knots (white
 and black in the middle panel of Fig. 1) display low FA values at
 their  centres, becoming gradually more anisotropic at outer regions.  
 On the other hand the filamentary structure (grey in the middle panel
-of Fig. 1) is traced by high FA values.  
+of Fig. 1) is traced by middle to high FA values.  
 This characteristic is the  key to use the FA as a tracer of cosmic
 voids.  
 
@@ -522,37 +525,38 @@ voids.
 
 
 Voids are regions where $\lambda_3\leq\lambda_2\leq
-\lambda_1\leq\lambda_{th}$. 
+\lambda_1\leq\lambda_{\rm th}$. 
 This implies that a void is completely fixed by the relative strength
 of the $\lambda_1$ eigenvalue with respect to the threshold.   
-As we increase/decrease the threshold value $\lambda_{th}$, voids
+As we increase/decrease the threshold value $\lambda_{\rm th}$, voids
 increase/decrease progressively through contours of
 increasing/decreasing $\lambda_1$.  
 Voids are thus characterized by low values of both FA and
 $\lambda_1$.  
 
-% CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-In Fig. \ref{fig:L1_correlations} we show that the these two values
-are indeed closely correlated.  The top panel shows the correlation between 
-$\lambda_1$ and $\delta$ for all the grid cells in the simulation while the 
-bottom panel shows the correlation between $\lambda_1$ and the FA. The middle 
-panel shows the correlation between $\delta$ and the FA. This shows that the 
-density has a larger scatter at fixed $\lambda_1$ than the FA, yet large and 
-small values of the density remain still associated to low values of the FA.
+In Fig. \ref{fig:L1_correlations}  we show that the these two values
+are correlated. 
+The left panel shows the correlation between the FA and $\lambda_1$
+and the middle panel between the overdensity $\delta$ and $\lambda_1$.
+The right panel shows the correlation between $\delta$ and the
+FA. 
+This shows that the  density has a larger scatter at fixed
+$\lambda_1$ than the FA, yet large and  small values of the density
+remain still associated to low values of the FA. 
 
 
 At this point, the eigenvalue $\lambda_1$ and the FA appear to be
 equally potential candidates for tracing cosmic voids, however, the 
-eigenvalue $\lambda_1$ presents, along with the density, an undesirable 
-feature for a void tracer. As we move out from inner parts of voids to outer 
-parts, $\lambda_1$ and the density increase monotonically, making unclear 
-where to set the frontier of voids. On the other hand, the FA naturally 
-indicates the real frontier as regions where anisotropic collapse begin to 
-dominate, which, according to Fig. \ref{fig:FA_environment}, are associated
-mainly to sheets and, to a lesser extent, to filaments.
-%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+eigenvalue $\lambda_1$ presents, along with the overdensity, an undesirable 
+feature for a void tracer. 
+As we move out from inner parts of voids to outer parts, $\lambda_1$
+and $\delta$ increase monotonically making unclear where to set the
+void boudary, while for low density regions ($\delta<1$) the FA traces
+the boundary where anisotropic collapse regions begin to 
+dominate.
+According to Fig. \ref{fig:FA_environment} these anisotropic areas are
+mainly associated to sheets and, to a lesser extent, filaments.
 
 From Figs. \ref{fig:FA_field} and \ref{fig:L1_correlations} we
 conclude that the FA is a good tracer of voids as it is almost perfectly
@@ -568,7 +572,7 @@ $\lambda_{1}^T$/$\lambda_{1}^{V}$ automatically produces voids with
 all the cells FA$<0.95$.   
 The middle panels in Fig. \ref{fig:FA_field} show the web
 classification for this choice of $\lambda_{th}$, demonstrating that
-this FA level is a sensitive choice to define voids.
+this FA level is a reasonable choice to define voids.
 
    
 %-------------------------------------------------------------------------
@@ -599,7 +603,6 @@ Nevertheless, in our case the average number of particles per cell
   ($\delta \sim-0.98$), which seems to avoid spurious results from a
   noisy density field sampling.
 
-% CORRECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 The watershed algorithm also needs a threshold value to reduce
 spurious features and prevent void hierarchization.  
@@ -609,17 +612,17 @@ voids, if the mean value of the density across their common boundary is
 below that threshold, the two voids are merged.
 In our case we have to find a corresponding FA value
 to define this threshold.
-%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-\after{In the left panel of Fig. \ref{fig:L1_correlations} we see how 
+
+In the right panel of Fig. \ref{fig:L1_correlations} we see how 
 the FA correlates with the matter overdensity. 
-A value of $\delta=-0.8$ corresponds to a value of $FA\sim 0.65$ regardless of
-the web-finding scheme. 
+A value of $\delta=-0.8$ corresponds to a value of FA$\sim 0.65$
+regardless of the web-finding scheme. 
 This is the value we choose to remove ridges between two watershed
 voids. 
 The right column in Fig. \ref{fig:FA_field} shows all the individual
 voids that have been identified using the watershed algorithm on the
-FA field.}
+FA field.
 
 
 %.........................................................................
@@ -691,8 +694,11 @@ For smaller interpolation/smoothing scales the shot noise in
 With that choice we find a void volume filling fraction $54.88\%$ and
 $47.06\%$ for the FA-Vweb and the FA-Tweb, respectively.  
 For larger smoothing scales ($>5\hMpc$) the density and shear fields
-  tend to be Gaussian and therefore follow closely the analytical environment abundance
-  predictions for Gaussian random fields \citep{Forero09,Alonso2015}. 
+  tend to be Gaussian and therefore follow closely the analytical
+  environment abundance predictions for Gaussian random fields
+  \citep{Forero09,Alonso2015}.  
+In this paper we limit ourselves to a smoothing scale $\sim 1$ \hMpc.  
+
 
 
 
@@ -820,27 +826,29 @@ differentiated by the
 presence/absence of an overdense matter ridge in their density
 profiles. 
 To discriminate each void in one of the families we use the
-compensation  index $\mathcal{C}$.
+compensation  index $C$
 It is defined as the mass of a void enclosed in a spherical volume of
 radius $R$ and normalized by the mass of the same volume assuming
 it is filled by matter with the mean background density.
 
 \eq{compensation}
-{\mathcal{C} = \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr}
+{C= \frac{M_v}{\overline{M}} = \frac{3}{2R^{3}} \int_0^{R} [\delta(r) + 1] r^2 dr}
 
 We choose an integration radius of $R=4\reff$, that is large enough to 
 enclose the compensation ridge for a typical void in case there is one. 
-This leads us to voids with $\mathcal{C}>1$ having more mass than expected, 
+This leads us to voids with $C>1$ having more mass than expected, 
 constituting the family of overcompensated voids. 
 These voids generally  exhibit a compensation ridge associated to
 dense nearby structures. 
-In the same fashion, voids with $\mathcal{C}<1$ constitute the family
+In the same fashion, voids with $C<1$ constitute the family
 of  subcompensated voids. 
 
 In Fig. \ref{fig:density_profile} we show the density and velocity profiles
 of voids splitted in these two families. 
 In the left column it becomes clear the difference between sub- and
-overcompensated voids.
+overcompensated voids. 
+Table \ref{tab:number_voids} lists the number of voids in 
+each effective radius bin for the two web finding methods.
 
 %.........................................................................
 \begin{table}[!htbp]
@@ -868,8 +876,6 @@ subcompensanted and overcompansated samples.}
 \end{table}
 %.........................................................................
 
-Table \ref{tab:number_voids} lists the number of voids in 
-each effective radius bin for the two web finding methods.
 
 
 %.........................................................................
@@ -917,7 +923,7 @@ regions.
 In subcompensated voids, larger voids are steeper.
 Smaller voids exhibit moderate slopes, reaching the mean density at
 larger radii than larger voids.
-This suggests that smaller subcompensated voids are embedded into low
+This suggests that small subcompensated voids are embedded into low
 density structures, while large subcompensated voids are surrounded
 by dense structures, reaching the mean density at lower effective
 radii than smaller voids. 
@@ -940,9 +946,9 @@ two families of subcompensated and overcompensanted voids.
 This goes in the same direction of recent results about the internal
 \citep{Colberg05,  Ricciardelli2013} and external structure of voids
 \citep{Lavaux12, Ceccarelli13, Paz13, Hamaus14}. 
-Our results extend the findings of \cite{Hamaus14} into the range of
-voids with size $\reff <10$\hMpc. 
-
+Indeed, our results extend the findings of \cite{Hamaus14} into the
+range of voids with size $\reff <10$\hMpc.  
+ 
 %.........................................................................
 \subsection{Velocity profiles}
 \label{subsec:velocity_voids}
@@ -955,8 +961,8 @@ Positive values correspond to outflows with respect to the center.
 
 We find that subcompensated voids have outflowing velocity profiles
 all the way up to the radius where the average radial
-density reaches the average value.
-For voids with sizes $\reff <8\hMpc$ the outflow is always
+density reaches zero.
+In voids with sizes $\reff <8\hMpc$ the outflow is always
 positive, consistent with the fact that their density profiles do not
 reach the level $\delta=0$ in the range of explored radii.
 This behaviour indicates that matter is being pulled out of the void
@@ -987,8 +993,8 @@ We find that the FA clearly magnifies the difference between the
 internal profile $r/\reff <1$ and the external profile $r/\reff >1$. 
 Subcompensanted voids in the T-Web reach an asymptotic background
 value of F=$0.8$ almost right at $r/\reff =2$. 
-For the V-Web the results are similar, albeit rather slowly with the
-effective radius.
+For the V-Web the results are similar, albeit with a slower trend with
+the effective radius. 
 Overcompensated voids reach a maximum FA at the same effective radiuus
 $r/\reff =1$ and decline to reach an asymptotic value of FA=$0.85$
 at larger radii.
@@ -1047,14 +1053,14 @@ voids compared to its simpler density/gravitational potential anatomy.
 
 A second step in the void characterization 
 is the separation into subcompensated and overcompensated samples. 
-In the T-Web $35\%$ of the voids are overcompensated ($65\%$
-subcompensated), meaning that they are located in denser regions with
+In the T-Web $35\%$ of the voids are overcompensated and $65\%$
+subcompensated, meaning that they are located in denser regions with
 a clear delimiting ridge.   
-For the V-web the subcompensated fraction rises from $65\%$ to $85\%$ as the
+For the V-web the subcompensated fraction rises to $85\%$ as the
 void size decreases, supporting the picture of smaller spurious voids
 located in medium density matter sheets.   
 
-Finally we proceed with an more detailed void characterization
+Finally we proceed with a more detailed void characterization
 through the radially averaged profiles of density, radial velocity and
 fractional anisotropy. 
 In this case we study separately the subcompensated and
@@ -1083,7 +1089,7 @@ Most notably the radial velocity goes to zero close to flat regions in
 the density profile and is positive around regions of increasing
 density with radius.  
 
-The Fractional Anisotropy profiles also show remarkable similarities
+The FA profiles also show remarkable similarities
 inside each class of subcompensated and overcompensated voids
 and a close correlation with the behaviour in the density and velocity
 profiles. 
@@ -1094,11 +1100,11 @@ algorithm, indicating that these voids are very close to spherical.
 For the subcompensated voids the FA quickly increases to FA values of 
 $\sim 0.7-0.8$ at $r/\reff \sim 1$ to find a plateau, which is
 quite far from the limiting FA$=0.95$ suggesting that these voids are
-far from spherical. 
+ellipsoidal. 
 
 Put together, the results for the radially averaged profiles support the 
 evidence for a universal density profile.  
-Our results extends to smaller void sizes the work done by
+Our results extend to smaller void sizes the work done by
 \cite{Hamaus14} on simulations and by \cite{Ceccarelli13} on SDSS data.  
 
 
