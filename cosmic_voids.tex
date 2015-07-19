@@ -131,11 +131,11 @@ minima of the FA field without making any assumption on the shape or
 structure of the voids.  
 We test the method on the Bolshoi simulation and report on the
 abundance and radial averaged profiles for the density, velocity and
-fractional anistropy.
+fractional anisotropy.
 We find that voids in the velocity shear web are smaller than voids in
 the tidal web, with a particular overabundance of very small voids in
 the inner region of filaments/sheets.
-We clasify voids as subcompensated/overcompansated depending on the
+We classify voids as subcompensated/overcompansated depending on the
 absence/presence of an overdense matter ridge in their density
 profile, finding that close to $65\%$ and $35\%$ of the total
 population are classified into each category, respectively.
@@ -165,7 +165,7 @@ Methods: data analysis - numerical - N-body simulations
 %*************************************************************************
 
 Cosmic voids are regarded as one of the most striking features of the
-Universe on its larges scales ever since they were found in the first
+Universe on its larger scales ever since they were found in the first
 galaxy surveys \citep{Chincarini75, Gregory78, Einasto80M, Einasto80N,
   Kirshner81, Zeldovich82,Kirshner87}.  
 However, due to the large volume extension of void regions ($\sim
@@ -219,14 +219,14 @@ There are geometric schemes based on point distributions (either real or
 redshift space)  f galaxies in surveys or dark matter halos in
 simulations \citep{Kauffmann91, Muller00,    Gottlober03, Hoyle04,
   Brunino07,  Foster09, Micheletti14, Sutter14}. 
-While other chemes are based on the smooth and continuous matter density
+While other schemes are based on the smooth and continuous matter density
 field either from simulations or from reconstruction procedures on
 surveys \citep{Plionis02, Colberg05,  Shandarin06, Platen07,
   Neyrinck08, MunozCuartas11, Neyrinck13, Ricciardelli2013}. 
 Our work follows the tradition of the second kind of schemes. 
 
 
-Here we introduce a new algorithm to define voids over the continous
+Here we introduce a new algorithm to define voids over the continuous
 matter density or velocity distribution defined on a fixed and
 homogeneous spatial grid.
 The algorithm uses the results from two tensorial schemes used to
@@ -288,7 +288,7 @@ the qualities of our algorithm (\S \ref{sec:conclusions}).
     $1\hMpc$ width in the Bolshoi simulation. Top/bottom panels correspond
     to the T-Web/V-Web.      
     Fractional Anisotropy field (left); cosmic web classification
-    (middle) for a given value of the threhold eigenvalue
+    (middle) for a given value of the threshold eigenvalue
     $\lambda_{\rm th}$ where voids are white, sheets are light gray,
     filaments are dark gray and knots are black; individual voids (right) found by 
     the a watershed algorithm on the Fractional Anisotropy field. Colours
@@ -298,7 +298,7 @@ the qualities of our algorithm (\S \ref{sec:conclusions}).
 %.........................................................................
 
 Our new void finding method is based on two existing cosmic web
-classification schemes that work on cosmological N-body simularions.
+classification schemes that work on cosmological N-body simulations.
 Both schemes depend on the construction of tensors based on the
 Hessian of the potential (T-Web scheme) and the shear of the velocity
 (V-Web scheme). 
@@ -320,7 +320,7 @@ We refer the reader to the papers of \cite{Forero09} (T-Web) and
 This scheme was initially proposed by \citet{Hahn07}  to find the
 Cosmic Web based on the tidal tensor. 
 The tidal tensor allows a classification in terms of the orbital
-dinamics of the matter field.
+dynamics of the matter field.
 This approach extends to second-order the equations of motion around 
 local minima of the gravitational potential. 
 The second-order term corresponds to the tidal tensor, which is
@@ -397,7 +397,7 @@ in the four web types already mentioned.
 
 
 Usually, the threshold $\lambda_{th}$ is a free parameter that is
-tuned to reproduce the visual appearence of the comic web. 
+tuned to reproduce the visual appearance of the comic web. 
 However, in this paper this threshold does not play any role in our
 computations.
 In Figure \ref{fig:L1_correlations} we offer a threshold estimate
@@ -421,14 +421,14 @@ with its meaning.
     Fractional Anisotropy  as a function of
     the overdensity (left) and the eigenvalue $\lambda_1$ (middle), and
     density contrast (right) as a function of the
-    eigenvalue $\lambda_1$ for each web scheme (T-Web,  continous
+    eigenvalue $\lambda_1$ for each web scheme (T-Web,  continuous
     lines. V-Web, dashed lines).     
     Fractional Anisotropy  as a function of $\lambda_1$ (left),
     overdensity as a function of $\lambda_1$ (middle) and Fractional
     Anisotropy as a function of the overdensity (right).
     Thick central lines are the median
     and filled regions include $50\%$ of the cells in each bin. 
-    The left panel shows the tigth correlation between FA and
+    The left panel shows the tight correlation between FA and
     $\lambda_1$ in voids.
     In the middle and right panel we show the equivalent eigenvalue
     threshold for the T-Web and V-web corresponding to FA=$0.95$. 
@@ -552,9 +552,10 @@ eigenvalue $\lambda_1$ presents, along with the overdensity, an undesirable
 feature for a void tracer. 
 As we move out from inner parts of voids to outer parts, $\lambda_1$
 and $\delta$ increase monotonically making unclear where to set the
-void boudary, while for low density regions ($\delta<1$) the FA traces
-the boundary where anisotropic collapse regions begin to 
-dominate.
+void boundary, while for low density regions ($\delta<1$) the FA traces
+the boundary where anisotropic collapsing regions begin to 
+dominate, i.e. at the ridge reached around $\delta = 0$ as shown in the 
+right panel of Fig. \ref{fig:L1_correlations}.
 According to Fig. \ref{fig:FA_environment} these anisotropic areas are
 mainly associated to sheets and, to a lesser extent, filaments.
 
@@ -637,7 +638,7 @@ FA field.
 
   \captionof{figure}{\small Left panel, void size distribution. Right
     panel, fraction of overcompensated/subcompensated ($C>1/C<1$)voids as a
-    function of the effective radius. The continous (dashed)
+    function of the effective radius. The continuous (dashed)
     curves correspond to the T-Web (V-Web).
     The abundance for small ($\reff <2.0\hMpc$) overcompensated voids
     shoots up in the V-Web scheme.
@@ -736,7 +737,7 @@ tiny white bubbles located inside sheets.
 The existence of these small voids can be explained by
 dynamics of shell crossing in collapsing sheets as discussed in
 \citet{Hoffman12}.    
-The main argument is that as matter colides into a pancake-like
+The main argument is that as matter collides into a pancake-like
 fashion crossing sheets encounter each other at the symmetry plane.
 This effectively gives a positive divergence in the velocity
 field, resulting in a void identification by the V-Web algorithm. 
@@ -805,7 +806,7 @@ evident in the left and right panels of Fig. \ref{fig:FA_field}.
   
   \captionof{figure}{\small Spherically averaged Fractional Anisotropy
     profiles for stacked voids with different effective radii. The
-    sample is split into subcompensated andovercompensated voids
+    sample is split into subcompensated and overcompensated voids
     (right and left) for the web schemes T-Web and V-Web (top and
     bottom).} 
   \label{fig:FA_profile}
@@ -844,7 +845,7 @@ In the same fashion, voids with $C<1$ constitute the family
 of  subcompensated voids. 
 
 In Fig. \ref{fig:density_profile} we show the density and velocity profiles
-of voids splitted in these two families. 
+of voids split in these two families. 
 In the left column it becomes clear the difference between sub- and
 overcompensated voids. 
 Table \ref{tab:number_voids} lists the number of voids in 
@@ -903,11 +904,11 @@ point where the overdensity reaches the mean value.
 
 
 The first interesting result is the overdensity value at the void's
-center.
+centre.
 We find that larger voids have a lower overdensity value.
 The largest voids ($8.3-12\ \hMpc$) have an underdensity
 $\delta \sim-0.95$ while smaller voids  ($2-3.2\ \hMpc$) fall around $\delta\sim 
--0.8$ at their centers.
+-0.8$ at their centres.
 This holds for both web schemes. 
 These values are consistent with most of the void finding schemes
 based on smooth and continuous fields from simulation or
@@ -918,7 +919,7 @@ on point distributions, where central density values are generally higher
 \citep{Colberg08}. 
 
 
-A second feature about these profiles is their steepnes at inner
+A second feature about these profiles is their steepness at inner
 regions.  
 In subcompensated voids, larger voids are steeper.
 Smaller voids exhibit moderate slopes, reaching the mean density at
@@ -956,7 +957,7 @@ range of voids with size $\reff <10$\hMpc.
 
 In Fig. \ref{fig:velocity_profile} we present the radial velocity
 profiles. 
-Positive values correspond to outflows with respect to the center. 
+Positive values correspond to outflows with respect to the centre. 
 
 
 We find that subcompensated voids have outflowing velocity profiles
@@ -995,7 +996,7 @@ Subcompensanted voids in the T-Web reach an asymptotic background
 value of F=$0.8$ almost right at $r/\reff =2$. 
 For the V-Web the results are similar, albeit with a slower trend with
 the effective radius. 
-Overcompensated voids reach a maximum FA at the same effective radiuus
+Overcompensated voids reach a maximum FA at the same effective radius
 $r/\reff =1$ and decline to reach an asymptotic value of FA=$0.85$
 at larger radii.
 
@@ -1007,16 +1008,16 @@ of central FA values than in the T-Web scheme.
 
 The difference between the radius where the density ridge is reached 
 ($r/\reff =3$) and the radius of the FA maxima ($r/\reff =1$, most
-manifest in the T-Web voids) justifies in a more quantiative way the
+manifest in the T-Web voids) justifies in a more quantitative way the
 qualitative argument we present in sub-section \ref{subsec:watershed}
 to define void boundaries in our method.  
 Namely that as we increase the void boundary moving away from the
-center, we reach first middle density walls, before reaching high
+centre, we reach first middle density walls, before reaching high
 density structures associated with high anisotropy.  
 This implies that voids defined with the FA never present positive
 overdensities, making the FA maximum a reasonable boundary for voids
 compared to the traditional definition that puts the boundary at the
-densityridge.     
+density ridge.
 
 We recognize that our choice produces smaller voids as compared with
 other voids finding methods. 
@@ -1043,7 +1044,7 @@ We find that for the T-Web scheme the void size distribution has a
 shape consistent with standard expectations from a two-barrier setup. 
 However, for the V-Web we find an overabundance of the smallest voids.
 This is due to two reasons. 
-First, there are artifacts in the web
+First, there are artefacts in the web
 finding scheme inside sheets. 
 Second, there V-web produces smaller
 fragmented voids inside the largest voids found in the T-Web
